@@ -13,8 +13,10 @@ import { __setScopeForTests } from '../../../storage/scope';
 import { DEVICE_KEYS, K } from '../../../storage/keys';
 import {
   BackupError, buildBackup, checkBackupHeader, createBackup, parseBackup, previewBackup, recoverInterruptedRestore,
-  restoreBackup, BACKUP_FORMAT, MAX_BACKUP_BYTES, RESTORE_META_KEY, type BackupErrorCode,
+  restoreBackup, loadLastBackupPreparedAt, BACKUP_FORMAT, LAST_BACKUP_KEY, LAST_BACKUP_PREPARED_KEY, MAX_BACKUP_BYTES,
+  RESTORE_META_KEY, type BackupErrorCode,
 } from '../backupFile';
+import { runStartupRecovery } from '../startupRecovery';
 import { isBackupKey } from '../backupKeys';
 import { sha256 } from '@noble/hashes/sha2.js';
 import { bytesToHex, utf8ToBytes } from '@noble/hashes/utils.js';
@@ -81,6 +83,17 @@ async function expectCode(p: Promise<unknown>, code: BackupErrorCode) {
   await expect(p).rejects.toMatchObject({ name: 'BackupError', code });
 }
 
+/** Temporarily replace one AsyncStorage mock; `impl` receives the original implementation first. */
+async function withStorageMock<T>(name: 'setItem' | 'removeItem' | 'multiSet' | 'getItem', impl: (orig: any, ...args: any[]) => Promise<unknown>, body: () => Promise<T>): Promise<T> {
+  const m = (AsyncStorage as any)[name] as jest.Mock;
+  const orig = m.getMockImplementation() as any;
+  m.mockImplementation((...args: any[]) => impl(orig, ...args));
+  try { return await body(); } finally { m.mockImplementation(orig); }
+}
+
+const journalKeys = async () => ((await AsyncStorage.getAllKeys()) as string[]).filter(k => k.startsWith('backup:restore:'));
+const metaState = async () => { const raw = await AsyncStorage.getItem(RESTORE_META_KEY); return raw ? JSON.parse(raw).state : null; };
+
 beforeEach(async () => {
   store.clear();
   __resetWorkspaceCache();
@@ -101,7 +114,7 @@ async function makeGood() {
 }
 
 describe('create', () => {
-  it('writes an encrypted .tillexpiry file, shares it and records the time', async () => {
+  it('writes an encrypted .tillexpiry file, opens the share sheet and records the time it was PREPARED', async () => {
     await seed();
     const r = await createBackup(PASS, new Date(2026, 8, 24, 9, 5));
     expect(r.fileName).toBe('TillExpiry-backup-2026-09-24-0905.tillexpiry');
@@ -112,7 +125,16 @@ describe('create', () => {
     expect(Object.keys(outer).sort()).toEqual(['appVersion', 'createdAt', 'enc', 'format', 'version']);
     expect(outer).toMatchObject({ format: 'tillexpiry', version: 1 });
     expect(text).not.toContain('Milk'); // business data only inside the ciphertext
-    expect(await AsyncStorage.getItem('backup:lastCreatedAt')).toBe(r.createdAt);
+    expect(await AsyncStorage.getItem(LAST_BACKUP_PREPARED_KEY)).toBe(r.createdAt);
+    expect(await loadLastBackupPreparedAt()).toBe(r.createdAt);
+  });
+
+  it('the legacy "last backup" value is read as the last PREPARED time', async () => {
+    expect(await loadLastBackupPreparedAt()).toBeNull();
+    await AsyncStorage.setItem(LAST_BACKUP_KEY, '2026-01-02T03:04:05.000Z');
+    expect(await loadLastBackupPreparedAt()).toBe('2026-01-02T03:04:05.000Z');
+    await AsyncStorage.setItem(LAST_BACKUP_PREPARED_KEY, '2026-05-05T05:05:05.000Z');
+    expect(await loadLastBackupPreparedAt()).toBe('2026-05-05T05:05:05.000Z');
   });
 
   it('device keys, demo keys and unknown / corrupt keys are never exported', async () => {
@@ -134,13 +156,55 @@ describe('create', () => {
     expect(keys.some(k => k.startsWith('demo:'))).toBe(false);
   });
 
-  it('a corrupt stored record is left out and reported instead of producing an unrestorable file', async () => {
+  it('REV-05 a corrupt stored product blocks the backup: no file, no share sheet, no "prepared" time', async () => {
     const { a } = await seed();
     const p = await saveProduct(a.id, { name: 'Tea' });
     await AsyncStorage.setItem(K.item('products', p.id), '{not json');
+    (FileSystem.writeAsStringAsync as jest.Mock).mockClear();
+    (Sharing.shareAsync as jest.Mock).mockClear();
+    const err = await createBackup(PASS).catch(e => e);
+    expect(err).toMatchObject({ name: 'BackupError', code: 'backupBlocked', categories: ['products'] });
+    expect(FileSystem.writeAsStringAsync).not.toHaveBeenCalled();
+    expect(Sharing.shareAsync).not.toHaveBeenCalled();
+    expect(await loadLastBackupPreparedAt()).toBeNull();
+    // The stored data is untouched (nothing is "repaired" or dropped).
+    expect(await AsyncStorage.getItem(K.item('products', p.id))).toBe('{not json');
+  });
+
+  it('REV-05 an index listing a missing item blocks the backup (category reported)', async () => {
+    const { a } = await seed();
+    const ids = JSON.parse((await AsyncStorage.getItem(K.index('products', a.id)))!);
+    await AsyncStorage.setItem(K.index('products', a.id), JSON.stringify([...ids, 'p_missing']));
+    await expect(buildBackup(PASS)).rejects.toMatchObject({ code: 'backupBlocked', categories: ['products'] });
+  });
+
+  it('REV-05 an orphan item (listed in no index) blocks the backup', async () => {
+    const { a } = await seed();
+    const ids: string[] = JSON.parse((await AsyncStorage.getItem(K.index('locations', a.id)))!);
+    await AsyncStorage.setItem(K.index('locations', a.id), JSON.stringify(ids.slice(1)));
+    await expect(buildBackup(PASS)).rejects.toMatchObject({ code: 'backupBlocked', categories: ['locations'] });
+  });
+
+  it('REV-05 a broken per-batch event list or active workspace blocks the backup', async () => {
+    const { a, b } = await seed();
+    const batchIds: string[] = JSON.parse((await AsyncStorage.getItem(K.index('batches', a.id)))!);
+    const listKey = K.batchEvents(batchIds[0]);
+    const list = await AsyncStorage.getItem(listKey);
+    await AsyncStorage.setItem(listKey, '[]'); // its events are now listed nowhere for that batch
+    await expect(buildBackup(PASS)).rejects.toMatchObject({ code: 'backupBlocked', categories: ['events'] });
+    await AsyncStorage.setItem(listKey, list!);
+    await buildBackup(PASS); // repaired → allowed again
+    await AsyncStorage.setItem(K.workspace(b.id), JSON.stringify({ ...JSON.parse((await AsyncStorage.getItem(K.workspace(b.id)))!), status: 'hidden' }));
+    await AsyncStorage.setItem(K.workspacesActive, JSON.stringify(b.id)); // active points at a hidden workspace
+    await expect(buildBackup(PASS)).rejects.toMatchObject({ code: 'backupBlocked', categories: ['workspaces'] });
+  });
+
+  it('REV-05 no valid record disappears from a normal backup (file data = every real business key)', async () => {
+    await seed();
     const built = await buildBackup(PASS);
-    expect(built.skipped).toEqual([{ key: K.item('products', p.id), reason: 'unparseable' }]);
-    expect(() => parseBackup(built.text, PASS)).not.toThrow();
+    const inner = JSON.parse(decryptString(JSON.parse(built.text).enc, PASS));
+    expect(JSON.stringify(Object.entries(inner.data).sort((x, y) => x[0].localeCompare(y[0])))).toBe(await realData());
+    expect(built.keyCount).toBe(Object.keys(inner.data).length);
   });
 
   it('refuses in the demo and with no passphrase', async () => {
@@ -296,6 +360,53 @@ describe('allowlist and record validation', () => {
   const product = (id: string, workspaceId: string) => JSON.stringify({ id, workspaceId, name: 'Tea', barcodes: [], trackingUnit: 'each', status: 'active', createdAt: 'x', updatedAt: 'x', schemaVersion: 1 });
   const base = () => ({ 'workspaces:index': '["ws_a"]', 'workspaces:active': '"ws_a"', 'workspaces:item:ws_a': ws('ws_a') });
 
+  it('REV-05 referential rules are enforced on restore (index ↔ item, orphans, active, per-batch events)', () => {
+    const batch = (id: string, workspaceId: string) => JSON.stringify({ id, workspaceId, productId: 'p1', productName: 'Tea', status: 'active', dateKind: 'use_by', effective: { dateKind: 'use_by' } });
+    const event = (id: string, batchId: string, workspaceId = 'ws_a') => JSON.stringify({ id, workspaceId, batchId, type: 'created', at: 'x' });
+    const good = () => ({
+      ...base(), 'products:index:ws_a': '["p1"]', 'products:item:p1': product('p1', 'ws_a'),
+      'batches:index:ws_a': '["b1"]', 'batches:item:b1': batch('b1', 'ws_a'),
+      'events:index:ws_a': '["e1"]', 'events:item:e1': event('e1', 'b1'), 'events:batch:b1': '["e1"]',
+    });
+    expect(() => parseBackup(craft(good()), PASS)).not.toThrow();
+    const bad = (over: Record<string, string | undefined>) => () => {
+      const d: Record<string, string> = { ...good() };
+      for (const [k, v] of Object.entries(over)) { if (v === undefined) delete d[k]; else d[k] = v; }
+      return parseBackup(craft(d), PASS);
+    };
+    const invalid = expect.objectContaining({ code: 'recordInvalid' });
+    expect(bad({ 'products:index:ws_a': '["p1","p2"]' })).toThrow(invalid); // index → missing item
+    expect(bad({ 'products:index:ws_a': '[]' })).toThrow(invalid); // orphan item
+    expect(bad({ 'workspaces:index': '[]' })).toThrow(invalid); // orphan workspace
+    expect(bad({ 'workspaces:index': '["ws_a","ws_x"]' })).toThrow(invalid); // index → missing workspace
+    expect(bad({ 'workspaces:active': undefined })).toThrow(invalid); // no active workspace
+    expect(bad({ 'workspaces:active': '"ws_x"' })).toThrow(invalid); // active not present
+    expect(bad({ 'workspaces:item:ws_a': JSON.stringify({ ...JSON.parse(ws('ws_a')), status: 'hidden' }) })).toThrow(invalid); // active hidden
+    expect(bad({ 'events:batch:b1': undefined })).toThrow(invalid); // event listed in no batch list
+    expect(bad({ 'events:batch:b9': '["e1"]' })).toThrow(invalid); // list of a batch that does not exist
+    expect(bad({ 'events:item:e1': event('e1', 'b9'), 'events:batch:b1': '["e1"]' })).toThrow(invalid); // event of another batch
+    expect(bad({ 'events:batch:b1': '["e1","e2"]' })).toThrow(invalid); // list → missing event
+  });
+
+  it('optional money and import fields: accepted when absent or well-formed, refused when malformed', () => {
+    const batch = JSON.stringify({ id: 'b1', workspaceId: 'ws_a', productId: 'p1', productName: 'Tea', status: 'active', dateKind: 'use_by', effective: { dateKind: 'use_by' } });
+    const ev = (extra: Record<string, unknown>) => JSON.stringify({ id: 'e1', workspaceId: 'ws_a', batchId: 'b1', type: 'wasted', at: 'x', ...extra });
+    const imp = (extra: Record<string, unknown>) => JSON.stringify({ id: 'i1', workspaceId: 'ws_a', kind: 'products', fileName: 'a.csv', fingerprint: 'f', createdCount: 1, skippedCount: 0, at: 'x', ...extra });
+    const file = (e: string, i: string) => craft({
+      ...base(), 'products:index:ws_a': '["p1"]', 'products:item:p1': product('p1', 'ws_a'),
+      'batches:index:ws_a': '["b1"]', 'batches:item:b1': batch, 'events:index:ws_a': '["e1"]', 'events:item:e1': e, 'events:batch:b1': '["e1"]',
+      'imports:index:ws_a': '["i1"]', 'imports:item:i1': i,
+    });
+    expect(() => parseBackup(file(ev({}), imp({})), PASS)).not.toThrow(); // older records without the new fields
+    expect(() => parseBackup(file(ev({ unitCost: { minor: 125, currency: 'GBP' } }), imp({ updatedCount: 2, errorCount: 0, newProductCount: 1, newLocationCount: 0, requestId: 'req_1' })), PASS)).not.toThrow();
+    const invalid = expect.objectContaining({ code: 'recordInvalid' });
+    expect(() => parseBackup(file(ev({ unitCost: { minor: 1.25, currency: 'GBP' } }), imp({})), PASS)).toThrow(invalid);
+    expect(() => parseBackup(file(ev({ unitCost: { minor: 125 } }), imp({})), PASS)).toThrow(invalid);
+    expect(() => parseBackup(file(ev({ unitCost: 1.25 }), imp({})), PASS)).toThrow(invalid);
+    expect(() => parseBackup(file(ev({}), imp({ errorCount: -1 })), PASS)).toThrow(invalid);
+    expect(() => parseBackup(file(ev({}), imp({ requestId: 7 })), PASS)).toThrow(invalid);
+  });
+
   it('a minimal hand-made valid file parses', () => {
     const p = parseBackup(craft({ ...base(), 'products:index:ws_a': '["p1"]', 'products:item:p1': product('p1', 'ws_a') }), PASS);
     expect(p.workspaces).toEqual([expect.objectContaining({ id: 'ws_a', products: 1 })]);
@@ -392,19 +503,27 @@ describe('T51 / T53 rollback and interrupted restore', () => {
     expect(await recoverInterruptedRestore()).toBe('none');
   });
 
-  it('a committed journal is only cleaned up; an unreadable journal never changes data', async () => {
+  it('a committed journal is only cleaned up (no chunks needed); a damaged prepared journal is KEPT and blocks', async () => {
     await makeGood();
     const state = await realData();
     const raw = JSON.stringify([[K.workspacesIndex, '[]']]);
     const meta = (m: Record<string, unknown>) => JSON.stringify({ v: 1, state: 'committed', chunks: 1, sha256: bytesToHex(sha256(utf8ToBytes(raw))), keyCount: 1, startedAt: 'x', ...m });
-    await AsyncStorage.multiSet([['backup:restore:chunk:0', raw], [RESTORE_META_KEY, meta({})]]);
+    await AsyncStorage.multiSet([['backup:restore:chunk:0', 'damaged'], [RESTORE_META_KEY, meta({})]]);
     expect(await recoverInterruptedRestore()).toBe('completed');
     expect(await realData()).toBe(state);
-    // A damaged journal (hash mismatch) is discarded; it can never be used to overwrite data.
+    expect(await journalKeys()).toEqual([]);
+    // A damaged prepared journal (hash mismatch) is never used to overwrite data, and never discarded either.
     await AsyncStorage.multiSet([['backup:restore:chunk:0', raw], [RESTORE_META_KEY, meta({ state: 'prepared', sha256: 'bad' })]]);
-    expect(await recoverInterruptedRestore()).toBe('unreadable');
+    await expectCode(recoverInterruptedRestore(), 'recoveryRequired');
+    expect(await runStartupRecovery()).toEqual({ status: 'recoveryRequired', reason: 'journalUnreadable' });
     expect(await realData()).toBe(state);
-    expect(((await AsyncStorage.getAllKeys()) as string[]).some(k => k.startsWith('backup:restore:'))).toBe(false);
+    expect((await journalKeys()).sort()).toEqual(['backup:restore:chunk:0', RESTORE_META_KEY].sort());
+    // An unparseable meta is kept and blocks too; a new restore refuses to overwrite it.
+    await AsyncStorage.setItem(RESTORE_META_KEY, '{oops');
+    await putFile(goodFile);
+    await expectCode(restoreBackup(FILE, PASS), 'recoveryRequired');
+    expect(await AsyncStorage.getItem(RESTORE_META_KEY)).toBe('{oops');
+    expect(await realData()).toBe(state);
   });
 
   it('a later restore first rolls back a pending interrupted one, then restores cleanly', async () => {
@@ -423,5 +542,165 @@ describe('T51 / T53 rollback and interrupted restore', () => {
     await restoreBackup(FILE, PASS);
     expect(await realData()).toBe(goodState);
     expect(await AsyncStorage.getItem(RESTORE_META_KEY)).toBeNull();
+  });
+});
+
+/** removeItem of the journal meta fails once the journal is committed (cleanup after a verified commit). */
+async function failCleanupAfterCommit(orig: any, k: string) {
+  if (k === RESTORE_META_KEY && (await metaState()) === 'committed') throw new Error('io');
+  return orig(k);
+}
+
+/** Restore the good file on top of a changed phone: `before` is the phone state the restore must replace. */
+async function preparedPhone() {
+  await makeGood();
+  const a = getActiveWorkspace()!;
+  await saveProduct(a.id, { name: 'Current only' });
+  const before = await realData();
+  await putFile(goodFile);
+  return before;
+}
+
+describe('REV-03 durable commit point', () => {
+  it('data written and verified but the commit marker write FAILS → no success, old data restored now', async () => {
+    const before = await preparedPhone();
+    await withStorageMock('setItem', (orig, k: string, v: string) => (k === RESTORE_META_KEY && v.includes('"committed"') ? Promise.reject(new Error('disk full')) : orig(k, v)),
+      () => expectCode(restoreBackup(FILE, PASS), 'restoreRolledBack'));
+    expect(await realData()).toBe(before);
+    expect(await journalKeys()).toEqual([]);
+    expect(mockCancelAll).not.toHaveBeenCalled();
+    // Next launch: nothing to do, the phone keeps the old data (never "success then revert", never "revert then success").
+    expect(await recoverInterruptedRestore()).toBe('none');
+    expect(await realData()).toBe(before);
+  });
+
+  it('a commit marker that is silently NOT persisted (read-back differs) is treated as not committed', async () => {
+    const before = await preparedPhone();
+    await withStorageMock('setItem', (orig, k: string, v: string) => (k === RESTORE_META_KEY && v.includes('"committed"') ? Promise.resolve() : orig(k, v)),
+      () => expectCode(restoreBackup(FILE, PASS), 'restoreRolledBack'));
+    expect(await realData()).toBe(before);
+    expect(await recoverInterruptedRestore()).toBe('none');
+    expect(await realData()).toBe(before);
+  });
+
+  it('commit marker fails AND the rollback fails → no success; the prepared journal rolls back on the next launch', async () => {
+    const before = await preparedPhone();
+    let multiSetCalls = 0;
+    await withStorageMock('multiSet', (orig, pairs) => { multiSetCalls += 1; return multiSetCalls === 3 ? Promise.reject(new Error('killed')) : orig(pairs); }, () =>
+      withStorageMock('setItem', (orig, k: string, v: string) => (k === RESTORE_META_KEY && v.includes('"committed"') ? Promise.reject(new Error('disk full')) : orig(k, v)),
+        () => expectCode(restoreBackup(FILE, PASS), 'rollbackFailed')));
+    expect(await realData()).toBe(goodState); // wholly new, never a mix
+    expect(await metaState()).toBe('prepared');
+    expect(await recoverInterruptedRestore()).toBe('rolledBack');
+    expect(await realData()).toBe(before);
+    expect(await journalKeys()).toEqual([]);
+  });
+
+  it('when even the "prepared" marker cannot be verified the data stays wholly new and the result is unconfirmed', async () => {
+    const before = await preparedPhone();
+    let metaWrites = 0;
+    await withStorageMock('setItem', (orig, k: string, v: string) => {
+      if (k !== RESTORE_META_KEY) return orig(k, v);
+      metaWrites += 1;
+      return metaWrites === 1 ? orig(k, v) : Promise.reject(new Error('disk full'));
+    }, () => expectCode(restoreBackup(FILE, PASS), 'restoreUnconfirmed'));
+    expect(await realData()).toBe(goodState);
+    expect(mockCancelAll).not.toHaveBeenCalled();
+    // The marker on disk still reads prepared → the next launch deterministically picks the OLD whole state.
+    expect(await metaState()).toBe('prepared');
+    expect(await recoverInterruptedRestore()).toBe('rolledBack');
+    expect(await realData()).toBe(before);
+  });
+
+  it('restart recovery: prepared journal → old data; committed journal → new data kept', async () => {
+    // prepared: the new data is fully written and verified but the commit marker never landed (and the in-process
+    // rollback died too) → the next launch picks the OLD whole state.
+    const before = await preparedPhone();
+    let multiSetCalls = 0;
+    await withStorageMock('multiSet', (orig, pairs) => { multiSetCalls += 1; return multiSetCalls === 3 ? Promise.reject(new Error('killed')) : orig(pairs); }, () =>
+      withStorageMock('setItem', (orig, k: string, v: string) => (k === RESTORE_META_KEY && v.includes('"committed"') ? Promise.reject(new Error('killed')) : orig(k, v)),
+        () => expectCode(restoreBackup(FILE, PASS), 'rollbackFailed')));
+    expect(await metaState()).toBe('prepared');
+    expect(await realData()).toBe(goodState);
+    expect(await recoverInterruptedRestore()).toBe('rolledBack');
+    expect(await realData()).toBe(before);
+
+    // committed: the commit is verified, then the journal cleanup fails.
+    await withStorageMock('removeItem', failCleanupAfterCommit, async () => {
+      const r = await restoreBackup(FILE, PASS);
+      expect(r.keyCount).toBeGreaterThan(0);
+    });
+    expect(await metaState()).toBe('committed');
+    expect(await realData()).toBe(goodState);
+    expect(await recoverInterruptedRestore()).toBe('completed');
+    expect(await realData()).toBe(goodState);
+    expect(await journalKeys()).toEqual([]);
+  });
+
+  it('cleanup failure after a verified commit → success, and the next launch KEEPS the new data', async () => {
+    await preparedPhone();
+    await withStorageMock('removeItem', failCleanupAfterCommit, async () => {
+      await restoreBackup(FILE, PASS);
+    });
+    expect(await realData()).toBe(goodState);
+    expect(await metaState()).toBe('committed');
+    expect(await runStartupRecovery()).toEqual({ status: 'ready', outcome: 'completed' });
+    expect(await realData()).toBe(goodState);
+    expect(await journalKeys()).toEqual([]);
+  });
+});
+
+describe('REV-04 startup recovery gate', () => {
+  /** A restore that died mid-write with its in-process rollback failing: journal `prepared`, data half-written. */
+  async function interrupted() {
+    const before = await preparedPhone();
+    let call = 0;
+    await withStorageMock('multiSet', (orig, pairs: [string, string][]) => {
+      call += 1;
+      if (call === 2) return orig(pairs.slice(0, Math.ceil(pairs.length / 2))).then(() => { throw new Error('killed'); });
+      if (call === 3) return Promise.reject(new Error('killed'));
+      return orig(pairs);
+    }, () => expectCode(restoreBackup(FILE, PASS), 'rollbackFailed'));
+    const half = await realData();
+    expect(half).not.toBe(before);
+    return { before, half };
+  }
+
+  it('rollback storage failure at launch → startup blocked, journal kept, data untouched; Retry then restores the old data', async () => {
+    const { before, half } = await interrupted();
+    const journal = await journalKeys();
+    expect(journal).toContain(RESTORE_META_KEY);
+    const blocked = await withStorageMock('multiSet', () => Promise.reject(new Error('disk full')), () => runStartupRecovery());
+    expect(blocked).toEqual({ status: 'recoveryRequired', reason: 'rollbackFailed' });
+    expect(await journalKeys()).toEqual(journal); // the only way back is kept
+    expect(await metaState()).toBe('prepared');
+    expect(await realData()).toBe(half);
+    // A storage read failure is blocking too (never "continue on a partially replaced dataset").
+    const unreadable = await withStorageMock('getItem', (orig, k: string) => (k === RESTORE_META_KEY ? Promise.reject(new Error('io')) : orig(k)), () => runStartupRecovery());
+    expect(unreadable).toEqual({ status: 'recoveryRequired', reason: 'storageUnavailable' });
+    expect(await journalKeys()).toEqual(journal);
+    // Retry with storage working: rolled back to the old data, journal resolved, app may continue.
+    expect(await runStartupRecovery()).toEqual({ status: 'ready', outcome: 'rolledBack' });
+    expect(await realData()).toBe(before);
+    expect(await journalKeys()).toEqual([]);
+    expect(await runStartupRecovery()).toEqual({ status: 'ready', outcome: 'none' });
+  });
+
+  it('a rollback that succeeds but cannot settle its journal still blocks (a later launch would undo newer work)', async () => {
+    const { before } = await interrupted();
+    const blocked = await withStorageMock('setItem', (orig, k: string, v: string) => (k === RESTORE_META_KEY ? Promise.reject(new Error('io')) : orig(k, v)), () =>
+      withStorageMock('removeItem', (orig, k: string) => (k === RESTORE_META_KEY ? Promise.reject(new Error('io')) : orig(k)), () => runStartupRecovery()));
+    expect(blocked).toEqual({ status: 'recoveryRequired', reason: 'rollbackFailed' });
+    expect(await realData()).toBe(before);
+    expect(await runStartupRecovery()).toEqual({ status: 'ready', outcome: 'rolledBack' });
+    expect(await journalKeys()).toEqual([]);
+  });
+
+  it('a new restore is refused while an unresolved journal is pending (it is never overwritten)', async () => {
+    const { half } = await interrupted();
+    const metaBefore = await AsyncStorage.getItem(RESTORE_META_KEY);
+    await withStorageMock('multiSet', () => Promise.reject(new Error('disk full')), () => expectCode(restoreBackup(FILE, PASS), 'recoveryRequired'));
+    expect(await AsyncStorage.getItem(RESTORE_META_KEY)).toBe(metaBefore);
+    expect(await realData()).toBe(half);
   });
 });

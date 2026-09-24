@@ -20,14 +20,19 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { getScope } from '../../../storage/scope';
 import type { TabStackParamList } from '../../../navigation/AppNavigator';
-import { BackupError, checkBackupHeader, createBackup, loadLastBackupAt, readBackupFile } from '../backupFile';
+import { BackupError, checkBackupHeader, createBackup, loadLastBackupPreparedAt, readBackupFile } from '../backupFile';
 import { clearRestoreSession, setRestoreSession } from '../restoreSession';
 
 type Nav = NativeStackNavigationProp<TabStackParamList>;
 
-/** Translated message for any backup failure. */
+/** Translated message for any backup failure. `backupBlocked` names the categories that prevented a safe backup. */
 export function backupErrorText(t: (k: string, o?: Record<string, unknown>) => string, e: unknown): string {
-  return e instanceof BackupError ? t(`backup.err.${e.code}`) : t('backup.err.unexpected');
+  if (!(e instanceof BackupError)) return t('backup.err.unexpected');
+  if (e.code === 'backupBlocked') {
+    const categories = (e.categories ?? []).map(c => t(`backup.category.${c}`)).join(', ');
+    return t('backup.err.backupBlocked', { categories: categories || t('backup.category.unknown') });
+  }
+  return t(`backup.err.${e.code}`);
 }
 
 const nextFrame = () => new Promise<void>(r => setTimeout(r, 30));
@@ -35,14 +40,14 @@ const nextFrame = () => new Promise<void>(r => setTimeout(r, 30));
 export const BackupRestoreScreen: React.FC = () => {
   const { t } = useTranslation();
   const nav = useNavigation<Nav>();
-  const [lastAt, setLastAt] = useState<string | null>(null);
+  const [lastPreparedAt, setLastPreparedAt] = useState<string | null>(null);
   const [createOpen, setCreateOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [pickError, setPickError] = useState<string | null>(null);
   const inFlight = useRef(false);
   const demo = getScope() === 'demo';
 
-  useFocusEffect(useCallback(() => { loadLastBackupAt().then(setLastAt).catch(() => undefined); }, []));
+  useFocusEffect(useCallback(() => { loadLastBackupPreparedAt().then(setLastPreparedAt).catch(() => undefined); }, []));
 
   const doCreate = async (passphrase: string) => {
     if (inFlight.current) return;
@@ -52,10 +57,10 @@ export const BackupRestoreScreen: React.FC = () => {
       await nextFrame(); // let the spinner paint before the key derivation blocks the JS thread
       const r = await createBackup(passphrase);
       setCreateOpen(false);
-      setLastAt(r.createdAt);
-      const skipped = r.skipped.length ? `\n\n${t('backup.skippedRecords', { count: r.skipped.length })}` : '';
-      const body = r.shared ? t('backup.createdShared', { file: r.fileName }) : t('backup.createdNotShared', { file: r.fileName });
-      AppAlert.success(t('backup.createdTitle'), body + skipped);
+      setLastPreparedAt(r.createdAt);
+      // The share sheet closing does not prove the file was saved, so this never says "backup completed".
+      if (r.shared) AppAlert.success(t('backup.preparedTitle'), t('backup.preparedShared', { file: r.fileName }));
+      else AppAlert.error(t('backup.preparedNotShared', { file: r.fileName }));
     } catch (e) {
       setCreateOpen(false);
       AppAlert.error(backupErrorText(t, e));
@@ -85,7 +90,7 @@ export const BackupRestoreScreen: React.FC = () => {
     }
   };
 
-  const lastLine = lastAt ? t('backup.lastBackup', { when: new Date(lastAt).toLocaleString() }) : t('backup.never');
+  const lastLine = lastPreparedAt ? t('backup.lastPrepared', { when: new Date(lastPreparedAt).toLocaleString() }) : t('backup.neverPrepared');
 
   return (
     <View style={s.root}>

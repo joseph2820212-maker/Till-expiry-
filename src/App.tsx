@@ -17,7 +17,8 @@ import { installGlobalErrorLogger } from './utils/errorLog';
 import { AppNavigator } from './navigation/AppNavigator';
 import { colors } from './theme/colors';
 import { initializeLanguage } from './i18n';
-import { recoverInterruptedRestore } from './modules/backup/backupFile';
+import { runStartupRecovery, type RecoveryBlockReason } from './modules/backup/startupRecovery';
+import { RecoveryRequiredScreen } from './modules/backup/RecoveryRequiredScreen';
 import { bootstrapData } from './app/bootstrap';
 
 installGlobalErrorLogger();
@@ -54,13 +55,20 @@ const fs = StyleSheet.create({
 function FontBootstrap({ onRetry }: { onRetry: () => void }) {
   const [fontsLoaded, fontError] = useFonts(fontMap);
   const [bootstrapped, setBootstrapped] = useState(false);
+  const [recoveryBlocked, setRecoveryBlocked] = useState<RecoveryBlockReason | null>(null);
 
   useEffect(() => {
     if (!fontsLoaded || fontError) return;
     let cancelled = false;
     (async () => {
-      try { await recoverInterruptedRestore(); } catch { /* a broken journal must never block startup */ }
-      await initializeLanguage();
+      await initializeLanguage(); // device-only language key; needed so the recovery screen is translated
+      // An interrupted restore that cannot be resolved blocks the app: business data from a partially replaced
+      // dataset is never loaded or shown. Retry remounts this component and runs the recovery again.
+      const recovery = await runStartupRecovery();
+      if (recovery.status === 'recoveryRequired') {
+        if (!cancelled) setRecoveryBlocked(recovery.reason);
+        return;
+      }
       await bootstrapData();
       if (!cancelled) setBootstrapped(true);
     })();
@@ -70,6 +78,8 @@ function FontBootstrap({ onRetry }: { onRetry: () => void }) {
   if (fontError) {
     return <FontFailureScreen onRetry={onRetry} />;
   }
+
+  if (recoveryBlocked) return <RecoveryRequiredScreen reason={recoveryBlocked} onRetry={onRetry} />;
 
   if (!fontsLoaded || !bootstrapped) return null;
 

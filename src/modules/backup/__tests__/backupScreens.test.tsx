@@ -24,18 +24,21 @@ jest.mock('expo-document-picker', () => ({ getDocumentAsync: async () => mockPic
 
 const mockApi = {
   createBackup: jest.fn(),
-  loadLastBackupAt: jest.fn(async () => null),
+  loadLastBackupPreparedAt: jest.fn(async (): Promise<string | null> => null),
   readBackupFile: jest.fn(async (..._a: unknown[]) => '{}'),
   checkBackupHeader: jest.fn((..._a: unknown[]) => ({ createdAt: '2026-09-20T08:00:00.000Z', appVersion: '0.1.0', enc: {} })),
   parseBackup: jest.fn(),
   restoreParsed: jest.fn(),
 };
 jest.mock('../backupFile', () => {
-  class BackupError extends Error { code: string; constructor(c: string) { super(c); this.code = c; this.name = 'BackupError'; } }
+  class BackupError extends Error {
+    code: string; categories: string[];
+    constructor(c: string, _d?: string, cats: string[] = []) { super(c); this.code = c; this.categories = cats; this.name = 'BackupError'; }
+  }
   return {
     BackupError,
     createBackup: (...a: unknown[]) => mockApi.createBackup(...a),
-    loadLastBackupAt: () => mockApi.loadLastBackupAt(),
+    loadLastBackupPreparedAt: () => mockApi.loadLastBackupPreparedAt(),
     readBackupFile: (...a: unknown[]) => mockApi.readBackupFile(...a),
     checkBackupHeader: (...a: unknown[]) => mockApi.checkBackupHeader(...a),
     parseBackup: (...a: unknown[]) => mockApi.parseBackup(...a),
@@ -72,8 +75,8 @@ beforeEach(() => {
 });
 
 describe('E35 BackupRestore', () => {
-  it('creates a backup with the passphrase from the modal and reports the file', async () => {
-    mockApi.createBackup.mockResolvedValueOnce({ fileName: 'TillExpiry-backup-2026-09-24-0905.tillexpiry', shared: true, createdAt: '2026-09-24T08:05:00.000Z', skipped: [] });
+  it('creates a backup with the passphrase from the modal and reports it as PREPARED, never "completed"', async () => {
+    mockApi.createBackup.mockResolvedValueOnce({ fileName: 'TillExpiry-backup-2026-09-24-0905.tillexpiry', shared: true, createdAt: '2026-09-24T08:05:00.000Z' });
     const r = await render(<BackupRestoreScreen />);
     await press(() => button(r, 'backup.createNow').props.onPress());
     const modal = r.root.findByType('BackupPassphraseModal');
@@ -81,7 +84,26 @@ describe('E35 BackupRestore', () => {
     expect(modal.props.mode).toBe('create');
     await press(() => modal.props.onConfirm('a long passphrase'));
     expect(mockApi.createBackup).toHaveBeenCalledWith('a long passphrase');
-    expect(mockAlert.success).toHaveBeenCalledWith('backup.createdTitle', expect.stringContaining('backup.createdShared'));
+    expect(mockAlert.success).toHaveBeenCalledWith('backup.preparedTitle', expect.stringContaining('backup.preparedShared'));
+    expect(JSON.stringify(mockAlert.success.mock.calls)).not.toMatch(/created|complete|skipped/i);
+    expect(texts(r).some(x => x.startsWith('backup.lastPrepared|'))).toBe(true);
+  });
+
+  it('shows the last PREPARED time (legacy value included) or that none was prepared', async () => {
+    let r = await render(<BackupRestoreScreen />);
+    expect(texts(r)).toContain('backup.neverPrepared');
+    mockApi.loadLastBackupPreparedAt.mockResolvedValueOnce('2026-01-02T03:04:05.000Z');
+    r = await render(<BackupRestoreScreen />);
+    expect(texts(r).some(x => x.startsWith('backup.lastPrepared|'))).toBe(true);
+  });
+
+  it('REV-05 a blocked backup shows which category prevented it and never a success message', async () => {
+    mockApi.createBackup.mockRejectedValueOnce(new BackupError('backupBlocked', 'products:item:p1 (unparseable)', ['products', 'events'] as any));
+    const r = await render(<BackupRestoreScreen />);
+    await press(() => button(r, 'backup.createNow').props.onPress());
+    await press(() => r.root.findByType('BackupPassphraseModal').props.onConfirm('a long passphrase'));
+    expect(mockAlert.success).not.toHaveBeenCalled();
+    expect(mockAlert.error).toHaveBeenCalledWith('backup.err.backupBlocked|categories=backup.category.products, backup.category.events');
   });
 
   it('a picked TillExpiry file is handed to RestorePreview through the session, not nav params', async () => {
