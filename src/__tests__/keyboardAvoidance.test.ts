@@ -1,4 +1,4 @@
-// F10 (audit): every screen that holds text inputs scrolls inside the keyboard-aware
+// T63 / F10 (audit): every screen that holds text inputs scrolls inside the keyboard-aware
 // container (react-native-keyboard-controller), never a plain react-native ScrollView
 // whose iOS-only `automaticallyAdjustKeyboardInsets` does nothing on Android.
 import fs from 'fs';
@@ -14,16 +14,16 @@ const listScreens = (dir: string): string[] => fs.readdirSync(dir, { withFileTyp
 // Screens whose only inputs live in a bottom sheet (its own keyboard handling) or in a
 // header search bar above the fold, so the page scroll never has to lift a field.
 // Empty at G1: every future form screen must use AppKeyboardScrollView.
-// ProductsScreen: its only input is the search bar above the list; the ScrollView is the horizontal filter chips.
-const ALLOWED_PLAIN_SCROLL = new Set<string>(['ProductsScreen.tsx']);
+// TodayScreen: its only ScrollView is the horizontal row of place chips; it has no text inputs.
+const ALLOWED_PLAIN_SCROLL = new Set<string>([]);
 
 describe('keyboard avoidance', () => {
   const screens = listScreens(SCREENS_DIR);
-  it('finds the screens', () => { expect(screens.length).toBeGreaterThanOrEqual(11); });
+  it('finds the screens', () => { expect(screens.length).toBeGreaterThanOrEqual(40); });
 
   it.each(screens.map(p => [path.basename(p), p]))('%s: a screen with inputs uses AppKeyboardScrollView, not a plain ScrollView', (name, file) => {
     const src = fs.readFileSync(file, 'utf8');
-    const hasInputs = /<InputField|<TextInput|<AppTextInput|<TaxRateField|<ApplyTaxControl/.test(src);
+    const hasInputs = /<InputField|<TextInput|<AppTextInput|<TaxRateField|<ApplyTaxControl|<Field\b|<DeadlineInput|<WorkspaceForm/.test(src);
     const plainScroll = /<ScrollView[\s>]/.test(src);
     if (hasInputs && !ALLOWED_PLAIN_SCROLL.has(name)) {
       expect({ name, plainScroll }).toEqual({ name, plainScroll: false });

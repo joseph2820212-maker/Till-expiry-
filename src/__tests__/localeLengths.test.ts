@@ -31,7 +31,7 @@ describe('locale completeness', () => {
   it('all six languages are present and non-empty', () => {
     for (const l of LOCALES) expect(Object.keys(flat[l]).length).toBeGreaterThan(250);
   });
-  it('button and tab labels fit a full-width button in every language', () => {
+  it('T61 button and tab labels fit a full-width button in every language', () => {
     const tooLong: string[] = [];
     for (const l of LOCALES) for (const k of BUTTON_KEYS) {
       const v = flat[l][k];
