@@ -86,7 +86,7 @@ export const BarcodeScannerScreen: React.FC = () => {
         case 'notFound':
           AppAlert.alert(t('scan.notFoundTitle'), t('scan.notFoundBody', { code: out.code }), [
             { text: t('common.cancel'), style: 'cancel', onPress: () => setPaused(false) },
-            ...(purpose === 'find' ? [{ text: t('scan.searchItems'), onPress: () => nav.navigate('Items', { text: out.code } as TabStackParamList['Items']) }] : []),
+            ...(purpose === 'find' ? [{ text: t('scan.searchItems'), onPress: () => nav.navigate('Items', { text: out.code }) }] : []),
             { text: t('scan.addNew'), onPress: () => nav.navigate('ProductEdit', { barcode: out.code, symbology: out.symbology }) },
           ]);
           return;

@@ -8,7 +8,7 @@ import { localDateOf, localTimeOf } from '../../domain/expiry/datePrecision';
 import { localDate, localDateShort } from '../../utils/locale';
 import { colors } from '../../theme/colors';
 import i18n from '../../i18n';
-import type { MoneyValue } from '../../domain/expiry/expiryTypes';
+import { TRACKING_UNITS, type MoneyValue } from '../../domain/expiry/expiryTypes';
 import { formatMoney } from '../../domain/formatMoney';
 
 type T = (k: string, o?: Record<string, unknown>) => string;
@@ -64,7 +64,9 @@ export function statusColors(s: ExpiryStatus): { fg: string; bg: string } {
 
 export function quantityLine(t: T, b: Pick<Batch, 'quantityRemaining' | 'quantityInitial' | 'quantityUnit'>): string | null {
   if (b.quantityRemaining == null) return null;
-  return t('batch.left', { count: b.quantityRemaining, unit: b.quantityUnit ? ` ${b.quantityUnit}` : '' });
+  const u = b.quantityUnit;
+  const unit = !u ? '' : (TRACKING_UNITS as readonly string[]).includes(u) ? ` ${t(`unit.${u}`)}` : ` ${u}`;
+  return t('batch.left', { count: b.quantityRemaining, unit });
 }
 
 export function kindLabel(t: T, b: Pick<Batch, 'kind'>): string {
