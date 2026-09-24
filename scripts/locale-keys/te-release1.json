@@ -1,0 +1,3874 @@
+{
+ "nav.home": {
+  "en": "Today",
+  "ar": "اليوم",
+  "tr": "Bugün",
+  "fr": "Aujourd'hui",
+  "es": "Hoy",
+  "de": "Heute"
+ },
+ "nav.dates": {
+  "en": "Dates",
+  "ar": "التواريخ",
+  "tr": "Tarihler",
+  "fr": "Dates",
+  "es": "Fechas",
+  "de": "Daten"
+ },
+ "nav.products": {
+  "en": "Products",
+  "ar": "المنتجات",
+  "tr": "Ürünler",
+  "fr": "Produits",
+  "es": "Productos",
+  "de": "Artikel"
+ },
+ "dateType.useBy": {
+  "en": "Use by",
+  "ar": "يُستخدم قبل",
+  "tr": "Son kullanma",
+  "fr": "À consommer jusqu'au",
+  "es": "Fecha de caducidad",
+  "de": "Verbrauchen bis"
+ },
+ "dateType.bestBefore": {
+  "en": "Best before",
+  "ar": "يُفضّل قبل",
+  "tr": "Tavsiye edilen tüketim",
+  "fr": "De préférence avant",
+  "es": "Consumo preferente",
+  "de": "Mindestens haltbar bis"
+ },
+ "dateType.sellBy": {
+  "en": "Sell by",
+  "ar": "يُباع قبل",
+  "tr": "Son satış",
+  "fr": "À vendre avant",
+  "es": "Vender antes de",
+  "de": "Verkaufen bis"
+ },
+ "dateType.displayUntil": {
+  "en": "Display until",
+  "ar": "يُعرض حتى",
+  "tr": "Teşhir sonu",
+  "fr": "Présenter jusqu'au",
+  "es": "Exponer hasta",
+  "de": "Auslegen bis"
+ },
+ "band.expired": {
+  "en": "Expired",
+  "ar": "منتهية",
+  "tr": "Süresi geçmiş",
+  "fr": "Dépassées",
+  "es": "Caducadas",
+  "de": "Abgelaufen"
+ },
+ "band.today": {
+  "en": "Due today",
+  "ar": "تنتهي اليوم",
+  "tr": "Bugün doluyor",
+  "fr": "Aujourd'hui",
+  "es": "Vencen hoy",
+  "de": "Heute fällig"
+ },
+ "band.soon": {
+  "en": "Due soon",
+  "ar": "تنتهي قريبًا",
+  "tr": "Yakında doluyor",
+  "fr": "Bientôt",
+  "es": "Vencen pronto",
+  "de": "Bald fällig"
+ },
+ "band.later": {
+  "en": "Later",
+  "ar": "لاحقًا",
+  "tr": "Daha sonra",
+  "fr": "Plus tard",
+  "es": "Más adelante",
+  "de": "Später"
+ },
+ "event.checked": {
+  "en": "Checked",
+  "ar": "تم الفحص",
+  "tr": "Kontrol edildi",
+  "fr": "Vérifiée",
+  "es": "Revisada",
+  "de": "Geprüft"
+ },
+ "event.reduced": {
+  "en": "Reduced",
+  "ar": "خُفّض السعر",
+  "tr": "İndirime girdi",
+  "fr": "Démarquée",
+  "es": "Rebajada",
+  "de": "Reduziert"
+ },
+ "event.sold": {
+  "en": "Sold",
+  "ar": "بيعت",
+  "tr": "Satıldı",
+  "fr": "Vendue",
+  "es": "Vendida",
+  "de": "Verkauft"
+ },
+ "event.wasted": {
+  "en": "Thrown away",
+  "ar": "أُتلفت",
+  "tr": "Atıldı",
+  "fr": "Jetée",
+  "es": "Desechada",
+  "de": "Entsorgt"
+ },
+ "event.returned": {
+  "en": "Returned to supplier",
+  "ar": "أُعيدت للمورّد",
+  "tr": "Tedarikçiye iade",
+  "fr": "Retournée au fournisseur",
+  "es": "Devuelta al proveedor",
+  "de": "An Lieferanten zurück"
+ },
+ "event.donated": {
+  "en": "Donated",
+  "ar": "تُبرّع بها",
+  "tr": "Bağışlandı",
+  "fr": "Donnée",
+  "es": "Donada",
+  "de": "Gespendet"
+ },
+ "wasteReason.expired": {
+  "en": "Out of date",
+  "ar": "انتهت صلاحيتها",
+  "tr": "Tarihi geçti",
+  "fr": "Date dépassée",
+  "es": "Caducado",
+  "de": "Abgelaufen"
+ },
+ "wasteReason.damaged": {
+  "en": "Damaged",
+  "ar": "تالفة",
+  "tr": "Hasarlı",
+  "fr": "Abîmé",
+  "es": "Dañado",
+  "de": "Beschädigt"
+ },
+ "wasteReason.quality": {
+  "en": "Quality",
+  "ar": "جودة",
+  "tr": "Kalite",
+  "fr": "Qualité",
+  "es": "Calidad",
+  "de": "Qualität"
+ },
+ "wasteReason.other": {
+  "en": "Other",
+  "ar": "أخرى",
+  "tr": "Diğer",
+  "fr": "Autre",
+  "es": "Otro",
+  "de": "Sonstiges"
+ },
+ "home.statExpired": {
+  "en": "Expired",
+  "ar": "منتهية",
+  "tr": "Süresi geçmiş",
+  "fr": "Dépassées",
+  "es": "Caducadas",
+  "de": "Abgelaufen"
+ },
+ "home.statToday": {
+  "en": "Due today",
+  "ar": "تنتهي اليوم",
+  "tr": "Bugün doluyor",
+  "fr": "Aujourd'hui",
+  "es": "Vencen hoy",
+  "de": "Heute fällig"
+ },
+ "home.statSoon": {
+  "en": "Due soon",
+  "ar": "قريبًا",
+  "tr": "Yakında",
+  "fr": "Bientôt",
+  "es": "Pronto",
+  "de": "Bald fällig"
+ },
+ "home.checkTitle": {
+  "en": "Date check",
+  "ar": "فحص التواريخ",
+  "tr": "Tarih kontrolü",
+  "fr": "Contrôle des dates",
+  "es": "Revisión de fechas",
+  "de": "Datumskontrolle"
+ },
+ "home.checkNothing": {
+  "en": "Nothing to check today.",
+  "ar": "لا شيء للفحص اليوم.",
+  "tr": "Bugün kontrol edilecek bir şey yok.",
+  "fr": "Rien à contrôler aujourd'hui.",
+  "es": "Nada que revisar hoy.",
+  "de": "Heute gibt es nichts zu prüfen."
+ },
+ "home.checkWaiting": {
+  "en": "To check today: {{count}}",
+  "ar": "للفحص اليوم: {{count}}",
+  "tr": "Bugün kontrol edilecek: {{count}}",
+  "fr": "À contrôler aujourd'hui : {{count}}",
+  "es": "Por revisar hoy: {{count}}",
+  "de": "Heute zu prüfen: {{count}}"
+ },
+ "home.checkDone": {
+  "en": "Everything due has been checked today.",
+  "ar": "تم فحص كل ما يستحق اليوم.",
+  "tr": "Bugün vadesi gelen her şey kontrol edildi.",
+  "fr": "Tout ce qui arrive à date a été contrôlé aujourd'hui.",
+  "es": "Hoy se ha revisado todo lo que vence.",
+  "de": "Alles Fällige wurde heute geprüft."
+ },
+ "home.scanAdd": {
+  "en": "Scan to add a date",
+  "ar": "امسح لإضافة تاريخ",
+  "tr": "Tarayıp tarih ekle",
+  "fr": "Scanner et ajouter",
+  "es": "Escanear y añadir",
+  "de": "Scannen & Datum"
+ },
+ "home.addDate": {
+  "en": "Add a date",
+  "ar": "أضف تاريخًا",
+  "tr": "Tarih ekle",
+  "fr": "Ajouter une date",
+  "es": "Añadir fecha",
+  "de": "Datum hinzufügen"
+ },
+ "home.emptyTitle": {
+  "en": "No dates yet",
+  "ar": "لا توجد تواريخ بعد",
+  "tr": "Henüz tarih yok",
+  "fr": "Aucune date pour l'instant",
+  "es": "Aún no hay fechas",
+  "de": "Noch keine Daten"
+ },
+ "home.emptyBody": {
+  "en": "Scan a product or add a date, and TillExpiry shows what runs out today and in the next few days.",
+  "ar": "امسح منتجًا أو أضف تاريخًا، وسيعرض لك TillExpiry ما ينتهي اليوم وخلال الأيام القادمة.",
+  "tr": "Bir ürün tarayın veya tarih ekleyin; TillExpiry bugün ve önümüzdeki günlerde dolacakları gösterir.",
+  "fr": "Scannez un produit ou ajoutez une date : TillExpiry affiche ce qui arrive à date aujourd'hui et les jours suivants.",
+  "es": "Escanea un producto o añade una fecha y TillExpiry te mostrará lo que vence hoy y en los próximos días.",
+  "de": "Scanne einen Artikel oder füge ein Datum hinzu – TillExpiry zeigt, was heute und in den nächsten Tagen abläuft."
+ },
+ "home.nextUp": {
+  "en": "Deal with next",
+  "ar": "التالي للمعالجة",
+  "tr": "Sıradakiler",
+  "fr": "À traiter ensuite",
+  "es": "Lo siguiente",
+  "de": "Als Nächstes"
+ },
+ "home.seeAll": {
+  "en": "See all {{count}}",
+  "ar": "عرض الكل ({{count}})",
+  "tr": "Tümünü gör ({{count}})",
+  "fr": "Tout voir ({{count}})",
+  "es": "Ver todas ({{count}})",
+  "de": "Alle anzeigen ({{count}})"
+ },
+ "home.setupTitle": {
+  "en": "Set up",
+  "ar": "الإعداد",
+  "tr": "Kurulum",
+  "fr": "Configuration",
+  "es": "Configuración",
+  "de": "Einrichtung"
+ },
+ "home.setupFooter": {
+  "en": "Language, warning days and reminders are separate settings; changing one never changes another.",
+  "ar": "اللغة وأيام التنبيه والتذكيرات إعدادات منفصلة؛ تغيير أحدها لا يغيّر الآخر.",
+  "tr": "Dil, uyarı günleri ve hatırlatıcılar ayrı ayarlardır; biri değişince diğeri değişmez.",
+  "fr": "Langue, jours d'alerte et rappels sont des réglages séparés ; en changer un ne modifie jamais les autres.",
+  "es": "Idioma, días de aviso y recordatorios son ajustes independientes; cambiar uno nunca cambia otro.",
+  "de": "Sprache, Warntage und Erinnerungen sind getrennte Einstellungen; eine Änderung wirkt nie auf die anderen."
+ },
+ "dates.subtitle": {
+  "en": "Every date on your shelves",
+  "ar": "كل التواريخ على رفوفك",
+  "tr": "Raflarınızdaki tüm tarihler",
+  "fr": "Toutes les dates en rayon",
+  "es": "Todas las fechas de tus estantes",
+  "de": "Alle Daten in deinen Regalen"
+ },
+ "dates.count": {
+  "en": "On the shelf: {{count}}",
+  "ar": "على الرف: {{count}}",
+  "tr": "Rafta: {{count}}",
+  "fr": "En rayon : {{count}}",
+  "es": "En el estante: {{count}}",
+  "de": "Im Regal: {{count}}"
+ },
+ "dates.add": {
+  "en": "Add",
+  "ar": "إضافة",
+  "tr": "Ekle",
+  "fr": "Ajouter",
+  "es": "Añadir",
+  "de": "Neu"
+ },
+ "dates.scan": {
+  "en": "Scan",
+  "ar": "مسح",
+  "tr": "Tara",
+  "fr": "Scanner",
+  "es": "Escanear",
+  "de": "Scannen"
+ },
+ "dates.export": {
+  "en": "Export",
+  "ar": "تصدير",
+  "tr": "Dışa aktar",
+  "fr": "Exporter",
+  "es": "Exportar",
+  "de": "Export"
+ },
+ "dates.searchPlaceholder": {
+  "en": "Search name, barcode or place",
+  "ar": "ابحث بالاسم أو الباركود أو المكان",
+  "tr": "Ad, barkod veya yer ara",
+  "fr": "Nom, code-barres ou emplacement",
+  "es": "Buscar nombre, código o lugar",
+  "de": "Name, Barcode oder Platz suchen"
+ },
+ "dates.filter.all": {
+  "en": "All",
+  "ar": "الكل",
+  "tr": "Tümü",
+  "fr": "Toutes",
+  "es": "Todas",
+  "de": "Alle"
+ },
+ "dates.filter.attention": {
+  "en": "Needs action",
+  "ar": "تحتاج إجراء",
+  "tr": "İşlem gerekli",
+  "fr": "À traiter",
+  "es": "Requieren acción",
+  "de": "Handlungsbedarf"
+ },
+ "dates.filter.expired": {
+  "en": "Expired",
+  "ar": "منتهية",
+  "tr": "Süresi geçmiş",
+  "fr": "Dépassées",
+  "es": "Caducadas",
+  "de": "Abgelaufen"
+ },
+ "dates.filter.today": {
+  "en": "Today",
+  "ar": "اليوم",
+  "tr": "Bugün",
+  "fr": "Aujourd'hui",
+  "es": "Hoy",
+  "de": "Heute"
+ },
+ "dates.filter.soon": {
+  "en": "Soon",
+  "ar": "قريبًا",
+  "tr": "Yakında",
+  "fr": "Bientôt",
+  "es": "Pronto",
+  "de": "Bald"
+ },
+ "dates.filter.later": {
+  "en": "Later",
+  "ar": "لاحقًا",
+  "tr": "Daha sonra",
+  "fr": "Plus tard",
+  "es": "Más adelante",
+  "de": "Später"
+ },
+ "dates.filter.reduced": {
+  "en": "Reduced",
+  "ar": "مخفّضة",
+  "tr": "İndirimli",
+  "fr": "Démarquées",
+  "es": "Rebajadas",
+  "de": "Reduziert"
+ },
+ "dates.emptyTitle": {
+  "en": "No dates on the shelf",
+  "ar": "لا توجد تواريخ على الرف",
+  "tr": "Rafta tarih yok",
+  "fr": "Aucune date en rayon",
+  "es": "No hay fechas en el estante",
+  "de": "Keine Daten im Regal"
+ },
+ "dates.emptyBody": {
+  "en": "Add a date for a product, or scan its barcode. Dates you close move to History.",
+  "ar": "أضف تاريخًا لمنتج أو امسح الباركود. التواريخ المغلقة تنتقل إلى السجل.",
+  "tr": "Bir ürün için tarih ekleyin veya barkodunu tarayın. Kapatılan tarihler Geçmiş'e taşınır.",
+  "fr": "Ajoutez une date pour un produit ou scannez son code-barres. Les dates clôturées passent dans l'historique.",
+  "es": "Añade una fecha a un producto o escanea su código. Las fechas cerradas pasan al historial.",
+  "de": "Füge ein Datum zu einem Artikel hinzu oder scanne den Barcode. Abgeschlossene Daten wandern in den Verlauf."
+ },
+ "dates.noMatchTitle": {
+  "en": "Nothing matches",
+  "ar": "لا توجد نتائج",
+  "tr": "Eşleşen yok",
+  "fr": "Aucun résultat",
+  "es": "Sin resultados",
+  "de": "Keine Treffer"
+ },
+ "dates.noMatchBody": {
+  "en": "Try another filter or search word.",
+  "ar": "جرّب مرشحًا أو كلمة بحث أخرى.",
+  "tr": "Başka bir filtre veya arama deneyin.",
+  "fr": "Essayez un autre filtre ou un autre mot.",
+  "es": "Prueba otro filtro u otra palabra.",
+  "de": "Versuche einen anderen Filter oder Suchbegriff."
+ },
+ "dates.loadErrorTitle": {
+  "en": "Dates could not be read",
+  "ar": "تعذّرت قراءة التواريخ",
+  "tr": "Tarihler okunamadı",
+  "fr": "Impossible de lire les dates",
+  "es": "No se pudieron leer las fechas",
+  "de": "Daten konnten nicht gelesen werden"
+ },
+ "dates.loadErrorBody": {
+  "en": "Close and reopen the app. If it happens again, use Check Data Health in Backup & Restore.",
+  "ar": "أغلق التطبيق وافتحه مجددًا. إن تكرر ذلك، استخدم فحص سلامة البيانات في النسخ الاحتياطي.",
+  "tr": "Uygulamayı kapatıp yeniden açın. Tekrarlarsa Yedekleme bölümündeki Veri Sağlığını Kontrol Et'i kullanın.",
+  "fr": "Fermez et rouvrez l'application. Si cela se reproduit, utilisez Vérifier les données dans Sauvegarde.",
+  "es": "Cierra y vuelve a abrir la app. Si se repite, usa Comprobar datos en Copia de seguridad.",
+  "de": "Schließe die App und öffne sie erneut. Passiert es wieder, nutze „Daten prüfen“ unter Sicherung."
+ },
+ "dates.dueToday": {
+  "en": "Today",
+  "ar": "اليوم",
+  "tr": "Bugün",
+  "fr": "Aujourd'hui",
+  "es": "Hoy",
+  "de": "Heute"
+ },
+ "dates.dueTomorrow": {
+  "en": "Tomorrow",
+  "ar": "غدًا",
+  "tr": "Yarın",
+  "fr": "Demain",
+  "es": "Mañana",
+  "de": "Morgen"
+ },
+ "dates.dueIn": {
+  "en": "In {{count}} days",
+  "ar": "بعد {{count}} أيام",
+  "tr": "{{count}} gün sonra",
+  "fr": "Dans {{count}} jours",
+  "es": "En {{count}} días",
+  "de": "In {{count}} Tagen"
+ },
+ "dates.expiredYesterday": {
+  "en": "Expired yesterday",
+  "ar": "انتهت أمس",
+  "tr": "Dün doldu",
+  "fr": "Dépassée hier",
+  "es": "Caducó ayer",
+  "de": "Gestern abgelaufen"
+ },
+ "dates.expiredAgo": {
+  "en": "Expired {{count}} days ago",
+  "ar": "انتهت منذ {{count}} أيام",
+  "tr": "{{count}} gün önce doldu",
+  "fr": "Dépassée depuis {{count}} jours",
+  "es": "Caducó hace {{count}} días",
+  "de": "Seit {{count}} Tagen abgelaufen"
+ },
+ "dates.pastBestBeforeYesterday": {
+  "en": "Past best before (yesterday)",
+  "ar": "تجاوز تاريخ الأفضلية (أمس)",
+  "tr": "Tavsiye tarihi geçti (dün)",
+  "fr": "Date de préférence passée (hier)",
+  "es": "Pasado el consumo preferente (ayer)",
+  "de": "MHD überschritten (gestern)"
+ },
+ "dates.pastBestBeforeAgo": {
+  "en": "Past best before ({{count}} days)",
+  "ar": "تجاوز تاريخ الأفضلية ({{count}} أيام)",
+  "tr": "Tavsiye tarihi geçti ({{count}} gün)",
+  "fr": "Date de préférence passée ({{count}} jours)",
+  "es": "Pasado el consumo preferente ({{count}} días)",
+  "de": "MHD überschritten ({{count}} Tage)"
+ },
+ "dates.left": {
+  "en": "Left: {{count}}",
+  "ar": "المتبقي: {{count}}",
+  "tr": "Kalan: {{count}}",
+  "fr": "Reste : {{count}}",
+  "es": "Quedan: {{count}}",
+  "de": "Übrig: {{count}}"
+ },
+ "dates.reducedTo": {
+  "en": "Reduced to {{price}}",
+  "ar": "مخفّض إلى {{price}}",
+  "tr": "{{price}} fiyatına indirildi",
+  "fr": "Démarqué à {{price}}",
+  "es": "Rebajado a {{price}}",
+  "de": "Reduziert auf {{price}}"
+ },
+ "dates.closed": {
+  "en": "Closed",
+  "ar": "مغلق",
+  "tr": "Kapandı",
+  "fr": "Clôturée",
+  "es": "Cerrada",
+  "de": "Abgeschlossen"
+ },
+ "addDate.title": {
+  "en": "Add a date",
+  "ar": "إضافة تاريخ",
+  "tr": "Tarih ekle",
+  "fr": "Ajouter une date",
+  "es": "Añadir fecha",
+  "de": "Datum hinzufügen"
+ },
+ "addDate.editTitle": {
+  "en": "Correct the date",
+  "ar": "تصحيح التاريخ",
+  "tr": "Tarihi düzelt",
+  "fr": "Corriger la date",
+  "es": "Corregir la fecha",
+  "de": "Datum korrigieren"
+ },
+ "addDate.subtitle": {
+  "en": "Product, date and how many",
+  "ar": "المنتج والتاريخ والكمية",
+  "tr": "Ürün, tarih ve adet",
+  "fr": "Produit, date et quantité",
+  "es": "Producto, fecha y cantidad",
+  "de": "Artikel, Datum und Menge"
+ },
+ "addDate.product": {
+  "en": "Product",
+  "ar": "المنتج",
+  "tr": "Ürün",
+  "fr": "Produit",
+  "es": "Producto",
+  "de": "Artikel"
+ },
+ "addDate.change": {
+  "en": "Change",
+  "ar": "تغيير",
+  "tr": "Değiştir",
+  "fr": "Changer",
+  "es": "Cambiar",
+  "de": "Ändern"
+ },
+ "addDate.searchPh": {
+  "en": "Search your products",
+  "ar": "ابحث في منتجاتك",
+  "tr": "Ürünlerinizde arayın",
+  "fr": "Chercher dans vos produits",
+  "es": "Busca en tus productos",
+  "de": "In deinen Artikeln suchen"
+ },
+ "addDate.scan": {
+  "en": "Scan a barcode",
+  "ar": "مسح باركود",
+  "tr": "Barkod tara",
+  "fr": "Scanner un code-barres",
+  "es": "Escanear un código",
+  "de": "Barcode scannen"
+ },
+ "addDate.noMatch": {
+  "en": "No product with that name or code yet.",
+  "ar": "لا يوجد منتج بهذا الاسم أو الرمز بعد.",
+  "tr": "Bu ad veya kodla henüz ürün yok.",
+  "fr": "Aucun produit avec ce nom ou ce code pour l'instant.",
+  "es": "Aún no hay ningún producto con ese nombre o código.",
+  "de": "Noch kein Artikel mit diesem Namen oder Code."
+ },
+ "addDate.orNew": {
+  "en": "Or a new product",
+  "ar": "أو منتج جديد",
+  "tr": "Ya da yeni ürün",
+  "fr": "Ou un nouveau produit",
+  "es": "O un producto nuevo",
+  "de": "Oder ein neuer Artikel"
+ },
+ "addDate.newNamePh": {
+  "en": "Product name",
+  "ar": "اسم المنتج",
+  "tr": "Ürün adı",
+  "fr": "Nom du produit",
+  "es": "Nombre del producto",
+  "de": "Artikelname"
+ },
+ "addDate.newBarcode": {
+  "en": "Barcode {{code}} will be saved with the new product.",
+  "ar": "سيُحفظ الباركود {{code}} مع المنتج الجديد.",
+  "tr": "{{code}} barkodu yeni ürünle kaydedilecek.",
+  "fr": "Le code-barres {{code}} sera enregistré avec le nouveau produit.",
+  "es": "El código {{code}} se guardará con el producto nuevo.",
+  "de": "Der Barcode {{code}} wird mit dem neuen Artikel gespeichert."
+ },
+ "addDate.date": {
+  "en": "Date on the pack",
+  "ar": "التاريخ على العبوة",
+  "tr": "Ambalajdaki tarih",
+  "fr": "Date sur l'emballage",
+  "es": "Fecha del envase",
+  "de": "Datum auf der Packung"
+ },
+ "addDate.datePh": {
+  "en": "Choose the date",
+  "ar": "اختر التاريخ",
+  "tr": "Tarihi seçin",
+  "fr": "Choisir la date",
+  "es": "Elige la fecha",
+  "de": "Datum wählen"
+ },
+ "addDate.quickShelfLife": {
+  "en": "Usual life: {{count}} d",
+  "ar": "المدة المعتادة: {{count}} ي",
+  "tr": "Olağan ömür: {{count}} g",
+  "fr": "Durée habituelle : {{count}} j",
+  "es": "Vida habitual: {{count}} d",
+  "de": "Übliche Dauer: {{count}} T"
+ },
+ "addDate.quickTomorrow": {
+  "en": "Tomorrow",
+  "ar": "غدًا",
+  "tr": "Yarın",
+  "fr": "Demain",
+  "es": "Mañana",
+  "de": "Morgen"
+ },
+ "addDate.quickDays": {
+  "en": "+{{count}} days",
+  "ar": "+{{count}} أيام",
+  "tr": "+{{count}} gün",
+  "fr": "+{{count}} jours",
+  "es": "+{{count}} días",
+  "de": "+{{count}} Tage"
+ },
+ "addDate.quickWeek": {
+  "en": "+1 week",
+  "ar": "+أسبوع",
+  "tr": "+1 hafta",
+  "fr": "+1 semaine",
+  "es": "+1 semana",
+  "de": "+1 Woche"
+ },
+ "addDate.quickEndOfMonth": {
+  "en": "End of month",
+  "ar": "نهاية الشهر",
+  "tr": "Ay sonu",
+  "fr": "Fin du mois",
+  "es": "Fin de mes",
+  "de": "Monatsende"
+ },
+ "addDate.pastWarning": {
+  "en": "This date has already passed. It will be saved as expired.",
+  "ar": "هذا التاريخ مضى بالفعل وسيُحفظ كمنتهٍ.",
+  "tr": "Bu tarih geçti; süresi geçmiş olarak kaydedilecek.",
+  "fr": "Cette date est déjà passée. Elle sera enregistrée comme dépassée.",
+  "es": "Esta fecha ya ha pasado. Se guardará como caducada.",
+  "de": "Dieses Datum ist schon vorbei. Es wird als abgelaufen gespeichert."
+ },
+ "addDate.dateType": {
+  "en": "Kind of date",
+  "ar": "نوع التاريخ",
+  "tr": "Tarih türü",
+  "fr": "Type de date",
+  "es": "Tipo de fecha",
+  "de": "Art des Datums"
+ },
+ "addDate.quantity": {
+  "en": "How many (optional)",
+  "ar": "الكمية (اختياري)",
+  "tr": "Adet (isteğe bağlı)",
+  "fr": "Quantité (facultatif)",
+  "es": "Cantidad (opcional)",
+  "de": "Menge (optional)"
+ },
+ "addDate.quantityPh": {
+  "en": "e.g. 6",
+  "ar": "مثال: 6",
+  "tr": "ör. 6",
+  "fr": "ex. 6",
+  "es": "p. ej. 6",
+  "de": "z. B. 6"
+ },
+ "addDate.quantityHint": {
+  "en": "Count them to see what is left and to value waste.",
+  "ar": "عُدّها لمعرفة المتبقي وتقدير قيمة الهدر.",
+  "tr": "Kalanı görmek ve fireyi değerlendirmek için sayın.",
+  "fr": "Comptez-les pour voir ce qui reste et chiffrer les pertes.",
+  "es": "Cuéntalas para ver lo que queda y valorar las mermas.",
+  "de": "Zählen hilft, den Rest zu sehen und Abfall zu bewerten."
+ },
+ "addDate.location": {
+  "en": "Place",
+  "ar": "المكان",
+  "tr": "Yer",
+  "fr": "Emplacement",
+  "es": "Ubicación",
+  "de": "Platz"
+ },
+ "addDate.locationPh": {
+  "en": "e.g. Fridge 2",
+  "ar": "مثال: الثلاجة 2",
+  "tr": "ör. Dolap 2",
+  "fr": "ex. Frigo 2",
+  "es": "p. ej. Nevera 2",
+  "de": "z. B. Kühlregal 2"
+ },
+ "addDate.note": {
+  "en": "Note",
+  "ar": "ملاحظة",
+  "tr": "Not",
+  "fr": "Note",
+  "es": "Nota",
+  "de": "Notiz"
+ },
+ "addDate.notePh": {
+  "en": "Optional",
+  "ar": "اختياري",
+  "tr": "İsteğe bağlı",
+  "fr": "Facultatif",
+  "es": "Opcional",
+  "de": "Optional"
+ },
+ "addDate.saveAnother": {
+  "en": "Save and add another",
+  "ar": "احفظ وأضف آخر",
+  "tr": "Kaydet ve yenisini ekle",
+  "fr": "Enregistrer et continuer",
+  "es": "Guardar y añadir otra",
+  "de": "Speichern und weiter"
+ },
+ "addDate.saved": {
+  "en": "Date saved.",
+  "ar": "تم حفظ التاريخ.",
+  "tr": "Tarih kaydedildi.",
+  "fr": "Date enregistrée.",
+  "es": "Fecha guardada.",
+  "de": "Datum gespeichert."
+ },
+ "addDate.savedExpired": {
+  "en": "Saved. This date has already passed.",
+  "ar": "تم الحفظ. هذا التاريخ مضى بالفعل.",
+  "tr": "Kaydedildi. Bu tarih zaten geçti.",
+  "fr": "Enregistrée. Cette date est déjà passée.",
+  "es": "Guardada. Esta fecha ya ha pasado.",
+  "de": "Gespeichert. Dieses Datum ist schon vorbei."
+ },
+ "addDate.merged": {
+  "en": "Added to the same date already on the shelf.",
+  "ar": "أُضيفت إلى التاريخ نفسه الموجود على الرف.",
+  "tr": "Raftaki aynı tarihe eklendi.",
+  "fr": "Ajoutée à la même date déjà en rayon.",
+  "es": "Añadida a la misma fecha que ya estaba en el estante.",
+  "de": "Zum gleichen Datum im Regal hinzugefügt."
+ },
+ "addDate.updated": {
+  "en": "Date updated.",
+  "ar": "تم تحديث التاريخ.",
+  "tr": "Tarih güncellendi.",
+  "fr": "Date mise à jour.",
+  "es": "Fecha actualizada.",
+  "de": "Datum aktualisiert."
+ },
+ "addDate.errors.productRequired": {
+  "en": "Choose a product or type a new name.",
+  "ar": "اختر منتجًا أو اكتب اسمًا جديدًا.",
+  "tr": "Bir ürün seçin veya yeni bir ad yazın.",
+  "fr": "Choisissez un produit ou saisissez un nouveau nom.",
+  "es": "Elige un producto o escribe un nombre nuevo.",
+  "de": "Wähle einen Artikel oder gib einen neuen Namen ein."
+ },
+ "addDate.errors.dateRequired": {
+  "en": "Choose the date printed on the pack.",
+  "ar": "اختر التاريخ المطبوع على العبوة.",
+  "tr": "Ambalajda yazan tarihi seçin.",
+  "fr": "Choisissez la date imprimée sur l'emballage.",
+  "es": "Elige la fecha impresa en el envase.",
+  "de": "Wähle das Datum auf der Packung."
+ },
+ "addDate.errors.quantity": {
+  "en": "Enter a whole number from 1 to {{max}}, or leave it empty.",
+  "ar": "أدخل عددًا صحيحًا من 1 إلى {{max}} أو اتركه فارغًا.",
+  "tr": "1 ile {{max}} arasında tam sayı girin veya boş bırakın.",
+  "fr": "Saisissez un nombre entier de 1 à {{max}}, ou laissez vide.",
+  "es": "Introduce un número entero de 1 a {{max}} o déjalo vacío.",
+  "de": "Gib eine ganze Zahl von 1 bis {{max}} ein oder lass das Feld leer."
+ },
+ "addDate.errors.saveFailed": {
+  "en": "This could not be saved. Nothing was changed.",
+  "ar": "تعذّر الحفظ. لم يتغيّر شيء.",
+  "tr": "Kaydedilemedi. Hiçbir şey değişmedi.",
+  "fr": "Impossible d'enregistrer. Rien n'a été modifié.",
+  "es": "No se pudo guardar. No se cambió nada.",
+  "de": "Konnte nicht gespeichert werden. Nichts wurde geändert."
+ },
+ "addDate.errors.store.productRequired": {
+  "en": "Choose a product first.",
+  "ar": "اختر منتجًا أولًا.",
+  "tr": "Önce bir ürün seçin.",
+  "fr": "Choisissez d'abord un produit.",
+  "es": "Elige primero un producto.",
+  "de": "Wähle zuerst einen Artikel."
+ },
+ "addDate.errors.store.productNotFound": {
+  "en": "That product no longer exists.",
+  "ar": "لم يعد هذا المنتج موجودًا.",
+  "tr": "Bu ürün artık yok.",
+  "fr": "Ce produit n'existe plus.",
+  "es": "Ese producto ya no existe.",
+  "de": "Diesen Artikel gibt es nicht mehr."
+ },
+ "addDate.errors.store.badDate": {
+  "en": "That is not a real calendar date.",
+  "ar": "هذا ليس تاريخًا صحيحًا.",
+  "tr": "Bu geçerli bir tarih değil.",
+  "fr": "Ce n'est pas une date valide.",
+  "es": "No es una fecha válida.",
+  "de": "Das ist kein gültiges Datum."
+ },
+ "addDate.errors.store.badDateType": {
+  "en": "Choose the kind of date.",
+  "ar": "اختر نوع التاريخ.",
+  "tr": "Tarih türünü seçin.",
+  "fr": "Choisissez le type de date.",
+  "es": "Elige el tipo de fecha.",
+  "de": "Wähle die Art des Datums."
+ },
+ "addDate.errors.store.badQuantity": {
+  "en": "The quantity is not a whole number in range.",
+  "ar": "الكمية ليست عددًا صحيحًا ضمن الحدود.",
+  "tr": "Adet, aralıkta bir tam sayı değil.",
+  "fr": "La quantité n'est pas un nombre entier valide.",
+  "es": "La cantidad no es un número entero válido.",
+  "de": "Die Menge ist keine gültige ganze Zahl."
+ },
+ "addDate.errors.store.locationTooLong": {
+  "en": "The place is too long.",
+  "ar": "المكان طويل جدًا.",
+  "tr": "Yer adı çok uzun.",
+  "fr": "L'emplacement est trop long.",
+  "es": "La ubicación es demasiado larga.",
+  "de": "Der Platz ist zu lang."
+ },
+ "addDate.errors.store.noteTooLong": {
+  "en": "The note is too long.",
+  "ar": "الملاحظة طويلة جدًا.",
+  "tr": "Not çok uzun.",
+  "fr": "La note est trop longue.",
+  "es": "La nota es demasiado larga.",
+  "de": "Die Notiz ist zu lang."
+ },
+ "addDate.errors.store.notFound": {
+  "en": "This date no longer exists.",
+  "ar": "لم يعد هذا التاريخ موجودًا.",
+  "tr": "Bu tarih artık yok.",
+  "fr": "Cette date n'existe plus.",
+  "es": "Esta fecha ya no existe.",
+  "de": "Dieses Datum gibt es nicht mehr."
+ },
+ "addDate.errors.store.closed": {
+  "en": "This date is already closed. Undo its last action to change it.",
+  "ar": "هذا التاريخ مغلق. تراجع عن آخر إجراء لتغييره.",
+  "tr": "Bu tarih kapandı. Değiştirmek için son işlemi geri alın.",
+  "fr": "Cette date est clôturée. Annulez la dernière action pour la modifier.",
+  "es": "Esta fecha ya está cerrada. Deshaz la última acción para cambiarla.",
+  "de": "Dieses Datum ist abgeschlossen. Mache die letzte Aktion rückgängig, um es zu ändern."
+ },
+ "addDate.errors.store.quantityTooHigh": {
+  "en": "That is more than is left.",
+  "ar": "هذا أكثر من المتبقي.",
+  "tr": "Bu, kalandan fazla.",
+  "fr": "C'est plus que ce qui reste.",
+  "es": "Es más de lo que queda.",
+  "de": "Das ist mehr als übrig ist."
+ },
+ "addDate.errors.store.quantityBelowRemoved": {
+  "en": "The quantity cannot be lower than what already left the shelf.",
+  "ar": "لا يمكن أن تقل الكمية عمّا غادر الرف بالفعل.",
+  "tr": "Adet, raftan zaten çıkandan az olamaz.",
+  "fr": "La quantité ne peut pas être inférieure à ce qui a déjà quitté le rayon.",
+  "es": "La cantidad no puede ser menor que lo que ya salió del estante.",
+  "de": "Die Menge darf nicht kleiner sein als das, was schon aus dem Regal ist."
+ },
+ "addDate.errors.store.priceRequired": {
+  "en": "Enter the reduced price.",
+  "ar": "أدخل السعر المخفّض.",
+  "tr": "İndirimli fiyatı girin.",
+  "fr": "Saisissez le prix démarqué.",
+  "es": "Introduce el precio rebajado.",
+  "de": "Gib den reduzierten Preis ein."
+ },
+ "addDate.errors.store.nothingToUndo": {
+  "en": "There is nothing to undo.",
+  "ar": "لا يوجد ما يمكن التراجع عنه.",
+  "tr": "Geri alınacak bir şey yok.",
+  "fr": "Il n'y a rien à annuler.",
+  "es": "No hay nada que deshacer.",
+  "de": "Es gibt nichts rückgängig zu machen."
+ },
+ "dateDetail.title": {
+  "en": "Date",
+  "ar": "التاريخ",
+  "tr": "Tarih",
+  "fr": "Date",
+  "es": "Fecha",
+  "de": "Datum"
+ },
+ "dateDetail.missingTitle": {
+  "en": "This date was removed",
+  "ar": "حُذف هذا التاريخ",
+  "tr": "Bu tarih silindi",
+  "fr": "Cette date a été supprimée",
+  "es": "Esta fecha se eliminó",
+  "de": "Dieses Datum wurde entfernt"
+ },
+ "dateDetail.missingBody": {
+  "en": "It may have been deleted or replaced by a restore.",
+  "ar": "ربما حُذف أو استُبدل عند الاستعادة.",
+  "tr": "Silinmiş veya geri yüklemeyle değişmiş olabilir.",
+  "fr": "Elle a peut-être été supprimée ou remplacée par une restauration.",
+  "es": "Puede que se haya eliminado o sustituido al restaurar.",
+  "de": "Es wurde vielleicht gelöscht oder durch eine Wiederherstellung ersetzt."
+ },
+ "dateDetail.adviceExpired": {
+  "en": "This date has passed. Take it off sale and record what you do with it.",
+  "ar": "مضى هذا التاريخ. أزِله من البيع وسجّل ما فعلته به.",
+  "tr": "Bu tarih geçti. Satıştan kaldırın ve ne yaptığınızı kaydedin.",
+  "fr": "Cette date est passée. Retirez le produit de la vente et notez ce que vous en faites.",
+  "es": "Esta fecha ha pasado. Retíralo de la venta y registra qué haces con él.",
+  "de": "Dieses Datum ist vorbei. Nimm den Artikel aus dem Verkauf und erfasse, was du damit machst."
+ },
+ "dateDetail.adviceBestBefore": {
+  "en": "Past its best before date. Follow your local rules on whether it may still be sold.",
+  "ar": "تجاوز تاريخ الأفضلية. اتبع القواعد المحلية بشأن إمكانية بيعه.",
+  "tr": "Tavsiye edilen tarih geçti. Hâlâ satılıp satılamayacağı için yerel kurallara uyun.",
+  "fr": "Date de préférence passée. Suivez les règles locales pour savoir s'il peut encore être vendu.",
+  "es": "Pasada la fecha de consumo preferente. Sigue las normas locales sobre si aún puede venderse.",
+  "de": "MHD überschritten. Ob der Artikel noch verkauft werden darf, regeln deine örtlichen Vorschriften."
+ },
+ "dateDetail.quantity": {
+  "en": "Quantity added",
+  "ar": "الكمية المضافة",
+  "tr": "Eklenen adet",
+  "fr": "Quantité ajoutée",
+  "es": "Cantidad añadida",
+  "de": "Hinzugefügte Menge"
+ },
+ "dateDetail.notCounted": {
+  "en": "Not counted",
+  "ar": "غير معدودة",
+  "tr": "Sayılmadı",
+  "fr": "Non comptée",
+  "es": "Sin contar",
+  "de": "Nicht gezählt"
+ },
+ "dateDetail.left": {
+  "en": "Left on the shelf",
+  "ar": "المتبقي على الرف",
+  "tr": "Rafta kalan",
+  "fr": "Reste en rayon",
+  "es": "Queda en el estante",
+  "de": "Noch im Regal"
+ },
+ "dateDetail.normalPrice": {
+  "en": "Normal price",
+  "ar": "السعر العادي",
+  "tr": "Normal fiyat",
+  "fr": "Prix normal",
+  "es": "Precio normal",
+  "de": "Normalpreis"
+ },
+ "dateDetail.checked": {
+  "en": "Checked – still fine",
+  "ar": "تم الفحص – ما زال جيدًا",
+  "tr": "Kontrol edildi – sorun yok",
+  "fr": "Vérifié – tout va bien",
+  "es": "Revisado – todo bien",
+  "de": "Geprüft – alles gut"
+ },
+ "dateDetail.checkedDone": {
+  "en": "Marked as checked today.",
+  "ar": "تم وسمه كمفحوص اليوم.",
+  "tr": "Bugün kontrol edildi olarak işaretlendi.",
+  "fr": "Marquée comme vérifiée aujourd'hui.",
+  "es": "Marcada como revisada hoy.",
+  "de": "Heute als geprüft markiert."
+ },
+ "dateDetail.reduce": {
+  "en": "Reduce the price",
+  "ar": "خفّض السعر",
+  "tr": "Fiyatı indir",
+  "fr": "Démarquer",
+  "es": "Rebajar el precio",
+  "de": "Preis reduzieren"
+ },
+ "dateDetail.sold": {
+  "en": "Sold",
+  "ar": "بيعت",
+  "tr": "Satıldı",
+  "fr": "Vendu",
+  "es": "Vendido",
+  "de": "Verkauft"
+ },
+ "dateDetail.wasted": {
+  "en": "Thrown away",
+  "ar": "أُتلفت",
+  "tr": "Atıldı",
+  "fr": "Jeté",
+  "es": "Desechado",
+  "de": "Entsorgt"
+ },
+ "dateDetail.otherRemoval": {
+  "en": "Returned or donated",
+  "ar": "أُعيدت أو تُبرّع بها",
+  "tr": "İade veya bağış",
+  "fr": "Retourné ou donné",
+  "es": "Devuelto o donado",
+  "de": "Retour oder Spende"
+ },
+ "dateDetail.moreActions": {
+  "en": "More",
+  "ar": "المزيد",
+  "tr": "Diğer",
+  "fr": "Plus",
+  "es": "Más",
+  "de": "Mehr"
+ },
+ "dateDetail.edit": {
+  "en": "Correct the date or quantity",
+  "ar": "تصحيح التاريخ أو الكمية",
+  "tr": "Tarihi veya adedi düzelt",
+  "fr": "Corriger la date ou la quantité",
+  "es": "Corregir fecha o cantidad",
+  "de": "Datum oder Menge korrigieren"
+ },
+ "dateDetail.openProduct": {
+  "en": "Open the product",
+  "ar": "فتح المنتج",
+  "tr": "Ürünü aç",
+  "fr": "Ouvrir le produit",
+  "es": "Abrir el producto",
+  "de": "Artikel öffnen"
+ },
+ "dateDetail.undo": {
+  "en": "Undo the last action",
+  "ar": "التراجع عن آخر إجراء",
+  "tr": "Son işlemi geri al",
+  "fr": "Annuler la dernière action",
+  "es": "Deshacer la última acción",
+  "de": "Letzte Aktion rückgängig"
+ },
+ "dateDetail.undone": {
+  "en": "Last action undone.",
+  "ar": "تم التراجع عن آخر إجراء.",
+  "tr": "Son işlem geri alındı.",
+  "fr": "Dernière action annulée.",
+  "es": "Última acción deshecha.",
+  "de": "Letzte Aktion rückgängig gemacht."
+ },
+ "dateDetail.delete": {
+  "en": "Delete this date",
+  "ar": "حذف هذا التاريخ",
+  "tr": "Bu tarihi sil",
+  "fr": "Supprimer cette date",
+  "es": "Eliminar esta fecha",
+  "de": "Dieses Datum löschen"
+ },
+ "dateDetail.deleteHint": {
+  "en": "Only for a date entered by mistake; it leaves no history.",
+  "ar": "فقط لتاريخ أُدخل بالخطأ؛ لا يترك سجلًا.",
+  "tr": "Yalnızca yanlış girilen tarih için; geçmiş bırakmaz.",
+  "fr": "Uniquement pour une date saisie par erreur ; aucun historique n'est gardé.",
+  "es": "Solo para una fecha introducida por error; no deja historial.",
+  "de": "Nur für versehentlich eingegebene Daten; es bleibt kein Verlauf."
+ },
+ "dateDetail.deleteTitle": {
+  "en": "Delete this date?",
+  "ar": "حذف هذا التاريخ؟",
+  "tr": "Bu tarih silinsin mi?",
+  "fr": "Supprimer cette date ?",
+  "es": "¿Eliminar esta fecha?",
+  "de": "Dieses Datum löschen?"
+ },
+ "dateDetail.deleteBody": {
+  "en": "It disappears with its history. To record stock that left the shelf, use Sold, Thrown away or Returned instead.",
+  "ar": "سيختفي مع سجله. لتسجيل مخزون غادر الرف استخدم بيعت أو أُتلفت أو أُعيدت.",
+  "tr": "Geçmişiyle birlikte kaybolur. Raftan çıkan ürünü kaydetmek için Satıldı, Atıldı veya İade kullanın.",
+  "fr": "Elle disparaît avec son historique. Pour noter du stock retiré, utilisez plutôt Vendu, Jeté ou Retourné.",
+  "es": "Desaparece con su historial. Para registrar stock que salió, usa Vendido, Desechado o Devuelto.",
+  "de": "Es verschwindet samt Verlauf. Für Ware, die das Regal verlassen hat, nutze Verkauft, Entsorgt oder Retour."
+ },
+ "dateDetail.deleteAction": {
+  "en": "Delete",
+  "ar": "حذف",
+  "tr": "Sil",
+  "fr": "Supprimer",
+  "es": "Eliminar",
+  "de": "Löschen"
+ },
+ "dateDetail.history": {
+  "en": "History",
+  "ar": "السجل",
+  "tr": "Geçmiş",
+  "fr": "Historique",
+  "es": "Historial",
+  "de": "Verlauf"
+ },
+ "dateDetail.added": {
+  "en": "Added",
+  "ar": "أُضيف",
+  "tr": "Eklendi",
+  "fr": "Ajoutée",
+  "es": "Añadida",
+  "de": "Hinzugefügt"
+ },
+ "dateDetail.units": {
+  "en": "Units: {{count}}",
+  "ar": "الوحدات: {{count}}",
+  "tr": "Adet: {{count}}",
+  "fr": "Unités : {{count}}",
+  "es": "Unidades: {{count}}",
+  "de": "Stück: {{count}}"
+ },
+ "dateDetail.reduceTitle": {
+  "en": "Reduce the price",
+  "ar": "خفّض السعر",
+  "tr": "Fiyatı indir",
+  "fr": "Démarquer",
+  "es": "Rebajar el precio",
+  "de": "Preis reduzieren"
+ },
+ "dateDetail.noCurrency": {
+  "en": "Choose your currency in Menu → Currency first.",
+  "ar": "اختر العملة أولًا من القائمة ← العملة.",
+  "tr": "Önce Menü → Para birimi'nden para biriminizi seçin.",
+  "fr": "Choisissez d'abord votre devise dans Menu → Devise.",
+  "es": "Elige primero tu moneda en Menú → Moneda.",
+  "de": "Wähle zuerst deine Währung unter Menü → Währung."
+ },
+ "dateDetail.normalIs": {
+  "en": "Normal price: {{price}}",
+  "ar": "السعر العادي: {{price}}",
+  "tr": "Normal fiyat: {{price}}",
+  "fr": "Prix normal : {{price}}",
+  "es": "Precio normal: {{price}}",
+  "de": "Normalpreis: {{price}}"
+ },
+ "dateDetail.percentOff": {
+  "en": "{{percent}}% off",
+  "ar": "خصم {{percent}}٪",
+  "tr": "%{{percent}} indirim",
+  "fr": "−{{percent}} %",
+  "es": "−{{percent}} %",
+  "de": "−{{percent}} %"
+ },
+ "dateDetail.newPrice": {
+  "en": "New price ({{currency}})",
+  "ar": "السعر الجديد ({{currency}})",
+  "tr": "Yeni fiyat ({{currency}})",
+  "fr": "Nouveau prix ({{currency}})",
+  "es": "Precio nuevo ({{currency}})",
+  "de": "Neuer Preis ({{currency}})"
+ },
+ "dateDetail.percentPreview": {
+  "en": "That is {{percent}}% off the normal price.",
+  "ar": "أي خصم {{percent}}٪ من السعر العادي.",
+  "tr": "Normal fiyattan %{{percent}} indirim.",
+  "fr": "Soit {{percent}} % de moins que le prix normal.",
+  "es": "Es un {{percent}} % menos que el precio normal.",
+  "de": "Das sind {{percent}} % unter dem Normalpreis."
+ },
+ "dateDetail.priceNotLower": {
+  "en": "The reduced price must be lower than the normal price.",
+  "ar": "يجب أن يكون السعر المخفّض أقل من السعر العادي.",
+  "tr": "İndirimli fiyat normal fiyattan düşük olmalı.",
+  "fr": "Le prix démarqué doit être inférieur au prix normal.",
+  "es": "El precio rebajado debe ser menor que el normal.",
+  "de": "Der reduzierte Preis muss unter dem Normalpreis liegen."
+ },
+ "dateDetail.priceError.empty": {
+  "en": "Enter a price.",
+  "ar": "أدخل سعرًا.",
+  "tr": "Bir fiyat girin.",
+  "fr": "Saisissez un prix.",
+  "es": "Introduce un precio.",
+  "de": "Gib einen Preis ein."
+ },
+ "dateDetail.priceError.invalid": {
+  "en": "That is not a price.",
+  "ar": "هذا ليس سعرًا.",
+  "tr": "Bu bir fiyat değil.",
+  "fr": "Ce n'est pas un prix.",
+  "es": "Eso no es un precio.",
+  "de": "Das ist kein Preis."
+ },
+ "dateDetail.priceError.ambiguous": {
+  "en": "Is that a thousands separator or decimals? Type it without the separator, or with 2 decimals.",
+  "ar": "هل هذا فاصل آلاف أم كسور؟ اكتبه بدون الفاصل أو بخانتين عشريتين.",
+  "tr": "Bu binlik ayırıcı mı, ondalık mı? Ayırıcısız veya 2 ondalıkla yazın.",
+  "fr": "Séparateur de milliers ou décimales ? Saisissez sans séparateur ou avec 2 décimales.",
+  "es": "¿Separador de miles o decimales? Escríbelo sin separador o con 2 decimales.",
+  "de": "Tausendertrennzeichen oder Dezimalstellen? Ohne Trennzeichen oder mit 2 Nachkommastellen eingeben."
+ },
+ "dateDetail.priceError.tooManyDecimals": {
+  "en": "Too many decimals for this currency.",
+  "ar": "خانات عشرية كثيرة لهذه العملة.",
+  "tr": "Bu para birimi için çok fazla ondalık.",
+  "fr": "Trop de décimales pour cette devise.",
+  "es": "Demasiados decimales para esta moneda.",
+  "de": "Zu viele Nachkommastellen für diese Währung."
+ },
+ "dateDetail.priceError.zero": {
+  "en": "The price must be more than zero.",
+  "ar": "يجب أن يكون السعر أكبر من صفر.",
+  "tr": "Fiyat sıfırdan büyük olmalı.",
+  "fr": "Le prix doit être supérieur à zéro.",
+  "es": "El precio debe ser mayor que cero.",
+  "de": "Der Preis muss größer als null sein."
+ },
+ "dateDetail.priceError.noCurrency": {
+  "en": "Choose your currency first.",
+  "ar": "اختر العملة أولًا.",
+  "tr": "Önce para biriminizi seçin.",
+  "fr": "Choisissez d'abord votre devise.",
+  "es": "Elige primero tu moneda.",
+  "de": "Wähle zuerst deine Währung."
+ },
+ "dateDetail.reducedDone": {
+  "en": "Reduction saved.",
+  "ar": "تم حفظ التخفيض.",
+  "tr": "İndirim kaydedildi.",
+  "fr": "Démarque enregistrée.",
+  "es": "Rebaja guardada.",
+  "de": "Reduzierung gespeichert."
+ },
+ "dateDetail.removeTitle.sold": {
+  "en": "Sold",
+  "ar": "بيعت",
+  "tr": "Satıldı",
+  "fr": "Vendu",
+  "es": "Vendido",
+  "de": "Verkauft"
+ },
+ "dateDetail.removeTitle.wasted": {
+  "en": "Thrown away",
+  "ar": "أُتلفت",
+  "tr": "Atıldı",
+  "fr": "Jeté",
+  "es": "Desechado",
+  "de": "Entsorgt"
+ },
+ "dateDetail.removeTitle.returned": {
+  "en": "Returned or donated",
+  "ar": "أُعيدت أو تُبرّع بها",
+  "tr": "İade veya bağış",
+  "fr": "Retourné ou donné",
+  "es": "Devuelto o donado",
+  "de": "Retour oder Spende"
+ },
+ "dateDetail.removeTitle.donated": {
+  "en": "Returned or donated",
+  "ar": "أُعيدت أو تُبرّع بها",
+  "tr": "İade veya bağış",
+  "fr": "Retourné ou donné",
+  "es": "Devuelto o donado",
+  "de": "Retour oder Spende"
+ },
+ "dateDetail.howMany": {
+  "en": "How many",
+  "ar": "كم عددها",
+  "tr": "Kaç adet",
+  "fr": "Combien",
+  "es": "Cuántas",
+  "de": "Wie viele"
+ },
+ "dateDetail.allPh": {
+  "en": "All that is left",
+  "ar": "كل المتبقي",
+  "tr": "Kalanların hepsi",
+  "fr": "Tout ce qui reste",
+  "es": "Todo lo que queda",
+  "de": "Alles, was übrig ist"
+ },
+ "dateDetail.leftHint": {
+  "en": "Left: {{count}}. Leave empty for all of them; the date then closes.",
+  "ar": "المتبقي: {{count}}. اتركه فارغًا للكل؛ عندها يُغلق التاريخ.",
+  "tr": "Kalan: {{count}}. Hepsi için boş bırakın; tarih kapanır.",
+  "fr": "Reste : {{count}}. Laissez vide pour tout ; la date se clôture alors.",
+  "es": "Quedan: {{count}}. Déjalo vacío para todas; la fecha se cierra.",
+  "de": "Übrig: {{count}}. Leer lassen für alle; das Datum wird dann abgeschlossen."
+ },
+ "dateDetail.uncountedHint": {
+  "en": "This date was not counted. Leave empty to close it, or enter how many for your records.",
+  "ar": "لم تُعدّ هذه الكمية. اتركه فارغًا لإغلاقه أو أدخل العدد للسجل.",
+  "tr": "Bu tarih sayılmadı. Kapatmak için boş bırakın ya da kayıt için adet girin.",
+  "fr": "Cette date n'a pas été comptée. Laissez vide pour la clôturer, ou saisissez un nombre pour vos relevés.",
+  "es": "Esta fecha no se contó. Déjalo vacío para cerrarla o indica cuántas para tu registro.",
+  "de": "Dieses Datum wurde nicht gezählt. Leer lassen zum Abschließen oder Menge für deine Aufzeichnung eingeben."
+ },
+ "dateDetail.reason": {
+  "en": "Why",
+  "ar": "السبب",
+  "tr": "Neden",
+  "fr": "Pourquoi",
+  "es": "Motivo",
+  "de": "Grund"
+ },
+ "dateDetail.qtyError": {
+  "en": "Enter a whole number, or leave it empty.",
+  "ar": "أدخل عددًا صحيحًا أو اتركه فارغًا.",
+  "tr": "Tam sayı girin veya boş bırakın.",
+  "fr": "Saisissez un nombre entier, ou laissez vide.",
+  "es": "Introduce un número entero o déjalo vacío.",
+  "de": "Gib eine ganze Zahl ein oder lass das Feld leer."
+ },
+ "dateDetail.qtyTooHigh": {
+  "en": "Left: {{count}}. Enter that or less.",
+  "ar": "المتبقي: {{count}}. أدخل هذا العدد أو أقل.",
+  "tr": "Kalan: {{count}}. Bu kadar veya daha az girin.",
+  "fr": "Reste : {{count}}. Saisissez ce nombre ou moins.",
+  "es": "Quedan: {{count}}. Introduce esa cantidad o menos.",
+  "de": "Übrig: {{count}}. Gib diese Zahl oder weniger ein."
+ },
+ "dateDetail.done.sold": {
+  "en": "Recorded as sold.",
+  "ar": "سُجّلت كمبيعة.",
+  "tr": "Satıldı olarak kaydedildi.",
+  "fr": "Enregistré comme vendu.",
+  "es": "Registrado como vendido.",
+  "de": "Als verkauft erfasst."
+ },
+ "dateDetail.done.wasted": {
+  "en": "Recorded as thrown away.",
+  "ar": "سُجّلت كتالفة.",
+  "tr": "Atıldı olarak kaydedildi.",
+  "fr": "Enregistré comme jeté.",
+  "es": "Registrado como desechado.",
+  "de": "Als entsorgt erfasst."
+ },
+ "dateDetail.done.returned": {
+  "en": "Recorded as returned.",
+  "ar": "سُجّلت كمُعادة.",
+  "tr": "İade olarak kaydedildi.",
+  "fr": "Enregistré comme retourné.",
+  "es": "Registrado como devuelto.",
+  "de": "Als Retour erfasst."
+ },
+ "dateDetail.done.donated": {
+  "en": "Recorded as donated.",
+  "ar": "سُجّلت كتبرّع.",
+  "tr": "Bağış olarak kaydedildi.",
+  "fr": "Enregistré comme donné.",
+  "es": "Registrado como donado.",
+  "de": "Als Spende erfasst."
+ },
+ "check.title": {
+  "en": "Date check",
+  "ar": "فحص التواريخ",
+  "tr": "Tarih kontrolü",
+  "fr": "Contrôle des dates",
+  "es": "Revisión de fechas",
+  "de": "Datumskontrolle"
+ },
+ "check.progress": {
+  "en": "Checked {{done}} of {{total}}",
+  "ar": "فُحص {{done}} من {{total}}",
+  "tr": "{{total}} içinden {{done}} kontrol edildi",
+  "fr": "{{done}} sur {{total}} vérifiées",
+  "es": "{{done}} de {{total}} revisadas",
+  "de": "{{done}} von {{total}} geprüft"
+ },
+ "check.intro": {
+  "en": "Everything expired, due today or due soon (warning days: {{days}}). Tick each one as you look at the shelf; tap a line to reduce it or record part of the stock.",
+  "ar": "كل ما انتهى أو ينتهي اليوم أو قريبًا (أيام التنبيه: {{days}}). علّم كل عنصر أثناء النظر إلى الرف؛ اضغط على السطر لتخفيضه أو لتسجيل جزء من الكمية.",
+  "tr": "Süresi geçen, bugün veya yakında dolan her şey (uyarı günü: {{days}}). Rafa bakarken her birini işaretleyin; indirim veya kısmi kayıt için satıra dokunun.",
+  "fr": "Tout ce qui est dépassé, du jour ou bientôt à date (jours d'alerte : {{days}}). Cochez chaque ligne en regardant le rayon ; touchez une ligne pour la démarquer ou noter une partie du stock.",
+  "es": "Todo lo caducado, lo que vence hoy o pronto (días de aviso: {{days}}). Marca cada línea al mirar el estante; toca una línea para rebajarla o registrar parte del stock.",
+  "de": "Alles Abgelaufene, heute oder bald Fällige (Warntage: {{days}}). Hake jede Zeile beim Blick ins Regal ab; tippe eine Zeile an, um zu reduzieren oder einen Teil zu erfassen."
+ },
+ "check.fine": {
+  "en": "Fine",
+  "ar": "جيد",
+  "tr": "Sorun yok",
+  "fr": "OK",
+  "es": "Bien",
+  "de": "OK"
+ },
+ "check.soldOut": {
+  "en": "Sold out",
+  "ar": "نفدت",
+  "tr": "Tükendi",
+  "fr": "Épuisé",
+  "es": "Agotado",
+  "de": "Ausverkauft"
+ },
+ "check.binned": {
+  "en": "Thrown away",
+  "ar": "أُتلفت",
+  "tr": "Atıldı",
+  "fr": "Jeté",
+  "es": "Desechado",
+  "de": "Entsorgt"
+ },
+ "check.ticked": {
+  "en": "Checked today",
+  "ar": "فُحص اليوم",
+  "tr": "Bugün kontrol edildi",
+  "fr": "Vérifiée aujourd'hui",
+  "es": "Revisada hoy",
+  "de": "Heute geprüft"
+ },
+ "check.allFineTitle": {
+  "en": "Mark the rest as checked?",
+  "ar": "وسم الباقي كمفحوص؟",
+  "tr": "Kalanlar kontrol edildi sayılsın mı?",
+  "fr": "Marquer le reste comme vérifié ?",
+  "es": "¿Marcar el resto como revisado?",
+  "de": "Rest als geprüft markieren?"
+ },
+ "check.allFineBody": {
+  "en": "Not yet checked: {{count}}. They stay on the shelf and will be checked again tomorrow.",
+  "ar": "غير مفحوصة بعد: {{count}}. ستبقى على الرف وتُفحص مجددًا غدًا.",
+  "tr": "Henüz kontrol edilmeyen: {{count}}. Rafta kalır ve yarın yeniden kontrol edilir.",
+  "fr": "Pas encore vérifiées : {{count}}. Elles restent en rayon et seront revues demain.",
+  "es": "Sin revisar: {{count}}. Siguen en el estante y se revisarán de nuevo mañana.",
+  "de": "Noch nicht geprüft: {{count}}. Sie bleiben im Regal und werden morgen wieder geprüft."
+ },
+ "check.allFineAction": {
+  "en": "All the rest are fine",
+  "ar": "كل الباقي جيد",
+  "tr": "Kalanların hepsi iyi",
+  "fr": "Tout le reste est OK",
+  "es": "Todo lo demás está bien",
+  "de": "Alles Übrige ist OK"
+ },
+ "check.allDone": {
+  "en": "All checked for today.",
+  "ar": "تم فحص الكل لليوم.",
+  "tr": "Bugün için hepsi kontrol edildi.",
+  "fr": "Tout est vérifié pour aujourd'hui.",
+  "es": "Todo revisado por hoy.",
+  "de": "Für heute alles geprüft."
+ },
+ "check.printSheet": {
+  "en": "Printable check sheet",
+  "ar": "ورقة فحص للطباعة",
+  "tr": "Yazdırılabilir kontrol listesi",
+  "fr": "Fiche de contrôle (PDF)",
+  "es": "Hoja de revisión (PDF)",
+  "de": "Prüfliste zum Drucken"
+ },
+ "check.emptyTitle": {
+  "en": "Nothing to check",
+  "ar": "لا شيء للفحص",
+  "tr": "Kontrol edilecek bir şey yok",
+  "fr": "Rien à contrôler",
+  "es": "Nada que revisar",
+  "de": "Nichts zu prüfen"
+ },
+ "check.emptyBody": {
+  "en": "No date is expired, due today or due soon (warning days: {{days}}).",
+  "ar": "لا يوجد تاريخ منتهٍ أو يستحق اليوم أو قريبًا (أيام التنبيه: {{days}}).",
+  "tr": "Süresi geçmiş, bugün veya yakında dolan tarih yok (uyarı günü: {{days}}).",
+  "fr": "Aucune date dépassée, du jour ou bientôt à date (jours d'alerte : {{days}}).",
+  "es": "No hay fechas caducadas, de hoy ni próximas (días de aviso: {{days}}).",
+  "de": "Kein Datum ist abgelaufen, heute oder bald fällig (Warntage: {{days}})."
+ },
+ "products.subtitle": {
+  "en": "What you sell and track",
+  "ar": "ما تبيعه وتتابعه",
+  "tr": "Sattığınız ve takip ettikleriniz",
+  "fr": "Ce que vous vendez et suivez",
+  "es": "Lo que vendes y controlas",
+  "de": "Was du verkaufst und verfolgst"
+ },
+ "products.count": {
+  "en": "Products: {{count}}",
+  "ar": "المنتجات: {{count}}",
+  "tr": "Ürünler: {{count}}",
+  "fr": "Produits : {{count}}",
+  "es": "Productos: {{count}}",
+  "de": "Artikel: {{count}}"
+ },
+ "products.add": {
+  "en": "Add",
+  "ar": "إضافة",
+  "tr": "Ekle",
+  "fr": "Ajouter",
+  "es": "Añadir",
+  "de": "Neu"
+ },
+ "products.scan": {
+  "en": "Scan",
+  "ar": "مسح",
+  "tr": "Tara",
+  "fr": "Scanner",
+  "es": "Escanear",
+  "de": "Scannen"
+ },
+ "products.import": {
+  "en": "Import",
+  "ar": "استيراد",
+  "tr": "İçe aktar",
+  "fr": "Importer",
+  "es": "Importar",
+  "de": "Import"
+ },
+ "products.searchPlaceholder": {
+  "en": "Search name, barcode, SKU or place",
+  "ar": "ابحث بالاسم أو الباركود أو الرمز أو المكان",
+  "tr": "Ad, barkod, stok kodu veya yer ara",
+  "fr": "Nom, code-barres, référence ou emplacement",
+  "es": "Nombre, código, SKU o lugar",
+  "de": "Name, Barcode, Art.-Nr. oder Platz"
+ },
+ "products.filter.all": {
+  "en": "All",
+  "ar": "الكل",
+  "tr": "Tümü",
+  "fr": "Tous",
+  "es": "Todos",
+  "de": "Alle"
+ },
+ "products.filter.withDates": {
+  "en": "With dates",
+  "ar": "لها تواريخ",
+  "tr": "Tarihli",
+  "fr": "Avec dates",
+  "es": "Con fechas",
+  "de": "Mit Datum"
+ },
+ "products.filter.noDates": {
+  "en": "No dates",
+  "ar": "بلا تواريخ",
+  "tr": "Tarihsiz",
+  "fr": "Sans date",
+  "es": "Sin fechas",
+  "de": "Ohne Datum"
+ },
+ "products.filter.archived": {
+  "en": "Archived",
+  "ar": "مؤرشفة",
+  "tr": "Arşivlenmiş",
+  "fr": "Archivés",
+  "es": "Archivados",
+  "de": "Archiviert"
+ },
+ "products.noDetails": {
+  "en": "No barcode or place yet",
+  "ar": "لا باركود أو مكان بعد",
+  "tr": "Henüz barkod veya yer yok",
+  "fr": "Pas encore de code-barres ni d'emplacement",
+  "es": "Aún sin código ni lugar",
+  "de": "Noch kein Barcode oder Platz"
+ },
+ "products.noOpenDates": {
+  "en": "No date on the shelf",
+  "ar": "لا تاريخ على الرف",
+  "tr": "Rafta tarih yok",
+  "fr": "Aucune date en rayon",
+  "es": "Sin fecha en el estante",
+  "de": "Kein Datum im Regal"
+ },
+ "products.moreDates": {
+  "en": "+{{count}} more",
+  "ar": "+{{count}} أخرى",
+  "tr": "+{{count}} daha",
+  "fr": "+{{count}} autres",
+  "es": "+{{count}} más",
+  "de": "+{{count}} weitere"
+ },
+ "products.badgeArchived": {
+  "en": "Archived",
+  "ar": "مؤرشف",
+  "tr": "Arşivlendi",
+  "fr": "Archivé",
+  "es": "Archivado",
+  "de": "Archiviert"
+ },
+ "products.addDateFor": {
+  "en": "Add a date for {{name}}",
+  "ar": "أضف تاريخًا لـ {{name}}",
+  "tr": "{{name}} için tarih ekle",
+  "fr": "Ajouter une date pour {{name}}",
+  "es": "Añadir fecha a {{name}}",
+  "de": "Datum für {{name}} hinzufügen"
+ },
+ "products.emptyTitle": {
+  "en": "No products yet",
+  "ar": "لا توجد منتجات بعد",
+  "tr": "Henüz ürün yok",
+  "fr": "Aucun produit pour l'instant",
+  "es": "Aún no hay productos",
+  "de": "Noch keine Artikel"
+ },
+ "products.emptyBody": {
+  "en": "Add products one by one, scan their barcodes, or import a CSV file. A product is also created when you add a date for a new name.",
+  "ar": "أضف المنتجات واحدًا تلو الآخر، أو امسح الباركود، أو استورد ملف CSV. يُنشأ المنتج أيضًا عند إضافة تاريخ لاسم جديد.",
+  "tr": "Ürünleri tek tek ekleyin, barkodlarını tarayın veya bir CSV dosyası içe aktarın. Yeni bir ad için tarih eklediğinizde de ürün oluşur.",
+  "fr": "Ajoutez les produits un par un, scannez leurs codes-barres ou importez un fichier CSV. Un produit est aussi créé quand vous ajoutez une date pour un nouveau nom.",
+  "es": "Añade productos uno a uno, escanea sus códigos o importa un archivo CSV. También se crea un producto al añadir una fecha con un nombre nuevo.",
+  "de": "Füge Artikel einzeln hinzu, scanne ihre Barcodes oder importiere eine CSV-Datei. Ein Artikel entsteht auch, wenn du ein Datum für einen neuen Namen hinzufügst."
+ },
+ "products.noMatchTitle": {
+  "en": "No product found",
+  "ar": "لم يُعثر على منتج",
+  "tr": "Ürün bulunamadı",
+  "fr": "Aucun produit trouvé",
+  "es": "No se encontró ningún producto",
+  "de": "Kein Artikel gefunden"
+ },
+ "products.noMatchBody": {
+  "en": "Try another filter or search word.",
+  "ar": "جرّب مرشحًا أو كلمة بحث أخرى.",
+  "tr": "Başka bir filtre veya arama deneyin.",
+  "fr": "Essayez un autre filtre ou un autre mot.",
+  "es": "Prueba otro filtro u otra palabra.",
+  "de": "Versuche einen anderen Filter oder Suchbegriff."
+ },
+ "products.loadErrorTitle": {
+  "en": "Products could not be read",
+  "ar": "تعذّرت قراءة المنتجات",
+  "tr": "Ürünler okunamadı",
+  "fr": "Impossible de lire les produits",
+  "es": "No se pudieron leer los productos",
+  "de": "Artikel konnten nicht gelesen werden"
+ },
+ "products.loadErrorBody": {
+  "en": "Close and reopen the app. If it happens again, use Check Data Health in Backup & Restore.",
+  "ar": "أغلق التطبيق وافتحه مجددًا. إن تكرر ذلك، استخدم فحص سلامة البيانات في النسخ الاحتياطي.",
+  "tr": "Uygulamayı kapatıp yeniden açın. Tekrarlarsa Yedekleme bölümündeki Veri Sağlığını Kontrol Et'i kullanın.",
+  "fr": "Fermez et rouvrez l'application. Si cela se reproduit, utilisez Vérifier les données dans Sauvegarde.",
+  "es": "Cierra y vuelve a abrir la app. Si se repite, usa Comprobar datos en Copia de seguridad.",
+  "de": "Schließe die App und öffne sie erneut. Passiert es wieder, nutze „Daten prüfen“ unter Sicherung."
+ },
+ "productEdit.addTitle": {
+  "en": "New product",
+  "ar": "منتج جديد",
+  "tr": "Yeni ürün",
+  "fr": "Nouveau produit",
+  "es": "Nuevo producto",
+  "de": "Neuer Artikel"
+ },
+ "productEdit.editTitle": {
+  "en": "Product",
+  "ar": "المنتج",
+  "tr": "Ürün",
+  "fr": "Produit",
+  "es": "Producto",
+  "de": "Artikel"
+ },
+ "productEdit.addDate": {
+  "en": "Add a date",
+  "ar": "أضف تاريخًا",
+  "tr": "Tarih ekle",
+  "fr": "Ajouter une date",
+  "es": "Añadir fecha",
+  "de": "Datum hinzufügen"
+ },
+ "productEdit.openDates": {
+  "en": "On the shelf: {{count}}",
+  "ar": "على الرف: {{count}}",
+  "tr": "Rafta: {{count}}",
+  "fr": "En rayon : {{count}}",
+  "es": "En el estante: {{count}}",
+  "de": "Im Regal: {{count}}"
+ },
+ "productEdit.pastDates": {
+  "en": "Past dates",
+  "ar": "تواريخ سابقة",
+  "tr": "Geçmiş tarihler",
+  "fr": "Dates passées",
+  "es": "Fechas pasadas",
+  "de": "Frühere Daten"
+ },
+ "productEdit.details": {
+  "en": "Details",
+  "ar": "التفاصيل",
+  "tr": "Ayrıntılar",
+  "fr": "Détails",
+  "es": "Detalles",
+  "de": "Details"
+ },
+ "productEdit.productName": {
+  "en": "Product name",
+  "ar": "اسم المنتج",
+  "tr": "Ürün adı",
+  "fr": "Nom du produit",
+  "es": "Nombre del producto",
+  "de": "Artikelname"
+ },
+ "productEdit.productNamePh": {
+  "en": "e.g. Semi-skimmed milk 2 L",
+  "ar": "مثال: حليب نصف دسم 2 لتر",
+  "tr": "ör. Yarım yağlı süt 2 L",
+  "fr": "ex. Lait demi-écrémé 2 L",
+  "es": "p. ej. Leche semidesnatada 2 L",
+  "de": "z. B. Fettarme Milch 2 L"
+ },
+ "productEdit.barcode": {
+  "en": "Barcode",
+  "ar": "الباركود",
+  "tr": "Barkod",
+  "fr": "Code-barres",
+  "es": "Código de barras",
+  "de": "Barcode"
+ },
+ "productEdit.barcodePh": {
+  "en": "Scan or type",
+  "ar": "امسح أو اكتب",
+  "tr": "Tarayın veya yazın",
+  "fr": "Scanner ou saisir",
+  "es": "Escanear o escribir",
+  "de": "Scannen oder tippen"
+ },
+ "productEdit.scanBarcode": {
+  "en": "Scan the barcode",
+  "ar": "امسح الباركود",
+  "tr": "Barkodu tara",
+  "fr": "Scanner le code-barres",
+  "es": "Escanear el código",
+  "de": "Barcode scannen"
+ },
+ "productEdit.shelf": {
+  "en": "Usual place",
+  "ar": "المكان المعتاد",
+  "tr": "Olağan yeri",
+  "fr": "Emplacement habituel",
+  "es": "Lugar habitual",
+  "de": "Üblicher Platz"
+ },
+ "productEdit.shelfPh": {
+  "en": "e.g. Aisle 3, chiller",
+  "ar": "مثال: الممر 3، البرّاد",
+  "tr": "ör. Reyon 3, soğutucu",
+  "fr": "ex. Allée 3, froid",
+  "es": "p. ej. Pasillo 3, frío",
+  "de": "z. B. Gang 3, Kühlung"
+ },
+ "productEdit.category": {
+  "en": "Category",
+  "ar": "الفئة",
+  "tr": "Kategori",
+  "fr": "Catégorie",
+  "es": "Categoría",
+  "de": "Kategorie"
+ },
+ "productEdit.categoryPh": {
+  "en": "e.g. Dairy",
+  "ar": "مثال: ألبان",
+  "tr": "ör. Süt ürünleri",
+  "fr": "ex. Crèmerie",
+  "es": "p. ej. Lácteos",
+  "de": "z. B. Molkerei"
+ },
+ "productEdit.sku": {
+  "en": "SKU / own code",
+  "ar": "الرمز الداخلي",
+  "tr": "Stok kodu",
+  "fr": "Référence interne",
+  "es": "SKU / código propio",
+  "de": "Art.-Nr. / eigener Code"
+ },
+ "productEdit.usualDateType": {
+  "en": "Usual kind of date",
+  "ar": "نوع التاريخ المعتاد",
+  "tr": "Olağan tarih türü",
+  "fr": "Type de date habituel",
+  "es": "Tipo de fecha habitual",
+  "de": "Übliche Datumsart"
+ },
+ "productEdit.shelfLife": {
+  "en": "Usual shelf life in days (optional)",
+  "ar": "مدة الصلاحية المعتادة بالأيام (اختياري)",
+  "tr": "Olağan raf ömrü, gün (isteğe bağlı)",
+  "fr": "Durée de conservation habituelle en jours (facultatif)",
+  "es": "Vida útil habitual en días (opcional)",
+  "de": "Übliche Haltbarkeit in Tagen (optional)"
+ },
+ "productEdit.shelfLifePh": {
+  "en": "e.g. 7",
+  "ar": "مثال: 7",
+  "tr": "ör. 7",
+  "fr": "ex. 7",
+  "es": "p. ej. 7",
+  "de": "z. B. 7"
+ },
+ "productEdit.shelfLifeHint": {
+  "en": "Offers “today + days” when you add a date.",
+  "ar": "يقترح «اليوم + الأيام» عند إضافة تاريخ.",
+  "tr": "Tarih eklerken “bugün + gün” önerir.",
+  "fr": "Propose « aujourd'hui + jours » lors de l'ajout d'une date.",
+  "es": "Sugiere «hoy + días» al añadir una fecha.",
+  "de": "Schlägt beim Hinzufügen „heute + Tage“ vor."
+ },
+ "productEdit.alertDays": {
+  "en": "Warn this many days ahead (optional)",
+  "ar": "نبّه قبل هذا العدد من الأيام (اختياري)",
+  "tr": "Bu kadar gün önce uyar (isteğe bağlı)",
+  "fr": "Prévenir ce nombre de jours avant (facultatif)",
+  "es": "Avisar con estos días de antelación (opcional)",
+  "de": "So viele Tage vorher warnen (optional)"
+ },
+ "productEdit.alertDaysPh": {
+  "en": "Shop setting: {{days}}",
+  "ar": "إعداد المتجر: {{days}}",
+  "tr": "Mağaza ayarı: {{days}}",
+  "fr": "Réglage du magasin : {{days}}",
+  "es": "Ajuste de la tienda: {{days}}",
+  "de": "Shop-Einstellung: {{days}}"
+ },
+ "productEdit.alertDaysHint": {
+  "en": "Leave empty to use the shop setting. Use more days for slow sellers.",
+  "ar": "اتركه فارغًا لاستخدام إعداد المتجر. استخدم أيامًا أكثر للأصناف بطيئة البيع.",
+  "tr": "Mağaza ayarı için boş bırakın. Yavaş satılanlar için daha fazla gün kullanın.",
+  "fr": "Laissez vide pour le réglage du magasin. Mettez plus de jours pour les ventes lentes.",
+  "es": "Déjalo vacío para usar el ajuste de la tienda. Usa más días para lo que se vende despacio.",
+  "de": "Leer lassen für die Shop-Einstellung. Mehr Tage für Langsamdreher."
+ },
+ "productEdit.price": {
+  "en": "Normal selling price (optional)",
+  "ar": "سعر البيع العادي (اختياري)",
+  "tr": "Normal satış fiyatı (isteğe bağlı)",
+  "fr": "Prix de vente normal (facultatif)",
+  "es": "Precio de venta normal (opcional)",
+  "de": "Normaler Verkaufspreis (optional)"
+ },
+ "productEdit.pricePh": {
+  "en": "e.g. 1.45",
+  "ar": "مثال: 1.45",
+  "tr": "ör. 1,45",
+  "fr": "ex. 1,45",
+  "es": "p. ej. 1,45",
+  "de": "z. B. 1,45"
+ },
+ "productEdit.priceHint": {
+  "en": "Only used to suggest reductions and to value waste.",
+  "ar": "يُستخدم فقط لاقتراح التخفيضات وتقدير قيمة الهدر.",
+  "tr": "Yalnızca indirim önermek ve fireyi değerlemek için kullanılır.",
+  "fr": "Sert uniquement à proposer des démarques et à chiffrer les pertes.",
+  "es": "Solo se usa para sugerir rebajas y valorar mermas.",
+  "de": "Nur für Reduzierungsvorschläge und die Bewertung von Abfall."
+ },
+ "productEdit.chooseCurrency": {
+  "en": "Choose your currency first",
+  "ar": "اختر العملة أولًا",
+  "tr": "Önce para biriminizi seçin",
+  "fr": "Choisissez d'abord votre devise",
+  "es": "Elige primero tu moneda",
+  "de": "Wähle zuerst deine Währung"
+ },
+ "productEdit.saved": {
+  "en": "Product saved.",
+  "ar": "تم حفظ المنتج.",
+  "tr": "Ürün kaydedildi.",
+  "fr": "Produit enregistré.",
+  "es": "Producto guardado.",
+  "de": "Artikel gespeichert."
+ },
+ "productEdit.moreActions": {
+  "en": "More",
+  "ar": "المزيد",
+  "tr": "Diğer",
+  "fr": "Plus",
+  "es": "Más",
+  "de": "Mehr"
+ },
+ "productEdit.archive": {
+  "en": "Archive product",
+  "ar": "أرشفة المنتج",
+  "tr": "Ürünü arşivle",
+  "fr": "Archiver le produit",
+  "es": "Archivar producto",
+  "de": "Artikel archivieren"
+ },
+ "productEdit.restore": {
+  "en": "Bring back product",
+  "ar": "استرجاع المنتج",
+  "tr": "Ürünü geri getir",
+  "fr": "Réactiver le produit",
+  "es": "Recuperar producto",
+  "de": "Artikel zurückholen"
+ },
+ "productEdit.archiveHint": {
+  "en": "Archived products are hidden from lists; their dates and history are kept.",
+  "ar": "تُخفى المنتجات المؤرشفة من القوائم؛ تبقى تواريخها وسجلها.",
+  "tr": "Arşivlenen ürünler listelerde gizlenir; tarihleri ve geçmişi saklanır.",
+  "fr": "Les produits archivés sont masqués ; leurs dates et leur historique sont conservés.",
+  "es": "Los productos archivados se ocultan; sus fechas e historial se conservan.",
+  "de": "Archivierte Artikel werden ausgeblendet; Daten und Verlauf bleiben erhalten."
+ },
+ "productEdit.errors.nameRequired": {
+  "en": "Enter a product name.",
+  "ar": "أدخل اسم المنتج.",
+  "tr": "Bir ürün adı girin.",
+  "fr": "Saisissez un nom de produit.",
+  "es": "Introduce un nombre de producto.",
+  "de": "Gib einen Artikelnamen ein."
+ },
+ "productEdit.errors.shelfLife": {
+  "en": "Use a whole number of days from 1 to {{max}}.",
+  "ar": "استخدم عددًا صحيحًا من الأيام من 1 إلى {{max}}.",
+  "tr": "1 ile {{max}} arasında tam gün sayısı kullanın.",
+  "fr": "Indiquez un nombre entier de jours de 1 à {{max}}.",
+  "es": "Usa un número entero de días de 1 a {{max}}.",
+  "de": "Gib eine ganze Zahl von 1 bis {{max}} Tagen ein."
+ },
+ "productEdit.errors.alertDays": {
+  "en": "Use a whole number of days from 0 to {{max}}.",
+  "ar": "استخدم عددًا صحيحًا من الأيام من 0 إلى {{max}}.",
+  "tr": "0 ile {{max}} arasında tam gün sayısı kullanın.",
+  "fr": "Indiquez un nombre entier de jours de 0 à {{max}}.",
+  "es": "Usa un número entero de días de 0 a {{max}}.",
+  "de": "Gib eine ganze Zahl von 0 bis {{max}} Tagen ein."
+ },
+ "productEdit.errors.noCurrency": {
+  "en": "Choose your currency before entering a price.",
+  "ar": "اختر العملة قبل إدخال سعر.",
+  "tr": "Fiyat girmeden önce para biriminizi seçin.",
+  "fr": "Choisissez votre devise avant de saisir un prix.",
+  "es": "Elige tu moneda antes de introducir un precio.",
+  "de": "Wähle deine Währung, bevor du einen Preis eingibst."
+ },
+ "productEdit.errors.barcode": {
+  "en": "This barcode's check digit is wrong. Check the number.",
+  "ar": "رقم التحقق في هذا الباركود خاطئ. تحقّق من الرقم.",
+  "tr": "Bu barkodun kontrol hanesi hatalı. Numarayı kontrol edin.",
+  "fr": "La clé de contrôle de ce code-barres est fausse. Vérifiez le numéro.",
+  "es": "El dígito de control de este código es incorrecto. Revisa el número.",
+  "de": "Die Prüfziffer dieses Barcodes stimmt nicht. Prüfe die Nummer."
+ },
+ "productEdit.errors.saveFailed": {
+  "en": "The product could not be saved. Nothing was changed.",
+  "ar": "تعذّر حفظ المنتج. لم يتغيّر شيء.",
+  "tr": "Ürün kaydedilemedi. Hiçbir şey değişmedi.",
+  "fr": "Impossible d'enregistrer le produit. Rien n'a été modifié.",
+  "es": "No se pudo guardar el producto. No se cambió nada.",
+  "de": "Der Artikel konnte nicht gespeichert werden. Nichts wurde geändert."
+ },
+ "productEdit.errors.store.nameRequired": {
+  "en": "Enter a product name.",
+  "ar": "أدخل اسم المنتج.",
+  "tr": "Bir ürün adı girin.",
+  "fr": "Saisissez un nom de produit.",
+  "es": "Introduce un nombre de producto.",
+  "de": "Gib einen Artikelnamen ein."
+ },
+ "productEdit.errors.store.nameTooLong": {
+  "en": "The product name is too long.",
+  "ar": "اسم المنتج طويل جدًا.",
+  "tr": "Ürün adı çok uzun.",
+  "fr": "Le nom du produit est trop long.",
+  "es": "El nombre del producto es demasiado largo.",
+  "de": "Der Artikelname ist zu lang."
+ },
+ "productEdit.errors.store.skuTooLong": {
+  "en": "The SKU is too long.",
+  "ar": "الرمز طويل جدًا.",
+  "tr": "Stok kodu çok uzun.",
+  "fr": "La référence est trop longue.",
+  "es": "El SKU es demasiado largo.",
+  "de": "Die Artikelnummer ist zu lang."
+ },
+ "productEdit.errors.store.shelfTooLong": {
+  "en": "The place is too long.",
+  "ar": "المكان طويل جدًا.",
+  "tr": "Yer adı çok uzun.",
+  "fr": "L'emplacement est trop long.",
+  "es": "El lugar es demasiado largo.",
+  "de": "Der Platz ist zu lang."
+ },
+ "productEdit.errors.store.categoryTooLong": {
+  "en": "The category is too long.",
+  "ar": "الفئة طويلة جدًا.",
+  "tr": "Kategori çok uzun.",
+  "fr": "La catégorie est trop longue.",
+  "es": "La categoría es demasiado larga.",
+  "de": "Die Kategorie ist zu lang."
+ },
+ "productEdit.errors.store.badShelfLife": {
+  "en": "The shelf life is not a valid number of days.",
+  "ar": "مدة الصلاحية ليست عدد أيام صحيحًا.",
+  "tr": "Raf ömrü geçerli bir gün sayısı değil.",
+  "fr": "La durée de conservation n'est pas un nombre de jours valide.",
+  "es": "La vida útil no es un número de días válido.",
+  "de": "Die Haltbarkeit ist keine gültige Anzahl Tage."
+ },
+ "productEdit.errors.store.badAlertDays": {
+  "en": "The warning days are not a valid number.",
+  "ar": "أيام التنبيه ليست رقمًا صحيحًا.",
+  "tr": "Uyarı günleri geçerli bir sayı değil.",
+  "fr": "Le nombre de jours d'alerte n'est pas valide.",
+  "es": "Los días de aviso no son un número válido.",
+  "de": "Die Warntage sind keine gültige Zahl."
+ },
+ "productEdit.errors.store.badPrice": {
+  "en": "The price is not valid.",
+  "ar": "السعر غير صالح.",
+  "tr": "Fiyat geçerli değil.",
+  "fr": "Le prix n'est pas valide.",
+  "es": "El precio no es válido.",
+  "de": "Der Preis ist ungültig."
+ },
+ "productEdit.errors.store.badDateType": {
+  "en": "Choose the kind of date.",
+  "ar": "اختر نوع التاريخ.",
+  "tr": "Tarih türünü seçin.",
+  "fr": "Choisissez le type de date.",
+  "es": "Elige el tipo de fecha.",
+  "de": "Wähle die Art des Datums."
+ },
+ "productEdit.errors.store.duplicateBarcode": {
+  "en": "Another product already has this barcode.",
+  "ar": "منتج آخر لديه هذا الباركود بالفعل.",
+  "tr": "Bu barkod başka bir üründe zaten var.",
+  "fr": "Un autre produit a déjà ce code-barres.",
+  "es": "Otro producto ya tiene este código.",
+  "de": "Ein anderer Artikel hat diesen Barcode bereits."
+ },
+ "productEdit.errors.store.notFound": {
+  "en": "This product no longer exists.",
+  "ar": "لم يعد هذا المنتج موجودًا.",
+  "tr": "Bu ürün artık yok.",
+  "fr": "Ce produit n'existe plus.",
+  "es": "Este producto ya no existe.",
+  "de": "Diesen Artikel gibt es nicht mehr."
+ },
+ "scan.title.addDate": {
+  "en": "Scan to add a date",
+  "ar": "امسح لإضافة تاريخ",
+  "tr": "Tarih için tara",
+  "fr": "Scanner pour dater",
+  "es": "Escanear para fechar",
+  "de": "Scannen für Datum"
+ },
+ "scan.title.attachDate": {
+  "en": "Scan the barcode",
+  "ar": "امسح الباركود",
+  "tr": "Barkodu tara",
+  "fr": "Scanner le code-barres",
+  "es": "Escanear el código",
+  "de": "Barcode scannen"
+ },
+ "scan.hint.addDate": {
+  "en": "Point the camera at a barcode to add its date. After saving you come back here for the next one.",
+  "ar": "وجّه الكاميرا نحو الباركود لإضافة تاريخه. بعد الحفظ تعود هنا للمنتج التالي.",
+  "tr": "Tarihini eklemek için kamerayı barkoda tutun. Kaydettikten sonra sıradaki için buraya dönersiniz.",
+  "fr": "Visez un code-barres pour ajouter sa date. Après l'enregistrement, vous revenez ici pour le suivant.",
+  "es": "Apunta a un código para añadir su fecha. Al guardar vuelves aquí para el siguiente.",
+  "de": "Richte die Kamera auf einen Barcode, um sein Datum hinzuzufügen. Nach dem Speichern geht es hier weiter."
+ },
+ "scan.hint.attachDate": {
+  "en": "Point the camera at the product's barcode.",
+  "ar": "وجّه الكاميرا نحو باركود المنتج.",
+  "tr": "Kamerayı ürünün barkoduna tutun.",
+  "fr": "Visez le code-barres du produit.",
+  "es": "Apunta al código de barras del producto.",
+  "de": "Richte die Kamera auf den Barcode des Artikels."
+ },
+ "scan.explainTitle": {
+  "en": "TillExpiry needs the camera to read barcodes",
+  "ar": "يحتاج TillExpiry إلى الكاميرا لقراءة الباركود",
+  "tr": "TillExpiry barkod okumak için kameraya ihtiyaç duyar",
+  "fr": "TillExpiry a besoin de l'appareil photo pour lire les codes-barres",
+  "es": "TillExpiry necesita la cámara para leer códigos",
+  "de": "TillExpiry braucht die Kamera, um Barcodes zu lesen"
+ },
+ "scan.permissionDenied": {
+  "en": "Camera access is off for TillExpiry. Turn it on in Settings, or type the code.",
+  "ar": "الوصول إلى الكاميرا متوقف لـ TillExpiry. فعّله من الإعدادات أو اكتب الرمز.",
+  "tr": "TillExpiry için kamera erişimi kapalı. Ayarlar'dan açın veya kodu yazın.",
+  "fr": "L'accès à l'appareil photo est désactivé pour TillExpiry. Activez-le dans Réglages ou saisissez le code.",
+  "es": "El acceso a la cámara está desactivado para TillExpiry. Actívalo en Ajustes o escribe el código.",
+  "de": "Der Kamerazugriff ist für TillExpiry aus. Schalte ihn in den Einstellungen ein oder tippe den Code."
+ },
+ "importer.title": {
+  "en": "Import from a file",
+  "ar": "استيراد من ملف",
+  "tr": "Dosyadan içe aktar",
+  "fr": "Importer un fichier",
+  "es": "Importar desde archivo",
+  "de": "Aus Datei importieren"
+ },
+ "importer.subtitle": {
+  "en": "Products and dates from a CSV file",
+  "ar": "منتجات وتواريخ من ملف CSV",
+  "tr": "CSV dosyasından ürünler ve tarihler",
+  "fr": "Produits et dates depuis un CSV",
+  "es": "Productos y fechas desde un CSV",
+  "de": "Artikel und Daten aus einer CSV-Datei"
+ },
+ "importer.intro": {
+  "en": "Choose a CSV file saved from your till system or a spreadsheet. Each row can be a product, or a product with a date.",
+  "ar": "اختر ملف CSV محفوظًا من نظام الكاشير أو جدول بيانات. كل صف يمكن أن يكون منتجًا أو منتجًا مع تاريخ.",
+  "tr": "Kasa sisteminizden veya bir tablodan kaydedilmiş bir CSV dosyası seçin. Her satır bir ürün ya da tarihli bir ürün olabilir.",
+  "fr": "Choisissez un fichier CSV enregistré depuis votre caisse ou un tableur. Chaque ligne peut être un produit, ou un produit avec une date.",
+  "es": "Elige un archivo CSV guardado desde tu caja o una hoja de cálculo. Cada fila puede ser un producto o un producto con fecha.",
+  "de": "Wähle eine CSV-Datei aus deinem Kassensystem oder einer Tabelle. Jede Zeile kann ein Artikel oder ein Artikel mit Datum sein."
+ },
+ "importer.columnsHint": {
+  "en": "Useful columns: name, barcode, SKU, date, kind of date, quantity, place, category, shelf life (days).",
+  "ar": "أعمدة مفيدة: الاسم، الباركود، الرمز، التاريخ، نوع التاريخ، الكمية، المكان، الفئة، مدة الصلاحية (أيام).",
+  "tr": "Yararlı sütunlar: ad, barkod, stok kodu, tarih, tarih türü, adet, yer, kategori, raf ömrü (gün).",
+  "fr": "Colonnes utiles : nom, code-barres, référence, date, type de date, quantité, emplacement, catégorie, durée de conservation (jours).",
+  "es": "Columnas útiles: nombre, código, SKU, fecha, tipo de fecha, cantidad, lugar, categoría, vida útil (días).",
+  "de": "Nützliche Spalten: Name, Barcode, Art.-Nr., Datum, Datumsart, Menge, Platz, Kategorie, Haltbarkeit (Tage)."
+ },
+ "importer.limits": {
+  "en": "Up to {{rows}} rows and 5 MB per file. Excel files: save as CSV first.",
+  "ar": "حتى {{rows}} صف و5 ميغابايت لكل ملف. ملفات Excel: احفظها بصيغة CSV أولًا.",
+  "tr": "Dosya başına en fazla {{rows}} satır ve 5 MB. Excel dosyalarını önce CSV olarak kaydedin.",
+  "fr": "Jusqu'à {{rows}} lignes et 5 Mo par fichier. Fichiers Excel : enregistrez-les d'abord en CSV.",
+  "es": "Hasta {{rows}} filas y 5 MB por archivo. Archivos de Excel: guárdalos antes como CSV.",
+  "de": "Bis {{rows}} Zeilen und 5 MB pro Datei. Excel-Dateien zuerst als CSV speichern."
+ },
+ "importer.pick": {
+  "en": "Choose a CSV file",
+  "ar": "اختر ملف CSV",
+  "tr": "CSV dosyası seç",
+  "fr": "Choisir un fichier CSV",
+  "es": "Elegir un archivo CSV",
+  "de": "CSV-Datei wählen"
+ },
+ "importer.pickOther": {
+  "en": "Choose another file",
+  "ar": "اختر ملفًا آخر",
+  "tr": "Başka dosya seç",
+  "fr": "Choisir un autre fichier",
+  "es": "Elegir otro archivo",
+  "de": "Andere Datei wählen"
+ },
+ "importer.encodingNote": {
+  "en": "This file is not UTF-8; it was read as Windows-1252. Check accented letters and symbols in the preview.",
+  "ar": "هذا الملف ليس UTF-8؛ قُرئ كـ Windows-1252. تحقّق من الأحرف والرموز في المعاينة.",
+  "tr": "Bu dosya UTF-8 değil; Windows-1252 olarak okundu. Önizlemede aksanlı harfleri ve simgeleri kontrol edin.",
+  "fr": "Ce fichier n'est pas en UTF-8 ; il a été lu en Windows-1252. Vérifiez les accents et symboles dans l'aperçu.",
+  "es": "Este archivo no es UTF-8; se leyó como Windows-1252. Revisa acentos y símbolos en la vista previa.",
+  "de": "Diese Datei ist kein UTF-8; sie wurde als Windows-1252 gelesen. Prüfe Umlaute und Symbole in der Vorschau."
+ },
+ "importer.columns": {
+  "en": "Columns",
+  "ar": "الأعمدة",
+  "tr": "Sütunlar",
+  "fr": "Colonnes",
+  "es": "Columnas",
+  "de": "Spalten"
+ },
+ "importer.hasHeader": {
+  "en": "The first row holds column names",
+  "ar": "الصف الأول يحتوي أسماء الأعمدة",
+  "tr": "İlk satır sütun adlarını içeriyor",
+  "fr": "La première ligne contient les noms de colonnes",
+  "es": "La primera fila tiene los nombres de columna",
+  "de": "Die erste Zeile enthält Spaltennamen"
+ },
+ "importer.columnN": {
+  "en": "Column {{n}}",
+  "ar": "العمود {{n}}",
+  "tr": "Sütun {{n}}",
+  "fr": "Colonne {{n}}",
+  "es": "Columna {{n}}",
+  "de": "Spalte {{n}}"
+ },
+ "importer.field.name": {
+  "en": "Product name",
+  "ar": "اسم المنتج",
+  "tr": "Ürün adı",
+  "fr": "Nom du produit",
+  "es": "Nombre del producto",
+  "de": "Artikelname"
+ },
+ "importer.field.barcode": {
+  "en": "Barcode",
+  "ar": "الباركود",
+  "tr": "Barkod",
+  "fr": "Code-barres",
+  "es": "Código de barras",
+  "de": "Barcode"
+ },
+ "importer.field.sku": {
+  "en": "SKU / own code",
+  "ar": "الرمز الداخلي",
+  "tr": "Stok kodu",
+  "fr": "Référence interne",
+  "es": "SKU / código propio",
+  "de": "Art.-Nr."
+ },
+ "importer.field.date": {
+  "en": "Date",
+  "ar": "التاريخ",
+  "tr": "Tarih",
+  "fr": "Date",
+  "es": "Fecha",
+  "de": "Datum"
+ },
+ "importer.field.dateType": {
+  "en": "Kind of date",
+  "ar": "نوع التاريخ",
+  "tr": "Tarih türü",
+  "fr": "Type de date",
+  "es": "Tipo de fecha",
+  "de": "Datumsart"
+ },
+ "importer.field.quantity": {
+  "en": "Quantity",
+  "ar": "الكمية",
+  "tr": "Adet",
+  "fr": "Quantité",
+  "es": "Cantidad",
+  "de": "Menge"
+ },
+ "importer.field.location": {
+  "en": "Place",
+  "ar": "المكان",
+  "tr": "Yer",
+  "fr": "Emplacement",
+  "es": "Ubicación",
+  "de": "Platz"
+ },
+ "importer.field.category": {
+  "en": "Category",
+  "ar": "الفئة",
+  "tr": "Kategori",
+  "fr": "Catégorie",
+  "es": "Categoría",
+  "de": "Kategorie"
+ },
+ "importer.field.shelfLife": {
+  "en": "Shelf life (days)",
+  "ar": "مدة الصلاحية (أيام)",
+  "tr": "Raf ömrü (gün)",
+  "fr": "Conservation (jours)",
+  "es": "Vida útil (días)",
+  "de": "Haltbarkeit (Tage)"
+ },
+ "importer.field.ignore": {
+  "en": "Do not import",
+  "ar": "لا تستورد",
+  "tr": "İçe aktarma",
+  "fr": "Ne pas importer",
+  "es": "No importar",
+  "de": "Nicht importieren"
+ },
+ "importer.needNameOrBarcode": {
+  "en": "Choose a column for the product name or the barcode.",
+  "ar": "اختر عمودًا لاسم المنتج أو الباركود.",
+  "tr": "Ürün adı veya barkod için bir sütun seçin.",
+  "fr": "Choisissez une colonne pour le nom du produit ou le code-barres.",
+  "es": "Elige una columna para el nombre o el código.",
+  "de": "Wähle eine Spalte für den Artikelnamen oder den Barcode."
+ },
+ "importer.dateOrder": {
+  "en": "How are dates written?",
+  "ar": "كيف تُكتب التواريخ؟",
+  "tr": "Tarihler nasıl yazılmış?",
+  "fr": "Comment les dates sont-elles écrites ?",
+  "es": "¿Cómo están escritas las fechas?",
+  "de": "Wie sind die Daten geschrieben?"
+ },
+ "importer.dateOrderHint": {
+  "en": "03/04/2026 is 3 April in some countries and 4 March in others, so the app asks instead of guessing.",
+  "ar": "03/04/2026 تعني 3 أبريل في بعض الدول و4 مارس في دول أخرى، لذا يسأل التطبيق بدل التخمين.",
+  "tr": "03/04/2026 bazı ülkelerde 3 Nisan, bazılarında 4 Mart'tır; bu yüzden uygulama tahmin etmek yerine sorar.",
+  "fr": "03/04/2026 signifie 3 avril dans certains pays et 4 mars dans d'autres : l'application demande au lieu de deviner.",
+  "es": "03/04/2026 es 3 de abril en unos países y 4 de marzo en otros, así que la app pregunta en lugar de adivinar.",
+  "de": "03/04/2026 ist in manchen Ländern der 3. April, in anderen der 4. März – deshalb fragt die App, statt zu raten."
+ },
+ "importer.order.dmy": {
+  "en": "Day/Month/Year",
+  "ar": "يوم/شهر/سنة",
+  "tr": "Gün/Ay/Yıl",
+  "fr": "Jour/Mois/Année",
+  "es": "Día/Mes/Año",
+  "de": "Tag/Monat/Jahr"
+ },
+ "importer.order.mdy": {
+  "en": "Month/Day/Year",
+  "ar": "شهر/يوم/سنة",
+  "tr": "Ay/Gün/Yıl",
+  "fr": "Mois/Jour/Année",
+  "es": "Mes/Día/Año",
+  "de": "Monat/Tag/Jahr"
+ },
+ "importer.order.ymd": {
+  "en": "Year-Month-Day",
+  "ar": "سنة-شهر-يوم",
+  "tr": "Yıl-Ay-Gün",
+  "fr": "Année-Mois-Jour",
+  "es": "Año-Mes-Día",
+  "de": "Jahr-Monat-Tag"
+ },
+ "importer.chooseOrder": {
+  "en": "Choose the date order to see the preview.",
+  "ar": "اختر ترتيب التاريخ لرؤية المعاينة.",
+  "tr": "Önizleme için tarih sırasını seçin.",
+  "fr": "Choisissez l'ordre des dates pour voir l'aperçu.",
+  "es": "Elige el orden de fecha para ver la vista previa.",
+  "de": "Wähle die Datumsreihenfolge für die Vorschau."
+ },
+ "importer.defaultType": {
+  "en": "Kind of date when the file does not say",
+  "ar": "نوع التاريخ إن لم يذكره الملف",
+  "tr": "Dosyada yoksa tarih türü",
+  "fr": "Type de date si le fichier ne l'indique pas",
+  "es": "Tipo de fecha si el archivo no lo indica",
+  "de": "Datumsart, wenn die Datei sie nicht nennt"
+ },
+ "importer.preview": {
+  "en": "Preview",
+  "ar": "المعاينة",
+  "tr": "Önizleme",
+  "fr": "Aperçu",
+  "es": "Vista previa",
+  "de": "Vorschau"
+ },
+ "importer.count.newProducts": {
+  "en": "New products",
+  "ar": "منتجات جديدة",
+  "tr": "Yeni ürünler",
+  "fr": "Nouveaux produits",
+  "es": "Productos nuevos",
+  "de": "Neue Artikel"
+ },
+ "importer.count.matchedProducts": {
+  "en": "Products you already have",
+  "ar": "منتجات موجودة لديك",
+  "tr": "Mevcut ürünler",
+  "fr": "Produits déjà présents",
+  "es": "Productos que ya tienes",
+  "de": "Vorhandene Artikel"
+ },
+ "importer.count.dates": {
+  "en": "Dates to add",
+  "ar": "تواريخ للإضافة",
+  "tr": "Eklenecek tarihler",
+  "fr": "Dates à ajouter",
+  "es": "Fechas por añadir",
+  "de": "Hinzuzufügende Daten"
+ },
+ "importer.count.invalid": {
+  "en": "Rows skipped",
+  "ar": "صفوف متجاوزة",
+  "tr": "Atlanan satırlar",
+  "fr": "Lignes ignorées",
+  "es": "Filas omitidas",
+  "de": "Übersprungene Zeilen"
+ },
+ "importer.ambiguous": {
+  "en": "Dates that read differently in the other order: {{count}}. Check one against its pack.",
+  "ar": "تواريخ تُقرأ بشكل مختلف بالترتيب الآخر: {{count}}. قارن أحدها بعبوته.",
+  "tr": "Diğer sırada farklı okunan tarihler: {{count}}. Birini ambalajıyla karşılaştırın.",
+  "fr": "Dates qui se lisent autrement dans l'autre ordre : {{count}}. Vérifiez-en une sur l'emballage.",
+  "es": "Fechas que se leen distinto en el otro orden: {{count}}. Compara una con su envase.",
+  "de": "Daten, die in der anderen Reihenfolge anders lauten: {{count}}. Prüfe eines an der Packung."
+ },
+ "importer.problemLine": {
+  "en": "Row {{line}}: {{problem}}",
+  "ar": "الصف {{line}}: {{problem}}",
+  "tr": "Satır {{line}}: {{problem}}",
+  "fr": "Ligne {{line}} : {{problem}}",
+  "es": "Fila {{line}}: {{problem}}",
+  "de": "Zeile {{line}}: {{problem}}"
+ },
+ "importer.problem.noName": {
+  "en": "no product name",
+  "ar": "لا يوجد اسم منتج",
+  "tr": "ürün adı yok",
+  "fr": "pas de nom de produit",
+  "es": "sin nombre de producto",
+  "de": "kein Artikelname"
+ },
+ "importer.problem.badDate": {
+  "en": "the date cannot be read in this order",
+  "ar": "لا يمكن قراءة التاريخ بهذا الترتيب",
+  "tr": "tarih bu sırayla okunamıyor",
+  "fr": "la date ne se lit pas dans cet ordre",
+  "es": "la fecha no se puede leer en este orden",
+  "de": "Datum in dieser Reihenfolge nicht lesbar"
+ },
+ "importer.problem.badQuantity": {
+  "en": "the quantity is not a whole number",
+  "ar": "الكمية ليست عددًا صحيحًا",
+  "tr": "adet tam sayı değil",
+  "fr": "la quantité n'est pas un nombre entier",
+  "es": "la cantidad no es un número entero",
+  "de": "Menge ist keine ganze Zahl"
+ },
+ "importer.problem.badShelfLife": {
+  "en": "the shelf life is not a number of days",
+  "ar": "مدة الصلاحية ليست عدد أيام",
+  "tr": "raf ömrü gün sayısı değil",
+  "fr": "la conservation n'est pas un nombre de jours",
+  "es": "la vida útil no es un número de días",
+  "de": "Haltbarkeit ist keine Anzahl Tage"
+ },
+ "importer.problem.nameTooLong": {
+  "en": "the name is too long",
+  "ar": "الاسم طويل جدًا",
+  "tr": "ad çok uzun",
+  "fr": "le nom est trop long",
+  "es": "el nombre es demasiado largo",
+  "de": "Name zu lang"
+ },
+ "importer.problem.barcodeConflict": {
+  "en": "this barcode is used for another name in the file",
+  "ar": "هذا الباركود مستخدم لاسم آخر في الملف",
+  "tr": "bu barkod dosyada başka bir ad için kullanılmış",
+  "fr": "ce code-barres sert à un autre nom dans le fichier",
+  "es": "este código se usa para otro nombre en el archivo",
+  "de": "Barcode gehört in der Datei zu einem anderen Namen"
+ },
+ "importer.run": {
+  "en": "Import",
+  "ar": "استيراد",
+  "tr": "İçe aktar",
+  "fr": "Importer",
+  "es": "Importar",
+  "de": "Importieren"
+ },
+ "importer.doneTitle": {
+  "en": "Import complete",
+  "ar": "اكتمل الاستيراد",
+  "tr": "İçe aktarma tamamlandı",
+  "fr": "Import terminé",
+  "es": "Importación completa",
+  "de": "Import abgeschlossen"
+ },
+ "importer.doneBody": {
+  "en": "New products: {{products}}. Dates added: {{dates}}.",
+  "ar": "منتجات جديدة: {{products}}. تواريخ مضافة: {{dates}}.",
+  "tr": "Yeni ürünler: {{products}}. Eklenen tarihler: {{dates}}.",
+  "fr": "Nouveaux produits : {{products}}. Dates ajoutées : {{dates}}.",
+  "es": "Productos nuevos: {{products}}. Fechas añadidas: {{dates}}.",
+  "de": "Neue Artikel: {{products}}. Hinzugefügte Daten: {{dates}}."
+ },
+ "importer.errors.tooLarge": {
+  "en": "This file is larger than 5 MB.",
+  "ar": "هذا الملف أكبر من 5 ميغابايت.",
+  "tr": "Bu dosya 5 MB'tan büyük.",
+  "fr": "Ce fichier dépasse 5 Mo.",
+  "es": "Este archivo supera los 5 MB.",
+  "de": "Diese Datei ist größer als 5 MB."
+ },
+ "importer.errors.spreadsheet": {
+  "en": "This is an Excel file. Save it as CSV and choose it again.",
+  "ar": "هذا ملف Excel. احفظه بصيغة CSV واختره مجددًا.",
+  "tr": "Bu bir Excel dosyası. CSV olarak kaydedip yeniden seçin.",
+  "fr": "C'est un fichier Excel. Enregistrez-le en CSV puis choisissez-le à nouveau.",
+  "es": "Es un archivo de Excel. Guárdalo como CSV y vuelve a elegirlo.",
+  "de": "Das ist eine Excel-Datei. Speichere sie als CSV und wähle sie erneut."
+ },
+ "importer.errors.empty": {
+  "en": "This file has no rows.",
+  "ar": "هذا الملف لا يحتوي صفوفًا.",
+  "tr": "Bu dosyada satır yok.",
+  "fr": "Ce fichier ne contient aucune ligne.",
+  "es": "Este archivo no tiene filas.",
+  "de": "Diese Datei hat keine Zeilen."
+ },
+ "importer.errors.read": {
+  "en": "The file could not be read.",
+  "ar": "تعذّرت قراءة الملف.",
+  "tr": "Dosya okunamadı.",
+  "fr": "Impossible de lire le fichier.",
+  "es": "No se pudo leer el archivo.",
+  "de": "Die Datei konnte nicht gelesen werden."
+ },
+ "importer.errors.changed": {
+  "en": "Your products changed while you were looking at the preview. Check it again, then import.",
+  "ar": "تغيّرت منتجاتك أثناء المعاينة. راجعها مجددًا ثم استورد.",
+  "tr": "Önizlemeye bakarken ürünleriniz değişti. Tekrar kontrol edip içe aktarın.",
+  "fr": "Vos produits ont changé pendant l'aperçu. Vérifiez-le à nouveau, puis importez.",
+  "es": "Tus productos cambiaron mientras mirabas la vista previa. Revísala de nuevo y luego importa.",
+  "de": "Deine Artikel haben sich während der Vorschau geändert. Prüfe sie erneut und importiere dann."
+ },
+ "importer.errors.commit": {
+  "en": "The import failed. Nothing was saved.",
+  "ar": "فشل الاستيراد. لم يُحفظ شيء.",
+  "tr": "İçe aktarma başarısız. Hiçbir şey kaydedilmedi.",
+  "fr": "L'import a échoué. Rien n'a été enregistré.",
+  "es": "La importación falló. No se guardó nada.",
+  "de": "Der Import ist fehlgeschlagen. Nichts wurde gespeichert."
+ },
+ "reports.title": {
+  "en": "History & waste",
+  "ar": "السجل والهدر",
+  "tr": "Geçmiş ve fire",
+  "fr": "Historique et pertes",
+  "es": "Historial y mermas",
+  "de": "Verlauf & Abfall"
+ },
+ "reports.subtitle": {
+  "en": "What left the shelf and how",
+  "ar": "ما غادر الرف وكيف",
+  "tr": "Raftan ne çıktı, nasıl çıktı",
+  "fr": "Ce qui a quitté le rayon, et comment",
+  "es": "Qué salió del estante y cómo",
+  "de": "Was das Regal verlassen hat und wie"
+ },
+ "reports.period.7d": {
+  "en": "7 days",
+  "ar": "7 أيام",
+  "tr": "7 gün",
+  "fr": "7 jours",
+  "es": "7 días",
+  "de": "7 Tage"
+ },
+ "reports.period.30d": {
+  "en": "30 days",
+  "ar": "30 يومًا",
+  "tr": "30 gün",
+  "fr": "30 jours",
+  "es": "30 días",
+  "de": "30 Tage"
+ },
+ "reports.period.90d": {
+  "en": "90 days",
+  "ar": "90 يومًا",
+  "tr": "90 gün",
+  "fr": "90 jours",
+  "es": "90 días",
+  "de": "90 Tage"
+ },
+ "reports.period.all": {
+  "en": "All time",
+  "ar": "كل الفترة",
+  "tr": "Tüm zamanlar",
+  "fr": "Depuis le début",
+  "es": "Todo",
+  "de": "Gesamt"
+ },
+ "reports.kind.wasted": {
+  "en": "Thrown away",
+  "ar": "أُتلفت",
+  "tr": "Atılan",
+  "fr": "Jeté",
+  "es": "Desechado",
+  "de": "Entsorgt"
+ },
+ "reports.kind.sold": {
+  "en": "Sold",
+  "ar": "بيعت",
+  "tr": "Satılan",
+  "fr": "Vendu",
+  "es": "Vendido",
+  "de": "Verkauft"
+ },
+ "reports.kind.reduced": {
+  "en": "Reductions",
+  "ar": "التخفيضات",
+  "tr": "İndirimler",
+  "fr": "Démarques",
+  "es": "Rebajas",
+  "de": "Reduzierungen"
+ },
+ "reports.kind.returned": {
+  "en": "Returned to supplier",
+  "ar": "أُعيدت للمورّد",
+  "tr": "Tedarikçiye iade",
+  "fr": "Retourné au fournisseur",
+  "es": "Devuelto al proveedor",
+  "de": "An Lieferanten zurück"
+ },
+ "reports.kind.donated": {
+  "en": "Donated",
+  "ar": "تُبرّع بها",
+  "tr": "Bağışlanan",
+  "fr": "Donné",
+  "es": "Donado",
+  "de": "Gespendet"
+ },
+ "reports.events": {
+  "en": "Times recorded",
+  "ar": "مرات التسجيل",
+  "tr": "Kayıt sayısı",
+  "fr": "Enregistrements",
+  "es": "Veces registradas",
+  "de": "Erfasste Vorgänge"
+ },
+ "reports.units": {
+  "en": "Units",
+  "ar": "الوحدات",
+  "tr": "Adet",
+  "fr": "Unités",
+  "es": "Unidades",
+  "de": "Stück"
+ },
+ "reports.value": {
+  "en": "Value",
+  "ar": "القيمة",
+  "tr": "Değer",
+  "fr": "Valeur",
+  "es": "Valor",
+  "de": "Wert"
+ },
+ "reports.reducedThenSold": {
+  "en": "Reduced dates that then sold",
+  "ar": "تواريخ مخفّضة بيعت بعدها",
+  "tr": "İndirimden sonra satılan",
+  "fr": "Dates démarquées puis vendues",
+  "es": "Fechas rebajadas que luego se vendieron",
+  "de": "Reduziert und danach verkauft"
+ },
+ "reports.valueNote": {
+  "en": "Value = units × the reduced price if the date was reduced, otherwise × the product's normal price. Uncounted dates or products without a price add no value. Currencies are never added together.",
+  "ar": "القيمة = الوحدات × السعر المخفّض إن خُفّض التاريخ، وإلا × السعر العادي للمنتج. التواريخ غير المعدودة أو المنتجات بلا سعر لا تضيف قيمة. لا تُجمع العملات معًا أبدًا.",
+  "tr": "Değer = adet × tarih indirildiyse indirimli fiyat, değilse ürünün normal fiyatı. Sayılmamış tarihler veya fiyatsız ürünler değer eklemez. Para birimleri asla toplanmaz.",
+  "fr": "Valeur = unités × prix démarqué si la date a été démarquée, sinon × prix normal du produit. Les dates non comptées ou les produits sans prix n'ajoutent rien. Les devises ne sont jamais additionnées.",
+  "es": "Valor = unidades × precio rebajado si la fecha se rebajó; si no, × precio normal del producto. Las fechas sin contar o los productos sin precio no suman valor. Nunca se suman monedas distintas.",
+  "de": "Wert = Stück × reduzierter Preis, falls das Datum reduziert wurde, sonst × Normalpreis des Artikels. Ungezählte Daten oder Artikel ohne Preis zählen nicht. Währungen werden nie addiert."
+ },
+ "reports.topWasted": {
+  "en": "Most thrown away",
+  "ar": "الأكثر إتلافًا",
+  "tr": "En çok atılanlar",
+  "fr": "Les plus jetés",
+  "es": "Lo más desechado",
+  "de": "Am häufigsten entsorgt"
+ },
+ "reports.unitsShort": {
+  "en": "Units: {{count}}",
+  "ar": "الوحدات: {{count}}",
+  "tr": "Adet: {{count}}",
+  "fr": "Unités : {{count}}",
+  "es": "Unidades: {{count}}",
+  "de": "Stück: {{count}}"
+ },
+ "reports.proTitle": {
+  "en": "The waste report is part of Pro",
+  "ar": "تقرير الهدر جزء من Pro",
+  "tr": "Fire raporu Pro'ya dahildir",
+  "fr": "Le rapport des pertes fait partie de Pro",
+  "es": "El informe de mermas es parte de Pro",
+  "de": "Der Abfallbericht gehört zu Pro"
+ },
+ "reports.proBody": {
+  "en": "See what you threw away, reduced and sold, what it was worth, and which products you waste most. Your history below stays free.",
+  "ar": "اعرف ما أتلفته وخفّضته وبعته وقيمته، وأكثر المنتجات هدرًا. سجلك أدناه يبقى مجانيًا.",
+  "tr": "Neyi attığınızı, indirdiğinizi ve sattığınızı, değerini ve en çok hangi ürünleri attığınızı görün. Aşağıdaki geçmişiniz ücretsiz kalır.",
+  "fr": "Voyez ce que vous avez jeté, démarqué et vendu, sa valeur et les produits les plus gaspillés. Votre historique ci-dessous reste gratuit.",
+  "es": "Mira lo que desechaste, rebajaste y vendiste, cuánto valía y qué productos desperdicias más. Tu historial de abajo sigue siendo gratis.",
+  "de": "Sieh, was du entsorgt, reduziert und verkauft hast, was es wert war und welche Artikel du am meisten wegwirfst. Dein Verlauf unten bleibt kostenlos."
+ },
+ "reports.unlock": {
+  "en": "See what Pro adds",
+  "ar": "اعرف ما يضيفه Pro",
+  "tr": "Pro'nun eklediklerini gör",
+  "fr": "Voir ce qu'ajoute Pro",
+  "es": "Ver qué añade Pro",
+  "de": "Was Pro bietet"
+ },
+ "reports.exportHistory": {
+  "en": "Export history (CSV)",
+  "ar": "تصدير السجل (CSV)",
+  "tr": "Geçmişi dışa aktar (CSV)",
+  "fr": "Exporter l'historique (CSV)",
+  "es": "Exportar historial (CSV)",
+  "de": "Verlauf exportieren (CSV)"
+ },
+ "reports.recent": {
+  "en": "Recently closed",
+  "ar": "أُغلقت مؤخرًا",
+  "tr": "Son kapananlar",
+  "fr": "Clôturées récemment",
+  "es": "Cerradas recientemente",
+  "de": "Kürzlich abgeschlossen"
+ },
+ "reports.emptyTitle": {
+  "en": "No history yet",
+  "ar": "لا يوجد سجل بعد",
+  "tr": "Henüz geçmiş yok",
+  "fr": "Pas encore d'historique",
+  "es": "Aún no hay historial",
+  "de": "Noch kein Verlauf"
+ },
+ "reports.emptyBody": {
+  "en": "When you record a date as sold, thrown away, returned or donated, it appears here.",
+  "ar": "عندما تسجّل تاريخًا كمباع أو متلف أو مُعاد أو متبرّع به، يظهر هنا.",
+  "tr": "Bir tarihi satıldı, atıldı, iade veya bağış olarak kaydettiğinizde burada görünür.",
+  "fr": "Quand vous notez une date comme vendue, jetée, retournée ou donnée, elle apparaît ici.",
+  "es": "Cuando registras una fecha como vendida, desechada, devuelta o donada, aparece aquí.",
+  "de": "Wenn du ein Datum als verkauft, entsorgt, zurückgegeben oder gespendet erfasst, erscheint es hier."
+ },
+ "export.col.product": {
+  "en": "Product",
+  "ar": "المنتج",
+  "tr": "Ürün",
+  "fr": "Produit",
+  "es": "Producto",
+  "de": "Artikel"
+ },
+ "export.col.barcode": {
+  "en": "Barcode",
+  "ar": "الباركود",
+  "tr": "Barkod",
+  "fr": "Code-barres",
+  "es": "Código de barras",
+  "de": "Barcode"
+ },
+ "export.col.sku": {
+  "en": "SKU",
+  "ar": "الرمز",
+  "tr": "Stok kodu",
+  "fr": "Référence",
+  "es": "SKU",
+  "de": "Art.-Nr."
+ },
+ "export.col.date": {
+  "en": "Date",
+  "ar": "التاريخ",
+  "tr": "Tarih",
+  "fr": "Date",
+  "es": "Fecha",
+  "de": "Datum"
+ },
+ "export.col.dateType": {
+  "en": "Kind of date",
+  "ar": "نوع التاريخ",
+  "tr": "Tarih türü",
+  "fr": "Type de date",
+  "es": "Tipo de fecha",
+  "de": "Datumsart"
+ },
+ "export.col.daysLeft": {
+  "en": "Days left",
+  "ar": "الأيام المتبقية",
+  "tr": "Kalan gün",
+  "fr": "Jours restants",
+  "es": "Días restantes",
+  "de": "Resttage"
+ },
+ "export.col.status": {
+  "en": "Status",
+  "ar": "الحالة",
+  "tr": "Durum",
+  "fr": "État",
+  "es": "Estado",
+  "de": "Status"
+ },
+ "export.col.quantityLeft": {
+  "en": "Left",
+  "ar": "المتبقي",
+  "tr": "Kalan",
+  "fr": "Reste",
+  "es": "Quedan",
+  "de": "Übrig"
+ },
+ "export.col.location": {
+  "en": "Place",
+  "ar": "المكان",
+  "tr": "Yer",
+  "fr": "Emplacement",
+  "es": "Ubicación",
+  "de": "Platz"
+ },
+ "export.col.reducedPrice": {
+  "en": "Reduced price",
+  "ar": "السعر المخفّض",
+  "tr": "İndirimli fiyat",
+  "fr": "Prix démarqué",
+  "es": "Precio rebajado",
+  "de": "Reduzierter Preis"
+ },
+ "export.col.currency": {
+  "en": "Currency",
+  "ar": "العملة",
+  "tr": "Para birimi",
+  "fr": "Devise",
+  "es": "Moneda",
+  "de": "Währung"
+ },
+ "export.col.note": {
+  "en": "Note",
+  "ar": "ملاحظة",
+  "tr": "Not",
+  "fr": "Note",
+  "es": "Nota",
+  "de": "Notiz"
+ },
+ "export.col.eventDate": {
+  "en": "Recorded on",
+  "ar": "سُجّل في",
+  "tr": "Kayıt tarihi",
+  "fr": "Enregistré le",
+  "es": "Registrado el",
+  "de": "Erfasst am"
+ },
+ "export.col.action": {
+  "en": "Action",
+  "ar": "الإجراء",
+  "tr": "İşlem",
+  "fr": "Action",
+  "es": "Acción",
+  "de": "Aktion"
+ },
+ "export.col.quantity": {
+  "en": "Quantity",
+  "ar": "الكمية",
+  "tr": "Adet",
+  "fr": "Quantité",
+  "es": "Cantidad",
+  "de": "Menge"
+ },
+ "export.col.reason": {
+  "en": "Reason",
+  "ar": "السبب",
+  "tr": "Neden",
+  "fr": "Motif",
+  "es": "Motivo",
+  "de": "Grund"
+ },
+ "export.col.price": {
+  "en": "Price",
+  "ar": "السعر",
+  "tr": "Fiyat",
+  "fr": "Prix",
+  "es": "Precio",
+  "de": "Preis"
+ },
+ "export.datesCsv": {
+  "en": "Dates on the shelf",
+  "ar": "التواريخ على الرف",
+  "tr": "Raftaki tarihler",
+  "fr": "Dates en rayon",
+  "es": "Fechas en el estante",
+  "de": "Daten im Regal"
+ },
+ "export.historyCsv": {
+  "en": "Date history",
+  "ar": "سجل التواريخ",
+  "tr": "Tarih geçmişi",
+  "fr": "Historique des dates",
+  "es": "Historial de fechas",
+  "de": "Datumsverlauf"
+ },
+ "export.shareUnavailable": {
+  "en": "Sharing is not available on this device.",
+  "ar": "المشاركة غير متاحة على هذا الجهاز.",
+  "tr": "Bu cihazda paylaşım kullanılamıyor.",
+  "fr": "Le partage n'est pas disponible sur cet appareil.",
+  "es": "Compartir no está disponible en este dispositivo.",
+  "de": "Teilen ist auf diesem Gerät nicht verfügbar."
+ },
+ "export.failed": {
+  "en": "The file could not be created.",
+  "ar": "تعذّر إنشاء الملف.",
+  "tr": "Dosya oluşturulamadı.",
+  "fr": "Impossible de créer le fichier.",
+  "es": "No se pudo crear el archivo.",
+  "de": "Die Datei konnte nicht erstellt werden."
+ },
+ "checkSheet.title": {
+  "en": "Date check sheet",
+  "ar": "ورقة فحص التواريخ",
+  "tr": "Tarih kontrol listesi",
+  "fr": "Fiche de contrôle des dates",
+  "es": "Hoja de revisión de fechas",
+  "de": "Datums-Prüfliste"
+ },
+ "checkSheet.meta": {
+  "en": "{{date}} · everything up to {{days}} days ahead · lines: {{count}}",
+  "ar": "{{date}} · كل ما يصل إلى {{days}} أيام قادمة · الأسطر: {{count}}",
+  "tr": "{{date}} · {{days}} gün sonrasına kadar her şey · satır: {{count}}",
+  "fr": "{{date}} · tout jusqu'à {{days}} jours · lignes : {{count}}",
+  "es": "{{date}} · todo hasta {{days}} días · líneas: {{count}}",
+  "de": "{{date}} · alles bis {{days}} Tage voraus · Zeilen: {{count}}"
+ },
+ "checkSheet.noLocation": {
+  "en": "No place set",
+  "ar": "بلا مكان",
+  "tr": "Yer belirtilmemiş",
+  "fr": "Sans emplacement",
+  "es": "Sin lugar",
+  "de": "Ohne Platz"
+ },
+ "checkSheet.action": {
+  "en": "Done",
+  "ar": "تم",
+  "tr": "Yapıldı",
+  "fr": "Fait",
+  "es": "Hecho",
+  "de": "Erledigt"
+ },
+ "checkSheet.empty": {
+  "en": "Nothing is expired or due in this period.",
+  "ar": "لا شيء منتهٍ أو مستحق في هذه الفترة.",
+  "tr": "Bu dönemde süresi geçen veya dolacak bir şey yok.",
+  "fr": "Rien n'est dépassé ni à échéance sur cette période.",
+  "es": "Nada caduca ni vence en este periodo.",
+  "de": "In diesem Zeitraum ist nichts abgelaufen oder fällig."
+ },
+ "datesSettings.title": {
+  "en": "Dates & reminders",
+  "ar": "التواريخ والتذكيرات",
+  "tr": "Tarihler ve hatırlatıcılar",
+  "fr": "Dates et rappels",
+  "es": "Fechas y recordatorios",
+  "de": "Daten & Erinnerungen"
+ },
+ "datesSettings.summary": {
+  "en": "Warning days: {{days}}",
+  "ar": "أيام التنبيه: {{days}}",
+  "tr": "Uyarı günü: {{days}}",
+  "fr": "Jours d'alerte : {{days}}",
+  "es": "Días de aviso: {{days}}",
+  "de": "Warntage: {{days}}"
+ },
+ "datesSettings.moreRow": {
+  "en": "Warning days, usual date kind, daily reminder",
+  "ar": "أيام التنبيه، نوع التاريخ المعتاد، التذكير اليومي",
+  "tr": "Uyarı günleri, olağan tarih türü, günlük hatırlatma",
+  "fr": "Jours d'alerte, type de date, rappel quotidien",
+  "es": "Días de aviso, tipo de fecha, recordatorio diario",
+  "de": "Warntage, übliche Datumsart, tägliche Erinnerung"
+ },
+ "datesSettings.alertTitle": {
+  "en": "Due soon: days ahead",
+  "ar": "قريبًا: عدد الأيام مسبقًا",
+  "tr": "Yakında: kaç gün önce",
+  "fr": "Bientôt : jours à l'avance",
+  "es": "Pronto: días de antelación",
+  "de": "Bald fällig: Tage vorher"
+ },
+ "datesSettings.alertHint": {
+  "en": "Dates within this many days after today show as due soon, are in the date check and in the reminder. A product can have its own number.",
+  "ar": "التواريخ ضمن هذا العدد من الأيام بعد اليوم تظهر كقريبة، وتدخل فحص التواريخ والتذكير. يمكن أن يكون للمنتج رقمه الخاص.",
+  "tr": "Bugünden sonraki bu kadar gün içindeki tarihler yakında dolacak olarak görünür, kontrole ve hatırlatmaya girer. Bir ürünün kendi sayısı olabilir.",
+  "fr": "Les dates dans ce nombre de jours apparaissent comme bientôt, figurent dans le contrôle et le rappel. Un produit peut avoir son propre réglage.",
+  "es": "Las fechas dentro de estos días aparecen como próximas, entran en la revisión y el recordatorio. Un producto puede tener su propio número.",
+  "de": "Daten innerhalb dieser Tage gelten als bald fällig, stehen in der Kontrolle und in der Erinnerung. Ein Artikel kann einen eigenen Wert haben."
+ },
+ "datesSettings.defaultType": {
+  "en": "Usual kind of date",
+  "ar": "نوع التاريخ المعتاد",
+  "tr": "Olağan tarih türü",
+  "fr": "Type de date habituel",
+  "es": "Tipo de fecha habitual",
+  "de": "Übliche Datumsart"
+ },
+ "datesSettings.defaultTypeHint": {
+  "en": "Chosen first when you add a date, unless the product has its own.",
+  "ar": "يُختار أولًا عند إضافة تاريخ، ما لم يكن للمنتج نوعه الخاص.",
+  "tr": "Ürünün kendi türü yoksa tarih eklerken ilk seçilen budur.",
+  "fr": "Proposé en premier à l'ajout d'une date, sauf si le produit a le sien.",
+  "es": "Se elige primero al añadir una fecha, salvo que el producto tenga el suyo.",
+  "de": "Wird beim Hinzufügen zuerst gewählt, außer der Artikel hat eine eigene."
+ },
+ "datesSettings.saveFailed": {
+  "en": "The setting could not be saved.",
+  "ar": "تعذّر حفظ الإعداد.",
+  "tr": "Ayar kaydedilemedi.",
+  "fr": "Impossible d'enregistrer le réglage.",
+  "es": "No se pudo guardar el ajuste.",
+  "de": "Die Einstellung konnte nicht gespeichert werden."
+ },
+ "reminders.rowTitle": {
+  "en": "Daily reminder",
+  "ar": "تذكير يومي",
+  "tr": "Günlük hatırlatma",
+  "fr": "Rappel quotidien",
+  "es": "Recordatorio diario",
+  "de": "Tägliche Erinnerung"
+ },
+ "reminders.off": {
+  "en": "Off",
+  "ar": "متوقف",
+  "tr": "Kapalı",
+  "fr": "Désactivé",
+  "es": "Desactivado",
+  "de": "Aus"
+ },
+ "reminders.onAt": {
+  "en": "Every day at {{time}}",
+  "ar": "كل يوم الساعة {{time}}",
+  "tr": "Her gün {{time}}",
+  "fr": "Chaque jour à {{time}}",
+  "es": "Cada día a las {{time}}",
+  "de": "Täglich um {{time}}"
+ },
+ "reminders.time": {
+  "en": "Time",
+  "ar": "الوقت",
+  "tr": "Saat",
+  "fr": "Heure",
+  "es": "Hora",
+  "de": "Uhrzeit"
+ },
+ "reminders.explainTitle": {
+  "en": "Allow notifications for reminders",
+  "ar": "اسمح بالإشعارات للتذكيرات",
+  "tr": "Hatırlatmalar için bildirimlere izin verin",
+  "fr": "Autorisez les notifications pour les rappels",
+  "es": "Permite las notificaciones para los recordatorios",
+  "de": "Mitteilungen für Erinnerungen erlauben"
+ },
+ "reminders.explainBody": {
+  "en": "TillExpiry creates the reminders on this phone. Nothing is sent to a server. The next screen is the phone's own permission question.",
+  "ar": "ينشئ TillExpiry التذكيرات على هذا الهاتف. لا يُرسل شيء إلى أي خادم. الشاشة التالية هي سؤال الإذن الخاص بالهاتف.",
+  "tr": "TillExpiry hatırlatmaları bu telefonda oluşturur. Hiçbir şey sunucuya gönderilmez. Sonraki ekran telefonun kendi izin sorusudur.",
+  "fr": "TillExpiry crée les rappels sur ce téléphone. Rien n'est envoyé à un serveur. L'écran suivant est la demande d'autorisation du téléphone.",
+  "es": "TillExpiry crea los recordatorios en este teléfono. No se envía nada a ningún servidor. La siguiente pantalla es la pregunta de permiso del teléfono.",
+  "de": "TillExpiry erstellt die Erinnerungen auf diesem Telefon. Nichts wird an einen Server gesendet. Als Nächstes fragt das Telefon selbst nach der Erlaubnis."
+ },
+ "reminders.enabled": {
+  "en": "Reminders are on.",
+  "ar": "التذكيرات مفعّلة.",
+  "tr": "Hatırlatmalar açık.",
+  "fr": "Rappels activés.",
+  "es": "Recordatorios activados.",
+  "de": "Erinnerungen sind an."
+ },
+ "reminders.deniedTitle": {
+  "en": "Notifications are off",
+  "ar": "الإشعارات متوقفة",
+  "tr": "Bildirimler kapalı",
+  "fr": "Notifications désactivées",
+  "es": "Notificaciones desactivadas",
+  "de": "Mitteilungen sind aus"
+ },
+ "reminders.deniedBody": {
+  "en": "Reminders need notifications. You can turn them on later in the phone's settings.",
+  "ar": "تحتاج التذكيرات إلى الإشعارات. يمكنك تفعيلها لاحقًا من إعدادات الهاتف.",
+  "tr": "Hatırlatmalar bildirim gerektirir. Daha sonra telefon ayarlarından açabilirsiniz.",
+  "fr": "Les rappels ont besoin des notifications. Vous pourrez les activer plus tard dans les réglages du téléphone.",
+  "es": "Los recordatorios necesitan notificaciones. Puedes activarlas más tarde en los ajustes del teléfono.",
+  "de": "Erinnerungen brauchen Mitteilungen. Du kannst sie später in den Telefoneinstellungen einschalten."
+ },
+ "reminders.blocked": {
+  "en": "Notifications are blocked for TillExpiry, so no reminder can appear.",
+  "ar": "الإشعارات محظورة لـ TillExpiry، لذا لن يظهر أي تذكير.",
+  "tr": "TillExpiry için bildirimler engelli, bu yüzden hatırlatma görünemez.",
+  "fr": "Les notifications sont bloquées pour TillExpiry : aucun rappel ne peut s'afficher.",
+  "es": "Las notificaciones están bloqueadas para TillExpiry, así que no aparecerá ningún recordatorio.",
+  "de": "Mitteilungen sind für TillExpiry blockiert, daher erscheint keine Erinnerung."
+ },
+ "reminders.howItWorks": {
+  "en": "A reminder appears only on days when something is expired, due that day or due soon (warning days: {{days}}). The phone may delay or silence it (battery saver, do not disturb), so open the app for the date check as well.",
+  "ar": "يظهر التذكير فقط في الأيام التي يوجد فيها شيء منتهٍ أو مستحق في ذلك اليوم أو قريبًا (أيام التنبيه: {{days}}). قد يؤخره الهاتف أو يكتمه (توفير البطارية، عدم الإزعاج)، لذا افتح التطبيق للفحص أيضًا.",
+  "tr": "Hatırlatma yalnızca süresi geçen, o gün veya yakında dolan bir şey olduğunda görünür (uyarı günü: {{days}}). Telefon onu geciktirebilir veya susturabilir (pil tasarrufu, rahatsız etme); bu yüzden kontrol için uygulamayı da açın.",
+  "fr": "Un rappel n'apparaît que les jours où quelque chose est dépassé, arrive à date ce jour-là ou bientôt (jours d'alerte : {{days}}). Le téléphone peut le retarder ou le masquer (économie d'énergie, ne pas déranger) : ouvrez aussi l'application pour le contrôle.",
+  "es": "Solo aparece un recordatorio los días en que algo está caducado, vence ese día o pronto (días de aviso: {{days}}). El teléfono puede retrasarlo o silenciarlo (ahorro de batería, no molestar), así que abre también la app para la revisión.",
+  "de": "Eine Erinnerung erscheint nur an Tagen, an denen etwas abgelaufen, an dem Tag oder bald fällig ist (Warntage: {{days}}). Das Telefon kann sie verzögern oder stummschalten (Energiesparen, Nicht stören) – öffne die App also auch selbst zur Kontrolle."
+ },
+ "reminders.channelName": {
+  "en": "Date reminders",
+  "ar": "تذكيرات التواريخ",
+  "tr": "Tarih hatırlatmaları",
+  "fr": "Rappels de dates",
+  "es": "Recordatorios de fechas",
+  "de": "Datums-Erinnerungen"
+ },
+ "reminders.title": {
+  "en": "Date check",
+  "ar": "فحص التواريخ",
+  "tr": "Tarih kontrolü",
+  "fr": "Contrôle des dates",
+  "es": "Revisión de fechas",
+  "de": "Datumskontrolle"
+ },
+ "reminders.partExpired": {
+  "en": "Expired: {{count}}",
+  "ar": "منتهية: {{count}}",
+  "tr": "Süresi geçmiş: {{count}}",
+  "fr": "Dépassées : {{count}}",
+  "es": "Caducadas: {{count}}",
+  "de": "Abgelaufen: {{count}}"
+ },
+ "reminders.partToday": {
+  "en": "Due today: {{count}}",
+  "ar": "تنتهي اليوم: {{count}}",
+  "tr": "Bugün doluyor: {{count}}",
+  "fr": "Aujourd'hui : {{count}}",
+  "es": "Vencen hoy: {{count}}",
+  "de": "Heute fällig: {{count}}"
+ },
+ "reminders.partSoon": {
+  "en": "Due soon: {{count}}",
+  "ar": "قريبًا: {{count}}",
+  "tr": "Yakında: {{count}}",
+  "fr": "Bientôt : {{count}}",
+  "es": "Pronto: {{count}}",
+  "de": "Bald fällig: {{count}}"
+ },
+ "more.datesGroup": {
+  "en": "Dates",
+  "ar": "التواريخ",
+  "tr": "Tarihler",
+  "fr": "Dates",
+  "es": "Fechas",
+  "de": "Daten"
+ },
+ "more.checkSub": {
+  "en": "Walk the shelves with today's list",
+  "ar": "تجوّل بين الرفوف بقائمة اليوم",
+  "tr": "Bugünkü listeyle rafları dolaşın",
+  "fr": "Parcourez les rayons avec la liste du jour",
+  "es": "Recorre los estantes con la lista de hoy",
+  "de": "Mit der heutigen Liste durch die Regale"
+ },
+ "more.reportsSub": {
+  "en": "Sold, reduced and thrown away",
+  "ar": "المباع والمخفّض والمتلف",
+  "tr": "Satılan, indirilen ve atılan",
+  "fr": "Vendu, démarqué et jeté",
+  "es": "Vendido, rebajado y desechado",
+  "de": "Verkauft, reduziert und entsorgt"
+ },
+ "more.importSub": {
+  "en": "Products and dates from a CSV file",
+  "ar": "منتجات وتواريخ من ملف CSV",
+  "tr": "CSV dosyasından ürünler ve tarihler",
+  "fr": "Produits et dates depuis un CSV",
+  "es": "Productos y fechas desde un CSV",
+  "de": "Artikel und Daten aus einer CSV-Datei"
+ },
+ "backup.counts.openDates": {
+  "en": "Dates on the shelf",
+  "ar": "التواريخ على الرف",
+  "tr": "Raftaki tarihler",
+  "fr": "Dates en rayon",
+  "es": "Fechas en el estante",
+  "de": "Daten im Regal"
+ },
+ "backup.counts.history": {
+  "en": "Closed dates",
+  "ar": "تواريخ مغلقة",
+  "tr": "Kapanan tarihler",
+  "fr": "Dates clôturées",
+  "es": "Fechas cerradas",
+  "de": "Abgeschlossene Daten"
+ },
+ "settings.proTitle": {
+  "en": "TillExpiry Pro",
+  "ar": "TillExpiry Pro",
+  "tr": "TillExpiry Pro",
+  "fr": "TillExpiry Pro",
+  "es": "TillExpiry Pro",
+  "de": "TillExpiry Pro"
+ },
+ "settings.proDesc": {
+  "en": "Waste report, history export, check sheet and unlimited products",
+  "ar": "تقرير الهدر وتصدير السجل وورقة الفحص ومنتجات غير محدودة",
+  "tr": "Fire raporu, geçmiş dışa aktarma, kontrol listesi ve sınırsız ürün",
+  "fr": "Rapport des pertes, export de l'historique, fiche de contrôle et produits illimités",
+  "es": "Informe de mermas, exportar historial, hoja de revisión y productos ilimitados",
+  "de": "Abfallbericht, Verlaufsexport, Prüfliste und unbegrenzte Artikel"
+ },
+ "settings.proActive": {
+  "en": "TillExpiry Pro is active",
+  "ar": "TillExpiry Pro مفعّل",
+  "tr": "TillExpiry Pro etkin",
+  "fr": "TillExpiry Pro est actif",
+  "es": "TillExpiry Pro está activo",
+  "de": "TillExpiry Pro ist aktiv"
+ },
+ "settings.appTagline": {
+  "en": "Expiry dates, under control",
+  "ar": "تواريخ الصلاحية تحت السيطرة",
+  "tr": "Son kullanma tarihleri kontrol altında",
+  "fr": "Les dates de péremption sous contrôle",
+  "es": "Las fechas de caducidad, bajo control",
+  "de": "Ablaufdaten im Griff"
+ },
+ "settings.dataOnDeviceSub": {
+  "en": "Your products and dates stay with you",
+  "ar": "منتجاتك وتواريخك تبقى معك",
+  "tr": "Ürünleriniz ve tarihleriniz sizde kalır",
+  "fr": "Vos produits et vos dates restent chez vous",
+  "es": "Tus productos y fechas se quedan contigo",
+  "de": "Deine Artikel und Daten bleiben bei dir"
+ },
+ "settings.noAccountRequiredSub": {
+  "en": "Open the app and start adding dates straight away",
+  "ar": "افتح التطبيق وابدأ بإضافة التواريخ فورًا",
+  "tr": "Uygulamayı açın ve hemen tarih eklemeye başlayın",
+  "fr": "Ouvrez l'application et ajoutez vos dates tout de suite",
+  "es": "Abre la app y empieza a añadir fechas enseguida",
+  "de": "App öffnen und sofort Daten hinzufügen"
+ },
+ "settings.calculationsLocalOnly": {
+  "en": "Your date records stay on your device",
+  "ar": "سجلات التواريخ تبقى على جهازك",
+  "tr": "Tarih kayıtlarınız cihazınızda kalır",
+  "fr": "Vos relevés de dates restent sur votre appareil",
+  "es": "Tus registros de fechas se quedan en tu dispositivo",
+  "de": "Deine Datumsaufzeichnungen bleiben auf deinem Gerät"
+ },
+ "settings.calculationsLocalOnlySub": {
+  "en": "Your products and dates are not sent to TillExpiry servers",
+  "ar": "لا تُرسل منتجاتك وتواريخك إلى خوادم TillExpiry",
+  "tr": "Ürünleriniz ve tarihleriniz TillExpiry sunucularına gönderilmez",
+  "fr": "Vos produits et dates ne sont pas envoyés aux serveurs de TillExpiry",
+  "es": "Tus productos y fechas no se envían a servidores de TillExpiry",
+  "de": "Deine Artikel und Daten werden nicht an TillExpiry-Server gesendet"
+ },
+ "settings.offlineInfoMsg": {
+  "en": "Your products, dates and history stay on your device and are not sent to TillExpiry servers. Purchases are processed by Apple or Google and RevenueCat. Files leave TillExpiry only when you choose to import, export, share or back them up.",
+  "ar": "تبقى منتجاتك وتواريخك وسجلك على جهازك ولا تُرسل إلى خوادم TillExpiry. تتم المشتريات عبر Apple أو Google وRevenueCat. لا تغادر الملفات TillExpiry إلا عندما تختار استيرادها أو تصديرها أو مشاركتها أو نسخها احتياطيًا.",
+  "tr": "Ürünleriniz, tarihleriniz ve geçmişiniz cihazınızda kalır ve TillExpiry sunucularına gönderilmez. Satın almalar Apple veya Google ve RevenueCat tarafından işlenir. Dosyalar yalnızca içe aktarma, dışa aktarma, paylaşma veya yedekleme seçtiğinizde TillExpiry'den çıkar.",
+  "fr": "Vos produits, dates et historique restent sur votre appareil et ne sont pas envoyés aux serveurs de TillExpiry. Les achats sont traités par Apple ou Google et RevenueCat. Les fichiers ne quittent TillExpiry que si vous choisissez de les importer, exporter, partager ou sauvegarder.",
+  "es": "Tus productos, fechas e historial se quedan en tu dispositivo y no se envían a servidores de TillExpiry. Las compras las procesan Apple o Google y RevenueCat. Los archivos solo salen de TillExpiry cuando eliges importarlos, exportarlos, compartirlos o hacer una copia.",
+  "de": "Deine Artikel, Daten und dein Verlauf bleiben auf deinem Gerät und werden nicht an TillExpiry-Server gesendet. Käufe werden von Apple oder Google und RevenueCat abgewickelt. Dateien verlassen TillExpiry nur, wenn du sie importierst, exportierst, teilst oder sicherst."
+ },
+ "settings.backupSecureNote": {
+  "en": "Backups contain your products, dates, history and settings, encrypted with your passphrase. Your Pro purchase and reminders on this phone are not included.",
+  "ar": "تحتوي النسخ الاحتياطية على منتجاتك وتواريخك وسجلك وإعداداتك مشفّرة بعبارة المرور. لا تتضمن شراء Pro أو التذكيرات على هذا الهاتف.",
+  "tr": "Yedekler ürünlerinizi, tarihlerinizi, geçmişinizi ve ayarlarınızı parolanızla şifreli olarak içerir. Pro satın alımınız ve bu telefondaki hatırlatmalar dahil değildir.",
+  "fr": "Les sauvegardes contiennent vos produits, dates, historique et réglages, chiffrés avec votre phrase secrète. Votre achat Pro et les rappels de ce téléphone n'y figurent pas.",
+  "es": "Las copias contienen tus productos, fechas, historial y ajustes, cifrados con tu frase de paso. No incluyen tu compra Pro ni los recordatorios de este teléfono.",
+  "de": "Sicherungen enthalten deine Artikel, Daten, deinen Verlauf und deine Einstellungen, verschlüsselt mit deinem Passwort. Dein Pro-Kauf und die Erinnerungen auf diesem Telefon sind nicht enthalten."
+ },
+ "settings.defaultsNote": {
+  "en": "The currency is used for product prices and reductions. A saved price keeps its own currency; nothing is converted.",
+  "ar": "تُستخدم العملة لأسعار المنتجات والتخفيضات. يحتفظ السعر المحفوظ بعملته؛ لا يتم أي تحويل.",
+  "tr": "Para birimi ürün fiyatları ve indirimler için kullanılır. Kayıtlı bir fiyat kendi para birimini korur; dönüştürme yapılmaz.",
+  "fr": "La devise sert aux prix des produits et aux démarques. Un prix enregistré garde sa devise ; rien n'est converti.",
+  "es": "La moneda se usa para precios de productos y rebajas. Un precio guardado conserva su moneda; no se convierte nada.",
+  "de": "Die Währung gilt für Artikelpreise und Reduzierungen. Ein gespeicherter Preis behält seine Währung; nichts wird umgerechnet."
+ },
+ "billing.proSummary": {
+  "en": "The waste and reduction report, history export, the printable date-check sheet and unlimited products. Pay once, keep forever. No subscription.",
+  "ar": "تقرير الهدر والتخفيضات، وتصدير السجل، وورقة فحص التواريخ للطباعة، ومنتجات غير محدودة. ادفع مرة واحدة واحتفظ به للأبد. بلا اشتراك.",
+  "tr": "Fire ve indirim raporu, geçmiş dışa aktarma, yazdırılabilir tarih kontrol listesi ve sınırsız ürün. Bir kez ödeyin, sonsuza dek kullanın. Abonelik yok.",
+  "fr": "Le rapport des pertes et démarques, l'export de l'historique, la fiche de contrôle imprimable et des produits illimités. Payez une fois, gardez-le pour toujours. Sans abonnement.",
+  "es": "El informe de mermas y rebajas, exportar el historial, la hoja de revisión imprimible y productos ilimitados. Paga una vez y es tuyo para siempre. Sin suscripción.",
+  "de": "Abfall- und Reduzierungsbericht, Verlaufsexport, druckbare Prüfliste und unbegrenzte Artikel. Einmal zahlen, für immer behalten. Kein Abo."
+ },
+ "billing.limit.products.keepsWorking": {
+  "en": "Every product and date you already saved keeps working: check, reduce, export and back it up. Pro removes the limit.",
+  "ar": "كل منتج وتاريخ حفظته يواصل العمل: افحصه وخفّضه وصدّره وانسخه احتياطيًا. Pro يزيل الحد.",
+  "tr": "Kaydettiğiniz her ürün ve tarih çalışmaya devam eder: kontrol edin, indirin, dışa aktarın ve yedekleyin. Pro sınırı kaldırır.",
+  "fr": "Chaque produit et chaque date déjà enregistrés continuent de fonctionner : contrôle, démarque, export et sauvegarde. Pro supprime la limite.",
+  "es": "Cada producto y fecha que ya guardaste sigue funcionando: revisar, rebajar, exportar y hacer copia. Pro quita el límite.",
+  "de": "Jeder gespeicherte Artikel und jedes Datum funktioniert weiter: prüfen, reduzieren, exportieren und sichern. Pro hebt die Grenze auf."
+ },
+ "billing.limit.proFeature.keepsWorking": {
+  "en": "Everything you already saved keeps working. Pro adds the waste report, history export, the printable check sheet and unlimited products.",
+  "ar": "كل ما حفظته يواصل العمل. يضيف Pro تقرير الهدر وتصدير السجل وورقة الفحص للطباعة ومنتجات غير محدودة.",
+  "tr": "Kaydettiğiniz her şey çalışmaya devam eder. Pro; fire raporu, geçmiş dışa aktarma, yazdırılabilir kontrol listesi ve sınırsız ürün ekler.",
+  "fr": "Tout ce que vous avez enregistré continue de fonctionner. Pro ajoute le rapport des pertes, l'export de l'historique, la fiche de contrôle imprimable et des produits illimités.",
+  "es": "Todo lo que ya guardaste sigue funcionando. Pro añade el informe de mermas, exportar el historial, la hoja de revisión imprimible y productos ilimitados.",
+  "de": "Alles Gespeicherte funktioniert weiter. Pro bietet Abfallbericht, Verlaufsexport, druckbare Prüfliste und unbegrenzte Artikel."
+ },
+ "about.description": {
+  "en": "{{app}} keeps track of use-by and best-before dates for shops and small businesses: scan a product, add its date, and see what runs out today and in the next few days. Your products and dates are stored on your device.",
+  "ar": "يتابع {{app}} تواريخ «يُستخدم قبل» و«يُفضّل قبل» للمتاجر والأعمال الصغيرة: امسح المنتج وأضف تاريخه وشاهد ما ينتهي اليوم وخلال الأيام القادمة. تُخزّن منتجاتك وتواريخك على جهازك.",
+  "tr": "{{app}}, dükkânlar ve küçük işletmeler için son kullanma ve tavsiye edilen tüketim tarihlerini takip eder: ürünü tarayın, tarihini ekleyin, bugün ve önümüzdeki günlerde dolacakları görün. Ürünleriniz ve tarihleriniz cihazınızda saklanır.",
+  "fr": "{{app}} suit les dates limites (DLC et DDM) pour les commerces et petites entreprises : scannez un produit, ajoutez sa date et voyez ce qui arrive à date aujourd'hui et les jours suivants. Vos produits et dates sont stockés sur votre appareil.",
+  "es": "{{app}} controla las fechas de caducidad y de consumo preferente para tiendas y pequeños negocios: escanea un producto, añade su fecha y mira lo que vence hoy y en los próximos días. Tus productos y fechas se guardan en tu dispositivo.",
+  "de": "{{app}} behält Verbrauchs- und Mindesthaltbarkeitsdaten für Läden und kleine Betriebe im Blick: Artikel scannen, Datum hinzufügen und sehen, was heute und in den nächsten Tagen abläuft. Deine Artikel und Daten werden auf deinem Gerät gespeichert."
+ },
+ "backup.subtitle": {
+  "en": "Your products, dates and settings in one encrypted file",
+  "ar": "منتجاتك وتواريخك وإعداداتك في ملف مشفّر واحد",
+  "tr": "Ürünleriniz, tarihleriniz ve ayarlarınız tek bir şifreli dosyada",
+  "fr": "Vos produits, dates et réglages dans un seul fichier chiffré",
+  "es": "Tus productos, fechas y ajustes en un solo archivo cifrado",
+  "de": "Deine Artikel, Daten und Einstellungen in einer verschlüsselten Datei"
+ },
+ "backup.restoreFooter": {
+  "en": "Restoring replaces the products, dates and settings on this phone with the file's. If it is interrupted, your current data comes back on the next launch.",
+  "ar": "الاستعادة تستبدل المنتجات والتواريخ والإعدادات على هذا الهاتف بما في الملف. إن انقطعت، تعود بياناتك الحالية عند التشغيل التالي.",
+  "tr": "Geri yükleme bu telefondaki ürünleri, tarihleri ve ayarları dosyadakilerle değiştirir. Yarıda kesilirse mevcut verileriniz bir sonraki açılışta geri gelir.",
+  "fr": "La restauration remplace les produits, dates et réglages de ce téléphone par ceux du fichier. Si elle est interrompue, vos données actuelles reviennent au prochain lancement.",
+  "es": "Restaurar sustituye los productos, fechas y ajustes de este teléfono por los del archivo. Si se interrumpe, tus datos actuales vuelven al siguiente inicio.",
+  "de": "Die Wiederherstellung ersetzt Artikel, Daten und Einstellungen auf diesem Telefon durch die der Datei. Wird sie unterbrochen, sind deine aktuellen Daten beim nächsten Start wieder da."
+ },
+ "backup.chooseFileHint": {
+  "en": "TillExpiry_Backup_….json",
+  "ar": "TillExpiry_Backup_….json",
+  "tr": "TillExpiry_Backup_….json",
+  "fr": "TillExpiry_Backup_….json",
+  "es": "TillExpiry_Backup_….json",
+  "de": "TillExpiry_Backup_….json"
+ },
+ "backup.restoreConfirm": {
+  "en": "Everything in your products, dates and settings will be replaced by the backup. Make a backup of the current data first if you might need it.",
+  "ar": "سيُستبدل كل ما في منتجاتك وتواريخك وإعداداتك بالنسخة الاحتياطية. أنشئ نسخة من البيانات الحالية أولًا إن كنت قد تحتاجها.",
+  "tr": "Ürünlerinizdeki, tarihlerinizdeki ve ayarlarınızdaki her şey yedekle değiştirilecek. Gerekebilecekse önce mevcut verilerin yedeğini alın.",
+  "fr": "Tous vos produits, dates et réglages seront remplacés par la sauvegarde. Sauvegardez d'abord les données actuelles si vous pourriez en avoir besoin.",
+  "es": "Todo lo de tus productos, fechas y ajustes se sustituirá por la copia. Haz antes una copia de los datos actuales si podrías necesitarlos.",
+  "de": "Alle Artikel, Daten und Einstellungen werden durch die Sicherung ersetzt. Sichere zuerst die aktuellen Daten, falls du sie brauchen könntest."
+ },
+ "backup.errors.too-large": {
+  "en": "This file is too large to be a TillExpiry backup.",
+  "ar": "هذا الملف أكبر من أن يكون نسخة احتياطية لـ TillExpiry.",
+  "tr": "Bu dosya TillExpiry yedeği olamayacak kadar büyük.",
+  "fr": "Ce fichier est trop volumineux pour être une sauvegarde TillExpiry.",
+  "es": "Este archivo es demasiado grande para ser una copia de TillExpiry.",
+  "de": "Diese Datei ist zu groß für eine TillExpiry-Sicherung."
+ },
+ "backup.errors.wrong-format": {
+  "en": "This file is a backup from another app, not TillExpiry.",
+  "ar": "هذا الملف نسخة احتياطية من تطبيق آخر، وليس TillExpiry.",
+  "tr": "Bu dosya TillExpiry'nin değil, başka bir uygulamanın yedeği.",
+  "fr": "Ce fichier est une sauvegarde d'une autre application, pas de TillExpiry.",
+  "es": "Este archivo es una copia de otra app, no de TillExpiry.",
+  "de": "Diese Datei ist eine Sicherung einer anderen App, nicht von TillExpiry."
+ },
+ "backup.errors.unsupported-version": {
+  "en": "This backup was made by a newer version of TillExpiry. Update the app and try again.",
+  "ar": "أُنشئت هذه النسخة بإصدار أحدث من TillExpiry. حدّث التطبيق وحاول مجددًا.",
+  "tr": "Bu yedek TillExpiry'nin daha yeni bir sürümüyle alınmış. Uygulamayı güncelleyip tekrar deneyin.",
+  "fr": "Cette sauvegarde provient d'une version plus récente de TillExpiry. Mettez l'application à jour et réessayez.",
+  "es": "Esta copia se hizo con una versión más nueva de TillExpiry. Actualiza la app y vuelve a intentarlo.",
+  "de": "Diese Sicherung stammt von einer neueren TillExpiry-Version. Aktualisiere die App und versuche es erneut."
+ },
+ "legal.privacy.p1": {
+  "en": "Your products, dates, history and settings are stored only on your device. {{app}} has no account system and no server that holds your data.",
+  "ar": "تُخزّن منتجاتك وتواريخك وسجلك وإعداداتك على جهازك فقط. لا يملك {{app}} نظام حسابات ولا خادمًا يحتفظ ببياناتك.",
+  "tr": "Ürünleriniz, tarihleriniz, geçmişiniz ve ayarlarınız yalnızca cihazınızda saklanır. {{app}}'nin hesap sistemi ve verilerinizi tutan bir sunucusu yoktur.",
+  "fr": "Vos produits, dates, historique et réglages sont stockés uniquement sur votre appareil. {{app}} n'a ni système de compte ni serveur qui conserve vos données.",
+  "es": "Tus productos, fechas, historial y ajustes se guardan solo en tu dispositivo. {{app}} no tiene sistema de cuentas ni servidor que guarde tus datos.",
+  "de": "Deine Artikel, Daten, dein Verlauf und deine Einstellungen werden nur auf deinem Gerät gespeichert. {{app}} hat kein Kontosystem und keinen Server mit deinen Daten."
+ },
+ "legal.privacy.p2": {
+  "en": "The app contains no analytics, advertising or crash-reporting libraries. Your products, dates and history stay on your device and are not sent to TillExpiry servers.",
+  "ar": "لا يحتوي التطبيق على مكتبات تحليلات أو إعلانات أو تقارير أعطال. تبقى منتجاتك وتواريخك وسجلك على جهازك ولا تُرسل إلى خوادم TillExpiry.",
+  "tr": "Uygulamada analiz, reklam veya çökme raporlama kitaplığı yoktur. Ürünleriniz, tarihleriniz ve geçmişiniz cihazınızda kalır ve TillExpiry sunucularına gönderilmez.",
+  "fr": "L'application ne contient aucune bibliothèque d'analyse, de publicité ou de rapport de plantage. Vos produits, dates et historique restent sur votre appareil et ne sont pas envoyés aux serveurs de TillExpiry.",
+  "es": "La app no contiene bibliotecas de analítica, publicidad ni informes de fallos. Tus productos, fechas e historial se quedan en tu dispositivo y no se envían a servidores de TillExpiry.",
+  "de": "Die App enthält keine Analyse-, Werbe- oder Absturzbericht-Bibliotheken. Deine Artikel, Daten und dein Verlauf bleiben auf deinem Gerät und werden nicht an TillExpiry-Server gesendet."
+ },
+ "legal.privacy.l6": {
+  "en": "Notifications – only if you turn on the daily reminder. The reminders are created on the device; nothing is sent to a server.",
+  "ar": "الإشعارات – فقط إذا فعّلت التذكير اليومي. تُنشأ التذكيرات على الجهاز؛ لا يُرسل شيء إلى أي خادم.",
+  "tr": "Bildirimler – yalnızca günlük hatırlatmayı açarsanız. Hatırlatmalar cihazda oluşturulur; hiçbir şey sunucuya gönderilmez.",
+  "fr": "Notifications – uniquement si vous activez le rappel quotidien. Les rappels sont créés sur l'appareil ; rien n'est envoyé à un serveur.",
+  "es": "Notificaciones – solo si activas el recordatorio diario. Los recordatorios se crean en el dispositivo; no se envía nada a ningún servidor.",
+  "de": "Mitteilungen – nur wenn du die tägliche Erinnerung einschaltest. Die Erinnerungen werden auf dem Gerät erstellt; nichts wird an einen Server gesendet."
+ },
+ "legal.privacy.p8": {
+  "en": "Do not send your product lists, dates or backup files to support unless they are specifically requested and have been redacted. Never send backup passphrases, bank details or store account passwords.",
+  "ar": "لا ترسل قوائم منتجاتك أو تواريخك أو ملفات النسخ الاحتياطي إلى الدعم ما لم تُطلب تحديدًا وتُنقّح. لا ترسل أبدًا عبارات مرور النسخ الاحتياطي أو بيانات البنك أو كلمات مرور حساب المتجر.",
+  "tr": "Özellikle istenmedikçe ve karartılmadıkça ürün listelerinizi, tarihlerinizi veya yedek dosyalarınızı desteğe göndermeyin. Yedek parolalarını, banka bilgilerini veya mağaza hesabı şifrelerini asla göndermeyin.",
+  "fr": "N'envoyez pas vos listes de produits, vos dates ou vos sauvegardes au support sauf demande précise et après les avoir expurgées. N'envoyez jamais de phrase secrète de sauvegarde, de coordonnées bancaires ou de mot de passe de compte store.",
+  "es": "No envíes tus listas de productos, fechas o copias al soporte salvo que se pidan expresamente y estén anonimizadas. Nunca envíes frases de paso de copias, datos bancarios ni contraseñas de la tienda de apps.",
+  "de": "Sende deine Artikellisten, Daten oder Sicherungsdateien nur auf ausdrückliche Anfrage und geschwärzt an den Support. Sende niemals Sicherungspasswörter, Bankdaten oder Store-Passwörter."
+ },
+ "legal.terms.p1": {
+  "en": "{{app}} records the dates you enter for your products and reminds you of them. It does not read dates from packs by itself, does not connect to your till and does not decide what may be sold.",
+  "ar": "يسجّل {{app}} التواريخ التي تدخلها لمنتجاتك ويذكّرك بها. لا يقرأ التواريخ من العبوات بنفسه ولا يتصل بنظام الكاشير ولا يقرر ما يجوز بيعه.",
+  "tr": "{{app}}, ürünleriniz için girdiğiniz tarihleri kaydeder ve size hatırlatır. Ambalajdaki tarihleri kendisi okumaz, kasanıza bağlanmaz ve neyin satılabileceğine karar vermez.",
+  "fr": "{{app}} enregistre les dates que vous saisissez pour vos produits et vous les rappelle. Elle ne lit pas elle-même les dates sur les emballages, ne se connecte pas à votre caisse et ne décide pas de ce qui peut être vendu.",
+  "es": "{{app}} registra las fechas que introduces para tus productos y te las recuerda. No lee las fechas de los envases por sí sola, no se conecta a tu caja y no decide qué se puede vender.",
+  "de": "{{app}} erfasst die Daten, die du für deine Artikel eingibst, und erinnert dich daran. Die App liest keine Daten von Packungen, verbindet sich nicht mit deiner Kasse und entscheidet nicht, was verkauft werden darf."
+ },
+ "legal.terms.n1": {
+  "en": "Food safety and date-labelling rules differ by country and product. You remain responsible for removing unsafe or out-of-date stock and for following the rules that apply to your business.",
+  "ar": "تختلف قواعد سلامة الغذاء ووسم التواريخ حسب البلد والمنتج. تبقى مسؤولًا عن إزالة المخزون غير الآمن أو منتهي الصلاحية وعن اتباع القواعد المطبقة على نشاطك.",
+  "tr": "Gıda güvenliği ve tarih etiketleme kuralları ülkeye ve ürüne göre değişir. Güvensiz veya tarihi geçmiş ürünleri kaldırmak ve işletmenize uygulanan kurallara uymak sizin sorumluluğunuzdadır.",
+  "fr": "Les règles d'hygiène alimentaire et d'étiquetage des dates varient selon le pays et le produit. Vous restez responsable du retrait des produits dangereux ou périmés et du respect des règles applicables à votre activité.",
+  "es": "Las normas de seguridad alimentaria y de etiquetado de fechas varían según el país y el producto. Sigues siendo responsable de retirar el stock no seguro o caducado y de cumplir las normas que se apliquen a tu negocio.",
+  "de": "Lebensmittelsicherheits- und Datumskennzeichnungsregeln unterscheiden sich je nach Land und Produkt. Du bleibst dafür verantwortlich, unsichere oder abgelaufene Ware zu entfernen und die für deinen Betrieb geltenden Regeln einzuhalten."
+ },
+ "legal.terms.p3": {
+  "en": "Your business data is stored on your device and is not sent to TillExpiry servers. You are responsible for keeping backups and for the files you export or share.",
+  "ar": "تُخزّن بيانات نشاطك على جهازك ولا تُرسل إلى خوادم TillExpiry. أنت مسؤول عن حفظ النسخ الاحتياطية وعن الملفات التي تصدّرها أو تشاركها.",
+  "tr": "İşletme verileriniz cihazınızda saklanır ve TillExpiry sunucularına gönderilmez. Yedekleri saklamak ve dışa aktardığınız veya paylaştığınız dosyalar sizin sorumluluğunuzdadır.",
+  "fr": "Vos données professionnelles sont stockées sur votre appareil et ne sont pas envoyées aux serveurs de TillExpiry. Vous êtes responsable de vos sauvegardes et des fichiers que vous exportez ou partagez.",
+  "es": "Los datos de tu negocio se guardan en tu dispositivo y no se envían a servidores de TillExpiry. Eres responsable de guardar copias y de los archivos que exportas o compartes.",
+  "de": "Deine Geschäftsdaten werden auf deinem Gerät gespeichert und nicht an TillExpiry-Server gesendet. Du bist für Sicherungen und für exportierte oder geteilte Dateien verantwortlich."
+ },
+ "legal.terms.p5": {
+  "en": "The app is provided as is. To the extent permitted by law, {{publisher}} is not liable for losses arising from decisions made using the app, including missed or wrong dates, reminders that did not appear, lost data or lost profit. Nothing in these terms limits liability that cannot be limited by law.",
+  "ar": "يُقدَّم التطبيق كما هو. إلى الحد الذي يسمح به القانون، لا تتحمل {{publisher}} المسؤولية عن الخسائر الناتجة عن قرارات اتُّخذت باستخدام التطبيق، بما في ذلك التواريخ الفائتة أو الخاطئة، أو التذكيرات التي لم تظهر، أو فقدان البيانات أو الأرباح. لا شيء في هذه الشروط يحدّ من مسؤولية لا يجوز الحد منها قانونًا.",
+  "tr": "Uygulama olduğu gibi sunulur. Yasaların izin verdiği ölçüde {{publisher}}, kaçırılan veya yanlış tarihler, görünmeyen hatırlatmalar, veri veya kâr kaybı dahil, uygulama kullanılarak alınan kararlardan doğan kayıplardan sorumlu değildir. Bu koşullardaki hiçbir şey yasayla sınırlanamayan sorumluluğu sınırlamaz.",
+  "fr": "L'application est fournie en l'état. Dans les limites permises par la loi, {{publisher}} n'est pas responsable des pertes résultant de décisions prises avec l'application, notamment des dates manquées ou erronées, des rappels non affichés, de la perte de données ou de bénéfices. Rien dans ces conditions ne limite une responsabilité qui ne peut l'être légalement.",
+  "es": "La app se ofrece tal cual. En la medida en que lo permita la ley, {{publisher}} no es responsable de las pérdidas derivadas de decisiones tomadas con la app, incluidas fechas omitidas o erróneas, recordatorios que no aparecieron, pérdida de datos o de beneficios. Nada en estos términos limita la responsabilidad que la ley no permite limitar.",
+  "de": "Die App wird so bereitgestellt, wie sie ist. Soweit gesetzlich zulässig, haftet {{publisher}} nicht für Verluste aus Entscheidungen, die mit der App getroffen wurden, einschließlich verpasster oder falscher Daten, nicht erschienener Erinnerungen, Daten- oder Gewinnverlust. Nichts in diesen Bedingungen beschränkt eine Haftung, die gesetzlich nicht beschränkt werden kann."
+ },
+ "legal.terms.p10": {
+  "en": "You are responsible for the accuracy of the products, dates and quantities you enter, and for checking your shelves yourself. The app only knows the dates you give it.",
+  "ar": "أنت مسؤول عن دقة المنتجات والتواريخ والكميات التي تدخلها، وعن فحص رفوفك بنفسك. لا يعرف التطبيق إلا التواريخ التي تعطيه إياها.",
+  "tr": "Girdiğiniz ürünlerin, tarihlerin ve adetlerin doğruluğundan ve raflarınızı kendiniz kontrol etmekten siz sorumlusunuz. Uygulama yalnızca verdiğiniz tarihleri bilir.",
+  "fr": "Vous êtes responsable de l'exactitude des produits, dates et quantités saisis, et du contrôle de vos rayons. L'application ne connaît que les dates que vous lui donnez.",
+  "es": "Eres responsable de la exactitud de los productos, fechas y cantidades que introduces y de revisar tus estantes tú mismo. La app solo conoce las fechas que le das.",
+  "de": "Du bist für die Richtigkeit der eingegebenen Artikel, Daten und Mengen verantwortlich und dafür, deine Regale selbst zu prüfen. Die App kennt nur die Daten, die du ihr gibst."
+ },
+ "legal.dataStorage.p1": {
+  "en": "Your products, dates, history and settings are stored locally on your device.",
+  "ar": "تُخزّن منتجاتك وتواريخك وسجلك وإعداداتك محليًا على جهازك.",
+  "tr": "Ürünleriniz, tarihleriniz, geçmişiniz ve ayarlarınız cihazınızda yerel olarak saklanır.",
+  "fr": "Vos produits, dates, historique et réglages sont stockés localement sur votre appareil.",
+  "es": "Tus productos, fechas, historial y ajustes se guardan localmente en tu dispositivo.",
+  "de": "Deine Artikel, Daten, dein Verlauf und deine Einstellungen werden lokal auf deinem Gerät gespeichert."
+ },
+ "legal.dataStorage.l4": {
+  "en": "Backup and export files contain your products and dates and should be stored securely and shared only with people you trust.",
+  "ar": "تحتوي ملفات النسخ الاحتياطي والتصدير على منتجاتك وتواريخك ويجب حفظها بأمان ومشاركتها فقط مع من تثق بهم.",
+  "tr": "Yedek ve dışa aktarma dosyaları ürünlerinizi ve tarihlerinizi içerir; güvenle saklanmalı ve yalnızca güvendiğiniz kişilerle paylaşılmalıdır.",
+  "fr": "Les fichiers de sauvegarde et d'export contiennent vos produits et dates ; conservez-les en sécurité et ne les partagez qu'avec des personnes de confiance.",
+  "es": "Los archivos de copia y exportación contienen tus productos y fechas; guárdalos de forma segura y compártelos solo con personas de confianza.",
+  "de": "Sicherungs- und Exportdateien enthalten deine Artikel und Daten; bewahre sie sicher auf und teile sie nur mit Personen, denen du vertraust."
+ },
+ "help.guide.firstDates.title": {
+  "en": "Your first dates",
+  "ar": "تواريخك الأولى",
+  "tr": "İlk tarihleriniz",
+  "fr": "Vos premières dates",
+  "es": "Tus primeras fechas",
+  "de": "Deine ersten Daten"
+ },
+ "help.guide.firstDates.l1": {
+  "en": "Choose the app language, then Today → Dates & reminders: how many days ahead counts as “due soon” and the kind of date you use most.",
+  "ar": "اختر لغة التطبيق، ثم اليوم ← التواريخ والتذكيرات: كم يومًا مسبقًا يُعد «قريبًا» ونوع التاريخ الأكثر استخدامًا.",
+  "tr": "Uygulama dilini seçin, sonra Bugün → Tarihler ve hatırlatıcılar: kaç gün önceden “yakında” sayılacağını ve en çok kullandığınız tarih türünü belirleyin.",
+  "fr": "Choisissez la langue, puis Aujourd'hui → Dates et rappels : combien de jours à l'avance comptent comme « bientôt » et le type de date le plus courant.",
+  "es": "Elige el idioma y luego Hoy → Fechas y recordatorios: cuántos días de antelación cuentan como «pronto» y el tipo de fecha que más usas.",
+  "de": "Wähle die Sprache, dann Heute → Daten & Erinnerungen: wie viele Tage vorher als „bald fällig“ gelten und welche Datumsart du meist nutzt."
+ },
+ "help.guide.firstDates.l2": {
+  "en": "Tap “Scan to add a date” and scan a product. For a new barcode, type the name once; next time the product is found by its code.",
+  "ar": "اضغط «امسح لإضافة تاريخ» وامسح منتجًا. للباركود الجديد اكتب الاسم مرة واحدة؛ في المرة التالية يُعثر على المنتج برمزه.",
+  "tr": "“Tarayıp tarih ekle”ye dokunup bir ürün tarayın. Yeni bir barkod için adı bir kez yazın; bir dahaki sefere ürün koduyla bulunur.",
+  "fr": "Touchez « Scanner et ajouter » et scannez un produit. Pour un nouveau code, saisissez le nom une fois ; la prochaine fois, le produit est retrouvé par son code.",
+  "es": "Toca «Escanear y añadir» y escanea un producto. Con un código nuevo, escribe el nombre una vez; la próxima vez se encuentra por su código.",
+  "de": "Tippe auf „Scannen & Datum“ und scanne einen Artikel. Bei einem neuen Barcode gibst du einmal den Namen ein; danach wird der Artikel über den Code gefunden."
+ },
+ "help.guide.firstDates.l3": {
+  "en": "Pick the date printed on the pack and its kind (use by, best before, sell by, display until). The count and place are optional but make the date check faster.",
+  "ar": "اختر التاريخ المطبوع على العبوة ونوعه (يُستخدم قبل، يُفضّل قبل، يُباع قبل، يُعرض حتى). العدد والمكان اختياريان لكنهما يسرّعان الفحص.",
+  "tr": "Ambalajdaki tarihi ve türünü seçin (son kullanma, tavsiye edilen, son satış, teşhir sonu). Adet ve yer isteğe bağlıdır ama kontrolü hızlandırır.",
+  "fr": "Choisissez la date imprimée et son type (à consommer jusqu'au, de préférence avant, à vendre avant, présenter jusqu'au). Quantité et emplacement sont facultatifs mais accélèrent le contrôle.",
+  "es": "Elige la fecha impresa y su tipo (caducidad, consumo preferente, vender antes de, exponer hasta). La cantidad y el lugar son opcionales, pero agilizan la revisión.",
+  "de": "Wähle das aufgedruckte Datum und seine Art (verbrauchen bis, mindestens haltbar bis, verkaufen bis, auslegen bis). Menge und Platz sind optional, beschleunigen aber die Kontrolle."
+ },
+ "help.guide.firstDates.l4": {
+  "en": "The same product with the same date is kept as one line: adding it again adds to the count.",
+  "ar": "المنتج نفسه بالتاريخ نفسه يُحفظ كسطر واحد: إضافته مجددًا تزيد العدد.",
+  "tr": "Aynı tarihli aynı ürün tek satır olarak tutulur: tekrar eklemek adedi artırır.",
+  "fr": "Un même produit à la même date reste une seule ligne : l'ajouter à nouveau augmente la quantité.",
+  "es": "El mismo producto con la misma fecha se guarda como una sola línea: añadirlo otra vez suma a la cantidad.",
+  "de": "Derselbe Artikel mit demselben Datum bleibt eine Zeile: Erneutes Hinzufügen erhöht die Menge."
+ },
+ "help.guide.scanning.title": {
+  "en": "Scanning barcodes",
+  "ar": "مسح الباركود",
+  "tr": "Barkod tarama",
+  "fr": "Scanner les codes-barres",
+  "es": "Escanear códigos",
+  "de": "Barcodes scannen"
+ },
+ "help.guide.scanning.l1": {
+  "en": "Scan to add a date keeps the camera open: save the date and you are back for the next product.",
+  "ar": "المسح لإضافة تاريخ يُبقي الكاميرا مفتوحة: احفظ التاريخ وستعود للمنتج التالي.",
+  "tr": "Tarih eklemek için tarama kamerayı açık tutar: tarihi kaydedin ve sıradaki ürüne dönün.",
+  "fr": "Scanner et ajouter garde l'appareil photo ouvert : enregistrez la date et passez au produit suivant.",
+  "es": "Escanear y añadir mantiene la cámara abierta: guarda la fecha y vuelves para el siguiente producto.",
+  "de": "Beim Scannen für ein Datum bleibt die Kamera offen: Datum speichern und weiter zum nächsten Artikel."
+ },
+ "help.guide.scanning.l2": {
+  "en": "The camera is used only to read the code. Use the torch in dim fridges, or type the code instead.",
+  "ar": "تُستخدم الكاميرا فقط لقراءة الرمز. استخدم المصباح في الثلاجات المعتمة أو اكتب الرمز.",
+  "tr": "Kamera yalnızca kodu okumak için kullanılır. Loş dolaplarda feneri kullanın ya da kodu yazın.",
+  "fr": "L'appareil photo sert uniquement à lire le code. Utilisez la lampe dans les frigos sombres, ou saisissez le code.",
+  "es": "La cámara solo se usa para leer el código. Usa la linterna en neveras oscuras o escribe el código.",
+  "de": "Die Kamera liest nur den Code. Nutze in dunklen Kühlregalen die Taschenlampe oder tippe den Code ein."
+ },
+ "help.guide.scanning.l3": {
+  "en": "A 12-digit UPC and the same code with a leading zero are treated as one product, so a product is never added twice.",
+  "ar": "يُعامل رمز UPC المكوّن من 12 رقمًا والرمز نفسه مع صفر في البداية كمنتج واحد، فلا يُضاف منتج مرتين.",
+  "tr": "12 haneli UPC ile başına sıfır eklenmiş aynı kod tek ürün sayılır; böylece bir ürün iki kez eklenmez.",
+  "fr": "Un code UPC à 12 chiffres et le même code précédé d'un zéro sont un seul produit : rien n'est ajouté deux fois.",
+  "es": "Un UPC de 12 dígitos y el mismo código con un cero delante son un solo producto, así nada se añade dos veces.",
+  "de": "Ein 12-stelliger UPC und derselbe Code mit führender Null gelten als ein Artikel – nichts wird doppelt angelegt."
+ },
+ "help.guide.dateCheck.title": {
+  "en": "The daily date check",
+  "ar": "الفحص اليومي للتواريخ",
+  "tr": "Günlük tarih kontrolü",
+  "fr": "Le contrôle quotidien",
+  "es": "La revisión diaria",
+  "de": "Die tägliche Datumskontrolle"
+ },
+ "help.guide.dateCheck.l1": {
+  "en": "Today → Date check lists everything expired, due today and due soon, oldest first, use-by dates before others on the same day.",
+  "ar": "اليوم ← فحص التواريخ يعرض كل ما انتهى أو يستحق اليوم أو قريبًا، الأقدم أولًا، و«يُستخدم قبل» قبل غيرها في اليوم نفسه.",
+  "tr": "Bugün → Tarih kontrolü; süresi geçen, bugün ve yakında dolan her şeyi en eskiden başlayarak, aynı gün içinde son kullanma tarihlilerini önce listeler.",
+  "fr": "Aujourd'hui → Contrôle des dates liste tout ce qui est dépassé, du jour ou bientôt à date, du plus ancien au plus récent, les DLC avant les autres le même jour.",
+  "es": "Hoy → Revisión de fechas muestra lo caducado, lo que vence hoy y pronto, de lo más antiguo a lo más nuevo, y las fechas de caducidad antes que otras del mismo día.",
+  "de": "Heute → Datumskontrolle zeigt alles Abgelaufene, heute und bald Fällige, das Älteste zuerst, Verbrauchsdaten vor anderen am selben Tag."
+ },
+ "help.guide.dateCheck.l2": {
+  "en": "At the shelf, tap Fine, Sold out or Thrown away on each line. Tap the line itself to reduce the price or record only part of the stock.",
+  "ar": "عند الرف اضغط جيد أو نفدت أو أُتلفت على كل سطر. اضغط السطر نفسه لتخفيض السعر أو تسجيل جزء من الكمية فقط.",
+  "tr": "Rafta her satırda Sorun yok, Tükendi veya Atıldı'ya dokunun. Fiyatı indirmek veya yalnızca bir kısmını kaydetmek için satırın kendisine dokunun.",
+  "fr": "Au rayon, touchez OK, Épuisé ou Jeté sur chaque ligne. Touchez la ligne elle-même pour démarquer ou noter une partie du stock.",
+  "es": "En el estante, toca Bien, Agotado o Desechado en cada línea. Toca la línea para rebajar el precio o registrar solo una parte.",
+  "de": "Am Regal tippst du bei jeder Zeile auf OK, Ausverkauft oder Entsorgt. Tippe die Zeile selbst an, um zu reduzieren oder nur einen Teil zu erfassen."
+ },
+ "help.guide.dateCheck.l3": {
+  "en": "“All the rest are fine” ticks what is left in one go. Anything still due comes back in tomorrow's check.",
+  "ar": "«كل الباقي جيد» يعلّم المتبقي دفعة واحدة. كل ما لا يزال مستحقًا يعود في فحص الغد.",
+  "tr": "“Kalanların hepsi iyi” kalanları tek seferde işaretler. Hâlâ vadesi gelenler yarınki kontrolde tekrar çıkar.",
+  "fr": "« Tout le reste est OK » coche le reste d'un coup. Ce qui arrive encore à date revient au contrôle de demain.",
+  "es": "«Todo lo demás está bien» marca lo que queda de una vez. Lo que siga venciendo vuelve en la revisión de mañana.",
+  "de": "„Alles Übrige ist OK“ hakt den Rest auf einmal ab. Was weiter fällig ist, kommt morgen wieder."
+ },
+ "help.guide.dateCheck.l4": {
+  "en": "Pro: print the check sheet to walk the shelves with a pen, grouped by place.",
+  "ar": "Pro: اطبع ورقة الفحص للتجوّل بين الرفوف بقلم، مجمّعة حسب المكان.",
+  "tr": "Pro: raflarda kalemle dolaşmak için yere göre gruplanmış kontrol listesini yazdırın.",
+  "fr": "Pro : imprimez la fiche de contrôle, groupée par emplacement, pour faire le tour au stylo.",
+  "es": "Pro: imprime la hoja de revisión, agrupada por lugar, para recorrer los estantes con bolígrafo.",
+  "de": "Pro: Drucke die nach Platz gruppierte Prüfliste und geh mit dem Stift durch die Regale."
+ },
+ "help.guide.reduceWaste.title": {
+  "en": "Reduce, sell, throw away",
+  "ar": "خفّض، بِع، أتلف",
+  "tr": "İndir, sat, at",
+  "fr": "Démarquer, vendre, jeter",
+  "es": "Rebajar, vender, desechar",
+  "de": "Reduzieren, verkaufen, entsorgen"
+ },
+ "help.guide.reduceWaste.l1": {
+  "en": "Reduce the price keeps the date on the shelf with its new price. With a normal price saved, 25 %, 50 % and 75 % are one tap; prices are exact to the cent.",
+  "ar": "«خفّض السعر» يُبقي التاريخ على الرف بسعره الجديد. مع حفظ سعر عادي تكون 25٪ و50٪ و75٪ بضغطة واحدة؛ الأسعار دقيقة حتى السنت.",
+  "tr": "Fiyatı indir, tarihi yeni fiyatıyla rafta tutar. Normal fiyat kayıtlıysa %25, %50 ve %75 tek dokunuştur; fiyatlar kuruşuna kadar kesindir.",
+  "fr": "Démarquer garde la date en rayon avec son nouveau prix. Avec un prix normal enregistré, −25 %, −50 % et −75 % se font en une touche ; les prix sont exacts au centime.",
+  "es": "Rebajar mantiene la fecha en el estante con su nuevo precio. Con un precio normal guardado, −25 %, −50 % y −75 % están a un toque; los precios son exactos al céntimo.",
+  "de": "Preis reduzieren lässt das Datum mit neuem Preis im Regal. Mit gespeichertem Normalpreis sind −25 %, −50 % und −75 % ein Tipp; Preise sind centgenau."
+ },
+ "help.guide.reduceWaste.l2": {
+  "en": "Sold, Thrown away, Returned and Donated take units off the shelf. Leave the number empty for all that is left; the date then closes and moves to History.",
+  "ar": "بيعت وأُتلفت وأُعيدت وتُبرّع بها تُخرج وحدات من الرف. اترك العدد فارغًا لكل المتبقي؛ عندها يُغلق التاريخ وينتقل إلى السجل.",
+  "tr": "Satıldı, Atıldı, İade ve Bağış raftan adet düşer. Kalanların hepsi için sayıyı boş bırakın; tarih kapanır ve Geçmiş'e geçer.",
+  "fr": "Vendu, Jeté, Retourné et Donné retirent des unités du rayon. Laissez le nombre vide pour tout ce qui reste ; la date se clôture et passe dans l'historique.",
+  "es": "Vendido, Desechado, Devuelto y Donado sacan unidades del estante. Deja el número vacío para todo lo que queda; la fecha se cierra y pasa al historial.",
+  "de": "Verkauft, Entsorgt, Retour und Spende nehmen Stück aus dem Regal. Lass die Zahl leer für alles Übrige; das Datum wird abgeschlossen und landet im Verlauf."
+ },
+ "help.guide.reduceWaste.l3": {
+  "en": "Pressed the wrong button? Open the date and use Undo the last action; a closed date opens again.",
+  "ar": "ضغطت الزر الخطأ؟ افتح التاريخ واستخدم التراجع عن آخر إجراء؛ يُفتح التاريخ المغلق من جديد.",
+  "tr": "Yanlış düğmeye mi bastınız? Tarihi açıp Son işlemi geri al'ı kullanın; kapanan tarih yeniden açılır.",
+  "fr": "Mauvais bouton ? Ouvrez la date et utilisez Annuler la dernière action ; une date clôturée se rouvre.",
+  "es": "¿Botón equivocado? Abre la fecha y usa Deshacer la última acción; una fecha cerrada se vuelve a abrir.",
+  "de": "Falsch getippt? Öffne das Datum und nutze „Letzte Aktion rückgängig“; ein abgeschlossenes Datum öffnet sich wieder."
+ },
+ "help.guide.reduceWaste.l4": {
+  "en": "Delete is only for a date typed by mistake: it leaves no history. For real stock, record what happened to it.",
+  "ar": "الحذف فقط لتاريخ كُتب بالخطأ: لا يترك سجلًا. للمخزون الحقيقي سجّل ما حدث له.",
+  "tr": "Silme yalnızca yanlış yazılmış bir tarih içindir: geçmiş bırakmaz. Gerçek stok için ne olduğunu kaydedin.",
+  "fr": "Supprimer ne sert qu'aux dates saisies par erreur : aucun historique ne reste. Pour du vrai stock, notez ce qu'il est devenu.",
+  "es": "Eliminar es solo para una fecha escrita por error: no deja historial. Para stock real, registra lo que pasó.",
+  "de": "Löschen ist nur für versehentlich eingegebene Daten: Es bleibt kein Verlauf. Für echte Ware erfasse, was damit passiert ist."
+ },
+ "help.guide.reminders.title": {
+  "en": "Daily reminders",
+  "ar": "التذكيرات اليومية",
+  "tr": "Günlük hatırlatmalar",
+  "fr": "Rappels quotidiens",
+  "es": "Recordatorios diarios",
+  "de": "Tägliche Erinnerungen"
+ },
+ "help.guide.reminders.l1": {
+  "en": "Dates & reminders → Daily reminder. Choose the time you open the shop; the phone asks for permission once.",
+  "ar": "التواريخ والتذكيرات ← التذكير اليومي. اختر وقت فتح المتجر؛ يطلب الهاتف الإذن مرة واحدة.",
+  "tr": "Tarihler ve hatırlatıcılar → Günlük hatırlatma. Dükkânı açtığınız saati seçin; telefon bir kez izin ister.",
+  "fr": "Dates et rappels → Rappel quotidien. Choisissez l'heure d'ouverture ; le téléphone demande l'autorisation une fois.",
+  "es": "Fechas y recordatorios → Recordatorio diario. Elige la hora de apertura; el teléfono pide permiso una vez.",
+  "de": "Daten & Erinnerungen → Tägliche Erinnerung. Wähle die Uhrzeit, zu der du öffnest; das Telefon fragt einmal nach der Erlaubnis."
+ },
+ "help.guide.reminders.l2": {
+  "en": "A reminder appears only on days with something expired or due, and says how many. It is planned for the next 7 days and updated whenever dates change.",
+  "ar": "يظهر التذكير فقط في الأيام التي فيها شيء منتهٍ أو مستحق، ويذكر العدد. يُخطط للأيام السبعة القادمة ويُحدّث كلما تغيّرت التواريخ.",
+  "tr": "Hatırlatma yalnızca süresi geçen veya dolan bir şey olan günlerde görünür ve kaç tane olduğunu söyler. Önümüzdeki 7 gün için planlanır ve tarihler değiştikçe güncellenir.",
+  "fr": "Un rappel n'apparaît que les jours où quelque chose est dépassé ou arrive à date, et indique combien. Il est planifié sur 7 jours et mis à jour à chaque changement.",
+  "es": "Solo aparece un recordatorio los días con algo caducado o que vence, e indica cuántos. Se planifica para los próximos 7 días y se actualiza con cada cambio.",
+  "de": "Eine Erinnerung erscheint nur an Tagen mit Abgelaufenem oder Fälligem und nennt die Anzahl. Sie wird für 7 Tage geplant und bei jeder Änderung aktualisiert."
+ },
+ "help.guide.reminders.l3": {
+  "en": "Battery savers and do-not-disturb can delay or hide notifications. Open the app every morning if you rely on it.",
+  "ar": "قد يؤخر توفير البطارية ووضع عدم الإزعاج الإشعارات أو يخفيها. افتح التطبيق كل صباح إن كنت تعتمد عليه.",
+  "tr": "Pil tasarrufu ve rahatsız etme modu bildirimleri geciktirebilir veya gizleyebilir. Güveniyorsanız uygulamayı her sabah açın.",
+  "fr": "L'économie d'énergie et le mode ne pas déranger peuvent retarder ou masquer les notifications. Ouvrez l'application chaque matin si vous comptez dessus.",
+  "es": "El ahorro de batería y el modo no molestar pueden retrasar u ocultar notificaciones. Abre la app cada mañana si dependes de ella.",
+  "de": "Energiesparmodus und „Nicht stören“ können Mitteilungen verzögern oder ausblenden. Öffne die App jeden Morgen, wenn du dich darauf verlässt."
+ },
+ "help.guide.products.title": {
+  "en": "Products",
+  "ar": "المنتجات",
+  "tr": "Ürünler",
+  "fr": "Produits",
+  "es": "Productos",
+  "de": "Artikel"
+ },
+ "help.guide.products.l1": {
+  "en": "A product holds what stays the same: name, barcode, usual place, usual kind of date and shelf life. Each date on the shelf is separate.",
+  "ar": "المنتج يحمل ما يبقى ثابتًا: الاسم والباركود والمكان المعتاد ونوع التاريخ المعتاد ومدة الصلاحية. كل تاريخ على الرف منفصل.",
+  "tr": "Ürün değişmeyenleri tutar: ad, barkod, olağan yer, olağan tarih türü ve raf ömrü. Raftaki her tarih ayrıdır.",
+  "fr": "Un produit contient ce qui ne change pas : nom, code-barres, emplacement, type de date et durée de conservation habituels. Chaque date en rayon est séparée.",
+  "es": "Un producto guarda lo que no cambia: nombre, código, lugar habitual, tipo de fecha y vida útil habituales. Cada fecha del estante es aparte.",
+  "de": "Ein Artikel enthält, was gleich bleibt: Name, Barcode, üblicher Platz, übliche Datumsart und Haltbarkeit. Jedes Datum im Regal ist separat."
+ },
+ "help.guide.products.l2": {
+  "en": "With a shelf life (for example 5 days for fresh bread), adding a date offers “today + 5” in one tap. Slow sellers can warn more days ahead than the shop setting.",
+  "ar": "مع مدة صلاحية (مثل 5 أيام للخبز الطازج) تقترح إضافة التاريخ «اليوم + 5» بضغطة. الأصناف بطيئة البيع يمكن أن تنبّه قبل أيام أكثر من إعداد المتجر.",
+  "tr": "Raf ömrü girilmişse (ör. taze ekmek için 5 gün) tarih eklerken tek dokunuşla “bugün + 5” önerilir. Yavaş satılanlar mağaza ayarından daha erken uyarabilir.",
+  "fr": "Avec une durée de conservation (ex. 5 jours pour le pain), l'ajout propose « aujourd'hui + 5 » en une touche. Les ventes lentes peuvent alerter plus tôt que le réglage du magasin.",
+  "es": "Con una vida útil (p. ej. 5 días para el pan), al añadir se sugiere «hoy + 5» con un toque. Lo que se vende despacio puede avisar con más días que el ajuste de la tienda.",
+  "de": "Mit Haltbarkeit (z. B. 5 Tage für frisches Brot) schlägt das Hinzufügen „heute + 5“ mit einem Tipp vor. Langsamdreher können früher warnen als die Shop-Einstellung."
+ },
+ "help.guide.products.l3": {
+  "en": "A normal price is optional. It is used only to suggest reductions and to value waste in the report.",
+  "ar": "السعر العادي اختياري. يُستخدم فقط لاقتراح التخفيضات وتقدير قيمة الهدر في التقرير.",
+  "tr": "Normal fiyat isteğe bağlıdır. Yalnızca indirim önermek ve raporda fireyi değerlemek için kullanılır.",
+  "fr": "Le prix normal est facultatif. Il sert seulement à proposer des démarques et à chiffrer les pertes dans le rapport.",
+  "es": "El precio normal es opcional. Solo se usa para sugerir rebajas y valorar las mermas en el informe.",
+  "de": "Der Normalpreis ist optional. Er dient nur Reduzierungsvorschlägen und der Bewertung von Abfall im Bericht."
+ },
+ "help.guide.importing.title": {
+  "en": "Importing products and dates",
+  "ar": "استيراد المنتجات والتواريخ",
+  "tr": "Ürün ve tarihleri içe aktarma",
+  "fr": "Importer produits et dates",
+  "es": "Importar productos y fechas",
+  "de": "Artikel und Daten importieren"
+ },
+ "help.guide.importing.l1": {
+  "en": "Menu → Import from a file reads a CSV saved from your till or a spreadsheet (commas, semicolons or tabs).",
+  "ar": "القائمة ← استيراد من ملف يقرأ ملف CSV محفوظًا من الكاشير أو جدول بيانات (فواصل أو فواصل منقوطة أو علامات جدولة).",
+  "tr": "Menü → Dosyadan içe aktar; kasanızdan veya bir tablodan kaydedilmiş CSV'yi (virgül, noktalı virgül veya sekme) okur.",
+  "fr": "Menu → Importer un fichier lit un CSV issu de votre caisse ou d'un tableur (virgules, points-virgules ou tabulations).",
+  "es": "Menú → Importar desde archivo lee un CSV de tu caja o de una hoja de cálculo (comas, punto y coma o tabulaciones).",
+  "de": "Menü → Aus Datei importieren liest eine CSV aus Kasse oder Tabelle (Komma, Semikolon oder Tab)."
+ },
+ "help.guide.importing.l2": {
+  "en": "Check which column is the name, barcode, date and so on. If there is a date column, choose how dates are written; the app never guesses 03/04.",
+  "ar": "تحقق من العمود الخاص بالاسم والباركود والتاريخ وغيرها. إن وُجد عمود تاريخ فاختر طريقة كتابته؛ التطبيق لا يخمّن 03/04 أبدًا.",
+  "tr": "Hangi sütunun ad, barkod, tarih vb. olduğunu kontrol edin. Tarih sütunu varsa tarihlerin nasıl yazıldığını seçin; uygulama 03/04'ü asla tahmin etmez.",
+  "fr": "Vérifiez quelle colonne est le nom, le code-barres, la date, etc. S'il y a une colonne de dates, choisissez leur format ; l'application ne devine jamais 03/04.",
+  "es": "Revisa qué columna es el nombre, el código, la fecha, etc. Si hay columna de fecha, elige cómo se escriben; la app nunca adivina 03/04.",
+  "de": "Prüfe, welche Spalte Name, Barcode, Datum usw. ist. Gibt es eine Datumsspalte, wähle das Format; die App rät bei 03/04 nie."
+ },
+ "help.guide.importing.l3": {
+  "en": "Rows match your products by barcode, then SKU, then exact name. The preview counts new products, existing ones, dates and skipped rows.",
+  "ar": "تُطابق الصفوف منتجاتك بالباركود ثم الرمز ثم الاسم المطابق. تعرض المعاينة عدد المنتجات الجديدة والموجودة والتواريخ والصفوف المتجاوزة.",
+  "tr": "Satırlar ürünlerinizle önce barkod, sonra stok kodu, sonra tam ad ile eşleşir. Önizleme yeni ve mevcut ürünleri, tarihleri ve atlanan satırları sayar.",
+  "fr": "Les lignes sont rapprochées de vos produits par code-barres, puis référence, puis nom exact. L'aperçu compte les nouveaux produits, les existants, les dates et les lignes ignorées.",
+  "es": "Las filas se relacionan con tus productos por código, luego SKU, luego nombre exacto. La vista previa cuenta productos nuevos, existentes, fechas y filas omitidas.",
+  "de": "Zeilen werden per Barcode, dann Art.-Nr., dann exaktem Namen zugeordnet. Die Vorschau zählt neue und vorhandene Artikel, Daten und übersprungene Zeilen."
+ },
+ "help.guide.importing.l4": {
+  "en": "Nothing is saved until you tap Import; then every valid row is saved, or none.",
+  "ar": "لا يُحفظ شيء حتى تضغط استيراد؛ عندها تُحفظ كل الصفوف الصالحة أو لا شيء.",
+  "tr": "İçe aktar'a dokunana kadar hiçbir şey kaydedilmez; sonra geçerli satırların hepsi kaydedilir ya da hiçbiri.",
+  "fr": "Rien n'est enregistré avant de toucher Importer ; ensuite toutes les lignes valides sont enregistrées, ou aucune.",
+  "es": "No se guarda nada hasta que tocas Importar; entonces se guardan todas las filas válidas o ninguna.",
+  "de": "Nichts wird gespeichert, bis du auf Importieren tippst; dann werden alle gültigen Zeilen gespeichert – oder keine."
+ },
+ "help.guide.reports.title": {
+  "en": "History and waste",
+  "ar": "السجل والهدر",
+  "tr": "Geçmiş ve fire",
+  "fr": "Historique et pertes",
+  "es": "Historial y mermas",
+  "de": "Verlauf und Abfall"
+ },
+ "help.guide.reports.l1": {
+  "en": "Menu → History & waste lists the dates that left the shelf. Every date also keeps its own history.",
+  "ar": "القائمة ← السجل والهدر يعرض التواريخ التي غادرت الرف. ولكل تاريخ سجله الخاص أيضًا.",
+  "tr": "Menü → Geçmiş ve fire, raftan çıkan tarihleri listeler. Her tarihin kendi geçmişi de vardır.",
+  "fr": "Menu → Historique et pertes liste les dates qui ont quitté le rayon. Chaque date garde aussi son propre historique.",
+  "es": "Menú → Historial y mermas muestra las fechas que salieron del estante. Cada fecha guarda también su propio historial.",
+  "de": "Menü → Verlauf & Abfall listet die Daten, die das Regal verlassen haben. Jedes Datum hat außerdem seinen eigenen Verlauf."
+ },
+ "help.guide.reports.l2": {
+  "en": "Pro: totals for thrown away, reduced, sold, returned and donated over 7, 30 or 90 days, with value and the products you waste most.",
+  "ar": "Pro: إجماليات المتلف والمخفّض والمباع والمُعاد والمتبرّع به خلال 7 أو 30 أو 90 يومًا، مع القيمة والمنتجات الأكثر هدرًا.",
+  "tr": "Pro: 7, 30 veya 90 günde atılan, indirilen, satılan, iade ve bağış toplamları; değer ve en çok atılan ürünlerle.",
+  "fr": "Pro : totaux jetés, démarqués, vendus, retournés et donnés sur 7, 30 ou 90 jours, avec la valeur et les produits les plus gaspillés.",
+  "es": "Pro: totales desechados, rebajados, vendidos, devueltos y donados en 7, 30 o 90 días, con su valor y los productos que más desperdicias.",
+  "de": "Pro: Summen für entsorgt, reduziert, verkauft, retourniert und gespendet über 7, 30 oder 90 Tage, mit Wert und den meistentsorgten Artikeln."
+ },
+ "help.guide.reports.l3": {
+  "en": "Dates → Export shares the dates on the shelf as CSV (free). Pro also exports the full history.",
+  "ar": "التواريخ ← تصدير يشارك التواريخ على الرف كملف CSV (مجانًا). Pro يصدّر السجل الكامل أيضًا.",
+  "tr": "Tarihler → Dışa aktar, raftaki tarihleri CSV olarak paylaşır (ücretsiz). Pro tüm geçmişi de dışa aktarır.",
+  "fr": "Dates → Exporter partage les dates en rayon en CSV (gratuit). Pro exporte aussi tout l'historique.",
+  "es": "Fechas → Exportar comparte las fechas del estante en CSV (gratis). Pro exporta además todo el historial.",
+  "de": "Daten → Export teilt die Daten im Regal als CSV (kostenlos). Pro exportiert zusätzlich den ganzen Verlauf."
+ },
+ "help.guide.backup.l3": {
+  "en": "Restore on a new phone from the same screen. Your products, dates, history and settings come back and reminders are planned again; an interrupted restore is rolled back safely.",
+  "ar": "استعد على هاتف جديد من الشاشة نفسها. تعود منتجاتك وتواريخك وسجلك وإعداداتك وتُخطط التذكيرات مجددًا؛ الاستعادة المنقطعة تُلغى بأمان.",
+  "tr": "Yeni telefonda aynı ekrandan geri yükleyin. Ürünleriniz, tarihleriniz, geçmişiniz ve ayarlarınız geri gelir, hatırlatmalar yeniden planlanır; yarıda kalan geri yükleme güvenle geri alınır.",
+  "fr": "Restaurez sur un nouveau téléphone depuis le même écran. Produits, dates, historique et réglages reviennent et les rappels sont replanifiés ; une restauration interrompue est annulée sans risque.",
+  "es": "Restaura en un teléfono nuevo desde la misma pantalla. Vuelven tus productos, fechas, historial y ajustes y se planifican de nuevo los recordatorios; una restauración interrumpida se revierte con seguridad.",
+  "de": "Stelle auf einem neuen Telefon über denselben Bildschirm wieder her. Artikel, Daten, Verlauf und Einstellungen kommen zurück und Erinnerungen werden neu geplant; eine unterbrochene Wiederherstellung wird sicher zurückgesetzt."
+ },
+ "help.guide.languages.l2": {
+  "en": "Dates are shown in the style of the app language. Numbers keep Western digits in every language.",
+  "ar": "تُعرض التواريخ بأسلوب لغة التطبيق. تبقى الأرقام بالأرقام الغربية في كل اللغات.",
+  "tr": "Tarihler uygulama dilinin biçiminde gösterilir. Rakamlar her dilde Batı rakamlarıyla kalır.",
+  "fr": "Les dates suivent le format de la langue de l'application. Les chiffres restent occidentaux dans toutes les langues.",
+  "es": "Las fechas se muestran al estilo del idioma de la app. Los números usan cifras occidentales en todos los idiomas.",
+  "de": "Daten werden im Format der App-Sprache angezeigt. Zahlen bleiben in allen Sprachen westliche Ziffern."
+ },
+ "help.guide.languages.l3": {
+  "en": "The currency is only for prices and reductions. Changing it never converts saved prices.",
+  "ar": "العملة للأسعار والتخفيضات فقط. تغييرها لا يحوّل الأسعار المحفوظة أبدًا.",
+  "tr": "Para birimi yalnızca fiyatlar ve indirimler içindir. Değiştirmek kayıtlı fiyatları asla dönüştürmez.",
+  "fr": "La devise ne sert qu'aux prix et aux démarques. La changer ne convertit jamais les prix enregistrés.",
+  "es": "La moneda es solo para precios y rebajas. Cambiarla nunca convierte los precios guardados.",
+  "de": "Die Währung gilt nur für Preise und Reduzierungen. Eine Änderung rechnet gespeicherte Preise nie um."
+ },
+ "help.faq.gettingStarted.a1": {
+  "en": "{{app}} works offline. Your products, dates and history are stored on your device. Only the Pro purchase talks to Apple or Google and RevenueCat, and only files you choose to import, export, share or back up leave the app.",
+  "ar": "يعمل {{app}} دون اتصال. تُخزّن منتجاتك وتواريخك وسجلك على جهازك. شراء Pro وحده يتواصل مع Apple أو Google وRevenueCat، ولا تغادر التطبيقَ إلا الملفات التي تختار استيرادها أو تصديرها أو مشاركتها أو نسخها احتياطيًا.",
+  "tr": "{{app}} çevrimdışı çalışır. Ürünleriniz, tarihleriniz ve geçmişiniz cihazınızda saklanır. Yalnızca Pro satın alımı Apple veya Google ve RevenueCat ile iletişim kurar; uygulamadan yalnızca içe/dışa aktarmayı, paylaşmayı veya yedeklemeyi seçtiğiniz dosyalar çıkar.",
+  "fr": "{{app}} fonctionne hors ligne. Vos produits, dates et historique sont stockés sur votre appareil. Seul l'achat Pro communique avec Apple ou Google et RevenueCat, et seuls les fichiers que vous choisissez d'importer, exporter, partager ou sauvegarder quittent l'application.",
+  "es": "{{app}} funciona sin conexión. Tus productos, fechas e historial se guardan en tu dispositivo. Solo la compra Pro habla con Apple o Google y RevenueCat, y solo salen de la app los archivos que eliges importar, exportar, compartir o copiar.",
+  "de": "{{app}} funktioniert offline. Deine Artikel, Daten und dein Verlauf werden auf deinem Gerät gespeichert. Nur der Pro-Kauf kommuniziert mit Apple oder Google und RevenueCat, und nur Dateien, die du importierst, exportierst, teilst oder sicherst, verlassen die App."
+ },
+ "help.faq.dataPrivacy.a1": {
+  "en": "No. Your products and dates are not sent to {{app}} servers; there is no account and no cloud. You are responsible for backup files, exports and anything you share outside the app.",
+  "ar": "لا. لا تُرسل منتجاتك وتواريخك إلى خوادم {{app}}؛ لا يوجد حساب ولا سحابة. أنت مسؤول عن ملفات النسخ الاحتياطي والتصدير وكل ما تشاركه خارج التطبيق.",
+  "tr": "Hayır. Ürünleriniz ve tarihleriniz {{app}} sunucularına gönderilmez; hesap ve bulut yoktur. Yedek dosyaları, dışa aktarımlar ve uygulama dışında paylaştıklarınız sizin sorumluluğunuzdadır.",
+  "fr": "Non. Vos produits et dates ne sont pas envoyés aux serveurs de {{app}} ; il n'y a ni compte ni cloud. Vous êtes responsable des sauvegardes, des exports et de ce que vous partagez hors de l'application.",
+  "es": "No. Tus productos y fechas no se envían a servidores de {{app}}; no hay cuenta ni nube. Eres responsable de las copias, las exportaciones y lo que compartas fuera de la app.",
+  "de": "Nein. Deine Artikel und Daten werden nicht an {{app}}-Server gesendet; es gibt kein Konto und keine Cloud. Du bist für Sicherungen, Exporte und alles verantwortlich, was du außerhalb der App teilst."
+ },
+ "help.faq.permissions.title": {
+  "en": "Camera, files & notifications",
+  "ar": "الكاميرا والملفات والإشعارات",
+  "tr": "Kamera, dosyalar ve bildirimler",
+  "fr": "Appareil photo, fichiers et notifications",
+  "es": "Cámara, archivos y notificaciones",
+  "de": "Kamera, Dateien & Mitteilungen"
+ },
+ "help.faq.permissions.a1": {
+  "en": "The camera is used only to read barcodes on the scan screen; no photo is taken or stored. Files are accessed only when you import or export a CSV, share a PDF, or create and restore a backup. Notifications are used only if you turn on the daily reminder. The app asks the first time you use each feature.",
+  "ar": "تُستخدم الكاميرا فقط لقراءة الباركود في شاشة المسح؛ لا تُلتقط صور ولا تُخزّن. يُوصل إلى الملفات فقط عند استيراد أو تصدير CSV أو مشاركة PDF أو إنشاء نسخة احتياطية واستعادتها. تُستخدم الإشعارات فقط إذا فعّلت التذكير اليومي. يسأل التطبيق عند أول استخدام لكل ميزة.",
+  "tr": "Kamera yalnızca tarama ekranında barkod okumak için kullanılır; fotoğraf çekilmez veya saklanmaz. Dosyalara yalnızca CSV içe/dışa aktarırken, PDF paylaşırken veya yedek oluşturup geri yüklerken erişilir. Bildirimler yalnızca günlük hatırlatmayı açarsanız kullanılır. Uygulama her özelliği ilk kullandığınızda sorar.",
+  "fr": "L'appareil photo sert uniquement à lire les codes-barres sur l'écran de scan ; aucune photo n'est prise ni conservée. Les fichiers ne sont utilisés que pour importer ou exporter un CSV, partager un PDF, ou créer et restaurer une sauvegarde. Les notifications ne servent que si vous activez le rappel quotidien. L'application demande à la première utilisation.",
+  "es": "La cámara solo se usa para leer códigos en la pantalla de escaneo; no se hacen ni guardan fotos. Los archivos solo se usan al importar o exportar un CSV, compartir un PDF o crear y restaurar una copia. Las notificaciones solo se usan si activas el recordatorio diario. La app pregunta la primera vez que usas cada función.",
+  "de": "Die Kamera liest nur auf dem Scan-Bildschirm Barcodes; es werden keine Fotos gemacht oder gespeichert. Auf Dateien wird nur beim Import oder Export einer CSV, beim Teilen eines PDFs oder beim Sichern und Wiederherstellen zugegriffen. Mitteilungen werden nur genutzt, wenn du die tägliche Erinnerung einschaltest. Die App fragt bei der ersten Nutzung jeder Funktion."
+ },
+ "help.faq.troubleshooting.a2": {
+  "en": "Yes. Because everything is stored on the device, uninstalling removes your products, dates and history unless you backed them up first. Backups and exports you saved elsewhere are not affected.",
+  "ar": "نعم. لأن كل شيء مخزّن على الجهاز، يؤدي إلغاء التثبيت إلى حذف منتجاتك وتواريخك وسجلك ما لم تنسخها احتياطيًا أولًا. النسخ والتصديرات المحفوظة في مكان آخر لا تتأثر.",
+  "tr": "Evet. Her şey cihazda saklandığı için, önce yedeklemediyseniz kaldırma işlemi ürünlerinizi, tarihlerinizi ve geçmişinizi siler. Başka yerde sakladığınız yedekler ve dışa aktarımlar etkilenmez.",
+  "fr": "Oui. Tout étant stocké sur l'appareil, la désinstallation supprime vos produits, dates et historique si vous ne les avez pas sauvegardés. Les sauvegardes et exports conservés ailleurs ne sont pas touchés.",
+  "es": "Sí. Como todo se guarda en el dispositivo, desinstalar borra tus productos, fechas e historial si no hiciste antes una copia. Las copias y exportaciones guardadas en otro sitio no se ven afectadas.",
+  "de": "Ja. Da alles auf dem Gerät gespeichert ist, entfernt die Deinstallation deine Artikel, Daten und deinen Verlauf, wenn du sie nicht vorher gesichert hast. Anderswo gespeicherte Sicherungen und Exporte bleiben unberührt."
+ },
+ "help.faq.dates.title": {
+  "en": "Dates",
+  "ar": "التواريخ",
+  "tr": "Tarihler",
+  "fr": "Dates",
+  "es": "Fechas",
+  "de": "Daten"
+ },
+ "help.faq.dates.q1": {
+  "en": "What is the difference between use by and best before?",
+  "ar": "ما الفرق بين «يُستخدم قبل» و«يُفضّل قبل»؟",
+  "tr": "Son kullanma ile tavsiye edilen tüketim arasındaki fark nedir?",
+  "fr": "Quelle différence entre « à consommer jusqu'au » et « de préférence avant » ?",
+  "es": "¿Qué diferencia hay entre caducidad y consumo preferente?",
+  "de": "Was ist der Unterschied zwischen „verbrauchen bis“ und „mindestens haltbar bis“?"
+ },
+ "help.faq.dates.a1": {
+  "en": "In many countries a use-by date is about safety and a best-before date about quality, but the rules are set by your country. The app keeps the two apart and words past best-before dates differently; it never decides for you what may be sold.",
+  "ar": "في كثير من الدول يتعلق «يُستخدم قبل» بالسلامة و«يُفضّل قبل» بالجودة، لكن القواعد تحددها دولتك. يفصل التطبيق بينهما ويصوغ تجاوز تاريخ الأفضلية بشكل مختلف؛ ولا يقرر عنك ما يجوز بيعه.",
+  "tr": "Birçok ülkede son kullanma tarihi güvenlikle, tavsiye edilen tarih ise kaliteyle ilgilidir; ancak kuralları ülkeniz belirler. Uygulama ikisini ayrı tutar ve tavsiye tarihi geçenleri farklı ifade eder; neyin satılabileceğine sizin yerinize karar vermez.",
+  "fr": "Dans de nombreux pays, la DLC concerne la sécurité et la date de préférence la qualité, mais les règles dépendent de votre pays. L'application les distingue et formule différemment une date de préférence dépassée ; elle ne décide jamais à votre place de ce qui peut être vendu.",
+  "es": "En muchos países la fecha de caducidad es de seguridad y la de consumo preferente de calidad, pero las normas las fija tu país. La app las separa y describe de otro modo una fecha preferente pasada; nunca decide por ti qué se puede vender.",
+  "de": "In vielen Ländern betrifft „verbrauchen bis“ die Sicherheit und das MHD die Qualität, die Regeln legt aber dein Land fest. Die App hält beides getrennt und formuliert ein überschrittenes MHD anders; sie entscheidet nie für dich, was verkauft werden darf."
+ },
+ "help.faq.dates.q2": {
+  "en": "Can one product have several dates?",
+  "ar": "هل يمكن أن يكون للمنتج الواحد عدة تواريخ؟",
+  "tr": "Bir ürünün birden fazla tarihi olabilir mi?",
+  "fr": "Un produit peut-il avoir plusieurs dates ?",
+  "es": "¿Un producto puede tener varias fechas?",
+  "de": "Kann ein Artikel mehrere Daten haben?"
+ },
+ "help.faq.dates.a2": {
+  "en": "Yes. Each delivery can have its own date and count. The Products tab shows the soonest one and how many more there are.",
+  "ar": "نعم. يمكن أن يكون لكل توريد تاريخه وعدده. تعرض تبويبة المنتجات الأقرب منها وعدد الباقي.",
+  "tr": "Evet. Her teslimatın kendi tarihi ve adedi olabilir. Ürünler sekmesi en yakın olanı ve kaç tane daha olduğunu gösterir.",
+  "fr": "Oui. Chaque livraison peut avoir sa date et sa quantité. L'onglet Produits affiche la plus proche et le nombre d'autres.",
+  "es": "Sí. Cada entrega puede tener su fecha y cantidad. La pestaña Productos muestra la más próxima y cuántas más hay.",
+  "de": "Ja. Jede Lieferung kann ihr eigenes Datum und ihre Menge haben. Der Tab Artikel zeigt das nächste und wie viele weitere es gibt."
+ },
+ "help.faq.dates.q3": {
+  "en": "Why is a date I added today already in Expired?",
+  "ar": "لماذا تاريخ أضفته اليوم منتهٍ بالفعل؟",
+  "tr": "Bugün eklediğim bir tarih neden şimdiden Süresi geçmiş'te?",
+  "fr": "Pourquoi une date ajoutée aujourd'hui est-elle déjà dépassée ?",
+  "es": "¿Por qué una fecha que añadí hoy ya está caducada?",
+  "de": "Warum ist ein heute hinzugefügtes Datum schon abgelaufen?"
+ },
+ "help.faq.dates.a3": {
+  "en": "The date you picked is before today. Open it and use Correct the date, or record what you did with the stock.",
+  "ar": "التاريخ الذي اخترته قبل اليوم. افتحه واستخدم تصحيح التاريخ، أو سجّل ما فعلته بالمخزون.",
+  "tr": "Seçtiğiniz tarih bugünden önce. Açıp Tarihi düzelt'i kullanın ya da stokla ne yaptığınızı kaydedin.",
+  "fr": "La date choisie est antérieure à aujourd'hui. Ouvrez-la et utilisez Corriger la date, ou notez ce que vous avez fait du stock.",
+  "es": "La fecha que elegiste es anterior a hoy. Ábrela y usa Corregir la fecha, o registra qué hiciste con el stock.",
+  "de": "Das gewählte Datum liegt vor heute. Öffne es und nutze „Datum korrigieren“ oder erfasse, was mit der Ware passiert ist."
+ },
+ "help.faq.reminders.title": {
+  "en": "Reminders",
+  "ar": "التذكيرات",
+  "tr": "Hatırlatmalar",
+  "fr": "Rappels",
+  "es": "Recordatorios",
+  "de": "Erinnerungen"
+ },
+ "help.faq.reminders.q1": {
+  "en": "I did not get a reminder this morning.",
+  "ar": "لم يصلني تذكير هذا الصباح.",
+  "tr": "Bu sabah hatırlatma gelmedi.",
+  "fr": "Je n'ai pas reçu de rappel ce matin.",
+  "es": "Esta mañana no me llegó el recordatorio.",
+  "de": "Heute Morgen kam keine Erinnerung."
+ },
+ "help.faq.reminders.a1": {
+  "en": "A reminder appears only when something is expired or due. Check that notifications are allowed for the app, that battery saving is not stopping it, and open the app once so it can plan the next days.",
+  "ar": "يظهر التذكير فقط عند وجود شيء منتهٍ أو مستحق. تحقق من السماح بالإشعارات للتطبيق وأن توفير البطارية لا يوقفه، وافتح التطبيق مرة ليخطط للأيام التالية.",
+  "tr": "Hatırlatma yalnızca süresi geçen veya dolan bir şey olduğunda görünür. Uygulama için bildirimlere izin verildiğini, pil tasarrufunun engellemediğini kontrol edin ve sonraki günleri planlaması için uygulamayı bir kez açın.",
+  "fr": "Un rappel n'apparaît que si quelque chose est dépassé ou arrive à date. Vérifiez que les notifications sont autorisées, que l'économie d'énergie ne les bloque pas, et ouvrez l'application une fois pour qu'elle planifie les jours suivants.",
+  "es": "Solo aparece un recordatorio si algo está caducado o vence. Comprueba que las notificaciones estén permitidas, que el ahorro de batería no las bloquee y abre la app una vez para que planifique los próximos días.",
+  "de": "Eine Erinnerung erscheint nur, wenn etwas abgelaufen oder fällig ist. Prüfe, ob Mitteilungen erlaubt sind und der Energiesparmodus sie nicht blockiert, und öffne die App einmal, damit sie die nächsten Tage plant."
+ },
+ "help.faq.reminders.q2": {
+  "en": "Do reminders work if I do not open the app for weeks?",
+  "ar": "هل تعمل التذكيرات إن لم أفتح التطبيق لأسابيع؟",
+  "tr": "Uygulamayı haftalarca açmazsam hatırlatmalar çalışır mı?",
+  "fr": "Les rappels fonctionnent-ils si je n'ouvre pas l'application pendant des semaines ?",
+  "es": "¿Funcionan los recordatorios si no abro la app durante semanas?",
+  "de": "Funktionieren Erinnerungen, wenn ich die App wochenlang nicht öffne?"
+ },
+ "help.faq.reminders.a2": {
+  "en": "They are planned 7 days ahead each time the app opens or a date changes. After that, open the app again so it can plan the following week.",
+  "ar": "تُخطط لسبعة أيام قادمة في كل مرة يُفتح فيها التطبيق أو يتغيّر تاريخ. بعد ذلك افتح التطبيق مجددًا ليخطط للأسبوع التالي.",
+  "tr": "Uygulama her açıldığında veya bir tarih değiştiğinde 7 gün ilerisi için planlanırlar. Sonrasında bir sonraki haftayı planlaması için uygulamayı tekrar açın.",
+  "fr": "Ils sont planifiés 7 jours à l'avance à chaque ouverture ou changement de date. Ensuite, rouvrez l'application pour planifier la semaine suivante.",
+  "es": "Se planifican 7 días por adelantado cada vez que abres la app o cambia una fecha. Después, vuelve a abrirla para planificar la semana siguiente.",
+  "de": "Sie werden bei jedem Öffnen der App oder jeder Datumsänderung 7 Tage im Voraus geplant. Danach öffne die App wieder, damit sie die nächste Woche plant."
+ },
+ "help.faq.plans.a1": {
+  "en": "Free includes up to 100 products, unlimited dates, scanning, the date check, reduce / sell / waste, daily reminders, CSV import, CSV export of the dates on the shelf, backup and all six languages. Pro is a one-time purchase that adds unlimited products, the waste and reduction report, history export and the printable check sheet. Existing data is never locked.",
+  "ar": "تشمل النسخة المجانية حتى 100 منتج وتواريخ غير محدودة والمسح وفحص التواريخ والتخفيض والبيع والإتلاف والتذكيرات اليومية واستيراد CSV وتصدير تواريخ الرف كـ CSV والنسخ الاحتياطي واللغات الست. Pro شراء لمرة واحدة يضيف منتجات غير محدودة وتقرير الهدر والتخفيضات وتصدير السجل وورقة الفحص للطباعة. لا تُقفل البيانات الموجودة أبدًا.",
+  "tr": "Ücretsiz sürüm 100 ürüne kadar, sınırsız tarih, tarama, tarih kontrolü, indir / sat / at, günlük hatırlatmalar, CSV içe aktarma, raftaki tarihlerin CSV dışa aktarımı, yedekleme ve altı dilin tümünü içerir. Pro; sınırsız ürün, fire ve indirim raporu, geçmiş dışa aktarma ve yazdırılabilir kontrol listesi ekleyen tek seferlik bir satın alımdır. Mevcut veriler asla kilitlenmez.",
+  "fr": "La version gratuite comprend jusqu'à 100 produits, des dates illimitées, le scan, le contrôle des dates, démarquer / vendre / jeter, les rappels quotidiens, l'import CSV, l'export CSV des dates en rayon, la sauvegarde et les six langues. Pro est un achat unique qui ajoute des produits illimités, le rapport des pertes et démarques, l'export de l'historique et la fiche de contrôle imprimable. Les données existantes ne sont jamais verrouillées.",
+  "es": "La versión gratuita incluye hasta 100 productos, fechas ilimitadas, escaneo, revisión de fechas, rebajar / vender / desechar, recordatorios diarios, importar CSV, exportar en CSV las fechas del estante, copias y los seis idiomas. Pro es una compra única que añade productos ilimitados, el informe de mermas y rebajas, exportar el historial y la hoja de revisión imprimible. Los datos existentes nunca se bloquean.",
+  "de": "Kostenlos: bis 100 Artikel, unbegrenzte Daten, Scannen, Datumskontrolle, reduzieren / verkaufen / entsorgen, tägliche Erinnerungen, CSV-Import, CSV-Export der Daten im Regal, Sicherung und alle sechs Sprachen. Pro ist ein Einmalkauf und bietet unbegrenzte Artikel, den Abfall- und Reduzierungsbericht, Verlaufsexport und die druckbare Prüfliste. Vorhandene Daten werden nie gesperrt."
+ },
+ "importer.overLimit": {
+  "en": "Rows after row {{rows}} are not imported: {{count}}. Split the file and import the rest separately.",
+  "ar": "الصفوف بعد الصف {{rows}} لن تُستورد: {{count}}. قسّم الملف واستورد الباقي بشكل منفصل.",
+  "tr": "{{rows}}. satırdan sonraki satırlar içe aktarılmaz: {{count}}. Dosyayı bölüp kalanı ayrıca içe aktarın.",
+  "fr": "Lignes au-delà de la ligne {{rows}} non importées : {{count}}. Scindez le fichier et importez le reste à part.",
+  "es": "Filas después de la fila {{rows}} que no se importan: {{count}}. Divide el archivo e importa el resto aparte.",
+  "de": "Zeilen nach Zeile {{rows}} werden nicht importiert: {{count}}. Teile die Datei und importiere den Rest separat."
+ }
+}
