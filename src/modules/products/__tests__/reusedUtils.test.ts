@@ -2,7 +2,6 @@
 import { expandUpcE, isValidEan13, normalizeBarcode } from '../utils/barcode';
 import { parseCsv, normaliseHeader } from '../utils/csvParse';
 import { clearPendingScans, setPendingScan, takePendingScan } from '../utils/scanBus';
-import { checksum, makeRevision } from '../utils/ids';
 
 describe('barcode normalisation (from TillCalc)', () => {
   it('prefixes UPC-A to EAN-13 and validates check digits', () => {
@@ -42,11 +41,5 @@ describe('scanBus', () => {
     expect(takePendingScan('product')).toBeNull();
   });
 });
+// ids.ts (v1 revision ids) was removed in G9: nothing in TillExpiry used it; ids come from entityStore.newId.
 
-describe('ids', () => {
-  it('revisions are unique and the checksum is stable', () => {
-    expect(makeRevision()).not.toBe(makeRevision());
-    expect(checksum('abc')).toBe(checksum('abc'));
-    expect(checksum('abc')).not.toBe(checksum('abd'));
-  });
-});

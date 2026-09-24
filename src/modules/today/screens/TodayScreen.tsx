@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -74,10 +74,10 @@ export const TodayScreen: React.FC = () => {
         <ReminderIntroCard />
 
         {v && v.locations.length > 0 ? (
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.chips}>
+          <View style={s.chips}>
             <FilterChip label={t('today.allPlaces')} active={!locationId} onPress={() => setLocationId(undefined)} />
             {v.locations.map(l => <FilterChip key={l.id} label={l.name} active={locationId === l.id} onPress={() => setLocationId(locationId === l.id ? undefined : l.id)} />)}
-          </ScrollView>
+          </View>
         ) : null}
 
         {hasKinds.opened || hasKinds.prepared ? (
@@ -126,7 +126,7 @@ const s = StyleSheet.create({
   tile: { flexBasis: '31%', flexGrow: 1, minHeight: 84, borderRadius: 14, borderWidth: 1, borderColor: colors.border, padding: 10, gap: 2 },
   tileCount: { ...typography.screenTitle },
   tileLabel: { ...typography.bodySm, fontWeight: '600' },
-  chips: { gap: 8, paddingVertical: 4 },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, paddingVertical: 4 },
   kindRow: { flexDirection: 'row', gap: 8, flexWrap: 'wrap' },
   actionsRow: { flexDirection: 'row', gap: 8 },
   flex: { flex: 1 },

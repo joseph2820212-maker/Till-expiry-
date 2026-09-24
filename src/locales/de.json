@@ -86,7 +86,7 @@
   },
   "errors": {
     "crashTitle": "Etwas ist schiefgelaufen",
-    "crashBody": "Bitte schließen und öffnen Sie die App erneut. Ihre Daten sind sicher.",
+    "crashBody": "Bitte schließen Sie die App und öffnen Sie sie erneut. Was Sie gespeichert haben, bleibt auf diesem Telefon.",
     "saveFailed": "Speichern fehlgeschlagen. Es wurde nichts geändert — bitte erneut versuchen.",
     "loadFailed": "Konnte nicht geladen werden. Bitte erneut versuchen.",
     "workspaceNameRequired": "Geben Sie einen Namen für diesen Betrieb ein.",

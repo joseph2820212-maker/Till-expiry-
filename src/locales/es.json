@@ -86,7 +86,7 @@
   },
   "errors": {
     "crashTitle": "Algo salió mal",
-    "crashBody": "Cierra y vuelve a abrir la aplicación. Tus datos están a salvo.",
+    "crashBody": "Cierra la app y vuelve a abrirla. Lo que guardaste se conserva en este teléfono.",
     "saveFailed": "No se pudo guardar. No se ha cambiado nada — inténtalo de nuevo.",
     "loadFailed": "No se pudo cargar. Inténtalo de nuevo.",
     "workspaceNameRequired": "Introduce un nombre para este negocio.",

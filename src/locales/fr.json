@@ -86,7 +86,7 @@
   },
   "errors": {
     "crashTitle": "Une erreur s'est produite",
-    "crashBody": "Veuillez fermer et rouvrir l'application. Vos données sont en sécurité.",
+    "crashBody": "Veuillez fermer puis rouvrir l'application. Ce que vous avez enregistré reste sur ce téléphone.",
     "saveFailed": "Enregistrement impossible. Rien n'a été modifié — veuillez réessayer.",
     "loadFailed": "Chargement impossible. Veuillez réessayer.",
     "workspaceNameRequired": "Saisissez un nom pour cet établissement.",

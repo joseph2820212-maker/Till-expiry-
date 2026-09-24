@@ -11,8 +11,8 @@
 2. **Cards hug their content.** Never fix the height of a container that holds text.
 3. **Buttons are full-width, one per row.** English labels are at most three words; `AppButton`
    shrinks to 75 % when a translation is longer.
-4. **Result cards are full-width and show one number per line.** The `ResultCard` component
-   (label + status chip / one large number / one sentence) is the only pattern for answer + meaning.
+4. **Status cards are full-width**: `BatchCard` shows product, date meaning + deadline, one meta line, the status
+   chip and at most one primary action.
 5. **Chips wrap** (`flexWrap: 'wrap'`); never hide options behind a horizontal scroll.
 6. **Tables become stacked rows** on phones (label above value). Three side-by-side cells are allowed
    only when each cell is a short number (the repricing review card).
@@ -51,15 +51,19 @@
 - **Empty states** use `EmptyState` (icon, title, one sentence) and appear only when the list really is empty.
 - **Money** is shown from exact minor units (`src/domain/money.ts`), never from a float.
 
-## TillExpiry additions
+## TillExpiry additions (master handoff v1.0)
 
-- **Dates are calendar dates** (`YYYY-MM-DD`, device-local). Day maths runs on UTC day numbers
-  (`src/domain/dates.ts`), so time zones and daylight saving never move a date.
-- **One band per date, everywhere**: `bandFor()` decides expired / today / soon / later for the Today tiles,
-  the Dates list, the date check, the check sheet, the CSV export and the reminders.
-- **Band colours**: expired = danger red, today = amber, soon = navy, later = green (`BAND_STYLE`). Colour is never
-  the only signal: every row also carries the words ("Expired yesterday", "In 3 days").
-- **Counts are neutral** ("Left: 3", "Warning days: 1"), never "1 days": the family does not use plural forms.
-- **Best before is worded differently** from use by once past ("Past best before"); the app never says what may be
-  sold – that is the shop's local rule.
-- **Chips wrap** (rule 5): filters, date kinds, quick dates and times are wrapping `FilterChip` rows.
+- **Tab roots** use `WorkspaceHeader` (title, search, the active business with its switcher; the DEMO tag in the
+  demo). No settings icon in headers — settings live in More only. Pushed screens use `ScreenHeader` with Back.
+- **The tab bar stays visible**; only the camera scanner and the native PDF preview hide it (`FULL_SCREEN`).
+- **One wording source**: `src/modules/batches/format.ts` names every date kind and status. Nothing is ever called
+  "safe"; unknown dates are "Needs checking" and never green; past use-by says "action required", past best-before
+  says "review quality", past internal cutoff says "follow your procedure".
+- **Status colours** (`statusColors`): past hard deadline = danger red, due today / urgent = amber, soon = navy tint,
+  later = green tint, needs checking = grey, quality dates = purple tint. Colour is never the only signal.
+- **Dates keep their precision**: a month-only best-before is shown as "Best before end September 2026", never as a
+  day; exact-time deadlines show the time in the workspace time zone.
+- **Counts are neutral** ("Left: 3", "Items: 12"): the family does not use plural forms.
+- **Numeric fields** (`Field ltr`) stay left-to-right in Arabic (T62).
+- **Lists that can grow** (Items, queue, search, history, import rows) are virtualised `FlatList`s.
+- **Every save / action button** guards against double taps and passes a request id to the store.

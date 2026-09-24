@@ -86,7 +86,7 @@
   },
   "errors": {
     "crashTitle": "Something went wrong",
-    "crashBody": "Please close and reopen the app. Your data is safe.",
+    "crashBody": "Please close and reopen the app. What you saved is kept on this phone.",
     "saveFailed": "Could not save. Nothing was changed — please try again.",
     "loadFailed": "Could not load this. Please try again.",
     "workspaceNameRequired": "Enter a name for this business.",

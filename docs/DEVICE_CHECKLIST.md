@@ -3,7 +3,7 @@
 Master handoff §32. Every row needs a real Android device, the exact device model and Android version, and a
 screenshot or video path. Automated tests are not device evidence. Status vocabulary: PASS · HOLD · FAIL · NOT TESTED.
 
-Device: _not yet assigned_ · Android version: _—_ · APK SHA-256: _—_ · Commit: _—_
+Device: _not yet assigned_ · Android version: _—_ · APK SHA-256: _— (G10 HOLD: APK not built in the sandbox)_ · Commit: _—_
 
 | # | Check | Status | Evidence | Notes |
 |---|---|---|---|---|

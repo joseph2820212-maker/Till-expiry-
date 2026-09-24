@@ -86,7 +86,7 @@
   },
   "errors": {
     "crashTitle": "Bir şeyler ters gitti",
-    "crashBody": "Lütfen uygulamayı kapatıp yeniden açın. Verileriniz güvende.",
+    "crashBody": "Lütfen uygulamayı kapatıp yeniden açın. Kaydettikleriniz bu telefonda kalır.",
     "saveFailed": "Kaydedilemedi. Hiçbir şey değişmedi — lütfen tekrar deneyin.",
     "loadFailed": "Bu yüklenemedi. Lütfen tekrar deneyin.",
     "workspaceNameRequired": "Bu işletme için bir ad girin.",
