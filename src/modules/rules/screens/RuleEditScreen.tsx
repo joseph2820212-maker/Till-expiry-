@@ -96,7 +96,7 @@ export const RuleEditScreen: React.FC = () => {
         </Section>
 
         <Section title={t('rules.durationSection')} hint={form.appliesTo === 'manual_review' ? t('rules.durationOptional') : t('rules.durationHint')}>
-          <Field label={t('rules.duration')} value={form.durationText} onChangeText={v => patch({ durationText: v })} keyboardType="number-pad" maxLength={7} error={errText(errors.duration)} ltr testID="rule-duration" />
+          <Field label={t('rules.durationLabel')} value={form.durationText} onChangeText={v => patch({ durationText: v })} keyboardType="number-pad" maxLength={7} error={errText(errors.duration)} ltr testID="rule-duration" />
           <ChoiceChips options={UNITS.map(u => ({ value: u, label: t(`rules.unit.${u}`) }))} value={form.durationUnit} onChange={(u: DurationUnit) => patch({ durationUnit: u })} />
         </Section>
 

@@ -57,6 +57,7 @@ describe('locale completeness', () => {
     const prefixes = ['today.', 'items.', 'batch.', 'product.', 'check.', 'reminders.', 'reports.', 'backup.', 'onboarding.', 'workspace.', 'more.', 'help.', 'legal.', 'import.', 'export.', 'add.', 'rules.', 'locations.', 'label.', 'markdown.', 'dateKindHelp.', 'status.'];
     for (const l of ['ar', 'tr', 'fr', 'es', 'de']) for (const [k, en] of Object.entries(flat.en)) {
       if (!prefixes.some(p => k.startsWith(p)) || en.length < 25) continue;
+      if (!/[A-Za-z]{3,}/.test(en.replace(/\{\{\w+\}\}/g, ''))) continue; // placeholder-only lines are identical in every language
       if (flat[l][k] === en) suspects.push(`${l}:${k}`);
     }
     expect(suspects).toEqual([]);

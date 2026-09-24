@@ -1450,7 +1450,7 @@
     "rule": "Règle utilisée",
     "ruleSnapshotHint": "Enregistrée telle qu'elle était lors de son application. Modifier la règle ensuite ne change pas cet article.",
     "ruleName": "Règle",
-    "ruleVersion": "{{name}} (version {{version}})",
+    "ruleVersion": "{{name}} (version n° {{version}})",
     "ruleSource": "Origine",
     "ruleStorage": "Conservation",
     "actions": "Que s'est-il passé ?",
