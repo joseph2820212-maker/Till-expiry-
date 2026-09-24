@@ -5,11 +5,12 @@
  * T19 no date → needs checking, T32 standard barcode finds the product and still asks for the date.
  */
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { moneyFieldText } from '../../products/utils/moneyFields';
 import { createWorkspace, __resetWorkspaceCache } from '../../workspaces/workspaceStore';
 import { listProducts, saveProduct, getProduct } from '../../products/productStore';
 import { saveRule } from '../../rules/ruleStore';
 import { saveLocation } from '../../locations/locationStore';
-import { createDatedBatch, getBatch, listBatches, openBatch, prepareBatch } from '../../batches/batchStore';
+import { createDatedBatch, getBatch, listBatches, listEvents, openBatch, prepareBatch } from '../../batches/batchStore';
 import { newId } from '../../../storage/entityStore';
 import { evaluateBatch } from '../../../domain/expiry/statusEngine';
 import { DEFAULT_STATUS_SETTINGS } from '../../../domain/expiry/expiryTypes';
@@ -148,14 +149,60 @@ describe('E16 / E19 bought in and other dated', () => {
     expect(noCur.ok && noCur.input.input.newProduct?.costPerTrackingUnit).toBeUndefined();
   });
 
-  it('changing cost on an existing product updates the product, not the batch', async () => {
+  it('changing cost on an existing product travels with the batch input (one transaction), not as a separate save', async () => {
     const w = await ws();
     const p = await saveProduct(w.id, { name: 'Bread' });
     const plan = buildDatedPlan(dated({ productId: p.id, dateKind: 'best_before', deadline: { precision: 'date', date: '2026-09-30' }, costText: '0.85' }), { workspaceId: w.id, currency: 'GBP', product: p });
     if (!plan.ok) throw new Error('expected ok');
-    expect(plan.input.productUpdate?.draft.costPerTrackingUnit).toEqual({ minor: 85, currency: 'GBP' });
+    expect(plan.input.input.productMoney?.costPerTrackingUnit).toEqual({ minor: 85, currency: 'GBP' });
     const same = buildDatedPlan(dated({ productId: p.id, dateKind: 'best_before', deadline: { precision: 'date', date: '2026-09-30' } }), { workspaceId: w.id, currency: 'GBP', product: p });
-    expect(same.ok && same.input.productUpdate).toBeUndefined();
+    expect(same.ok && same.input.input.productMoney).toBeUndefined();
+  });
+
+  describe('EXP-REV-02 product money change and new batch are atomic', () => {
+    async function setup() {
+      const w = await ws();
+      const p = await saveProduct(w.id, { name: 'Bread', costPerTrackingUnit: { minor: 50, currency: 'GBP' }, sellingPrice: { minor: 120, currency: 'GBP' } });
+      const plan = buildDatedPlan(dated({ productId: p.id, dateKind: 'best_before', deadline: { precision: 'date', date: '2026-09-30' }, costText: '0.85', priceText: '1.50' }), { workspaceId: w.id, currency: 'GBP', product: p, requestId: 'req-atomic' });
+      if (!plan.ok) throw new Error('expected ok');
+      return { w, p, input: plan.input.input };
+    }
+    it('a failure after the product change is staged leaves the product money unchanged and writes no batch, event or index', async () => {
+      const { w, p, input } = await setup();
+      const store = AsyncStorage as any;
+      const before = await AsyncStorage.getAllKeys();
+      const real = store.multiSet.getMockImplementation();
+      store.multiSet.mockImplementationOnce(async () => { throw new Error('disk full'); });
+      await expect(createDatedBatch(input)).rejects.toThrow();
+      store.multiSet.mockImplementation(real);
+      expect((await getProduct(w.id, p.id))?.costPerTrackingUnit).toEqual({ minor: 50, currency: 'GBP' });
+      expect((await getProduct(w.id, p.id))?.sellingPrice).toEqual({ minor: 120, currency: 'GBP' });
+      expect(await listBatches(w.id)).toEqual([]);
+      expect(await listEvents(w.id)).toEqual([]);
+      expect((await AsyncStorage.getAllKeys()).filter(k => !k.startsWith('journal:')).sort()).toEqual(before.filter(k => !k.startsWith('journal:')).sort());
+    });
+    it('success writes both; a repeated tap with the same request id changes nothing more', async () => {
+      const { w, p, input } = await setup();
+      const b1 = await createDatedBatch(input);
+      expect((await getProduct(w.id, p.id))?.costPerTrackingUnit).toEqual({ minor: 85, currency: 'GBP' });
+      const b2 = await createDatedBatch({ ...input, productMoney: { costPerTrackingUnit: { minor: 999, currency: 'GBP' } } });
+      expect(b2.id).toBe(b1.id);
+      expect((await getProduct(w.id, p.id))?.costPerTrackingUnit).toEqual({ minor: 85, currency: 'GBP' });
+      expect(await listBatches(w.id)).toHaveLength(1);
+    });
+  });
+
+  describe('EXP-REV-06 a workspace currency change never relabels money', () => {
+    it('a GBP amount is not prefilled or rewritten when the workspace currency is EUR', async () => {
+      const w = await ws();
+      const p = await saveProduct(w.id, { name: 'Tea', costPerTrackingUnit: { minor: 100, currency: 'GBP' } });
+      expect(moneyFieldText(p.costPerTrackingUnit, 'EUR')).toBe('');
+      const plan = buildDatedPlan(dated({ productId: p.id, dateKind: 'best_before', deadline: { precision: 'date', date: '2026-09-30' }, costText: '' }), { workspaceId: w.id, currency: 'EUR', product: p });
+      if (!plan.ok) throw new Error('expected ok');
+      expect(plan.input.input.productMoney).toBeUndefined(); // GBP 1.00 is kept, not turned into EUR 1.00 or cleared
+      await createDatedBatch(plan.input.input);
+      expect((await getProduct(w.id, p.id))?.costPerTrackingUnit).toEqual({ minor: 100, currency: 'GBP' });
+    });
   });
 
   it('T15 a double tap saves once (in-flight guard + request id)', async () => {

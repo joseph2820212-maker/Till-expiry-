@@ -24,7 +24,8 @@ import { DeadlineInput } from '../../../components/forms/DeadlineInput';
 import { newId } from '../../../storage/entityStore';
 import { useWorkspaceData } from '../../../hooks/useWorkspaceData';
 import type { TabStackParamList } from '../../../navigation/AppNavigator';
-import { listProducts, saveProduct } from '../../products/productStore';
+import { listProducts } from '../../products/productStore';
+import { moneyFieldText } from '../../products/utils/moneyFields';
 import { listLocations } from '../../locations/locationStore';
 import { createDatedBatch } from '../../batches/batchStore';
 import { deadlineLine, formatDeadlineValue } from '../../batches/format';
@@ -42,7 +43,7 @@ type Params = { productId?: string; barcode?: string; symbology?: string; gs1?: 
 
 const emptyForm = (kind: DatedForm['kind']): DatedForm => ({ kind, newName: '', quantityText: '', lot: '', costText: '', priceText: '', notes: '' });
 
-const moneyInput = (m: Product['costPerTrackingUnit']) => (m ? priceToInput(moneyFromMinor(m.minor, m.currency)) : '');
+
 
 const DatedAddScreen: React.FC<{ kind: DatedForm['kind'] }> = ({ kind }) => {
   const { t } = useTranslation();
@@ -82,8 +83,8 @@ const DatedAddScreen: React.FC<{ kind: DatedForm['kind'] }> = ({ kind }) => {
       locationId: f.locationId ?? p.defaultLocationId,
       unit: p.trackingUnit,
       customUnit: p.customUnitLabel,
-      costText: moneyInput(p.costPerTrackingUnit),
-      priceText: moneyInput(p.sellingPrice),
+      costText: moneyFieldText(p.costPerTrackingUnit, currency),
+      priceText: moneyFieldText(p.sellingPrice, currency),
     }));
     setErrors({});
   }, [kinds]);
@@ -141,7 +142,7 @@ const DatedAddScreen: React.FC<{ kind: DatedForm['kind'] }> = ({ kind }) => {
         const plan = buildDatedPlan(form, { workspaceId: ws.id, currency, product, requestId });
         if (!plan.ok) { setErrors(plan.errors); return; }
         try {
-          if (plan.input.productUpdate) await saveProduct(ws.id, plan.input.productUpdate.draft, plan.input.productUpdate.id);
+          // One transaction: the product's cost / price change and the new batch are saved together or not at all.
           const b = await createDatedBatch(plan.input.input);
           setSaved(b);
         } catch (e) {

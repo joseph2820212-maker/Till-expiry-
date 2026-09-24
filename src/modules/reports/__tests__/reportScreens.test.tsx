@@ -125,9 +125,20 @@ describe('internal label screen', () => {
     (Print.printAsync as jest.Mock).mockRejectedValueOnce(new Error('cancelled'));
     await act(async () => { await preview().props.actions.find((a: any) => a.key === 'print').onPress(); });
     expect((await listBatchEvents(w.id, b.id)).map(e => e.type)).not.toContain('label_printed');
+    // EXP-REV-08: printAsync resolving (Android: the print window was only shown) records nothing by itself.
+    const alerts: any[] = [];
+    const { AppAlert } = require('../../../components/AppAlert');
+    AppAlert.register((c: any) => { if (c) alerts.push(c); });
     await act(async () => { await preview().props.actions.find((a: any) => a.key === 'print').onPress(); });
     expect(Print.printAsync).toHaveBeenCalledWith({ uri: preview().props.sourceUri });
+    expect((await listBatchEvents(w.id, b.id)).map(e => e.type)).not.toContain('label_printed');
+    expect(alerts.at(-1).title).toBe('label.confirmTitle');
+    await act(async () => { alerts.at(-1).buttons.find((x: any) => x.text === 'label.confirmNo').onPress?.(); });
+    expect((await listBatchEvents(w.id, b.id)).map(e => e.type)).not.toContain('label_printed');
+    await act(async () => { await preview().props.actions.find((a: any) => a.key === 'print').onPress(); });
+    await act(async () => { alerts.at(-1).buttons.find((x: any) => x.text === 'label.confirmYes').onPress(); await new Promise(r => setTimeout(r, 0)); });
     expect((await listBatchEvents(w.id, b.id)).filter(e => e.type === 'label_printed')).toHaveLength(1);
+    AppAlert.unregister();
   });
 
   it('a bought-in batch is not labelled: the screen says so instead of printing', async () => {

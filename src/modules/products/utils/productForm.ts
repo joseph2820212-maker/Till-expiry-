@@ -3,8 +3,8 @@
  * and only accepted when the workspace has a currency. Names of new categories / suppliers are resolved by the screen.
  */
 import type { BarcodeRole, DateKind, Product, TrackingUnit } from '../../../domain/expiry/expiryTypes';
-import { moneyFromMinor } from '../../../domain/money';
-import { parseTypedPrice, priceToInput } from '../../../domain/typedPrice';
+import { parseTypedPrice } from '../../../domain/typedPrice';
+import { keptMoney, moneyFieldText } from './moneyFields';
 import type { ProductDraft } from '../productStore';
 
 export interface ProductForm {
@@ -28,8 +28,8 @@ export function emptyProductForm(): ProductForm {
   return { name: '', barcodes: [], sku: '', unit: 'each', customUnit: '', isPrepared: false, costText: '', priceText: '', notes: '' };
 }
 
-export function productToForm(p: Product): ProductForm {
-  const money = (m: Product['sellingPrice']) => (m ? priceToInput(moneyFromMinor(m.minor, m.currency)) : '');
+export function productToForm(p: Product, currency: string): ProductForm {
+  const money = (m: Product['sellingPrice']) => moneyFieldText(m, currency);
   return {
     name: p.name,
     barcodes: p.barcodes.map(b => ({ code: b.code, symbology: b.symbology, role: b.role, unitCount: b.unitCount })),
@@ -50,7 +50,7 @@ export function productToForm(p: Product): ProductForm {
 
 export type ProductFormResult = { ok: true; draft: ProductDraft } | { ok: false; errors: Partial<Record<string, string>> };
 
-export function formToDraft(f: ProductForm, currency: string): ProductFormResult {
+export function formToDraft(f: ProductForm, currency: string, existing?: Pick<Product, 'costPerTrackingUnit' | 'sellingPrice'> | null): ProductFormResult {
   const errors: Partial<Record<string, string>> = {};
   if (!f.name.trim()) errors.name = 'nameRequired';
   if (f.unit === 'custom' && !f.customUnit.trim()) errors.unit = 'customUnitRequired';
@@ -61,8 +61,8 @@ export function formToDraft(f: ProductForm, currency: string): ProductFormResult
     if (!r.ok) { errors[key] = `money_${r.error}`; return undefined; }
     return { minor: r.money.minor, currency: r.money.currency };
   };
-  const costPerTrackingUnit = money(f.costText, 'cost');
-  const sellingPrice = money(f.priceText, 'price');
+  const costPerTrackingUnit = keptMoney(money(f.costText, 'cost'), f.costText, existing?.costPerTrackingUnit, currency);
+  const sellingPrice = keptMoney(money(f.priceText, 'price'), f.priceText, existing?.sellingPrice, currency);
   if (Object.keys(errors).length) return { ok: false, errors };
   return {
     ok: true,

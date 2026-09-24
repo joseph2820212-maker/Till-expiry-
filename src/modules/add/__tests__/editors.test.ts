@@ -56,7 +56,7 @@ describe('E11 product form', () => {
     expect(r.draft.sellingPrice).toBeUndefined();
     const w = await createWorkspace({ name: 'Shop', mode: 'retail', currency: 'EUR', timeZone: 'Europe/Berlin' });
     const p = await saveProduct(w.id, r.draft);
-    expect(productToForm(p)).toMatchObject({ name: 'Coffee beans 1kg', costText: '12.40', priceText: '', unit: 'kg' });
+    expect(productToForm(p, 'EUR')).toMatchObject({ name: 'Coffee beans 1kg', costText: '12.40', priceText: '', unit: 'kg' });
   });
 
   it('name and custom unit are required', () => {

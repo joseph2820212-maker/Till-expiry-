@@ -54,8 +54,16 @@ describe('GS1 element strings', () => {
 });
 
 describe('dates', () => {
-  it('DD=00 means end of month → month precision (never a made-up day)', () => {
+  it('AI 15 DD=00 means best before end of month → month precision (never a made-up day)', () => {
     expect(parseGs1Date('270200', NOW)).toEqual({ precision: 'month', month: '2027-02' });
+    expect(parseGs1Date('270200', NOW, '15')).toEqual({ precision: 'month', month: '2027-02' });
+  });
+  it('EXP-REV-09 AI 17 DD=00 is the last day of that month, leap years included', () => {
+    expect(parseGs1Date('270200', NOW, '17')).toEqual({ precision: 'date', date: '2027-02-28' });
+    expect(parseGs1Date('280200', NOW, '17')).toEqual({ precision: 'date', date: '2028-02-29' });
+    expect(parseGs1Date('261100', NOW, '17')).toEqual({ precision: 'date', date: '2026-11-30' });
+    expect(parseGs1Date('261200', NOW, '17')).toEqual({ precision: 'date', date: '2026-12-31' });
+    expect(P(`]C117280200`)).toMatchObject({ expiry: { precision: 'date', date: '2028-02-29' } });
   });
   it('real calendar check: 30 February and month 13 are refused', () => {
     expect(parseGs1Date('270230', NOW)).toBeNull();
@@ -143,11 +151,12 @@ describe('GTIN helpers and suggestions', () => {
     expect(gtinLookupCodes('15000157024678')).toEqual(['15000157024678']);
     expect(gtinLookupCodes('123')).toEqual([]);
   });
-  it('AI 17 day → suggested use-by in a food workspace, manufacturer expiry at home; month-only 17 is never use-by', () => {
+  it('AI 17 day → suggested use-by in a food workspace, manufacturer expiry at home; AI 17 DD=00 resolves to its last day (EXP-REV-09)', () => {
     const r = P(`]C117261231`);
     expect(gs1Suggestion(r, 'retail')).toMatchObject({ dateKind: 'use_by', deadline: { precision: 'date', date: '2026-12-31' }, source: '17' });
     expect(gs1Suggestion(r, 'home_other').dateKind).toBe('manufacturer_expiry');
-    expect(gs1Suggestion(P(`]C117261200`), 'food_prep')).toMatchObject({ dateKind: 'manufacturer_expiry', deadline: { precision: 'month', month: '2026-12' } });
+    // A still-unconfirmed suggestion: the user confirms the date and its kind before saving.
+    expect(gs1Suggestion(P(`]C117261200`), 'food_prep')).toMatchObject({ dateKind: 'use_by', deadline: { precision: 'date', date: '2026-12-31' } });
   });
   it('AI 15 → best before; both present → 17 suggested, 15 shown alongside', () => {
     expect(gs1Suggestion(P(`]C115270300`), 'mixed')).toMatchObject({ dateKind: 'best_before', source: '15' });

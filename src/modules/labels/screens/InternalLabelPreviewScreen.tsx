@@ -72,13 +72,25 @@ export const InternalLabelPreviewScreen: React.FC = () => {
       setBusy(null);
       return;
     }
+    // EXP-REV-08: on Android printAsync resolves as soon as the print window is shown, even if the user then cancels,
+    // so returning from it proves nothing. "Label printed" is recorded only when the user confirms it printed.
+    inFlight.current = false;
+    setBusy(null);
+    AppAlert.alert(t('label.confirmTitle'), t('label.confirmBody'), [
+      { text: t('label.confirmNo'), style: 'cancel' },
+      { text: t('label.confirmYes'), onPress: () => { void markPrinted(); } },
+    ]);
+  };
+
+  const markPrinted = async () => {
+    if (!data || inFlight.current) return;
+    inFlight.current = true;
     try {
       for (const b of data.labels) await markLabelPrinted(data.workspaceId, b.id);
     } catch {
       AppAlert.error(t('errors.saveFailed'));
     } finally {
       inFlight.current = false;
-      setBusy(null);
     }
   };
 

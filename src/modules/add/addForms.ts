@@ -18,6 +18,7 @@ import type { DatedInput, OpenInput, PrepareInput } from '../batches/batchStore'
 import type { ProductDraft } from '../products/productStore';
 import type { ReminderSettings } from '../settings/settingsStore';
 import type { Gs1Result } from './gs1';
+import { keptMoney } from '../products/utils/moneyFields';
 
 export type FormErrors = Partial<Record<string, string>>;
 export type FormResult<T> = { ok: true; input: T } | { ok: false; errors: FormErrors };
@@ -169,9 +170,8 @@ export interface DatedContext {
 }
 
 export interface DatedPlan {
+  /** A cost / price change of an existing product travels in `input.productMoney` and is saved atomically with the batch. */
   input: DatedInput;
-  /** Cost / price change for an existing product (saved on the product, not the batch). */
-  productUpdate?: { id: string; draft: ProductDraft };
 }
 
 function productDraftFromExisting(p: Product): ProductDraft {
@@ -223,13 +223,17 @@ export function buildDatedPlan(f: DatedForm, ctx: DatedContext): FormResult<Date
     notes: f.notes.trim() || undefined,
     requestId: ctx.requestId,
   };
-  let productUpdate: DatedPlan['productUpdate'];
   if (f.productId) {
     input.productId = f.productId;
     const p = ctx.product;
-    if (p && ctx.currency && (!sameMoney(cost, p.costPerTrackingUnit) || !sameMoney(price, p.sellingPrice))) {
-      // Only change what was typed; an emptied field clears the value (unknown stays unknown, never 0).
-      productUpdate = { id: p.id, draft: { ...productDraftFromExisting(p), costPerTrackingUnit: cost, sellingPrice: price } };
+    if (p && ctx.currency) {
+      // Only what was typed changes; an amount recorded in another currency is never shown or relabelled (EXP-REV-06);
+      // an emptied field in the current currency clears the value (unknown stays unknown, never 0).
+      const nextCost = keptMoney(cost, f.costText, p.costPerTrackingUnit, ctx.currency);
+      const nextPrice = keptMoney(price, f.priceText, p.sellingPrice, ctx.currency);
+      if (!sameMoney(nextCost, p.costPerTrackingUnit) || !sameMoney(nextPrice, p.sellingPrice)) {
+        input.productMoney = { costPerTrackingUnit: nextCost, sellingPrice: nextPrice };
+      }
     }
   } else {
     input.newProduct = {
@@ -244,7 +248,7 @@ export function buildDatedPlan(f: DatedForm, ctx: DatedContext): FormResult<Date
     };
   }
   for (const k of Object.keys(input) as (keyof DatedInput)[]) if (input[k] === undefined) delete input[k];
-  return { ok: true, input: { input, productUpdate } };
+  return { ok: true, input: { input } };
 }
 
 /** Date kinds offered in each flow (the bought-in list follows §12.1; "other" is expiry or review date). */

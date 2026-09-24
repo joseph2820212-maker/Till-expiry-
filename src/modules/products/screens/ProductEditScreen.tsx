@@ -59,7 +59,7 @@ export const ProductEditScreen: React.FC = () => {
   useEffect(() => {
     if (!data || loaded.current) return;
     loaded.current = true;
-    if (data.product) setForm(productToForm(data.product));
+    if (data.product) setForm(productToForm(data.product, currency));
     else if (params?.barcode) setForm(f => ({ ...f, barcodes: addBarcode(f.barcodes, params.barcode as string, params.symbology) }));
   }, [data, params]);
 
@@ -79,7 +79,7 @@ export const ProductEditScreen: React.FC = () => {
 
   const save = async () => {
     if (!ws || inFlight.current) return;
-    const built = formToDraft(form, currency);
+    const built = formToDraft(form, currency, data?.product);
     if (!built.ok) { setErrors(built.errors); return; }
     inFlight.current = true;
     setSaving(true);

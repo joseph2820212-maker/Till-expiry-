@@ -218,6 +218,8 @@ export interface BatchEvent {
   note?: string;
   before?: Record<string, unknown>;
   after?: Record<string, unknown>;
+  /** Wasted events: cost of one counted unit at the time of recording (EXP-REV-10). Absent = unknown. */
+  unitCost?: MoneyValue;
 }
 
 export interface ImportRecord {

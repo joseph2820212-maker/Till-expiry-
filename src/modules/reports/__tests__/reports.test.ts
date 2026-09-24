@@ -155,3 +155,34 @@ describe('waste report', () => {
     expect(r.rows[0].day).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });
+
+describe('EXP-REV-10 waste cost is a snapshot taken when waste is recorded', () => {
+  it('waste at £1/unit keeps £1/unit after the product cost changes to £2', async () => {
+    const { createWorkspace } = require('../../workspaces/workspaceStore');
+    const { saveProduct, getProduct } = require('../../products/productStore');
+    const { createDatedBatch, recordRemoval, listEvents } = require('../../batches/batchStore');
+    const { buildWasteRows } = require('../reportRows');
+    const w = await createWorkspace({ name: 'Snap', mode: 'retail', currency: 'GBP', timeZone: 'Europe/London' });
+    const p = await saveProduct(w.id, { name: 'Ham', costPerTrackingUnit: { minor: 100, currency: 'GBP' } });
+    const b = await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', productId: p.id, dateKind: 'use_by', deadline: { precision: 'date', date: '2026-09-20' }, quantity: 5 });
+    await recordRemoval(w.id, b.id, 'wasted', { quantity: 3, reason: 'past_deadline' });
+    const ev = (await listEvents(w.id)).find((e: any) => e.type === 'wasted');
+    expect(ev.unitCost).toEqual({ minor: 100, currency: 'GBP' });
+    const cur = await getProduct(w.id, p.id);
+    await saveProduct(w.id, { name: cur.name, costPerTrackingUnit: { minor: 200, currency: 'GBP' } }, p.id);
+    const report = await buildWasteRows(w.id, {});
+    expect(report.rows[0].cost).toEqual({ minor: 300, currency: 'GBP' });
+    expect(report.summary.costTotals).toEqual({ GBP: 300 });
+  });
+
+  it('a legacy waste event without a snapshot shows unknown cost, not today’s product cost', () => {
+    const { wasteRowsFrom } = require('../reportRows');
+    const at = '2026-09-20T10:00:00Z';
+    const batch = { id: 'b1', workspaceId: 'w', productId: 'p1', productName: 'Ham', kind: 'bought_in', timeZone: 'UTC', effective: { dateKind: 'none', reason: 'none' }, status: 'active', dateKind: 'none', datePrecision: 'date', createdAt: at, updatedAt: at, schemaVersion: 1 };
+    const product = { id: 'p1', workspaceId: 'w', name: 'Ham', barcodes: [], trackingUnit: 'each', costPerTrackingUnit: { minor: 200, currency: 'GBP' }, status: 'active', createdAt: at, updatedAt: at, schemaVersion: 1 };
+    const events = [{ id: 'e1', workspaceId: 'w', batchId: 'b1', type: 'wasted', at, quantity: 2, reason: 'quality' }];
+    const r = wasteRowsFrom('w', events, [batch], [product], [], {}, 'UTC');
+    expect(r.rows[0].cost).toBeNull();
+    expect(r.summary.unknownCost).toBe(1);
+  });
+});

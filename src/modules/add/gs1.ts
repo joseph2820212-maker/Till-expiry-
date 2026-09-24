@@ -13,7 +13,9 @@
  *   one that starts with AI (01);
  * - human-readable form `(01)09501101530003(17)261231(10)AB-12`.
  *
- * Dates are YYMMDD. DD = 00 means "end of that month" and is kept with month precision. The century follows the
+ * Dates are YYMMDD. DD = 00 is interpreted per AI (EXP-REV-09): for AI (17) expiration it is the LAST DAY of that month
+ * (GS1 General Specifications, leap years included) and is returned as that calendar date; for AI (15) best before it
+ * stays a "best before end of month" with month precision. The century follows the
  * GS1 General Specifications sliding window (§7.12): YY minus the current two-digit year from 51 to 99 → previous
  * century, from −99 to −50 → next century, otherwise the current century.
  */
@@ -138,15 +140,19 @@ function daysInMonth(y: number, m: number): number {
   return new Date(Date.UTC(y, m, 0)).getUTCDate();
 }
 
-/** YYMMDD → a calendar date, or a month when DD is 00. Null when not a real date. */
-export function parseGs1Date(v: string, now: Date = new Date()): DeadlineValue | null {
+/** YYMMDD → a calendar date; DD 00 → the month (AI 15) or its last day (AI 17). Null when not a real date. */
+export function parseGs1Date(v: string, now: Date = new Date(), ai: '15' | '17' = '15'): DeadlineValue | null {
   if (!/^\d{6}$/.test(v)) return null;
   const yy = Number(v.slice(0, 2));
   const mm = Number(v.slice(2, 4));
   const dd = Number(v.slice(4, 6));
   if (mm < 1 || mm > 12) return null;
   const year = gs1Year(yy, now);
-  if (dd === 0) return { precision: 'month', month: `${year}-${pad2(mm)}` };
+  if (dd === 0) {
+    return ai === '17'
+      ? { precision: 'date', date: `${year}-${pad2(mm)}-${pad2(daysInMonth(year, mm))}` }
+      : { precision: 'month', month: `${year}-${pad2(mm)}` };
+  }
   if (dd > daysInMonth(year, mm)) return null;
   return { precision: 'date', date: `${year}-${pad2(mm)}-${pad2(dd)}` };
 }
@@ -254,7 +260,7 @@ export function parseGs1(input: string, opts: ParseOptions = {}): Gs1Result | nu
       if (!CSET82.test(value)) result.issues.push({ code: 'badLot', ai });
       else result.lot = value;
     } else if (ai === '15' || ai === '17') {
-      const d = parseGs1Date(value, opts.now);
+      const d = parseGs1Date(value, opts.now, ai);
       if (!d) result.issues.push({ code: 'badDate', ai });
       else if (ai === '15') result.bestBefore = d; else result.expiry = d;
     }

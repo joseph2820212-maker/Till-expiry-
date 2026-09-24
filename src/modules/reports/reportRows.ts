@@ -7,6 +7,7 @@
  *   separately; totals are kept per currency so two currencies are never added together (T55).
  * - The waste report counts only events explicitly recorded as `wasted`; nothing expires into waste (T56, T24).
  */
+import { unitCostFor } from '../batches/unitCost';
 import type {
   Batch, BatchEvent, BatchKind, DateKind, DeadlineValue, IsoDateTime, LocalDate, MoneyValue, Product, StatusSettings, StorageLocation, Workspace,
 } from '../../domain/expiry/expiryTypes';
@@ -55,15 +56,6 @@ export function unitOf(batch: Pick<Batch, 'quantityUnit'>, product?: Pick<Produc
 }
 
 /** The product's per-unit cost applies only when the batch is counted in the product's own tracking unit. */
-function unitCostFor(batch: Pick<Batch, 'quantityUnit'>, product: Product | undefined): MoneyValue | null {
-  const cost = product?.costPerTrackingUnit;
-  if (!product || !cost) return null;
-  const u = batch.quantityUnit;
-  if (!u) return cost;
-  if (u === product.trackingUnit) return cost;
-  if (product.trackingUnit === 'custom' && u === product.customUnitLabel) return cost;
-  return null;
-}
 
 // ─── expiry report ─────────────────────────────────────────────────────────────
 
@@ -248,8 +240,9 @@ export function wasteRowsFrom(
     if (filter.to && day > filter.to) continue;
     const product = batch ? pById.get(batch.productId) : undefined;
     const known = (WASTE_REASONS as readonly string[]).includes(e.reason ?? '');
-    const unitCost = batch ? unitCostFor(batch, product) : null;
-    const cost = unitCost && e.quantity != null ? costOfQuantity(unitCost, e.quantity) : null;
+    // EXP-REV-10: waste cost is the cost SNAPSHOT taken when the waste was recorded, so a later cost change never
+    // rewrites history. Events recorded before snapshots existed have no snapshot: their cost is shown as unknown.
+    const cost = e.unitCost && e.quantity != null ? costOfQuantity(e.unitCost, e.quantity) : null;
     rows.push({
       eventId: e.id, batchId: e.batchId, productId: batch?.productId, productName: product?.name ?? batch?.productName ?? '',
       lot: batch?.lotNumber, kind: batch?.kind, at: e.at, day, timeZone: tz, quantity: e.quantity,

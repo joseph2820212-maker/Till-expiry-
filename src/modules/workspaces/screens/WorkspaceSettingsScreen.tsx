@@ -41,13 +41,6 @@ export const WorkspaceSettingsScreen: React.FC = () => {
     }).catch(() => AppAlert.error(t('errors.loadFailed')));
   }, [creating, params?.id, t]);
 
-  const run = async (fn: () => Promise<void>) => {
-    if (inFlight.current) return;
-    inFlight.current = true; setBusy(true);
-    try { await fn(); nav.goBack(); }
-    catch (e) { AppAlert.error(t(`errors.${e instanceof DomainError ? e.code : 'saveFailed'}`)); }
-    finally { inFlight.current = false; setBusy(false); }
-  };
 
   const save = () => {
     if (!value) return;
@@ -60,6 +53,29 @@ export const WorkspaceSettingsScreen: React.FC = () => {
         await updateWorkspace(params!.id!, value);
       }
     });
+  };
+
+  /**
+   * EXP-REV-06: amounts are never converted or relabelled. If products hold amounts in the old currency, changing it
+   * needs an explicit decision: those amounts become "not recorded" and must be entered again in the new currency.
+   */
+  const run = async (fn: () => Promise<void>) => {
+    if (inFlight.current) return;
+    inFlight.current = true; setBusy(true);
+    try { await fn(); nav.goBack(); }
+    catch (e) {
+      if (e instanceof DomainError && e.code === 'currencyInUse' && value && params?.id) {
+        const id = params.id;
+        const v = value;
+        AppAlert.alert(t('workspace.currencyChangeTitle'), t('workspace.currencyChangeBody', { count: Number(e.detail ?? 0), currency: v.currency || t('workspace.currencyNone') }), [
+          { text: t('common.cancel'), style: 'cancel' },
+          { text: t('workspace.currencyChangeConfirm'), style: 'destructive', onPress: () => { void run(() => updateWorkspace(id, v, { clearMoney: true }).then(() => undefined)); } },
+        ]);
+      } else {
+        AppAlert.error(t(`errors.${e instanceof DomainError ? e.code : 'saveFailed'}`));
+      }
+    }
+    finally { inFlight.current = false; setBusy(false); }
   };
 
   const hide = () => AppAlert.alert(t('workspace.hideTitle'), t('workspace.hideBody'), [

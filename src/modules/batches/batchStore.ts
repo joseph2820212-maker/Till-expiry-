@@ -10,7 +10,7 @@
  * - Deadlines come only from domain/expiry (T13, T14, T17–T20). Moving, checking and label printing never change them.
  */
 import type {
-  AppliedRuleSnapshot, Batch, BatchEvent, BatchEventType, DateKind, DeadlineValue, ExpiryRule, IsoDateTime, Product, Workspace,
+  AppliedRuleSnapshot, Batch, BatchEvent, BatchEventType, DateKind, DeadlineInfo, DeadlineValue, ExpiryRule, IsoDateTime, MoneyValue, Product, Workspace,
 } from '../../domain/expiry/expiryTypes';
 import { boughtInDeadline, deadlineFields, openedDeadline, preparedDeadline } from '../../domain/expiry/deadlineEngine';
 import { isOffsetIso } from '../../domain/expiry/datePrecision';
@@ -22,6 +22,7 @@ import { listRecords, newId, nowIso, readRecord, runTxn, type Txn } from '../../
 import { DomainError, mustGet, optText, putRecord } from '../../storage/repoHelpers';
 import { notifyDataChanged } from '../../storage/changeBus';
 import { createProductTx, type ProductDraft } from '../products/productStore';
+import { unitCostFor } from './unitCost';
 
 export const BATCH_LIMITS = { lot: 40, notes: 300, reason: 200 } as const;
 
@@ -113,6 +114,11 @@ export interface DatedInput {
   notes?: string;
   importRef?: string;
   requestId?: string;
+  /**
+   * Cost / price change of the EXISTING product (`productId`), saved in the SAME transaction as the batch (EXP-REV-02):
+   * both are written or neither is. `undefined` in a field means "no amount" (unknown), never 0.
+   */
+  productMoney?: { costPerTrackingUnit?: MoneyValue; sellingPrice?: MoneyValue };
 }
 
 export async function createDatedBatchTx(tx: Txn, input: DatedInput): Promise<Batch> {
@@ -124,6 +130,12 @@ export async function createDatedBatchTx(tx: Txn, input: DatedInput): Promise<Ba
   const product = await productFor(tx, ws.id, input.productId, input.newProduct);
   await locationCheck(tx, ws.id, input.locationId);
   const now = nowIso();
+  if (input.productMoney && input.productId) {
+    for (const m of [input.productMoney.costPerTrackingUnit, input.productMoney.sellingPrice]) {
+      if (m && !(Number.isSafeInteger(m.minor) && m.minor > 0 && /^[A-Z]{3}$/.test(m.currency))) throw new DomainError('badMoney');
+    }
+    tx.set(K.item('products', product.id), clean({ ...product, costPerTrackingUnit: input.productMoney.costPerTrackingUnit, sellingPrice: input.productMoney.sellingPrice, updatedAt: now }));
+  }
   const b: Batch = clean({
     id: newId('bat'), workspaceId: ws.id, productId: product.id, productName: product.name, kind: input.kind,
     lotNumber: optText(input.lotNumber, BATCH_LIMITS.lot), receivedAt: input.receivedAt,
@@ -300,7 +312,8 @@ export async function recordRemoval(workspaceId: string, batchId: string, type: 
     const now = nowIso();
     const next: Batch = { ...b, quantityRemaining: remaining, status: complete ? 'completed' : 'active', updatedAt: now };
     tx.set(K.item('batches', b.id), next);
-    await appendEvent(tx, { id: input.requestId, workspaceId, batchId: b.id, type, quantity: qty, reason: optText(input.reason, BATCH_LIMITS.reason), note: optText(input.note, BATCH_LIMITS.notes), before: { quantityRemaining: b.quantityRemaining }, after: { quantityRemaining: remaining, status: next.status } });
+    const unitCost = type === 'wasted' ? unitCostFor(b, await tx.get<Product>(K.item('products', b.productId))) ?? undefined : undefined;
+    await appendEvent(tx, { id: input.requestId, workspaceId, batchId: b.id, type, quantity: qty, reason: optText(input.reason, BATCH_LIMITS.reason), note: optText(input.note, BATCH_LIMITS.notes), unitCost, before: { quantityRemaining: b.quantityRemaining }, after: { quantityRemaining: remaining, status: next.status } });
     return next;
   });
 }
@@ -331,6 +344,28 @@ export async function moveBatch(workspaceId: string, batchId: string, locationId
   });
 }
 
+async function parentOf(tx: Txn, b: Batch): Promise<Batch | undefined> {
+  if (b.kind !== 'opened' || !b.parentBatchId) return undefined;
+  return (await tx.get<Batch>(K.item('batches', b.parentBatchId))) ?? undefined;
+}
+
+const asCorrected = (i: DeadlineInfo | undefined): DeadlineInfo | undefined => (i && i.reason === 'direct' ? { ...i, reason: 'corrected' } : i);
+
+/**
+ * The stored own date and the effective / secondary dates after a correction. For an opened child the correction
+ * replaces only the child's OWN date; the result goes through the same `openedDeadline` invariant used at creation, so
+ * an earlier hard date of the original pack still controls and its best-before stays visible as a quality date
+ * (EXP-REV-01). Correcting the pack's own printed date is a correction of the parent batch.
+ */
+function correctedDeadlines(b: Batch, kind: DateKind, deadline: DeadlineValue | undefined, parent: Batch | undefined): Pick<Batch, 'dateKind' | 'datePrecision' | 'printedDate' | 'printedMonth' | 'exactDeadlineAt' | 'effective' | 'secondary'> {
+  const none = kind === 'none' || !deadline;
+  if (b.kind === 'opened' && parent) {
+    const derived = openedDeadline({ parent, openedAt: b.openedAt as string, direct: none ? undefined : { kind, deadline: deadline as DeadlineValue }, tz: b.timeZone });
+    return { ...deadlineFields(none ? 'none' : kind, none ? undefined : deadline), effective: asCorrected(derived.effective) as DeadlineInfo, secondary: asCorrected(derived.secondary) };
+  }
+  return { ...deadlineFields(kind, deadline), effective: none ? { dateKind: 'none', reason: 'none' } : { dateKind: kind, deadline, reason: 'corrected' }, secondary: undefined };
+}
+
 /** An explicit deadline correction with a recorded reason (T25). The old value stays in history. */
 export async function correctDeadline(workspaceId: string, batchId: string, kind: DateKind, deadline: DeadlineValue | undefined, reason: string, requestId?: string): Promise<Batch> {
   const err = validateDeadline(kind, deadline);
@@ -342,10 +377,9 @@ export async function correctDeadline(workspaceId: string, batchId: string, kind
     if (prior) return mustGet<Batch>(tx, 'batches', prior.batchId, workspaceId);
     const b = await mustGet<Batch>(tx, 'batches', batchId, workspaceId, 'batchNotFound');
     if (b.status === 'archived') throw new DomainError('batchNotActive');
-    const fields = deadlineFields(kind, deadline);
-    const next: Batch = clean({ ...b, printedDate: undefined, printedMonth: undefined, exactDeadlineAt: undefined, ...fields, effective: kind === 'none' || !deadline ? { dateKind: 'none', reason: 'none' } : { dateKind: kind, deadline, reason: 'corrected' }, updatedAt: nowIso() } as Batch);
+    const next: Batch = clean({ ...b, printedDate: undefined, printedMonth: undefined, exactDeadlineAt: undefined, ...correctedDeadlines(b, kind, deadline, await parentOf(tx, b)), updatedAt: nowIso() } as Batch);
     tx.set(K.item('batches', b.id), next);
-    await appendEvent(tx, { id: requestId, workspaceId, batchId, type: 'deadline_corrected', reason: why, before: { effective: b.effective }, after: { effective: next.effective } });
+    await appendEvent(tx, { id: requestId, workspaceId, batchId, type: 'deadline_corrected', reason: why, before: { effective: b.effective, secondary: b.secondary ?? null }, after: { effective: next.effective, secondary: next.secondary ?? null } });
     return next;
   });
 }

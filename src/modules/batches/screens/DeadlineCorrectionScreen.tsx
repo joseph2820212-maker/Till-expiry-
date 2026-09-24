@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ScreenHeader } from '../../../components/ScreenHeader';
 import { AppKeyboardScrollView } from '../../../components/AppKeyboardScrollView';
 import { AppButton } from '../../../components/AppButton';
@@ -13,6 +14,7 @@ import { spacing } from '../../../theme/spacing';
 import { useWorkspaceData } from '../../../hooks/useWorkspaceData';
 import { DATE_KINDS, type Batch, type DateKind, type DeadlineValue } from '../../../domain/expiry/expiryTypes';
 import { validateDeadline } from '../../../domain/expiry/expiryValidation';
+import { ownDeadline } from '../../../domain/expiry/deadlineEngine';
 import { parseQuantity } from '../../../domain/quantity/quantity';
 import { DomainError } from '../../../storage/repoHelpers';
 import { newId } from '../../../storage/entityStore';
@@ -26,21 +28,23 @@ import type { TabStackParamList } from '../../../navigation/AppNavigator';
  */
 export const DeadlineCorrectionScreen: React.FC = () => {
   const { t } = useTranslation();
-  const nav = useNavigation();
+  const nav = useNavigation<NativeStackNavigationProp<TabStackParamList>>();
   const { params } = useRoute<RouteProp<TabStackParamList, 'DeadlineCorrection'>>();
   const { data: batch } = useWorkspaceData(ws => getBatch(ws.id, params.id));
   return (
     <View style={s.root}>
       <ScreenHeader title={t('correct.title')} subtitle={batch?.productName} onBack={() => nav.goBack()} />
-      {batch ? <CorrectionForm batch={batch} onDone={() => nav.goBack()} /> : null}
+      {batch ? <CorrectionForm batch={batch} onDone={() => nav.goBack()} onParent={id => nav.push('DeadlineCorrection', { id })} /> : null}
     </View>
   );
 };
 
-const CorrectionForm: React.FC<{ batch: Batch; onDone: () => void }> = ({ batch, onDone }) => {
+const CorrectionForm: React.FC<{ batch: Batch; onDone: () => void; onParent: (id: string) => void }> = ({ batch, onDone, onParent }) => {
   const { t } = useTranslation();
-  const [kind, setKind] = useState<DateKind>(batch.effective.dateKind);
-  const [deadline, setDeadline] = useState<DeadlineValue | undefined>(batch.effective.deadline);
+  /** An opened child corrects its OWN after-opening date; the original pack's date belongs to the parent (EXP-REV-01). */
+  const childOfPack = batch.kind === 'opened' && !!batch.parentBatchId;
+  const [kind, setKind] = useState<DateKind>(childOfPack ? batch.dateKind : batch.effective.dateKind);
+  const [deadline, setDeadline] = useState<DeadlineValue | undefined>(childOfPack ? ownDeadline(batch) : batch.effective.deadline);
   const [reason, setReason] = useState('');
   const [qty, setQty] = useState('');
   const [qtyReason, setQtyReason] = useState('');
@@ -79,6 +83,12 @@ const CorrectionForm: React.FC<{ batch: Batch; onDone: () => void }> = ({ batch,
       <Section title={t('correct.dateTitle')} hint={t('correct.current', { value: deadlineLine(t, batch.effective, batch.timeZone) })}>
         <ChoiceChips label={t('correct.kind')} options={DATE_KINDS.map(k => ({ value: k, label: t(`dateKind.${k}`) }))} value={kind} onChange={setKind} />
         <Hint text={t(`dateKindHelp.${kind}`)} />
+        {childOfPack ? (
+          <>
+            <Hint text={t('correct.childHint')} />
+            <AppButton label={t('correct.parentDate')} variant="ghost" onPress={() => onParent(batch.parentBatchId as string)} testID="correct-parent" />
+          </>
+        ) : null}
         {kind !== 'none' ? <DeadlineInput kind={kind} value={deadline} onChange={setDeadline} tz={batch.timeZone} allowTime={allowTime} /> : null}
         <Field label={t('correct.reason')} value={reason} onChangeText={setReason} maxLength={BATCH_LIMITS.reason} placeholder={t('correct.reasonPh')} testID="correct-reason" />
         <ErrorText text={error} />

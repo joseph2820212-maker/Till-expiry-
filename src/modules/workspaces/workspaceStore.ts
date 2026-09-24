@@ -6,10 +6,10 @@
  * the stored active id is validated against the real list on every read.
  */
 import { useSyncExternalStore } from 'react';
-import type { Workspace, WorkspaceMode } from '../../domain/expiry/expiryTypes';
+import type { Product, Workspace, WorkspaceMode } from '../../domain/expiry/expiryTypes';
 import { isValidTimeZone, deviceTimeZone } from '../../domain/expiry/datePrecision';
 import { K } from '../../storage/keys';
-import { newId, nowIso, readRecord, runTxn } from '../../storage/entityStore';
+import { newId, nowIso, readRecord, runTxn, type Txn } from '../../storage/entityStore';
 import { DomainError, cleanText } from '../../storage/repoHelpers';
 import { notifyDataChanged } from '../../storage/changeBus';
 import { onScopeChanged } from '../../storage/scope';
@@ -93,11 +93,46 @@ export async function createWorkspace(d: WorkspaceDraft, opts: { makeActive?: bo
   return ws;
 }
 
-export async function updateWorkspace(id: string, d: WorkspaceDraft): Promise<Workspace> {
+/**
+ * Products of this workspace that hold an amount in a currency other than `currency` (EXP-REV-06). Such amounts are
+ * never relabelled: changing the workspace currency while any exist needs an explicit decision to clear them.
+ */
+async function foreignMoneyProducts(tx: Txn, workspaceId: string, currency: string): Promise<Product[]> {
+  const ids = await tx.getIndex(K.index('products', workspaceId));
+  const out: Product[] = [];
+  for (const id of ids) {
+    const p = await tx.get<Product>(K.item('products', id));
+    if (p && [p.costPerTrackingUnit, p.sellingPrice].some(m => m && m.currency !== currency)) out.push(p);
+  }
+  return out;
+}
+
+/** How many products would lose their recorded cost / price if the currency changed to `currency`. */
+export async function countMoneyAffectedByCurrency(workspaceId: string, currency: string): Promise<number> {
+  return runTxn(async tx => (await foreignMoneyProducts(tx, workspaceId, currency)).length);
+}
+
+/**
+ * Update a workspace. A currency change is refused with `currencyInUse` while products hold amounts in another currency,
+ * unless `clearMoney` is passed: then, in the same transaction, those amounts become unknown (never converted, never
+ * relabelled, never 0).
+ */
+export async function updateWorkspace(id: string, d: WorkspaceDraft, opts: { clearMoney?: boolean } = {}): Promise<Workspace> {
   const v = validate(d);
   const ws = await runTxn(async tx => {
     const w = await tx.get<Workspace>(K.workspace(id));
     if (!w) throw new DomainError('notFound');
+    if (v.currency !== w.currency) {
+      const affected = await foreignMoneyProducts(tx, id, v.currency);
+      if (affected.length && !opts.clearMoney) throw new DomainError('currencyInUse', String(affected.length));
+      const now = nowIso();
+      for (const p of affected) {
+        const next: Product = { ...p, updatedAt: now };
+        if (next.costPerTrackingUnit && next.costPerTrackingUnit.currency !== v.currency) delete next.costPerTrackingUnit;
+        if (next.sellingPrice && next.sellingPrice.currency !== v.currency) delete next.sellingPrice;
+        tx.set(K.item('products', p.id), next);
+      }
+    }
     const next: Workspace = { ...w, ...v, updatedAt: nowIso() };
     tx.set(K.workspace(id), next);
     return next;

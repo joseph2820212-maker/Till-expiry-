@@ -217,3 +217,46 @@ describe('workspaces', () => {
     expect((await listWorkspaces({ includeHidden: true })).length).toBe(2);
   });
 });
+
+describe('EXP-REV-01 correcting an opened child keeps the original pack constraint', () => {
+  async function openedUnderUseBy(parentKind: 'use_by' | 'best_before' = 'use_by') {
+    const w = await ws();
+    const parent = await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', newProduct: { name: 'Cream' }, dateKind: parentKind, deadline: { precision: 'date', date: '2026-09-26' }, quantity: 4 });
+    const { child } = await openBatch({ workspaceId: w.id, parentBatchId: parent.id, quantity: 1, openedAt: '2026-09-24T10:00:00+01:00', direct: { kind: 'internal_cutoff', deadline: { precision: 'datetime', at: '2026-09-25T18:00:00+01:00' } } });
+    return { w, parent, child };
+  }
+
+  it('parent use-by 26 Sep, child cutoff corrected to 30 Sep → the 26 Sep use-by stays effective', async () => {
+    const { w, child } = await openedUnderUseBy();
+    const next = await correctDeadline(w.id, child.id, 'internal_cutoff', { precision: 'date', date: '2026-09-30' }, 'Label misread');
+    expect(next.effective).toMatchObject({ dateKind: 'use_by', deadline: { precision: 'date', date: '2026-09-26' }, reason: 'original_hard' });
+    expect(next.printedDate).toBe('2026-09-30'); // the child's own corrected date is stored
+    expect(next.dateKind).toBe('internal_cutoff');
+  });
+
+  it('parent use-by 26 Sep, child corrected to "no date" → the parent hard deadline is still effective', async () => {
+    const { w, child } = await openedUnderUseBy();
+    const next = await correctDeadline(w.id, child.id, 'none', undefined, 'No cutoff on this one');
+    expect(next.effective).toMatchObject({ dateKind: 'use_by', deadline: { date: '2026-09-26' }, reason: 'original_hard' });
+    expect(next.dateKind).toBe('none');
+  });
+
+  it('parent best-before + child hard cutoff → the cutoff controls and the best-before stays secondary quality', async () => {
+    const { w, child } = await openedUnderUseBy('best_before');
+    const next = await correctDeadline(w.id, child.id, 'internal_cutoff', { precision: 'datetime', at: '2026-09-25T20:00:00+01:00' }, 'Kitchen rule');
+    expect(next.effective).toMatchObject({ dateKind: 'internal_cutoff', deadline: { precision: 'datetime', at: '2026-09-25T20:00:00+01:00' }, reason: 'corrected' });
+    expect(next.secondary).toMatchObject({ dateKind: 'best_before', deadline: { date: '2026-09-26' }, reason: 'original_quality' });
+  });
+
+  it('the correction history holds before / after / reason', async () => {
+    const { w, child } = await openedUnderUseBy();
+    await correctDeadline(w.id, child.id, 'internal_cutoff', { precision: 'date', date: '2026-09-30' }, 'Label misread', 'req_fix_1');
+    const ev = (await listBatchEvents(w.id, child.id)).find(e => e.type === 'deadline_corrected');
+    expect(ev).toMatchObject({ id: 'req_fix_1', reason: 'Label misread' });
+    expect((ev?.before as any).effective).toMatchObject({ dateKind: 'internal_cutoff' });
+    expect((ev?.after as any).effective).toMatchObject({ dateKind: 'use_by', reason: 'original_hard' });
+    // a repeated request writes nothing new
+    await correctDeadline(w.id, child.id, 'internal_cutoff', { precision: 'date', date: '2026-10-01' }, 'Label misread', 'req_fix_1');
+    expect((await listBatchEvents(w.id, child.id)).filter(e => e.type === 'deadline_corrected')).toHaveLength(1);
+  });
+});
