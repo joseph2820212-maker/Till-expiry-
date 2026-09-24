@@ -1,1 +1,212 @@
-{}
+{
+ "src/modules/reminders/reminderService.ts": {
+  "source": {
+   "app": "Till Note",
+   "path": "src/modules/settingsBackup/utils/notificationReconciliation.ts + src/modules/toDo/utils/taskReminders.ts",
+   "sha": "6fa6e941",
+   "how": "adapted"
+  },
+  "reason": "reconcile from canonical data, permission_required/schedule_failed, cancel before replacement, no demo scheduling",
+  "changes": "TillExpiry batches, 4 reminder types, bounded plan"
+ },
+ "src/modules/reminders/reminderPlan.ts": {
+  "source": {
+   "app": "TillExpiry v1",
+   "path": "src/modules/reminders/reminderPlan.ts",
+   "sha": "f6f4de8",
+   "how": "adapted"
+  },
+  "reason": "daily summary base",
+  "changes": "+ advance/same-day/exact-time, cap 60, snoozes"
+ },
+ "src/utils/pdfTemplates.ts": {
+  "source": {
+   "app": "TillCalc",
+   "path": "src/utils/pdfTemplates.ts",
+   "sha": "e7ea8caa",
+   "how": "adapted"
+  },
+  "reason": "PDF shell",
+  "changes": "rebrand TillExpiry, RTL CSS, buildTable"
+ },
+ "src/modules/markdown/markdownHelper.ts": {
+  "source": {
+   "app": "TillCalc",
+   "path": "src/modules/calculators/utils/safeMarkdown.ts",
+   "sha": "e7ea8caa",
+   "how": "reimplemented"
+  },
+  "reason": "D4 exact minor units",
+  "changes": "integer maths, never after hard deadline"
+ },
+ "src/modules/reports/reportPdf.ts": {
+  "source": {
+   "app": "TillCalc",
+   "path": "src/modules/pricing/screens/PricingPdfScreen.tsx",
+   "sha": "e7ea8caa",
+   "how": "adapted"
+  },
+  "reason": "PDF share pattern",
+  "changes": "report rows"
+ },
+ "src/modules/reports/reportRows.ts": {
+  "source": {
+   "app": "TillExpiry v1",
+   "path": "src/modules/reports/report.ts",
+   "sha": "f6f4de8",
+   "how": "reimplemented"
+  },
+  "reason": "per-currency totals idea",
+  "changes": "new data model, unknown cost stays unknown"
+ },
+ "src/modules/backup/backupFile.ts": {
+  "source": {
+   "app": "TillCalc",
+   "path": "src/modules/backup/backupFile.ts",
+   "sha": "e7ea8caa",
+   "how": "adapted"
+  },
+  "reason": "allowlisted encrypted backup, size cap; also Till Note src/modules/settingsBackup/utils/backupFile.ts (6fa6e941): journal, rollback, reconcile after restore, Till Note detection",
+  "changes": "tillexpiry format v1, exact key shapes"
+ },
+ "src/modules/backup/backupKeys.ts": {
+  "source": {
+   "app": "Till Note",
+   "path": "src/modules/settingsBackup/utils/backupFile.ts",
+   "sha": "6fa6e941",
+   "how": "reimplemented"
+  },
+  "reason": "allowlist/key-shape guard",
+  "changes": "TillExpiry keys"
+ },
+ "src/modules/backup/screens/BackupRestoreScreen.tsx": {
+  "source": {
+   "app": "TillCalc",
+   "path": "src/modules/backup/screens/BackupScreen.tsx",
+   "sha": "e7ea8caa",
+   "how": "adapted"
+  },
+  "reason": "create/pick flow",
+  "changes": "preview route"
+ },
+ "src/modules/backup/screens/RestorePreviewScreen.tsx": {
+  "source": {
+   "app": "Till Note",
+   "path": "src/modules/onboarding/screens/RestoreBackupScreen.tsx",
+   "sha": "6fa6e941",
+   "how": "reimplemented"
+  },
+  "reason": "preview→confirm→restore",
+  "changes": "new counts"
+ },
+ "src/modules/import/csvMapping.ts": {
+  "source": {
+   "app": "TillExpiry v1",
+   "path": "src/modules/import/csvImport.ts",
+   "sha": "f6f4de8",
+   "how": "adapted"
+  },
+  "reason": "six-language header guessing",
+  "changes": "two-pass exact matches"
+ },
+ "src/modules/import/csvImport.ts": {
+  "source": {
+   "app": "TillExpiry v1",
+   "path": "src/modules/import/csvImport.ts",
+   "sha": "f6f4de8",
+   "how": "adapted"
+  },
+  "reason": "date-kind words",
+  "changes": "unknown words refused; new model, atomic txn, fingerprint"
+ },
+ "src/modules/import/screens/CsvImportScreen.tsx": {
+  "source": {
+   "app": "TillExpiry v1",
+   "path": "src/modules/import/screens/ImportScreen.tsx",
+   "sha": "f6f4de8",
+   "how": "adapted"
+  },
+  "reason": "pick/decode/mapping flow",
+  "changes": "new fields"
+ },
+ "src/modules/add/screens/BarcodeScannerScreen.tsx": {
+  "source": {
+   "app": "TillExpiry v1 (from TillCalc)",
+   "path": "src/modules/products/screens/ScanScreen.tsx",
+   "sha": "f6f4de8",
+   "how": "adapted"
+  },
+  "reason": "permission states, torch, typed entry, duplicate window",
+  "changes": "scan routing per purpose, GS1"
+ },
+ "src/modules/add/scanRouting.ts": {
+  "source": {
+   "app": "TillExpiry v1 (from TillCalc)",
+   "path": "src/modules/products/screens/ScanScreen.tsx",
+   "sha": "f6f4de8",
+   "how": "adapted"
+  },
+  "reason": "symbology mapping, duplicate-read logic",
+  "changes": "extracted and tested"
+ },
+ "src/storage/scope.ts": {
+  "source": {
+   "app": "Till Note",
+   "path": "src/storage/demoAsyncStorage.ts",
+   "sha": "6fa6e941",
+   "how": "adapted"
+  },
+  "reason": "demo key redirection",
+  "changes": "fixed demo: prefix, excluded from backup"
+ },
+ "src/modules/search/searchIndex.ts": {
+  "source": {
+   "app": "Till Note",
+   "path": "src/modules/*/utils global search helpers",
+   "sha": "6fa6e941",
+   "how": "reimplemented"
+  },
+  "reason": "active-workspace-only folded search",
+  "changes": "TillExpiry record types"
+ },
+ "src/modules/workspaces/workspaceStore.ts": {
+  "source": {
+   "app": "Till Note",
+   "path": "global shop switcher (listener pattern)",
+   "sha": "6fa6e941",
+   "how": "reimplemented"
+  },
+  "reason": "one active workspace, hide not delete",
+  "changes": "journaled store"
+ },
+ "src/modules/workspaces/WorkspaceSwitcherSheet.tsx": {
+  "source": {
+   "app": "Till Note",
+   "path": "global shop switcher sheet",
+   "sha": "6fa6e941",
+   "how": "reimplemented"
+  },
+  "reason": "header business switcher",
+  "changes": "TillExpiry UI kit"
+ },
+ "src/modules/more/screens/MoreScreen.tsx": {
+  "source": {
+   "app": "TillCalc",
+   "path": "src/modules/more/screens/MoreScreen.tsx",
+   "sha": "e7ea8caa",
+   "how": "adapted"
+  },
+  "reason": "SettingsSection/SettingsRow hub",
+  "changes": "billing removed, business/data/demo groups"
+ },
+ "src/modules/demo/demoMode.ts": {
+  "source": {
+   "app": "Till Note",
+   "path": "demo mode (demoAsyncStorage generations)",
+   "sha": "6fa6e941",
+   "how": "reimplemented"
+  },
+  "reason": "isolated demo seed/reset",
+  "changes": "demo: prefix scope"
+ }
+}

@@ -1,94 +1,62 @@
 # TillExpiry — Release recipe
 
-Structure carried over from TillCalc / TillLabel, regenerated with TillExpiry facts. Everything below was verified
-in the build sandbox except the native compile, which needs an Android SDK. Run the steps in order on a machine with
-normal internet access.
+How to turn this branch into the installable **review APK** (master handoff §29, G10). Everything that can run without
+an Android SDK was run in the build sandbox; the native compile could not, because the sandbox's network policy blocks
+`dl.google.com` (Android SDK / NDK downloads) — see the G10 section of `MASTER_BUILD_REPORT.md`.
 
-Branch: `claude/till-expiry-app-e7267q` · Expo SDK 54 · React Native 0.81.5 · Node 20 (CI) / 22 · TypeScript strict.
+Branch: `claude/till-expiry-app-e7267q` · Expo SDK ~54.0.36 · React Native 0.81.5 · Node 22 · TypeScript strict ·
+package `com.tillexpiry.app` · version 0.1.0 · versionCode 1 · `allowBackup: false` · OTA updates disabled.
 
-## 0. What is already proven in this repo
+## 0. Checks that must be green before any build
 
-| Check | Result | Command |
-|---|---|---|
-| Types | clean | `npm run typecheck` |
-| Lint | clean, zero warnings | `npm run lint` |
-| Tests | 49 suites / 390 tests, including the navigation walk (19 routes × 6 languages) | `npm test` |
-| Expo config resolves with all plugins (camera, notifications, document picker) | exit 0 | `npx expo config --type introspect` |
-| Release JS bundle builds | `index-*.hbc` 7.1 MB | `npx expo export --platform android` |
+| Check | Command |
+|---|---|
+| Types | `npm run typecheck` |
+| Lint (zero warnings) | `npm run lint` |
+| Tests (T01–T68, navigation walk in six languages) | `npm test` |
+| Expo config resolves with all plugins | `npx expo config --type introspect` |
+| Release JS bundle builds | `npx expo export --platform android` |
 
-Re-run the first three before every build. They must be green.
+## 1. Review APK — every feature unlocked, no billing
 
-## 1. Review APK (everything unlocked) — the build the owner installs first
+The review build has no billing code at all (decision D2): nothing to switch on or off. About shows "Review Build".
 
-Built with the billing bypass so every Pro feature is testable without a store account.
+### Path A — local Gradle build (Android Studio machine)
 
-### Path A — local Gradle build
-
-Prerequisites: JDK 17, Android SDK platform 35, build-tools 35.0.0, NDK 27.1.12297006, `ANDROID_HOME` set.
+Prerequisites: JDK 17, Android SDK platform 36, build-tools 36.0.0, NDK 27.1.12297006, CMake 3.22.1, `ANDROID_HOME` set.
 
 ```bash
-git clone <repo> tillexpiry && cd tillexpiry && git checkout claude/till-expiry-app-e7267q
+git clone https://github.com/joseph2820212-maker/Till-expiry-.git tillexpiry && cd tillexpiry
+git checkout claude/till-expiry-app-e7267q
 npm ci
 npm run typecheck && npm run lint && npm test
-EXPO_PUBLIC_BILLING_BYPASS=1 npx expo prebuild -p android --clean
-cd android && EXPO_PUBLIC_BILLING_BYPASS=1 ./gradlew assembleRelease
+npx expo prebuild -p android --clean
+cd android && ./gradlew assembleRelease
 # → android/app/build/outputs/apk/release/app-release.apk
 ```
 
-`EXPO_PUBLIC_*` variables are inlined at JS bundle time, so set them for the command that bundles the JS.
+Without a release keystore the Expo template signs `assembleRelease` with the debug keystore. That is acceptable for a
+private review APK only; record the fingerprint:
+
+```bash
+sha256sum android/app/build/outputs/apk/release/app-release.apk
+$ANDROID_HOME/build-tools/36.0.0/apksigner verify --print-certs android/app/build/outputs/apk/release/app-release.apk
+```
 
 ### Path B — EAS build (no local SDK)
 
 ```bash
 npm i -g eas-cli && eas login
-eas init                    # writes extra.eas.projectId into app.json — commit it
-EXPO_PUBLIC_BILLING_BYPASS=1 eas build -p android --profile preview
+eas init                     # writes extra.eas.projectId into app.json — commit it
+eas build -p android --profile preview    # distribution: internal → an APK
 ```
 
-`preview` is `distribution: internal` (an APK); `production` produces an AAB for Play.
+## 2. What to record for G10 (fill in `MASTER_BUILD_REPORT.md`)
 
-## 2. Store build (Pro gated by RevenueCat)
+Commit SHA · app version / versionCode · APK SHA-256 · signing certificate SHA-256 · test totals (`npm test` summary) ·
+the exact build command · device checklist results (`docs/DEVICE_CHECKLIST.md`) · known limitations.
 
-| Variable | Value |
-|---|---|
-| `EXPO_PUBLIC_RC_ANDROID_KEY` / `EXPO_PUBLIC_RC_IOS_KEY` | RevenueCat public SDK keys |
-| `EXPO_PUBLIC_RC_LIFETIME_ID_ANDROID` / `EXPO_PUBLIC_RC_LIFETIME_ID_IOS` | store product ids of the lifetime unlock |
-| `EXPO_PUBLIC_SUPPORT_EMAIL` | support address (default support@tillnote.com — same as Till Note) |
-| `EXPO_PUBLIC_PRIVACY_EMAIL`, `EXPO_PUBLIC_LEGAL_EMAIL`, `EXPO_PUBLIC_SECURITY_EMAIL` | optional overrides |
+## 3. Not in this build
 
-Do **not** set `EXPO_PUBLIC_BILLING_BYPASS` for the store build. RevenueCat: entitlement `pro`, offering `default`,
-one package `$rc_lifetime`. The app buys only that package (audit F07, carried over).
-
-```bash
-eas build -p android --profile production
-eas build -p ios --profile production
-```
-
-Let EAS manage signing unless the owner already has a keystore; a lost keystore means a new package name.
-
-## 3. Things to know
-
-- `app.json`: `expo-camera` (barcode scanning; permission text in six native locales), `expo-notifications`
-  (daily local reminders; `POST_NOTIFICATIONS` on Android 13+; the permission is asked only when the user turns
-  reminders on), `expo-document-picker` (CSV import, backup restore), `android.allowBackup=false`,
-  `RECORD_AUDIO` blocked. No push service, no FCM / APNs token is ever requested.
-- Reminders are local: one scheduled notification per day for the next 7 days, rebuilt whenever dates change and on
-  every start. Android battery optimisation can delay them; Help says so.
-- OTA updates are disabled (`updates.enabled: false`) and the privacy policy says so.
-- `ITSAppUsesNonExemptEncryption: false`: the only encryption is the standard AES-256-GCM / scrypt for the user's own
-  backup files. The owner confirms Apple's export-compliance answer for their account.
-- Analytics: none.
-- The web preview (`expo export --platform web`) can show English only: `I18nManager` is not implemented on web.
-  Language and RTL checks belong on a phone.
-
-## 4. Store listing inputs (draft, for the owner)
-
-- Name: **TillExpiry**. Subtitle: **Expiry dates, under control**.
-- One-liner: *Scan it, date it, and see what runs out today — before it becomes waste.*
-- Privacy line: *Your products and dates stay on your phone. No account, no tracking. Purchases go through your app store.*
-- Free vs Pro copy: `billing.proSummary` in `src/locales/en.json`.
-
-## 5. After the owner's device pass
-
-Work through "READY FOR OWNER TEST" in `docs/gates/BUILD/REPORT.md`. Anything that fails there is a bug to fix
-before the store build.
+No store upload, no production billing product, no backend, no analytics, no cloud (§39). A store build needs its own
+billing decision, legal text review and a release keystore; none of that is part of the review APK.

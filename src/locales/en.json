@@ -591,21 +591,38 @@
       "find": "Point the camera at a barcode to open its product.",
       "attach": "Point the camera at the product's barcode.",
       "addDate": "Point the camera at a barcode to add its date. After saving you come back here for the next one.",
-      "attachDate": "Point the camera at the product's barcode."
+      "attachDate": "Point the camera at the product's barcode.",
+      "add": "Point the camera at the barcode. You will enter the date next.",
+      "open": "Point the camera at the barcode of the product you are opening."
     },
     "torch": "Torch",
     "explainTitle": "TillExpiry needs the camera to read barcodes",
     "explainBody": "Images are read on this phone only and never saved or sent. You can always type the code instead.",
     "explainContinue": "Continue",
-    "permissionDenied": "Camera access is off for TillExpiry. Turn it on in Settings, or type the code.",
+    "permissionDenied": "Camera access is off for TillExpiry. Turn it on in the phone settings, or type the code.",
     "permissionAsk": "Waiting for camera permission…",
     "readyHint": "Ready to scan. The same code read twice in a row is ignored.",
     "lastScanned": "Last scanned",
     "notInCatalogue": "Not in your products yet",
     "notFoundTitle": "New barcode",
-    "notFoundBody": "{{code}} is not in your products. Add it as a new product?",
+    "notFoundBody": "{{code}} is not in the products of this business. Add it as a new product?",
     "addNew": "Add product",
-    "typeCode": "Type the code"
+    "typeCode": "Type the code",
+    "codeHint": "Digits as printed under the barcode.",
+    "codeLabel": "Barcode",
+    "dateStillAsked": "A product barcode does not tell the pack date: you will be asked for it.",
+    "noCamera": "No camera here. Type the code instead.",
+    "noProductCodeBody": "This code has no product number that could be read reliably. Type the code or choose the product.",
+    "noProductCodeTitle": "No product code",
+    "notInProducts": "Not in your products yet",
+    "openSettings": "Open phone settings",
+    "purpose": {
+      "add": "Scan to add",
+      "attach": "Scan the barcode",
+      "find": "Find by barcode",
+      "open": "Scan the opened product"
+    },
+    "searchItems": "Search items"
   },
   "dateType": {
     "useBy": "Use by",
@@ -978,7 +995,20 @@
     "datesCsv": "Dates on the shelf",
     "historyCsv": "Date history",
     "shareUnavailable": "Sharing is not available on this device.",
-    "failed": "The file could not be created."
+    "failed": "The CSV file could not be created. Try again.",
+    "screenTitle": "Export data",
+    "intro": "Export the products or batches of this workspace as a CSV file for Excel or another app. You see the file before it is shared.",
+    "includeArchived": "Include hidden products and completed or archived batches",
+    "title": {
+      "products": "Products CSV",
+      "batches": "Batches CSV"
+    },
+    "productsHint": "One row per product with barcodes, category, supplier, unit, cost and selling price. Unknown costs are left empty.",
+    "batchesHint": "One row per batch with its lot, quantity, date kind, date, the date that controls it and location.",
+    "rows": "Rows: {{count}}",
+    "preview": "Preview CSV",
+    "empty": "Nothing to export.",
+    "formulaHint": "Cells that a spreadsheet could run as a formula are written as plain text. The file can be imported back into TillExpiry."
   },
   "checkSheet": {
     "title": "Date check sheet",
@@ -1133,7 +1163,7 @@
   },
   "productEdit": {
     "addTitle": "New product",
-    "editTitle": "Product",
+    "editTitle": "Edit product",
     "addDate": "Add a date",
     "openDates": "On the shelf: {{count}}",
     "pastDates": "Past dates",
@@ -1155,7 +1185,7 @@
     "alertDays": "Warn this many days ahead (optional)",
     "alertDaysPh": "Shop setting: {{days}}",
     "alertDaysHint": "Leave empty to use the shop setting. Use more days for slow sellers.",
-    "price": "Normal selling price (optional)",
+    "price": "Selling price ({{currency}})",
     "pricePh": "e.g. 1.45",
     "priceHint": "Only used to suggest reductions and to value waste.",
     "chooseCurrency": "Choose your currency first",
@@ -1183,8 +1213,53 @@
         "badDateType": "Choose the kind of date.",
         "duplicateBarcode": "Another product already has this barcode.",
         "notFound": "This product no longer exists."
-      }
-    }
+      },
+      "customUnitRequired": "Enter the unit name.",
+      "money_ambiguous": "Unclear amount: use a decimal point or comma only for pence/cents (e.g. 1.23).",
+      "money_empty": "Enter an amount or leave it empty.",
+      "money_invalid": "This is not a valid amount.",
+      "money_noCurrency": "Choose a currency in the business settings first.",
+      "money_tooManyDecimals": "Too many decimals for this currency.",
+      "money_zero": "Enter an amount above zero, or leave it empty if unknown."
+    },
+    "addCode": "Add a code",
+    "addCodeButton": "Add code",
+    "barcodes": "Barcodes",
+    "barcodesHint": "A product can have several codes, e.g. single item, pack and case.",
+    "cost": "Cost per unit ({{currency}})",
+    "customUnit": "Unit name",
+    "defaultDateKind": "Usual kind of date on the pack",
+    "defaultLocation": "Usual storage place",
+    "defaultRule": "Usual rule (opened / prepared)",
+    "defaults": "Usual details",
+    "defaultsHint": "Filled in for you when you add this product. You can change them each time.",
+    "grouping": "Category and supplier",
+    "hiddenNote": "This product is hidden. Its batches and history are kept.",
+    "hide": "Hide product",
+    "hideBody": "It will no longer be offered when adding items. Its batches and history are kept.",
+    "hideHint": "Products are hidden, never deleted, so history stays readable.",
+    "hideTitle": "Hide this product?",
+    "isPrepared": "Prepared here (recipe / preparation item)",
+    "isPreparedHint": "Prepared items are offered first when you add a prepared item.",
+    "money": "Cost and price",
+    "moneyHint": "Optional. Leave empty if unknown — unknown is never counted as zero.",
+    "name": "Product name",
+    "namePh": "e.g. Semi-skimmed milk 2 L",
+    "newCategory": "New category",
+    "newSupplier": "New supplier",
+    "newTitle": "New product",
+    "noCurrency": "Choose a currency in the business settings to record cost and price.",
+    "notes": "Notes",
+    "removeCode": "Remove code {{code}}",
+    "role": {
+      "case": "Case",
+      "pack": "Pack",
+      "single": "Single"
+    },
+    "scanCode": "Scan a code",
+    "supplier": "Supplier",
+    "unhide": "Show product again",
+    "unit": "Counted in"
   },
   "importer": {
     "title": "Import from a file",
@@ -1686,6 +1761,493 @@
       "noPrice": "Add a selling price to the product to use the price helper.",
       "noCost": "Add a cost to the product to use the price helper.",
       "currencyMismatch": "The product's cost and price are in different currencies."
+    }
+  },
+  "add": {
+    "boughtIn": {
+      "title": "Add bought-in item"
+    },
+    "choice": {
+      "bought_in": {
+        "body": "Stock with a date on the pack: use by, best before or expiry.",
+        "title": "Bought-in item"
+      },
+      "opened": {
+        "body": "Open part of a batch and set its after-opening date.",
+        "title": "Opened item"
+      },
+      "other": {
+        "body": "Non-food or general items with an expiry or review date.",
+        "title": "Other dated item"
+      },
+      "prepared": {
+        "body": "Something made here, with the cutoff from your own rule.",
+        "title": "Prepared item"
+      },
+      "scan": {
+        "body": "Find the product by its barcode, then enter the date and details.",
+        "title": "Scan barcode"
+      }
+    },
+    "controls": {
+      "corrected": "A corrected date controls.",
+      "direct": "The deadline you entered controls.",
+      "none": "No date controls: this item needs checking.",
+      "original_hard": "The original pack date is earlier, so it still controls.",
+      "original_quality": "Only the original best-before applies: it is a quality date, review quality then.",
+      "printed": "The date printed on the pack controls.",
+      "rule": "The date from your rule controls."
+    },
+    "customUnit": "Unit name",
+    "dateKind": {
+      "hint": "Choose exactly what is printed on the pack. Use by and best before mean different things.",
+      "section": "Kind of date"
+    },
+    "errors": {
+      "amountRequired": "Enter how many you are opening.",
+      "amountTooHigh": "That is more than is left in this batch.",
+      "badQuantity": "Enter a number greater than zero (up to 3 decimals), or leave it empty.",
+      "badTime": "Enter a valid date and a time as HH:MM.",
+      "customUnitRequired": "Enter the unit name.",
+      "dateKindRequired": "Choose the kind of date.",
+      "dateRequired": "Enter the date.",
+      "gs1Confirm": "Check the date and its kind on the pack, then tick the box.",
+      "invalidDate": "This is not a valid date.",
+      "money_ambiguous": "Unclear amount: use a decimal point or comma only for pence/cents (e.g. 1.23).",
+      "money_empty": "Enter an amount or leave it empty.",
+      "money_invalid": "This is not a valid amount.",
+      "money_noCurrency": "Choose a currency in the business settings first.",
+      "money_tooManyDecimals": "Too many decimals for this currency.",
+      "money_zero": "Enter an amount above zero, or leave it empty if unknown.",
+      "monthNotAllowed": "A use-by date needs a day, not only a month.",
+      "noDateAllowed": "“No date” cannot have a date.",
+      "productRequired": "Choose a product or enter a name for a new one.",
+      "ruleRequired": "Choose one of your rules."
+    },
+    "intro": {
+      "food_prep": "Record what you prepare or open, with the cutoff from your own rules.",
+      "home_other": "Add anything with a date you want to keep an eye on.",
+      "mixed": "Add stock you bought in, or record what you open and prepare.",
+      "retail": "Scan or choose a product, then enter the date printed on the pack."
+    },
+    "location": "Storage place",
+    "lot": "Batch / lot number",
+    "lotPlace": {
+      "section": "Batch and place"
+    },
+    "lotShort": "Lot {{lot}}",
+    "manageLocations": "Storage places",
+    "manageRules": "Your rules for opened and prepared items",
+    "money": {
+      "cost": "Cost per unit ({{currency}})",
+      "hint": "Optional, saved on the product. Leave empty if unknown — unknown is never counted as zero.",
+      "noCurrency": "Choose a currency in the business settings to record cost and price.",
+      "price": "Selling price ({{currency}})",
+      "section": "Cost and price"
+    },
+    "noDateNeedsChecking": "No date: this item will be listed as “Needs checking” until a date is added.",
+    "noLocation": "No place set",
+    "notes": "Notes",
+    "opened": {
+      "amount": "Amount opened",
+      "amountLabel": "How many opened",
+      "amountLeft": "Required. Left in this batch: {{left}}",
+      "amountOptional": "Optional: this batch is not counted.",
+      "another": "Open another",
+      "calculated": "After-opening date",
+      "controls": "Date in control",
+      "date": "Opened on",
+      "deadline": "After opening",
+      "deadlineHint": "Use your business rule or the instruction on the pack. TillExpiry has no built-in times.",
+      "noCalculated": "No separate after-opening date",
+      "noOriginal": "No original date known",
+      "noParent": "Not from a listed batch",
+      "noParentHint": "No original pack date will be known.",
+      "original": "Original pack date",
+      "parentLeft": "Unopened batch now: {{left}}",
+      "preview": "Check the dates",
+      "previewIncomplete": "Choose a rule or enter a deadline to see the dates.",
+      "qualityAlso": "Also kept visible: {{line}} (a quality date, not a cutoff)",
+      "saved": "Opened: {{name}}",
+      "title": "Add opened item",
+      "when": "When was it opened?",
+      "which": "Which batch are you opening?",
+      "whichHint": "Choosing the batch keeps its original date visible and reduces only the amount you open."
+    },
+    "other": {
+      "title": "Add other dated item"
+    },
+    "prepared": {
+      "choose": "Choose a prepared item",
+      "chooseAny": "Choose from all products",
+      "date": "Prepared on",
+      "deadline": "Cutoff or review date",
+      "deadlineHint": "From your own business rule or a deadline you enter. Nothing is suggested.",
+      "linkSources": "Link source batches",
+      "newName": "New prepared item name",
+      "newNamePh": "e.g. Ham sandwich",
+      "noSources": "No matching batches.",
+      "preview": "Check the date",
+      "previewIncomplete": "Choose a rule or enter a deadline to see the date.",
+      "sources": "Made from (optional)",
+      "sourcesHint": "Link the batches used, for traceability. Their quantities are not changed.",
+      "title": "Add prepared item",
+      "what": "What did you prepare?",
+      "whatHint": "Choose a saved prepared item, or add a new one.",
+      "when": "When was it prepared?"
+    },
+    "printLabel": "Print label",
+    "product": {
+      "barcode": "Barcode (optional)",
+      "change": "Change product",
+      "choose": "Choose a product",
+      "createNamed": "Add new product “{{name}}”",
+      "createNew": "Add a new product",
+      "newName": "New product name",
+      "newNamePh": "e.g. Semi-skimmed milk 2 L",
+      "noMatch": "No matching products.",
+      "orNew": "Or add a new product:",
+      "scan": "Scan the product",
+      "scanBarcode": "Scan its barcode",
+      "searchPh": "Name, SKU or barcode",
+      "section": "Product"
+    },
+    "quantity": {
+      "hint": "Optional. Leave empty if you do not count this item.",
+      "label": "How many",
+      "section": "Quantity"
+    },
+    "reminder": {
+      "advance": "Early reminder on {{date}} (days before: {{days}})",
+      "exact": "Reminder before the cutoff: {{time}} (minutes before: {{minutes}})",
+      "none": "No date, so no date reminder. The item shows under “Needs checking”.",
+      "note": "Reminders need notification permission. Today always shows the current status.",
+      "off": "Date reminders are switched off in the reminder settings.",
+      "past": "This date has already passed. The item will show on Today straight away.",
+      "sameDay": "Reminder on the day: {{date}}",
+      "section": "Date and reminders",
+      "summary": "Also in the morning summary at {{time}} while it needs attention."
+    },
+    "ruleUsed": "Rule: {{name}} (version {{version}}) · Source: {{source}}",
+    "saved": {
+      "addAnother": "Add another",
+      "title": "Saved: {{name}}",
+      "view": "View item"
+    },
+    "setNow": "Set to now",
+    "source": {
+      "direct": "Enter the deadline directly",
+      "newRule": "Add a rule",
+      "noRules": "No rules yet. Add your own rule with its source.",
+      "original": "No separate after-opening date",
+      "originalHint": "The original pack date stays in control. Without one, the item needs checking.",
+      "rule": "Use one of your saved rules"
+    },
+    "storage": "Storage: {{text}}",
+    "time": "Time (24-hour, HH:MM)",
+    "timeHint": "Time zone: {{zone}}",
+    "title": "Add",
+    "unit": "Unit"
+  },
+  "gs1": {
+    "bestBefore": "Best before (AI 15): {{date}}",
+    "checkPack": "A barcode may not hold the date. Always compare with the pack before saving.",
+    "confirm": "I checked the date and its kind on the pack",
+    "expiry": "Expiry date (AI 17): {{date}}",
+    "gtin": "Product code (GTIN): {{gtin}}",
+    "lot": "Batch / lot: {{lot}}",
+    "noDate": "No date was read from this barcode.",
+    "partial": "Part of this barcode could not be read reliably and was left out.",
+    "section": "Read from the barcode"
+  },
+  "locations": {
+    "activeCount": "Active items: {{count}}",
+    "editTitle": "Edit place",
+    "emptyBody": "Add places like Fridge 1, Freezer A or Front shelf.",
+    "emptyTitle": "No places yet",
+    "errors": {
+      "nameRequired": "Enter a name for the place."
+    },
+    "hiddenTag": "Hidden",
+    "hide": "Hide place",
+    "hideBody": "Active items here: {{count}}. They keep this place and their dates; the place is no longer offered for new items.",
+    "hideTitle": "Hide this place?",
+    "intro": "Fridges, freezers, shelves and counters. Moving an item never changes its date.",
+    "kindHint": "Only for grouping. A place never changes an item’s date.",
+    "kindSection": "Kind of place",
+    "name": "Place name",
+    "namePh": "e.g. Prep fridge",
+    "nameSection": "Name",
+    "new": "New place",
+    "newTitle": "New place",
+    "notes": "Notes",
+    "showHidden": "Show hidden ({{count}})",
+    "showItems": "Show items here",
+    "title": "Storage places",
+    "unhide": "Show place again"
+  },
+  "rules": {
+    "appliesHint": {
+      "after_opening": "Counted from the time a pack is opened.",
+      "after_preparation": "Counted from the time an item is prepared.",
+      "manual_review": "A review date you check by hand."
+    },
+    "appliesSection": "Applies to",
+    "appliesTo": {
+      "after_opening": "After opening",
+      "after_preparation": "After preparation",
+      "manual_review": "Review"
+    },
+    "class": {
+      "hard_cutoff": "Hard cutoff",
+      "quality_review": "Quality review"
+    },
+    "classHint": {
+      "hard_cutoff": "After this time the item must not be used or sold — follow your procedure.",
+      "quality_review": "After this time, check the quality before using or selling."
+    },
+    "classSection": "What happens at the end",
+    "duration": {
+      "days": "Days: {{count}}",
+      "hours": "Hours: {{count}}",
+      "minutes": "Minutes: {{count}}"
+    },
+    "durationHint": "Required. Whole numbers only.",
+    "durationLabel": "Length",
+    "durationOptional": "Optional for a review rule.",
+    "durationSection": "How long",
+    "editTitle": "Edit rule",
+    "emptyBody": "Add the times from your packaging, supplier specification or food-safety procedure.",
+    "emptyTitle": "No rules yet",
+    "errors": {
+      "badDuration": "Enter a whole number above zero (up to 10 years).",
+      "durationRequired": "Enter how long.",
+      "nameRequired": "Enter a name for the rule.",
+      "sourceRequired": "Say where this time comes from."
+    },
+    "hiddenTag": "Hidden",
+    "hide": "Hide rule",
+    "hideBody": "It will no longer be offered. Items that used it keep their dates.",
+    "hideTitle": "Hide this rule?",
+    "intro": "Rules are your business’s own: how long an item may be kept after opening or preparation, and where that comes from. TillExpiry has no built-in times.",
+    "name": "Rule name",
+    "namePh": "e.g. Opened sauces",
+    "nameSection": "Name",
+    "new": "New rule",
+    "newTitle": "New rule",
+    "noDuration": "No set time",
+    "ownRulesHint": "Enter the time your business uses. Nothing is suggested.",
+    "showHidden": "Show hidden ({{count}})",
+    "snapshotHint": "Each item keeps a copy of the rule version it used, so later edits never change past items.",
+    "source": "Source",
+    "sourceHint": "Required. For example: manufacturer packaging, supplier specification, your food-safety procedure or internal quality procedure.",
+    "sourceLine": "Source: {{source}}",
+    "sourcePh": "e.g. Label: once opened, use within the stated time",
+    "sourceSection": "Where this time comes from",
+    "storage": "Storage instruction (optional)",
+    "storageLine": "Storage: {{text}}",
+    "storageSection": "Storage instruction",
+    "title": "Your rules",
+    "unhide": "Show rule again",
+    "unit": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes"
+    },
+    "versionHint": "Saving creates version {{next}}. Items already recorded keep the version they were created with.",
+    "versionLine": "Version {{version}}"
+  },
+  "import": {
+    "title": {
+      "products": "Import products",
+      "batches": "Import dated batches"
+    },
+    "subtitle": "From a CSV file",
+    "stepFile": "1. File",
+    "stepColumns": "2. Columns",
+    "stepDates": "3. Dates",
+    "stepMoney": "Costs and prices",
+    "stepDuplicates": "Duplicates",
+    "intro": {
+      "products": "Add or update products from a CSV file (for example saved from Excel). Nothing is saved until you check the preview and confirm.",
+      "batches": "Add dated batches from a CSV file (for example saved from Excel). Each row becomes its own batch. Nothing is saved until you check the preview and confirm."
+    },
+    "columnsHint": {
+      "products": "Columns the app understands: name, barcode, barcode role, SKU, category, supplier, unit, cost, selling price, currency, usual location, usual date kind, notes. The first row must be the column names.",
+      "batches": "Columns the app understands: product name, barcode or SKU, date kind, date (YYYY-MM-DD, DD/MM/YYYY or YYYY-MM for month-only), time, lot, quantity, quantity unit, location, received, cost, notes. The first row must be the column names."
+    },
+    "limits": "Up to {{rows}} rows and {{mb}} MB per file.",
+    "pick": "Choose CSV file",
+    "pickOther": "Choose another file",
+    "fileInfo": "Rows: {{rows}} · Columns: {{columns}}",
+    "encodingNote": "This file is not UTF-8. It was read as Windows (Excel) text. Check that accented letters and currency signs look right in the preview.",
+    "columnsHelp": "Check what each column holds. The app guessed from the column names; change anything that is wrong. Columns set to \"Not imported\" are left out.",
+    "columnN": "Column {{n}}",
+    "dateOrder": "How are dates like 03/04/2026 written?",
+    "dateOrderHint": "Dates written as YYYY-MM-DD are always read correctly. The app never guesses the order of day and month.",
+    "order": {
+      "dmy": "Day/month/year",
+      "mdy": "Month/day/year",
+      "ymd": "Year/month/day"
+    },
+    "defaultKind": "Kind of date for rows without one",
+    "defaultKindRequired": "What kind of date is in this file?",
+    "defaultKindHint": "Used only for rows with no date kind whose product has no usual date kind. A use-by date needs a real day, not only a month.",
+    "defaultKindMissing": "Choose the kind of date, or map a date kind column. Rows without a kind cannot be imported.",
+    "moneyCurrency": "Amounts are read as {{currency}}, the currency of this workspace, exactly as written. Amounts in another currency are refused.",
+    "decimalMark": "Decimal mark in amounts",
+    "decimal": {
+      "dot": "1.50 (point)",
+      "comma": "1,50 (comma)"
+    },
+    "decimalHint": "Thousands separators are not accepted, so an amount can never be misread.",
+    "onExisting": "When a row matches an existing product with different details",
+    "existing": {
+      "skip": "Keep the existing product",
+      "update": "Update it from the file"
+    },
+    "onDuplicate": "When a row is identical to another row or to a batch you already have",
+    "duplicate": {
+      "skip": "Skip it",
+      "import": "Import it as a separate batch"
+    },
+    "neverMerged": "Batches are never merged: rows with a different lot, date, location or quantity always become separate batches, even with the same barcode.",
+    "toPreview": "Preview import",
+    "summary": "What this import will do",
+    "count": {
+      "rows": "Rows in file",
+      "newProductsRows": "New products",
+      "newBatches": "New batches",
+      "newProducts": "New products created",
+      "newLocations": "New locations",
+      "updated": "Products updated",
+      "skipped": "Rows skipped",
+      "errors": "Rows with problems",
+      "conflicts": "Rows that differ from an existing product",
+      "warnings": "Notes to check",
+      "created": "Records created",
+      "notImported": "Rows not imported"
+    },
+    "errorsNotImported": "Rows with problems are not imported. Fix them in the file and import it again, or import the rest now.",
+    "atomicHint": "Everything is saved together in one step: if anything fails, nothing is saved.",
+    "confirm": "Import {{count}} rows",
+    "confirmNothing": "Nothing to import",
+    "changeMapping": "Change columns or settings",
+    "issues": "Rows to check: {{count}}",
+    "noIssues": "No problems found.",
+    "issueLine": "Line {{line}}",
+    "severity": {
+      "error": "Not imported",
+      "skip": "Skipped",
+      "warning": "Note"
+    },
+    "history": "Import history",
+    "historyCounts": "Created: {{created}} · Updated: {{updated}} · Not imported: {{skipped}}",
+    "kind": {
+      "products": "Products",
+      "batches": "Batches"
+    },
+    "result": {
+      "title": "Import finished",
+      "hint": "The import is saved in the import history. Importing the same file again is blocked."
+    },
+    "noSession": {
+      "title": "No file to preview",
+      "body": "Go back and choose a CSV file first."
+    },
+    "field": {
+      "name": "Product name",
+      "barcode": "Barcode",
+      "barcode_role": "Barcode role (single, pack, case)",
+      "sku": "SKU / item code",
+      "category": "Category",
+      "supplier": "Supplier",
+      "unit": "Unit",
+      "cost": "Cost",
+      "price": "Selling price",
+      "currency": "Currency",
+      "default_location": "Usual location",
+      "default_date_kind": "Usual date kind",
+      "notes": "Notes",
+      "date_kind": "Date kind",
+      "date": "Date",
+      "time": "Time",
+      "lot": "Lot / batch number",
+      "quantity": "Quantity",
+      "quantity_unit": "Quantity unit",
+      "location": "Location",
+      "received_at": "Received",
+      "ignore": "Not imported"
+    },
+    "decode": {
+      "empty": "The file is empty.",
+      "tooLarge": "The file is too large to import. Split it into smaller files.",
+      "spreadsheet": "This is a spreadsheet file, not CSV. In Excel choose File > Save As > CSV UTF-8, then import that file.",
+      "binary": "This file is not a readable CSV text file.",
+      "tooManyRows": "The file has more than {{rows}} rows. Split it into smaller files.",
+      "tooManyColumns": "The file has more than {{columns}} columns. Remove the columns you do not need.",
+      "cellTooLong": "A cell in the file is too long. Check the file is a normal CSV file.",
+      "noDataRows": "The file has column names but no rows.",
+      "readFailed": "The file could not be read."
+    },
+    "blocker": {
+      "nameRequired": "Choose the column that holds the product name.",
+      "productIdRequired": "Choose a column that identifies the product: barcode, SKU or name.",
+      "dateRequired": "Choose the column that holds the date.",
+      "alreadyImported": "This file was already imported into this workspace. It cannot be imported twice.",
+      "moneyNoCurrency": "This workspace has no currency, so cost and price columns cannot be imported. Set the currency in workspace settings, or set those columns to \"Not imported\".",
+      "nothingToImport": "There is nothing new to import."
+    },
+    "error": {
+      "alreadyImported": "This file was already imported into this workspace. Nothing was saved.",
+      "importChanged": "Your data changed since the preview (for example a barcode is now used by another product). Nothing was saved. Open the preview again.",
+      "moneyNoCurrency": "This workspace has no currency, so costs and prices cannot be imported. Nothing was saved.",
+      "nothingToImport": "There is nothing to import.",
+      "noWorkspace": "The workspace is no longer available. Nothing was saved.",
+      "nameRequired": "Choose the column that holds the product name.",
+      "productIdRequired": "Choose a column that identifies the product.",
+      "dateRequired": "Choose the column that holds the date.",
+      "failed": "The import could not be saved. Nothing was changed. Try again."
+    },
+    "issue": {
+      "nameRequired": "Product name is missing.",
+      "textTooLong": "{{field}} is too long: \"{{value}}\".",
+      "badBarcode": "Barcode \"{{value}}\" cannot be read.",
+      "badBarcodeRole": "Barcode role \"{{value}}\" is not single, pack or case.",
+      "badUnitCount": "The pack size of a barcode is not valid.",
+      "badUnit": "The unit is not valid.",
+      "customUnitRequired": "A custom unit needs a name.",
+      "badMoney": "An amount is not valid.",
+      "invalidRow": "This row cannot be imported.",
+      "currencyMismatch": "Currency \"{{value}}\" is not this workspace's currency ({{currency}}).",
+      "money_noCurrency": "{{field}}: this workspace has no currency, so the amount cannot be imported.",
+      "money_badMoney": "{{field}} \"{{value}}\" is not an amount. Check the decimal mark setting.",
+      "money_moneyZero": "{{field}} is 0. Leave it empty if it is not known.",
+      "money_currencyMismatch": "{{field}} \"{{value}}\" is in another currency. This workspace uses {{currency}}.",
+      "money_tooManyDecimals": "{{field}} \"{{value}}\" has more decimals than {{currency}} allows. It is not rounded.",
+      "badDateKind": "Date kind \"{{value}}\" is not recognised. Use one of: use_by, best_before, manufacturer_expiry, internal_cutoff, quality_review, none.",
+      "dateKindMissing": "The kind of date is not known. Add a date kind column or choose one on the previous screen.",
+      "badDate": "Date \"{{value}}\" cannot be read.",
+      "badTime": "Time \"{{value}}\" cannot be read (use HH:MM).",
+      "timeWithMonth": "A time cannot be added to a month-only date.",
+      "deadline_dateRequired": "{{kind}} needs a date.",
+      "deadline_noDateAllowed": "A row with no date kind cannot have a date.",
+      "deadline_monthNotAllowed": "{{kind}} needs a real day, not only a month (\"{{value}}\").",
+      "deadline_invalidDate": "Date \"{{value}}\" is not a real calendar date.",
+      "badQuantity": "Quantity \"{{value}}\" is not valid (more than 0, up to 3 decimals).",
+      "badReceivedAt": "Received date \"{{value}}\" cannot be read.",
+      "productNotFound": "No product with {{field}} \"{{value}}\". Add a product name column to create it.",
+      "productIdRequired": "The row has no product name, barcode or SKU.",
+      "barcodeConflict": "The barcodes \"{{value}}\" belong to different products.",
+      "barcodeNotOnProduct": "Barcode \"{{value}}\" is not on \"{{product}}\"; the row was matched to that product by SKU or name.",
+      "duplicateInFile": "Same as line {{line}}.",
+      "duplicateExisting": "A batch with the same product, lot, date, location and quantity already exists.",
+      "duplicateInFileImported": "Same as line {{line}}; imported as a separate batch as you chose.",
+      "duplicateExistingImported": "Same as a batch you already have; imported as a separate batch as you chose.",
+      "costNotApplied": "The cost \"{{value}}\" is not saved: \"{{product}}\" already has its own cost, which is not changed by a batch import.",
+      "unchanged": "\"{{value}}\" already exists with the same details.",
+      "conflictSkipped": "\"{{value}}\" already exists with different {{fields}}. Kept as it is.",
+      "willUpdate": "\"{{value}}\" will be updated: {{fields}}."
     }
   }
 }

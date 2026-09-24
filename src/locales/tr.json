@@ -588,24 +588,41 @@
       "attachDate": "Barkodu tara"
     },
     "hint": {
-      "find": "Ürünü açmak için kamerayı bir barkoda tutun.",
-      "attach": "Kamerayı ürünün barkoduna tutun.",
+      "find": "Ürününü açmak için kamerayı bir barkoda doğrultun.",
+      "attach": "Kamerayı ürünün barkoduna doğrultun.",
       "addDate": "Tarihini eklemek için kamerayı barkoda tutun. Kaydettikten sonra sıradaki için buraya dönersiniz.",
-      "attachDate": "Kamerayı ürünün barkoduna tutun."
+      "attachDate": "Kamerayı ürünün barkoduna tutun.",
+      "add": "Kamerayı barkoda doğrultun. Sonra tarihi gireceksiniz.",
+      "open": "Kamerayı açtığınız ürünün barkoduna doğrultun."
     },
     "torch": "Fener",
-    "explainTitle": "TillExpiry barkod okumak için kameraya ihtiyaç duyar",
-    "explainBody": "Görüntüler yalnızca bu telefonda okunur, kaydedilmez veya gönderilmez. Kodu her zaman elle de yazabilirsiniz.",
+    "explainTitle": "TillExpiry'nin barkodları okumak için kameraya ihtiyacı var",
+    "explainBody": "Görüntüler yalnızca bu telefonda okunur; asla kaydedilmez veya gönderilmez. Kodu her zaman elle de yazabilirsiniz.",
     "explainContinue": "Devam",
-    "permissionDenied": "TillExpiry için kamera erişimi kapalı. Ayarlar'dan açın veya kodu yazın.",
+    "permissionDenied": "TillExpiry için kamera erişimi kapalı. Telefon ayarlarından açın veya kodu yazın.",
     "permissionAsk": "Kamera izni bekleniyor…",
     "readyHint": "Taramaya hazır. Art arda iki kez okunan aynı kod yok sayılır.",
     "lastScanned": "Son taranan",
     "notInCatalogue": "Henüz ürünlerinizde yok",
     "notFoundTitle": "Yeni barkod",
-    "notFoundBody": "{{code}} ürünlerinizde yok. Yeni ürün olarak eklensin mi?",
+    "notFoundBody": "{{code}} bu işletmenin ürünleri arasında yok. Yeni ürün olarak eklensin mi?",
     "addNew": "Ürün ekle",
-    "typeCode": "Kodu yaz"
+    "typeCode": "Kodu yaz",
+    "codeHint": "Barkodun altında basılı rakamlar.",
+    "codeLabel": "Barkod",
+    "dateStillAsked": "Ürün barkodu ambalaj tarihini göstermez: tarih size ayrıca sorulacak.",
+    "noCamera": "Burada kamera yok. Bunun yerine kodu yazın.",
+    "noProductCodeBody": "Bu kodda net olarak okunabilen bir ürün numarası yok. Kodu yazın veya ürünü seçin.",
+    "noProductCodeTitle": "Ürün kodu yok",
+    "notInProducts": "Henüz ürünlerinizde yok",
+    "openSettings": "Telefon ayarlarını aç",
+    "purpose": {
+      "add": "Tarayarak ekle",
+      "attach": "Barkodu tara",
+      "find": "Barkodla bul",
+      "open": "Açılan ürünü tara"
+    },
+    "searchItems": "Ürünlerde ara"
   },
   "dateType": {
     "useBy": "Son kullanma",
@@ -978,7 +995,20 @@
     "datesCsv": "Raftaki tarihler",
     "historyCsv": "Tarih geçmişi",
     "shareUnavailable": "Bu cihazda paylaşım kullanılamıyor.",
-    "failed": "Dosya oluşturulamadı."
+    "failed": "CSV dosyası oluşturulamadı. Tekrar deneyin.",
+    "screenTitle": "Verileri dışa aktar",
+    "intro": "Bu işletmenin ürünlerini veya partilerini Excel ya da başka bir uygulama için CSV dosyası olarak dışa aktarın. Dosyayı paylaşılmadan önce görürsünüz.",
+    "includeArchived": "Gizli ürünleri ve biten veya arşivlenen partileri dahil et",
+    "title": {
+      "products": "Ürünler CSV",
+      "batches": "Partiler CSV"
+    },
+    "productsHint": "Her ürün için bir satır: barkodlar, kategori, tedarikçi, birim, maliyet ve satış fiyatı. Bilinmeyen maliyetler boş bırakılır.",
+    "batchesHint": "Her parti için bir satır: parti numarası, miktar, tarih anlamı, tarih, geçerli olan tarih ve yer.",
+    "rows": "Satır: {{count}}",
+    "preview": "CSV önizle",
+    "empty": "Dışa aktarılacak bir şey yok.",
+    "formulaHint": "Bir elektronik tablonun formül olarak çalıştırabileceği hücreler düz metin olarak yazılır. Dosya TillExpiry'ye geri aktarılabilir."
   },
   "checkSheet": {
     "title": "Tarih kontrol listesi",
@@ -1133,7 +1163,7 @@
   },
   "productEdit": {
     "addTitle": "Yeni ürün",
-    "editTitle": "Ürün",
+    "editTitle": "Ürünü düzenle",
     "addDate": "Tarih ekle",
     "openDates": "Rafta: {{count}}",
     "pastDates": "Geçmiş tarihler",
@@ -1147,7 +1177,7 @@
     "shelfPh": "ör. Reyon 3, soğutucu",
     "category": "Kategori",
     "categoryPh": "ör. Süt ürünleri",
-    "sku": "Stok kodu",
+    "sku": "SKU / kendi kodunuz",
     "usualDateType": "Olağan tarih türü",
     "shelfLife": "Olağan raf ömrü, gün (isteğe bağlı)",
     "shelfLifePh": "ör. 7",
@@ -1155,7 +1185,7 @@
     "alertDays": "Bu kadar gün önce uyar (isteğe bağlı)",
     "alertDaysPh": "Mağaza ayarı: {{days}}",
     "alertDaysHint": "Mağaza ayarı için boş bırakın. Yavaş satılanlar için daha fazla gün kullanın.",
-    "price": "Normal satış fiyatı (isteğe bağlı)",
+    "price": "Satış fiyatı ({{currency}})",
     "pricePh": "ör. 1,45",
     "priceHint": "Yalnızca indirim önermek ve fireyi değerlemek için kullanılır.",
     "chooseCurrency": "Önce para biriminizi seçin",
@@ -1183,8 +1213,53 @@
         "badDateType": "Tarih türünü seçin.",
         "duplicateBarcode": "Bu barkod başka bir üründe zaten var.",
         "notFound": "Bu ürün artık yok."
-      }
-    }
+      },
+      "customUnitRequired": "Birim adını girin.",
+      "money_ambiguous": "Belirsiz tutar: nokta veya virgülü yalnızca kuruş/sent ayırıcısı olarak kullanın (ör. 1.23).",
+      "money_empty": "Bir tutar girin veya boş bırakın.",
+      "money_invalid": "Bu geçerli bir tutar değil.",
+      "money_noCurrency": "Önce işletme ayarlarından bir para birimi seçin.",
+      "money_tooManyDecimals": "Bu para birimi için ondalık basamak sayısı çok fazla.",
+      "money_zero": "Sıfırdan büyük bir tutar girin veya bilinmiyorsa boş bırakın."
+    },
+    "addCode": "Kod ekle",
+    "addCodeButton": "Kod ekle",
+    "barcodes": "Barkodlar",
+    "barcodesHint": "Bir ürünün birden fazla kodu olabilir, ör. tekli, paket ve koli.",
+    "cost": "Birim maliyet ({{currency}})",
+    "customUnit": "Birim adı",
+    "defaultDateKind": "Ambalajdaki olağan tarih anlamı",
+    "defaultLocation": "Olağan saklama yeri",
+    "defaultRule": "Olağan kural (açılmış / hazırlanmış)",
+    "defaults": "Olağan ayrıntılar",
+    "defaultsHint": "Bu ürünü eklediğinizde sizin için doldurulur. Her seferinde değiştirebilirsiniz.",
+    "grouping": "Kategori ve tedarikçi",
+    "hiddenNote": "Bu ürün gizli. Partileri ve geçmişi saklanır.",
+    "hide": "Ürünü gizle",
+    "hideBody": "Ürün eklerken artık sunulmaz. Partileri ve geçmişi saklanır.",
+    "hideHint": "Ürünler silinmez, gizlenir; böylece geçmiş okunabilir kalır.",
+    "hideTitle": "Bu ürün gizlensin mi?",
+    "isPrepared": "Burada hazırlanır (tarif / hazırlık ürünü)",
+    "isPreparedHint": "Hazırlanmış ürün eklerken bu ürünler önce sunulur.",
+    "money": "Maliyet ve fiyat",
+    "moneyHint": "İsteğe bağlı. Bilinmiyorsa boş bırakın — bilinmeyen asla sıfır sayılmaz.",
+    "name": "Ürün adı",
+    "namePh": "ör. Yarım yağlı süt 2 L",
+    "newCategory": "Yeni kategori",
+    "newSupplier": "Yeni tedarikçi",
+    "newTitle": "Yeni ürün",
+    "noCurrency": "Maliyet ve fiyat kaydetmek için işletme ayarlarından bir para birimi seçin.",
+    "notes": "Notlar",
+    "removeCode": "Kodu kaldır: {{code}}",
+    "role": {
+      "case": "Koli",
+      "pack": "Paket",
+      "single": "Tekli"
+    },
+    "scanCode": "Kod tara",
+    "supplier": "Tedarikçi",
+    "unhide": "Ürünü geri yükle",
+    "unit": "Sayım birimi"
   },
   "importer": {
     "title": "Dosyadan içe aktar",
@@ -1686,6 +1761,493 @@
       "noPrice": "Fiyat yardımcısını kullanmak için ürüne bir satış fiyatı ekleyin.",
       "noCost": "Fiyat yardımcısını kullanmak için ürüne bir maliyet ekleyin.",
       "currencyMismatch": "Ürünün maliyeti ve fiyatı farklı para birimlerinde."
+    }
+  },
+  "add": {
+    "boughtIn": {
+      "title": "Satın alınan ürün ekle"
+    },
+    "choice": {
+      "bought_in": {
+        "body": "Ambalajında tarih olan stok: son tüketim, tavsiye edilen tüketim veya son kullanma tarihi.",
+        "title": "Satın alınan ürün"
+      },
+      "opened": {
+        "body": "Bir partinin bir kısmını açın ve açıldıktan sonraki tarihini belirleyin.",
+        "title": "Açılmış ürün"
+      },
+      "other": {
+        "body": "Son kullanma veya kontrol tarihi olan gıda dışı ya da genel ürünler.",
+        "title": "Diğer tarihli ürün"
+      },
+      "prepared": {
+        "body": "Burada hazırlanan bir şey; son tarihi kendi kuralınızdan gelir.",
+        "title": "Hazırlanmış ürün"
+      },
+      "scan": {
+        "body": "Ürünü barkoduyla bulun, ardından tarihi ve ayrıntıları girin.",
+        "title": "Barkod tara"
+      }
+    },
+    "controls": {
+      "corrected": "Düzeltilmiş bir tarih geçerlidir.",
+      "direct": "Girdiğiniz son tarih geçerlidir.",
+      "none": "Geçerli tarih yok: bu ürünün kontrol edilmesi gerekiyor.",
+      "original_hard": "Orijinal ambalaj tarihi daha erken, bu yüzden hâlâ geçerli.",
+      "original_quality": "Yalnızca orijinal tavsiye edilen tüketim tarihi geçerli: bu bir kalite tarihidir, o tarihte kaliteyi kontrol edin.",
+      "printed": "Ambalajda basılı tarih geçerlidir.",
+      "rule": "Kuralınızdan gelen tarih geçerlidir."
+    },
+    "customUnit": "Birim adı",
+    "dateKind": {
+      "hint": "Ambalajda tam olarak ne yazdığını seçin. Son tüketim tarihi ile tavsiye edilen tüketim tarihi farklı anlamlara gelir.",
+      "section": "Tarihin anlamı"
+    },
+    "errors": {
+      "amountRequired": "Kaç tane açtığınızı girin.",
+      "amountTooHigh": "Bu, bu partide kalandan fazla.",
+      "badQuantity": "Sıfırdan büyük bir sayı girin (en fazla 3 ondalık) veya boş bırakın.",
+      "badTime": "Geçerli bir tarih ve SS:DD biçiminde bir saat girin.",
+      "customUnitRequired": "Birim adını girin.",
+      "dateKindRequired": "Tarihin ne anlama geldiğini seçin.",
+      "dateRequired": "Tarihi girin.",
+      "gs1Confirm": "Ambalajdaki tarihi ve anlamını kontrol edin, ardından kutuyu işaretleyin.",
+      "invalidDate": "Bu geçerli bir tarih değil.",
+      "money_ambiguous": "Belirsiz tutar: nokta veya virgülü yalnızca kuruş/sent ayırıcısı olarak kullanın (ör. 1.23).",
+      "money_empty": "Bir tutar girin veya boş bırakın.",
+      "money_invalid": "Bu geçerli bir tutar değil.",
+      "money_noCurrency": "Önce işletme ayarlarından bir para birimi seçin.",
+      "money_tooManyDecimals": "Bu para birimi için ondalık basamak sayısı çok fazla.",
+      "money_zero": "Sıfırdan büyük bir tutar girin veya bilinmiyorsa boş bırakın.",
+      "monthNotAllowed": "Son tüketim tarihi için yalnızca ay değil, gün de gerekir.",
+      "noDateAllowed": "“Tarih yok” seçeneğinde tarih olamaz.",
+      "productRequired": "Bir ürün seçin veya yeni ürün için bir ad girin.",
+      "ruleRequired": "Kurallarınızdan birini seçin."
+    },
+    "intro": {
+      "food_prep": "Hazırladığınız veya açtığınız şeyleri, kendi kurallarınızdan gelen son tarihle kaydedin.",
+      "home_other": "Takip etmek istediğiniz tarihli her şeyi ekleyin.",
+      "mixed": "Satın aldığınız stoku ekleyin veya açtığınız ve hazırladığınız şeyleri kaydedin.",
+      "retail": "Bir ürünü tarayın veya seçin, ardından ambalajda basılı tarihi girin."
+    },
+    "location": "Saklama yeri",
+    "lot": "Parti / lot numarası",
+    "lotPlace": {
+      "section": "Parti ve yer"
+    },
+    "lotShort": "Parti {{lot}}",
+    "manageLocations": "Saklama yerleri",
+    "manageRules": "Açılmış ve hazırlanmış ürünler için kurallarınız",
+    "money": {
+      "cost": "Birim maliyet ({{currency}})",
+      "hint": "İsteğe bağlı, üründe kaydedilir. Bilinmiyorsa boş bırakın — bilinmeyen asla sıfır sayılmaz.",
+      "noCurrency": "Maliyet ve fiyat kaydetmek için işletme ayarlarından bir para birimi seçin.",
+      "price": "Satış fiyatı ({{currency}})",
+      "section": "Maliyet ve fiyat"
+    },
+    "noDateNeedsChecking": "Tarih yok: bu ürün bir tarih eklenene kadar “Kontrol gerekiyor” altında listelenir.",
+    "noLocation": "Yer belirlenmedi",
+    "notes": "Notlar",
+    "opened": {
+      "amount": "Açılan miktar",
+      "amountLabel": "Kaç tane açıldı",
+      "amountLeft": "Zorunlu. Bu partide kalan: {{left}}",
+      "amountOptional": "İsteğe bağlı: bu parti sayılmıyor.",
+      "another": "Başka birini aç",
+      "calculated": "Açıldıktan sonraki tarih",
+      "controls": "Geçerli tarih",
+      "date": "Açılma tarihi",
+      "deadline": "Açıldıktan sonra",
+      "deadlineHint": "İşletmenizin kuralını veya ambalajdaki talimatı kullanın. TillExpiry'de yerleşik süreler yoktur.",
+      "noCalculated": "Ayrı bir açıldıktan sonraki tarih yok",
+      "noOriginal": "Bilinen orijinal tarih yok",
+      "noParent": "Listelenen bir partiden değil",
+      "noParentHint": "Orijinal ambalaj tarihi bilinmeyecek.",
+      "original": "Orijinal ambalaj tarihi",
+      "parentLeft": "Açılmamış partide şimdi kalan: {{left}}",
+      "preview": "Tarihleri kontrol edin",
+      "previewIncomplete": "Tarihleri görmek için bir kural seçin veya son tarih girin.",
+      "qualityAlso": "Ayrıca görünür kalır: {{line}} (kalite tarihidir, son tarih değil)",
+      "saved": "Açıldı: {{name}}",
+      "title": "Açılmış ürün ekle",
+      "when": "Ne zaman açıldı?",
+      "which": "Hangi partiyi açıyorsunuz?",
+      "whichHint": "Partiyi seçmek orijinal tarihini görünür tutar ve yalnızca açtığınız miktarı düşer."
+    },
+    "other": {
+      "title": "Diğer tarihli ürün ekle"
+    },
+    "prepared": {
+      "choose": "Hazırlanmış ürün seçin",
+      "chooseAny": "Tüm ürünlerden seçin",
+      "date": "Hazırlanma tarihi",
+      "deadline": "Son tarih veya kontrol tarihi",
+      "deadlineHint": "İşletmenizin kendi kuralından veya girdiğiniz bir son tarihten. Hiçbir şey önerilmez.",
+      "linkSources": "Kaynak partileri bağla",
+      "newName": "Yeni hazırlanmış ürün adı",
+      "newNamePh": "ör. Jambonlu sandviç",
+      "noSources": "Eşleşen parti yok.",
+      "preview": "Tarihi kontrol edin",
+      "previewIncomplete": "Tarihi görmek için bir kural seçin veya son tarih girin.",
+      "sources": "Yapıldığı partiler (isteğe bağlı)",
+      "sourcesHint": "İzlenebilirlik için kullanılan partileri bağlayın. Miktarları değişmez.",
+      "title": "Hazırlanmış ürün ekle",
+      "what": "Ne hazırladınız?",
+      "whatHint": "Kayıtlı bir hazırlanmış ürün seçin veya yeni bir tane ekleyin.",
+      "when": "Ne zaman hazırlandı?"
+    },
+    "printLabel": "Etiket yazdır",
+    "product": {
+      "barcode": "Barkod (isteğe bağlı)",
+      "change": "Ürünü değiştir",
+      "choose": "Bir ürün seçin",
+      "createNamed": "Yeni ürün ekle: “{{name}}”",
+      "createNew": "Yeni ürün ekle",
+      "newName": "Yeni ürün adı",
+      "newNamePh": "ör. Yarım yağlı süt 2 L",
+      "noMatch": "Eşleşen ürün yok.",
+      "orNew": "Veya yeni bir ürün ekleyin:",
+      "scan": "Ürünü tara",
+      "scanBarcode": "Barkodunu tara",
+      "searchPh": "Ad, SKU veya barkod",
+      "section": "Ürün"
+    },
+    "quantity": {
+      "hint": "İsteğe bağlı. Bu ürünü saymıyorsanız boş bırakın.",
+      "label": "Kaç tane",
+      "section": "Miktar"
+    },
+    "reminder": {
+      "advance": "Önceden hatırlatma: {{date}} (kaç gün önce: {{days}})",
+      "exact": "Son saatten önce hatırlatma: {{time}} (kaç dakika önce: {{minutes}})",
+      "none": "Tarih yok, bu yüzden tarih hatırlatıcısı da yok. Ürün “Kontrol gerekiyor” altında görünür.",
+      "note": "Hatırlatıcılar için bildirim izni gerekir. Bugün ekranı her zaman güncel durumu gösterir.",
+      "off": "Tarih hatırlatıcıları, hatırlatıcı ayarlarında kapalı.",
+      "past": "Bu tarih zaten geçti. Ürün hemen Bugün ekranında görünür.",
+      "sameDay": "Aynı gün hatırlatma: {{date}}",
+      "section": "Tarih ve hatırlatıcılar",
+      "summary": "İlgilenilmesi gerektiği sürece sabah özetinde de yer alır (saat {{time}})."
+    },
+    "ruleUsed": "Kural: {{name}} (sürüm {{version}}) · Kaynak: {{source}}",
+    "saved": {
+      "addAnother": "Başka ekle",
+      "title": "Kaydedildi: {{name}}",
+      "view": "Ürünü gör"
+    },
+    "setNow": "Şimdiye ayarla",
+    "source": {
+      "direct": "Son tarihi doğrudan girin",
+      "newRule": "Kural ekle",
+      "noRules": "Henüz kural yok. Kendi kuralınızı kaynağıyla birlikte ekleyin.",
+      "original": "Ayrı bir açıldıktan sonraki tarih yok",
+      "originalHint": "Orijinal ambalaj tarihi geçerli kalır. Bu tarih yoksa ürünün kontrol edilmesi gerekir.",
+      "rule": "Kayıtlı kurallarınızdan birini kullanın"
+    },
+    "storage": "Saklama: {{text}}",
+    "time": "Saat (24 saat, SS:DD)",
+    "timeHint": "Saat dilimi: {{zone}}",
+    "title": "Ekle",
+    "unit": "Birim"
+  },
+  "gs1": {
+    "bestBefore": "Tavsiye edilen tüketim tarihi (AI 15): {{date}}",
+    "checkPack": "Barkod tarihi içermeyebilir. Kaydetmeden önce her zaman ambalajla karşılaştırın.",
+    "confirm": "Ambalajdaki tarihi ve anlamını kontrol ettim",
+    "expiry": "Son kullanma tarihi (AI 17): {{date}}",
+    "gtin": "Ürün kodu (GTIN): {{gtin}}",
+    "lot": "Parti / lot: {{lot}}",
+    "noDate": "Bu barkoddan tarih okunamadı.",
+    "partial": "Bu barkodun bir kısmı net olarak okunamadı ve dışarıda bırakıldı.",
+    "section": "Barkoddan okunan"
+  },
+  "locations": {
+    "activeCount": "Etkin ürün: {{count}}",
+    "editTitle": "Yeri düzenle",
+    "emptyBody": "Buzdolabı 1, Dondurucu A veya Ön raf gibi yerler ekleyin.",
+    "emptyTitle": "Henüz yer yok",
+    "errors": {
+      "nameRequired": "Yer için bir ad girin."
+    },
+    "hiddenTag": "Gizli",
+    "hide": "Yeri gizle",
+    "hideBody": "Buradaki etkin ürün: {{count}}. Bu ürünler yerlerini ve tarihlerini korur; yer artık yeni ürünler için sunulmaz.",
+    "hideTitle": "Bu yer gizlensin mi?",
+    "intro": "Buzdolapları, dondurucular, raflar ve tezgâhlar. Bir ürünü taşımak tarihini asla değiştirmez.",
+    "kindHint": "Yalnızca gruplamak için. Yer, bir ürünün tarihini asla değiştirmez.",
+    "kindSection": "Yer türü",
+    "name": "Yer adı",
+    "namePh": "ör. Hazırlık buzdolabı",
+    "nameSection": "Ad",
+    "new": "Yeni yer",
+    "newTitle": "Yeni yer",
+    "notes": "Notlar",
+    "showHidden": "Gizlileri göster ({{count}})",
+    "showItems": "Buradaki ürünleri göster",
+    "title": "Saklama yerleri",
+    "unhide": "Yeri geri yükle"
+  },
+  "rules": {
+    "appliesHint": {
+      "after_opening": "Ambalajın açıldığı andan itibaren sayılır.",
+      "after_preparation": "Ürünün hazırlandığı andan itibaren sayılır.",
+      "manual_review": "Elle kontrol ettiğiniz bir kontrol tarihi."
+    },
+    "appliesSection": "Uygulandığı durum",
+    "appliesTo": {
+      "after_opening": "Açıldıktan sonra",
+      "after_preparation": "Hazırlandıktan sonra",
+      "manual_review": "Kontrol"
+    },
+    "class": {
+      "hard_cutoff": "Kesin son tarih",
+      "quality_review": "Kalite kontrolü"
+    },
+    "classHint": {
+      "hard_cutoff": "Bu saatten sonra ürün kullanılmamalı veya satılmamalıdır — prosedürünüze uyun.",
+      "quality_review": "Bu saatten sonra, kullanmadan veya satmadan önce kaliteyi kontrol edin."
+    },
+    "classSection": "Süre sonunda ne olur",
+    "duration": {
+      "days": "Gün: {{count}}",
+      "hours": "Saat: {{count}}",
+      "minutes": "Dakika: {{count}}"
+    },
+    "durationHint": "Zorunlu. Yalnızca tam sayılar.",
+    "durationLabel": "Süre",
+    "durationOptional": "Kontrol kuralı için isteğe bağlı.",
+    "durationSection": "Ne kadar süre",
+    "editTitle": "Kuralı düzenle",
+    "emptyBody": "Ambalajınızdaki, tedarikçi spesifikasyonundaki veya gıda hijyeni prosedürünüzdeki süreleri ekleyin.",
+    "emptyTitle": "Henüz kural yok",
+    "errors": {
+      "badDuration": "Sıfırdan büyük bir tam sayı girin (en fazla 10 yıl).",
+      "durationRequired": "Süreyi girin.",
+      "nameRequired": "Kural için bir ad girin.",
+      "sourceRequired": "Bu sürenin nereden geldiğini belirtin."
+    },
+    "hiddenTag": "Gizli",
+    "hide": "Kuralı gizle",
+    "hideBody": "Artık sunulmaz. Bu kuralı kullanan ürünler tarihlerini korur.",
+    "hideTitle": "Bu kural gizlensin mi?",
+    "intro": "Kurallar işletmenizin kendi kurallarıdır: bir ürünün açıldıktan veya hazırlandıktan sonra ne kadar süre saklanabileceği ve bunun nereden geldiği. TillExpiry'de yerleşik süreler yoktur.",
+    "name": "Kural adı",
+    "namePh": "ör. Açılmış soslar",
+    "nameSection": "Ad",
+    "new": "Yeni kural",
+    "newTitle": "Yeni kural",
+    "noDuration": "Belirli süre yok",
+    "ownRulesHint": "İşletmenizin kullandığı süreyi girin. Hiçbir şey önerilmez.",
+    "showHidden": "Gizlileri göster ({{count}})",
+    "snapshotHint": "Her ürün kullandığı kural sürümünün bir kopyasını saklar; böylece sonraki düzenlemeler geçmiş ürünleri asla değiştirmez.",
+    "source": "Kaynak",
+    "sourceHint": "Zorunlu. Örneğin: üretici ambalajı, tedarikçi spesifikasyonu, gıda hijyeni prosedürünüz veya iç kalite prosedürünüz.",
+    "sourceLine": "Kaynak: {{source}}",
+    "sourcePh": "ör. Etiket: açıldıktan sonra belirtilen süre içinde tüketin",
+    "sourceSection": "Bu süre nereden geliyor",
+    "storage": "Saklama talimatı (isteğe bağlı)",
+    "storageLine": "Saklama: {{text}}",
+    "storageSection": "Saklama talimatı",
+    "title": "Kurallarınız",
+    "unhide": "Kuralı geri yükle",
+    "unit": {
+      "days": "Gün",
+      "hours": "Saat",
+      "minutes": "Dakika"
+    },
+    "versionHint": "Kaydetmek yeni bir sürüm oluşturur (sürüm {{next}}). Önceden kaydedilmiş ürünler oluşturuldukları sürümü korur.",
+    "versionLine": "Sürüm {{version}}"
+  },
+  "import": {
+    "title": {
+      "products": "Ürünleri içe aktar",
+      "batches": "Tarihli partileri içe aktar"
+    },
+    "subtitle": "CSV dosyasından",
+    "stepFile": "1. Dosya",
+    "stepColumns": "2. Sütunlar",
+    "stepDates": "3. Tarihler",
+    "stepMoney": "Maliyet ve fiyatlar",
+    "stepDuplicates": "Yinelenenler",
+    "intro": {
+      "products": "Bir CSV dosyasından (örneğin Excel'den kaydedilmiş) ürün ekleyin veya güncelleyin. Önizlemeyi kontrol edip onaylayana kadar hiçbir şey kaydedilmez.",
+      "batches": "Bir CSV dosyasından (örneğin Excel'den kaydedilmiş) tarihli partiler ekleyin. Her satır ayrı bir parti olur. Önizlemeyi kontrol edip onaylayana kadar hiçbir şey kaydedilmez."
+    },
+    "columnsHint": {
+      "products": "Uygulamanın anladığı sütunlar: ad, barkod, barkod rolü, SKU, kategori, tedarikçi, birim, maliyet, satış fiyatı, para birimi, olağan yer, olağan tarih anlamı, notlar. İlk satır sütun adları olmalıdır.",
+      "batches": "Uygulamanın anladığı sütunlar: ürün adı, barkod veya SKU, tarih anlamı, tarih (YYYY-AA-GG, GG/AA/YYYY veya yalnızca ay için YYYY-AA), saat, parti, miktar, miktar birimi, yer, teslim alınma, maliyet, notlar. İlk satır sütun adları olmalıdır."
+    },
+    "limits": "Dosya başına en fazla {{rows}} satır ve {{mb}} MB.",
+    "pick": "CSV dosyası seç",
+    "pickOther": "Başka dosya seç",
+    "fileInfo": "Satır: {{rows}} · Sütun: {{columns}}",
+    "encodingNote": "Bu dosya UTF-8 değil. Windows (Excel) metni olarak okundu. Önizlemede ş, ğ, ı gibi özel harflerin ve para birimi işaretlerinin doğru göründüğünü kontrol edin.",
+    "columnsHelp": "Her sütunun ne içerdiğini kontrol edin. Uygulama sütun adlarından tahmin etti; yanlış olanı değiştirin. “İçe aktarılmaz” olarak ayarlanan sütunlar dışarıda bırakılır.",
+    "columnN": "Sütun {{n}}",
+    "dateOrder": "03/04/2026 gibi tarihler nasıl yazılmış?",
+    "dateOrderHint": "YYYY-AA-GG biçiminde yazılan tarihler her zaman doğru okunur. Uygulama gün ve ayın sırasını asla tahmin etmez.",
+    "order": {
+      "dmy": "Gün/ay/yıl",
+      "mdy": "Ay/gün/yıl",
+      "ymd": "Yıl/ay/gün"
+    },
+    "defaultKind": "Tarih anlamı olmayan satırlar için tarih anlamı",
+    "defaultKindRequired": "Bu dosyadaki tarihler ne anlama geliyor?",
+    "defaultKindHint": "Yalnızca tarih anlamı olmayan ve ürününün olağan tarih anlamı bulunmayan satırlar için kullanılır. Son tüketim tarihi için yalnızca ay değil, gerçek bir gün gerekir.",
+    "defaultKindMissing": "Tarih anlamını seçin veya bir tarih anlamı sütunu eşleştirin. Anlamı olmayan satırlar içe aktarılamaz.",
+    "moneyCurrency": "Tutarlar, bu işletmenin para birimi olan {{currency}} cinsinden, tam yazıldığı gibi okunur. Başka para birimindeki tutarlar reddedilir.",
+    "decimalMark": "Tutarlardaki ondalık ayırıcı",
+    "decimal": {
+      "dot": "1.50 (nokta)",
+      "comma": "1,50 (virgül)"
+    },
+    "decimalHint": "Binlik ayırıcılar kabul edilmez; böylece bir tutar asla yanlış okunamaz.",
+    "onExisting": "Bir satır, ayrıntıları farklı olan mevcut bir ürünle eşleştiğinde",
+    "existing": {
+      "skip": "Mevcut ürünü koru",
+      "update": "Dosyadan güncelle"
+    },
+    "onDuplicate": "Bir satır başka bir satırla veya zaten sahip olduğunuz bir partiyle aynı olduğunda",
+    "duplicate": {
+      "skip": "Atla",
+      "import": "Ayrı bir parti olarak içe aktar"
+    },
+    "neverMerged": "Partiler asla birleştirilmez: parti numarası, tarihi, yeri veya miktarı farklı olan satırlar, aynı barkoda sahip olsalar bile her zaman ayrı partiler olur.",
+    "toPreview": "İçe aktarmayı önizle",
+    "summary": "Bu içe aktarma ne yapacak",
+    "count": {
+      "rows": "Dosyadaki satırlar",
+      "newProductsRows": "Yeni ürünler",
+      "newBatches": "Yeni partiler",
+      "newProducts": "Oluşturulan yeni ürünler",
+      "newLocations": "Yeni yerler",
+      "updated": "Güncellenen ürünler",
+      "skipped": "Atlanan satırlar",
+      "errors": "Sorunlu satırlar",
+      "conflicts": "Mevcut bir üründen farklı olan satırlar",
+      "warnings": "Kontrol edilecek notlar",
+      "created": "Oluşturulan kayıtlar",
+      "notImported": "İçe aktarılmayan satırlar"
+    },
+    "errorsNotImported": "Sorunlu satırlar içe aktarılmaz. Bunları dosyada düzeltip yeniden içe aktarın veya geri kalanını şimdi içe aktarın.",
+    "atomicHint": "Her şey tek adımda birlikte kaydedilir: bir şey başarısız olursa hiçbir şey kaydedilmez.",
+    "confirm": "Satırları içe aktar: {{count}}",
+    "confirmNothing": "İçe aktarılacak bir şey yok",
+    "changeMapping": "Sütunları veya ayarları değiştir",
+    "issues": "Kontrol edilecek satır: {{count}}",
+    "noIssues": "Sorun bulunamadı.",
+    "issueLine": "Satır {{line}}",
+    "severity": {
+      "error": "İçe aktarılmadı",
+      "skip": "Atlandı",
+      "warning": "Not"
+    },
+    "history": "İçe aktarma geçmişi",
+    "historyCounts": "Oluşturulan: {{created}} · Güncellenen: {{updated}} · İçe aktarılmayan: {{skipped}}",
+    "kind": {
+      "products": "Ürünler",
+      "batches": "Partiler"
+    },
+    "result": {
+      "title": "İçe aktarma tamamlandı",
+      "hint": "İçe aktarma, içe aktarma geçmişine kaydedildi. Aynı dosyanın yeniden içe aktarılması engellenir."
+    },
+    "noSession": {
+      "title": "Önizlenecek dosya yok",
+      "body": "Geri dönüp önce bir CSV dosyası seçin."
+    },
+    "field": {
+      "name": "Ürün adı",
+      "barcode": "Barkod",
+      "barcode_role": "Barkod rolü (tekli, paket, koli)",
+      "sku": "SKU / ürün kodu",
+      "category": "Kategori",
+      "supplier": "Tedarikçi",
+      "unit": "Birim",
+      "cost": "Maliyet",
+      "price": "Satış fiyatı",
+      "currency": "Para birimi",
+      "default_location": "Olağan yer",
+      "default_date_kind": "Olağan tarih anlamı",
+      "notes": "Notlar",
+      "date_kind": "Tarih anlamı",
+      "date": "Tarih",
+      "time": "Saat",
+      "lot": "Parti / lot numarası",
+      "quantity": "Miktar",
+      "quantity_unit": "Miktar birimi",
+      "location": "Yer",
+      "received_at": "Teslim alınma",
+      "ignore": "İçe aktarılmaz"
+    },
+    "decode": {
+      "empty": "Dosya boş.",
+      "tooLarge": "Dosya içe aktarmak için çok büyük. Daha küçük dosyalara bölün.",
+      "spreadsheet": "Bu bir elektronik tablo dosyası, CSV değil. Excel'de Dosya > Farklı Kaydet > CSV UTF-8 seçin, ardından o dosyayı içe aktarın.",
+      "binary": "Bu dosya okunabilir bir CSV metin dosyası değil.",
+      "tooManyRows": "Dosyada {{rows}} satırdan fazla var. Daha küçük dosyalara bölün.",
+      "tooManyColumns": "Dosyada {{columns}} sütundan fazla var. İhtiyacınız olmayan sütunları kaldırın.",
+      "cellTooLong": "Dosyadaki bir hücre çok uzun. Dosyanın normal bir CSV dosyası olduğunu kontrol edin.",
+      "noDataRows": "Dosyada sütun adları var ama satır yok.",
+      "readFailed": "Dosya okunamadı."
+    },
+    "blocker": {
+      "nameRequired": "Ürün adını içeren sütunu seçin.",
+      "productIdRequired": "Ürünü tanımlayan bir sütun seçin: barkod, SKU veya ad.",
+      "dateRequired": "Tarihi içeren sütunu seçin.",
+      "alreadyImported": "Bu dosya bu işletmeye zaten içe aktarıldı. İki kez içe aktarılamaz.",
+      "moneyNoCurrency": "Bu işletmenin para birimi yok, bu yüzden maliyet ve fiyat sütunları içe aktarılamaz. İşletme ayarlarından para birimini belirleyin veya bu sütunları “İçe aktarılmaz” olarak ayarlayın.",
+      "nothingToImport": "İçe aktarılacak yeni bir şey yok."
+    },
+    "error": {
+      "alreadyImported": "Bu dosya bu işletmeye zaten içe aktarıldı. Hiçbir şey kaydedilmedi.",
+      "importChanged": "Önizlemeden bu yana verileriniz değişti (örneğin bir barkod artık başka bir ürün tarafından kullanılıyor). Hiçbir şey kaydedilmedi. Önizlemeyi yeniden açın.",
+      "moneyNoCurrency": "Bu işletmenin para birimi yok, bu yüzden maliyet ve fiyatlar içe aktarılamaz. Hiçbir şey kaydedilmedi.",
+      "nothingToImport": "İçe aktarılacak bir şey yok.",
+      "noWorkspace": "İşletme artık kullanılamıyor. Hiçbir şey kaydedilmedi.",
+      "nameRequired": "Ürün adını içeren sütunu seçin.",
+      "productIdRequired": "Ürünü tanımlayan bir sütun seçin.",
+      "dateRequired": "Tarihi içeren sütunu seçin.",
+      "failed": "İçe aktarma kaydedilemedi. Hiçbir şey değişmedi. Tekrar deneyin."
+    },
+    "issue": {
+      "nameRequired": "Ürün adı eksik.",
+      "textTooLong": "{{field}} çok uzun: “{{value}}”.",
+      "badBarcode": "“{{value}}” barkodu okunamıyor.",
+      "badBarcodeRole": "“{{value}}” barkod rolü tekli, paket veya koli değil.",
+      "badUnitCount": "Bir barkodun paket boyutu geçerli değil.",
+      "badUnit": "Birim geçerli değil.",
+      "customUnitRequired": "Özel birim için bir ad gerekir.",
+      "badMoney": "Bir tutar geçerli değil.",
+      "invalidRow": "Bu satır içe aktarılamaz.",
+      "currencyMismatch": "“{{value}}” para birimi bu işletmenin para birimi ({{currency}}) değil.",
+      "money_noCurrency": "{{field}}: bu işletmenin para birimi yok, bu yüzden tutar içe aktarılamaz.",
+      "money_badMoney": "{{field}} “{{value}}” bir tutar değil. Ondalık ayırıcı ayarını kontrol edin.",
+      "money_moneyZero": "{{field}} 0. Bilinmiyorsa boş bırakın.",
+      "money_currencyMismatch": "{{field}} “{{value}}” başka bir para biriminde. Bu işletme {{currency}} kullanıyor.",
+      "money_tooManyDecimals": "{{field}} “{{value}}”, {{currency}} için izin verilenden fazla ondalık içeriyor. Yuvarlanmaz.",
+      "badDateKind": "\"{{value}}\" tarih türü tanınmadı. Şunlardan birini kullanın: use_by, best_before, manufacturer_expiry, internal_cutoff, quality_review, none.",
+      "dateKindMissing": "Tarihin anlamı bilinmiyor. Bir tarih anlamı sütunu ekleyin veya önceki ekranda birini seçin.",
+      "badDate": "“{{value}}” tarihi okunamıyor.",
+      "badTime": "“{{value}}” saati okunamıyor (SS:DD kullanın).",
+      "timeWithMonth": "Yalnızca ay içeren bir tarihe saat eklenemez.",
+      "deadline_dateRequired": "{{kind}} için tarih gerekir.",
+      "deadline_noDateAllowed": "Tarih anlamı olmayan bir satırda tarih olamaz.",
+      "deadline_monthNotAllowed": "{{kind}} için yalnızca ay değil, gerçek bir gün gerekir (“{{value}}”).",
+      "deadline_invalidDate": "“{{value}}” gerçek bir takvim tarihi değil.",
+      "badQuantity": "“{{value}}” miktarı geçerli değil (0'dan büyük, en fazla 3 ondalık).",
+      "badReceivedAt": "“{{value}}” teslim alınma tarihi okunamıyor.",
+      "productNotFound": "{{field}} değeri “{{value}}” olan ürün yok. Oluşturmak için bir ürün adı sütunu ekleyin.",
+      "productIdRequired": "Satırda ürün adı, barkod veya SKU yok.",
+      "barcodeConflict": "“{{value}}” barkodları farklı ürünlere ait.",
+      "barcodeNotOnProduct": "“{{value}}” barkodu “{{product}}” ürününde kayıtlı değil; satır bu ürünle SKU veya ada göre eşleştirildi.",
+      "duplicateInFile": "Satır {{line}} ile aynı.",
+      "duplicateExisting": "Aynı ürün, parti numarası, tarih, yer ve miktara sahip bir parti zaten var.",
+      "duplicateInFileImported": "Satır {{line}} ile aynı; seçiminiz üzerine ayrı bir parti olarak içe aktarıldı.",
+      "duplicateExistingImported": "Zaten sahip olduğunuz bir partiyle aynı; seçiminiz üzerine ayrı bir parti olarak içe aktarıldı.",
+      "costNotApplied": "“{{value}}” maliyeti kaydedilmedi: “{{product}}” ürününün zaten kendi maliyeti var ve parti içe aktarması bunu değiştirmez.",
+      "unchanged": "“{{value}}” aynı ayrıntılarla zaten mevcut.",
+      "conflictSkipped": "“{{value}}” farklı bilgilerle zaten mevcut ({{fields}}). Olduğu gibi bırakıldı.",
+      "willUpdate": "“{{value}}” güncellenecek: {{fields}}."
     }
   }
 }

@@ -588,24 +588,41 @@
       "attachDate": "Escanear el código"
     },
     "hint": {
-      "find": "Apunta la cámara a un código para abrir su producto.",
+      "find": "Apunta la cámara a un código de barras para abrir su producto.",
       "attach": "Apunta la cámara al código de barras del producto.",
       "addDate": "Apunta a un código para añadir su fecha. Al guardar vuelves aquí para el siguiente.",
-      "attachDate": "Apunta al código de barras del producto."
+      "attachDate": "Apunta al código de barras del producto.",
+      "add": "Apunta la cámara al código de barras. Después introducirás la fecha.",
+      "open": "Apunta la cámara al código de barras del producto que vas a abrir."
     },
     "torch": "Linterna",
-    "explainTitle": "TillExpiry necesita la cámara para leer códigos",
+    "explainTitle": "TillExpiry necesita la cámara para leer códigos de barras",
     "explainBody": "Las imágenes se leen solo en este teléfono y nunca se guardan ni se envían. Siempre puedes escribir el código.",
     "explainContinue": "Continuar",
-    "permissionDenied": "El acceso a la cámara está desactivado para TillExpiry. Actívalo en Ajustes o escribe el código.",
-    "permissionAsk": "Esperando permiso de la cámara…",
-    "readyHint": "Listo para escanear. Un mismo código leído dos veces seguidas se ignora.",
+    "permissionDenied": "El acceso a la cámara está desactivado para TillExpiry. Actívalo en los ajustes del teléfono o escribe el código.",
+    "permissionAsk": "Esperando el permiso de la cámara…",
+    "readyHint": "Listo para escanear. Si se lee el mismo código dos veces seguidas, se ignora.",
     "lastScanned": "Último escaneado",
     "notInCatalogue": "Aún no está en tus productos",
-    "notFoundTitle": "Código nuevo",
-    "notFoundBody": "{{code}} no está en tus productos. ¿Añadirlo como producto nuevo?",
+    "notFoundTitle": "Código de barras nuevo",
+    "notFoundBody": "{{code}} no está entre los productos de este negocio. ¿Añadirlo como producto nuevo?",
     "addNew": "Añadir producto",
-    "typeCode": "Escribir el código"
+    "typeCode": "Escribir el código",
+    "codeHint": "Los dígitos impresos bajo el código de barras.",
+    "codeLabel": "Código de barras",
+    "dateStillAsked": "El código de barras de un producto no indica la fecha del envase: se te pedirá.",
+    "noCamera": "No hay cámara. Escribe el código.",
+    "noProductCodeBody": "Este código no tiene un número de producto que se pueda leer con fiabilidad. Escribe el código o elige el producto.",
+    "noProductCodeTitle": "Sin código de producto",
+    "notInProducts": "Aún no está en tus productos",
+    "openSettings": "Abrir ajustes del teléfono",
+    "purpose": {
+      "add": "Escanear para añadir",
+      "attach": "Escanear el código de barras",
+      "find": "Buscar por código de barras",
+      "open": "Escanear el producto abierto"
+    },
+    "searchItems": "Buscar artículos"
   },
   "dateType": {
     "useBy": "Fecha de caducidad",
@@ -977,8 +994,21 @@
     },
     "datesCsv": "Fechas en el estante",
     "historyCsv": "Historial de fechas",
-    "shareUnavailable": "Compartir no está disponible en este dispositivo.",
-    "failed": "No se pudo crear el archivo."
+    "shareUnavailable": "No se puede compartir en este dispositivo.",
+    "failed": "No se pudo crear el archivo CSV. Inténtalo de nuevo.",
+    "screenTitle": "Exportar datos",
+    "intro": "Exporta los productos o lotes de este negocio como archivo CSV para Excel u otra app. Verás el archivo antes de compartirlo.",
+    "includeArchived": "Incluir productos ocultos y lotes terminados o archivados",
+    "title": {
+      "products": "CSV de productos",
+      "batches": "CSV de lotes"
+    },
+    "productsHint": "Una fila por producto con códigos de barras, categoría, proveedor, unidad, coste y precio de venta. Los costes desconocidos se dejan vacíos.",
+    "batchesHint": "Una fila por lote con su número de lote, cantidad, tipo de fecha, fecha, la fecha que manda y el lugar.",
+    "rows": "Filas: {{count}}",
+    "preview": "Vista previa del CSV",
+    "empty": "Nada que exportar.",
+    "formulaHint": "Las celdas que una hoja de cálculo podría ejecutar como fórmula se escriben como texto normal. El archivo se puede volver a importar en TillExpiry."
   },
   "checkSheet": {
     "title": "Hoja de revisión de fechas",
@@ -1133,11 +1163,11 @@
   },
   "productEdit": {
     "addTitle": "Nuevo producto",
-    "editTitle": "Producto",
+    "editTitle": "Editar producto",
     "addDate": "Añadir fecha",
     "openDates": "En el estante: {{count}}",
     "pastDates": "Fechas pasadas",
-    "details": "Detalles",
+    "details": "Datos",
     "productName": "Nombre del producto",
     "productNamePh": "p. ej. Leche semidesnatada 2 L",
     "barcode": "Código de barras",
@@ -1155,7 +1185,7 @@
     "alertDays": "Avisar con estos días de antelación (opcional)",
     "alertDaysPh": "Ajuste de la tienda: {{days}}",
     "alertDaysHint": "Déjalo vacío para usar el ajuste de la tienda. Usa más días para lo que se vende despacio.",
-    "price": "Precio de venta normal (opcional)",
+    "price": "Precio de venta ({{currency}})",
     "pricePh": "p. ej. 1,45",
     "priceHint": "Solo se usa para sugerir rebajas y valorar mermas.",
     "chooseCurrency": "Elige primero tu moneda",
@@ -1183,8 +1213,53 @@
         "badDateType": "Elige el tipo de fecha.",
         "duplicateBarcode": "Otro producto ya tiene este código.",
         "notFound": "Este producto ya no existe."
-      }
-    }
+      },
+      "customUnitRequired": "Introduce el nombre de la unidad.",
+      "money_ambiguous": "Importe poco claro: usa punto o coma decimal solo para los céntimos (p. ej. 1,23).",
+      "money_empty": "Introduce un importe o déjalo vacío.",
+      "money_invalid": "No es un importe válido.",
+      "money_noCurrency": "Elige primero una moneda en los ajustes del negocio.",
+      "money_tooManyDecimals": "Demasiados decimales para esta moneda.",
+      "money_zero": "Introduce un importe mayor que cero, o déjalo vacío si no lo sabes."
+    },
+    "addCode": "Añadir un código",
+    "addCodeButton": "Añadir código",
+    "barcodes": "Códigos de barras",
+    "barcodesHint": "Un producto puede tener varios códigos, p. ej. unidad, paquete y caja.",
+    "cost": "Coste por unidad ({{currency}})",
+    "customUnit": "Nombre de la unidad",
+    "defaultDateKind": "Tipo de fecha habitual en el envase",
+    "defaultLocation": "Lugar de conservación habitual",
+    "defaultRule": "Regla habitual (abierto / elaborado)",
+    "defaults": "Datos habituales",
+    "defaultsHint": "Se rellenan al añadir este producto. Puedes cambiarlos cada vez.",
+    "grouping": "Categoría y proveedor",
+    "hiddenNote": "Este producto está oculto. Sus lotes y su historial se conservan.",
+    "hide": "Ocultar producto",
+    "hideBody": "Ya no se ofrecerá al añadir artículos. Sus lotes y su historial se conservan.",
+    "hideHint": "Los productos se ocultan, nunca se eliminan, para que el historial siga siendo legible.",
+    "hideTitle": "¿Ocultar este producto?",
+    "isPrepared": "Elaborado aquí (receta / elaboración)",
+    "isPreparedHint": "Los artículos elaborados aparecen primero al añadir un artículo elaborado.",
+    "money": "Coste y precio",
+    "moneyHint": "Opcional. Déjalo vacío si no lo sabes — un valor desconocido nunca se cuenta como cero.",
+    "name": "Nombre del producto",
+    "namePh": "p. ej. Leche semidesnatada 2 l",
+    "newCategory": "Nueva categoría",
+    "newSupplier": "Nuevo proveedor",
+    "newTitle": "Nuevo producto",
+    "noCurrency": "Elige una moneda en los ajustes del negocio para registrar coste y precio.",
+    "notes": "Notas",
+    "removeCode": "Quitar el código {{code}}",
+    "role": {
+      "case": "Caja",
+      "pack": "Paquete",
+      "single": "Unidad"
+    },
+    "scanCode": "Escanear un código",
+    "supplier": "Proveedor",
+    "unhide": "Volver a mostrar el producto",
+    "unit": "Se cuenta en"
   },
   "importer": {
     "title": "Importar desde archivo",
@@ -1686,6 +1761,493 @@
       "noPrice": "Añade un precio de venta al producto para usar la ayuda de precios.",
       "noCost": "Añade un coste al producto para usar la ayuda de precios.",
       "currencyMismatch": "El coste y el precio del producto están en monedas distintas."
+    }
+  },
+  "add": {
+    "boughtIn": {
+      "title": "Añadir artículo comprado"
+    },
+    "choice": {
+      "bought_in": {
+        "body": "Stock con fecha en el envase: consumir antes del, consumir preferentemente antes del o caducidad.",
+        "title": "Artículo comprado"
+      },
+      "opened": {
+        "body": "Abre parte de un lote y fija su fecha tras la apertura.",
+        "title": "Artículo abierto"
+      },
+      "other": {
+        "body": "Artículos no alimentarios o generales con fecha de caducidad o de revisión.",
+        "title": "Otro artículo con fecha"
+      },
+      "prepared": {
+        "body": "Algo elaborado aquí, con el límite de tu propia regla.",
+        "title": "Artículo elaborado"
+      },
+      "scan": {
+        "body": "Busca el producto por su código de barras y luego introduce la fecha y los datos.",
+        "title": "Escanear código de barras"
+      }
+    },
+    "controls": {
+      "corrected": "Manda una fecha corregida.",
+      "direct": "Manda el plazo que has introducido.",
+      "none": "Ninguna fecha manda: hay que revisar este artículo.",
+      "original_hard": "La fecha original del envase es anterior, así que sigue mandando.",
+      "original_quality": "Solo se aplica la fecha original de consumo preferente: es una fecha de calidad, revisa la calidad entonces.",
+      "printed": "Manda la fecha impresa en el envase.",
+      "rule": "Manda la fecha de tu regla."
+    },
+    "customUnit": "Nombre de la unidad",
+    "dateKind": {
+      "hint": "Elige exactamente lo que está impreso en el envase. «Consumir antes del» y «Consumir preferentemente antes del» significan cosas distintas.",
+      "section": "Tipo de fecha"
+    },
+    "errors": {
+      "amountRequired": "Indica cuántos vas a abrir.",
+      "amountTooHigh": "Es más de lo que queda en este lote.",
+      "badQuantity": "Introduce un número mayor que cero (hasta 3 decimales) o déjalo vacío.",
+      "badTime": "Introduce una fecha válida y una hora en formato HH:MM.",
+      "customUnitRequired": "Introduce el nombre de la unidad.",
+      "dateKindRequired": "Elige el tipo de fecha.",
+      "dateRequired": "Introduce la fecha.",
+      "gs1Confirm": "Comprueba la fecha y su tipo en el envase y marca la casilla.",
+      "invalidDate": "No es una fecha válida.",
+      "money_ambiguous": "Importe poco claro: usa punto o coma decimal solo para los céntimos (p. ej. 1,23).",
+      "money_empty": "Introduce un importe o déjalo vacío.",
+      "money_invalid": "No es un importe válido.",
+      "money_noCurrency": "Elige primero una moneda en los ajustes del negocio.",
+      "money_tooManyDecimals": "Demasiados decimales para esta moneda.",
+      "money_zero": "Introduce un importe mayor que cero, o déjalo vacío si no lo sabes.",
+      "monthNotAllowed": "Una fecha de caducidad necesita un día, no solo un mes.",
+      "noDateAllowed": "“Sin fecha” no puede tener una fecha.",
+      "productRequired": "Elige un producto o introduce el nombre de uno nuevo.",
+      "ruleRequired": "Elige una de tus reglas."
+    },
+    "intro": {
+      "food_prep": "Registra lo que elaboras o abres, con el límite de tus propias reglas.",
+      "home_other": "Añade cualquier cosa con una fecha que quieras vigilar.",
+      "mixed": "Añade stock comprado, o registra lo que abres y elaboras.",
+      "retail": "Escanea o elige un producto y luego introduce la fecha impresa en el envase."
+    },
+    "location": "Lugar de conservación",
+    "lot": "Número de lote",
+    "lotPlace": {
+      "section": "Lote y lugar"
+    },
+    "lotShort": "Lote {{lot}}",
+    "manageLocations": "Lugares de conservación",
+    "manageRules": "Tus reglas para artículos abiertos y elaborados",
+    "money": {
+      "cost": "Coste por unidad ({{currency}})",
+      "hint": "Opcional, se guarda en el producto. Déjalo vacío si no lo sabes — un valor desconocido nunca se cuenta como cero.",
+      "noCurrency": "Elige una moneda en los ajustes del negocio para registrar coste y precio.",
+      "price": "Precio de venta ({{currency}})",
+      "section": "Coste y precio"
+    },
+    "noDateNeedsChecking": "Sin fecha: este artículo aparecerá en “Por revisar” hasta que se añada una fecha.",
+    "noLocation": "Sin lugar asignado",
+    "notes": "Notas",
+    "opened": {
+      "amount": "Cantidad abierta",
+      "amountLabel": "Cuántos se abren",
+      "amountLeft": "Obligatorio. Quedan en este lote: {{left}}",
+      "amountOptional": "Opcional: este lote no se cuenta.",
+      "another": "Abrir otro",
+      "calculated": "Fecha tras la apertura",
+      "controls": "Fecha que manda",
+      "date": "Abierto el",
+      "deadline": "Tras la apertura",
+      "deadlineHint": "Usa la regla de tu negocio o la indicación del envase. TillExpiry no tiene plazos predefinidos.",
+      "noCalculated": "Sin fecha propia tras la apertura",
+      "noOriginal": "Fecha original desconocida",
+      "noParent": "No procede de un lote registrado",
+      "noParentHint": "No se conocerá la fecha original del envase.",
+      "original": "Fecha original del envase",
+      "parentLeft": "Lote sin abrir ahora: {{left}}",
+      "preview": "Comprueba las fechas",
+      "previewIncomplete": "Elige una regla o introduce un plazo para ver las fechas.",
+      "qualityAlso": "También visible: {{line}} (una fecha de calidad, no un límite)",
+      "saved": "Abierto: {{name}}",
+      "title": "Añadir artículo abierto",
+      "when": "¿Cuándo se abrió?",
+      "which": "¿Qué lote vas a abrir?",
+      "whichHint": "Al elegir el lote, su fecha original sigue visible y solo se descuenta la cantidad que abres."
+    },
+    "other": {
+      "title": "Añadir otro artículo con fecha"
+    },
+    "prepared": {
+      "choose": "Elige un artículo elaborado",
+      "chooseAny": "Elegir entre todos los productos",
+      "date": "Elaborado el",
+      "deadline": "Límite o fecha de revisión",
+      "deadlineHint": "Según una regla de tu negocio o un plazo que introduces tú. No se sugiere nada.",
+      "linkSources": "Vincular lotes de origen",
+      "newName": "Nombre del nuevo artículo elaborado",
+      "newNamePh": "p. ej. Sándwich de jamón",
+      "noSources": "No hay lotes que coincidan.",
+      "preview": "Comprueba la fecha",
+      "previewIncomplete": "Elige una regla o introduce un plazo para ver la fecha.",
+      "sources": "Elaborado con (opcional)",
+      "sourcesHint": "Vincula los lotes usados para la trazabilidad. Sus cantidades no cambian.",
+      "title": "Añadir artículo elaborado",
+      "what": "¿Qué has elaborado?",
+      "whatHint": "Elige un artículo elaborado guardado o añade uno nuevo.",
+      "when": "¿Cuándo se elaboró?"
+    },
+    "printLabel": "Imprimir etiqueta",
+    "product": {
+      "barcode": "Código de barras (opcional)",
+      "change": "Cambiar producto",
+      "choose": "Elige un producto",
+      "createNamed": "Añadir el producto nuevo “{{name}}”",
+      "createNew": "Añadir un producto nuevo",
+      "newName": "Nombre del producto nuevo",
+      "newNamePh": "p. ej. Leche semidesnatada 2 l",
+      "noMatch": "No hay productos que coincidan.",
+      "orNew": "O añade un producto nuevo:",
+      "scan": "Escanear el producto",
+      "scanBarcode": "Escanear su código de barras",
+      "searchPh": "Nombre, SKU o código de barras",
+      "section": "Producto"
+    },
+    "quantity": {
+      "hint": "Opcional. Déjalo vacío si no cuentas este artículo.",
+      "label": "Cantidad",
+      "section": "Cantidad"
+    },
+    "reminder": {
+      "advance": "Aviso anticipado el {{date}} (días antes: {{days}})",
+      "exact": "Aviso antes del límite: {{time}} (minutos antes: {{minutes}})",
+      "none": "Sin fecha, así que no hay aviso de fecha. El artículo aparece en “Por revisar”.",
+      "note": "Los recordatorios necesitan permiso de notificaciones. Hoy siempre muestra el estado actual.",
+      "off": "Los recordatorios de fechas están desactivados en los ajustes de recordatorios.",
+      "past": "Esta fecha ya ha pasado. El artículo aparecerá en Hoy de inmediato.",
+      "sameDay": "Aviso el mismo día: {{date}}",
+      "section": "Fecha y recordatorios",
+      "summary": "También en el resumen de la mañana a las {{time}} mientras requiera atención."
+    },
+    "ruleUsed": "Regla: {{name}} (versión {{version}}) · Fuente: {{source}}",
+    "saved": {
+      "addAnother": "Añadir otro",
+      "title": "Guardado: {{name}}",
+      "view": "Ver artículo"
+    },
+    "setNow": "Poner hora actual",
+    "source": {
+      "direct": "Introducir el plazo directamente",
+      "newRule": "Añadir una regla",
+      "noRules": "Aún no hay reglas. Añade tu propia regla con su fuente.",
+      "original": "Sin fecha propia tras la apertura",
+      "originalHint": "Manda la fecha original del envase. Si no la hay, hay que revisar el artículo.",
+      "rule": "Usar una de tus reglas guardadas"
+    },
+    "storage": "Conservación: {{text}}",
+    "time": "Hora (24 horas, HH:MM)",
+    "timeHint": "Zona horaria: {{zone}}",
+    "title": "Añadir",
+    "unit": "Unidad"
+  },
+  "gs1": {
+    "bestBefore": "Consumir preferentemente antes del (IA 15): {{date}}",
+    "checkPack": "Puede que el código de barras no contenga la fecha. Compárala siempre con el envase antes de guardar.",
+    "confirm": "He comprobado la fecha y su tipo en el envase",
+    "expiry": "Fecha de caducidad (IA 17): {{date}}",
+    "gtin": "Código de producto (GTIN): {{gtin}}",
+    "lot": "Lote: {{lot}}",
+    "noDate": "No se leyó ninguna fecha de este código de barras.",
+    "partial": "Parte de este código de barras no se pudo leer con fiabilidad y se ha omitido.",
+    "section": "Leído del código de barras"
+  },
+  "locations": {
+    "activeCount": "Artículos activos: {{count}}",
+    "editTitle": "Editar lugar",
+    "emptyBody": "Añade lugares como Nevera 1, Congelador A o Estante delantero.",
+    "emptyTitle": "Aún no hay lugares",
+    "errors": {
+      "nameRequired": "Introduce un nombre para el lugar."
+    },
+    "hiddenTag": "Oculto",
+    "hide": "Ocultar lugar",
+    "hideBody": "Artículos activos aquí: {{count}}. Conservan este lugar y sus fechas; el lugar ya no se ofrece para artículos nuevos.",
+    "hideTitle": "¿Ocultar este lugar?",
+    "intro": "Neveras, congeladores, estantes y mostradores. Mover un artículo nunca cambia su fecha.",
+    "kindHint": "Solo para agrupar. Un lugar nunca cambia la fecha de un artículo.",
+    "kindSection": "Tipo de lugar",
+    "name": "Nombre del lugar",
+    "namePh": "p. ej. Nevera de preparación",
+    "nameSection": "Nombre",
+    "new": "Nuevo lugar",
+    "newTitle": "Nuevo lugar",
+    "notes": "Notas",
+    "showHidden": "Mostrar ocultos ({{count}})",
+    "showItems": "Ver artículos de aquí",
+    "title": "Lugares de conservación",
+    "unhide": "Volver a mostrar el lugar"
+  },
+  "rules": {
+    "appliesHint": {
+      "after_opening": "Se cuenta desde el momento en que se abre un envase.",
+      "after_preparation": "Se cuenta desde el momento en que se elabora un artículo.",
+      "manual_review": "Una fecha de revisión que compruebas a mano."
+    },
+    "appliesSection": "Se aplica a",
+    "appliesTo": {
+      "after_opening": "Tras la apertura",
+      "after_preparation": "Tras la elaboración",
+      "manual_review": "Revisión"
+    },
+    "class": {
+      "hard_cutoff": "Límite estricto",
+      "quality_review": "Revisión de calidad"
+    },
+    "classHint": {
+      "hard_cutoff": "Pasado este momento, el artículo no debe usarse ni venderse — sigue tu procedimiento.",
+      "quality_review": "Pasado este momento, revisa la calidad antes de usarlo o venderlo."
+    },
+    "classSection": "Qué ocurre al final",
+    "duration": {
+      "days": "Días: {{count}}",
+      "hours": "Horas: {{count}}",
+      "minutes": "Minutos: {{count}}"
+    },
+    "durationHint": "Obligatorio. Solo números enteros.",
+    "durationLabel": "Duración",
+    "durationOptional": "Opcional para una regla de revisión.",
+    "durationSection": "Cuánto tiempo",
+    "editTitle": "Editar regla",
+    "emptyBody": "Añade los plazos de tu envase, de la especificación del proveedor o de tu procedimiento de seguridad alimentaria.",
+    "emptyTitle": "Aún no hay reglas",
+    "errors": {
+      "badDuration": "Introduce un número entero mayor que cero (hasta 10 años).",
+      "durationRequired": "Indica cuánto tiempo.",
+      "nameRequired": "Introduce un nombre para la regla.",
+      "sourceRequired": "Indica de dónde viene este plazo."
+    },
+    "hiddenTag": "Oculta",
+    "hide": "Ocultar regla",
+    "hideBody": "Ya no se ofrecerá. Los artículos que la usaron conservan sus fechas.",
+    "hideTitle": "¿Ocultar esta regla?",
+    "intro": "Las reglas son propias de tu negocio: cuánto tiempo puede conservarse un artículo tras abrirlo o elaborarlo, y de dónde viene ese plazo. TillExpiry no tiene plazos predefinidos.",
+    "name": "Nombre de la regla",
+    "namePh": "p. ej. Salsas abiertas",
+    "nameSection": "Nombre",
+    "new": "Nueva regla",
+    "newTitle": "Nueva regla",
+    "noDuration": "Sin plazo fijo",
+    "ownRulesHint": "Introduce el plazo que usa tu negocio. No se sugiere nada.",
+    "showHidden": "Mostrar ocultas ({{count}})",
+    "snapshotHint": "Cada artículo guarda una copia de la versión de la regla que usó, así que los cambios posteriores nunca modifican artículos anteriores.",
+    "source": "Fuente",
+    "sourceHint": "Obligatorio. Por ejemplo: envase del fabricante, especificación del proveedor, tu procedimiento de seguridad alimentaria o tu procedimiento interno de calidad.",
+    "sourceLine": "Fuente: {{source}}",
+    "sourcePh": "p. ej. Etiqueta: una vez abierto, consumir en el plazo indicado",
+    "sourceSection": "De dónde viene este plazo",
+    "storage": "Indicación de conservación (opcional)",
+    "storageLine": "Conservación: {{text}}",
+    "storageSection": "Indicación de conservación",
+    "title": "Tus reglas",
+    "unhide": "Volver a mostrar la regla",
+    "unit": {
+      "days": "Días",
+      "hours": "Horas",
+      "minutes": "Minutos"
+    },
+    "versionHint": "Al guardar se crea la versión {{next}}. Los artículos ya registrados conservan la versión con la que se crearon.",
+    "versionLine": "Versión {{version}}"
+  },
+  "import": {
+    "title": {
+      "products": "Importar productos",
+      "batches": "Importar lotes con fecha"
+    },
+    "subtitle": "Desde un archivo CSV",
+    "stepFile": "1. Archivo",
+    "stepColumns": "2. Columnas",
+    "stepDates": "3. Fechas",
+    "stepMoney": "Costes y precios",
+    "stepDuplicates": "Duplicados",
+    "intro": {
+      "products": "Añade o actualiza productos desde un archivo CSV (por ejemplo, guardado desde Excel). No se guarda nada hasta que revisas la vista previa y confirmas.",
+      "batches": "Añade lotes con fecha desde un archivo CSV (por ejemplo, guardado desde Excel). Cada fila se convierte en un lote. No se guarda nada hasta que revisas la vista previa y confirmas."
+    },
+    "columnsHint": {
+      "products": "Columnas que la app entiende: nombre, código de barras, función del código de barras, SKU, categoría, proveedor, unidad, coste, precio de venta, moneda, lugar habitual, tipo de fecha habitual, notas. La primera fila deben ser los nombres de las columnas.",
+      "batches": "Columnas que la app entiende: nombre del producto, código de barras o SKU, tipo de fecha, fecha (AAAA-MM-DD, DD/MM/AAAA o AAAA-MM si solo hay mes), hora, lote, cantidad, unidad de cantidad, lugar, recepción, coste, notas. La primera fila deben ser los nombres de las columnas."
+    },
+    "limits": "Hasta {{rows}} filas y {{mb}} MB por archivo.",
+    "pick": "Elegir archivo CSV",
+    "pickOther": "Elegir otro archivo",
+    "fileInfo": "Filas: {{rows}} · Columnas: {{columns}}",
+    "encodingNote": "Este archivo no está en UTF-8. Se ha leído como texto de Windows (Excel). Comprueba en la vista previa que las letras con tilde y los símbolos de moneda se ven bien.",
+    "columnsHelp": "Comprueba qué contiene cada columna. La app lo ha deducido de los nombres de las columnas; cambia lo que no sea correcto. Las columnas marcadas como “No se importa” se omiten.",
+    "columnN": "Columna {{n}}",
+    "dateOrder": "¿Cómo se escriben fechas como 03/04/2026?",
+    "dateOrderHint": "Las fechas escritas como AAAA-MM-DD siempre se leen correctamente. La app nunca adivina el orden del día y el mes.",
+    "order": {
+      "dmy": "Día/mes/año",
+      "mdy": "Mes/día/año",
+      "ymd": "Año/mes/día"
+    },
+    "defaultKind": "Tipo de fecha para filas sin tipo",
+    "defaultKindRequired": "¿Qué tipo de fecha hay en este archivo?",
+    "defaultKindHint": "Solo se usa en filas sin tipo de fecha cuyo producto no tiene un tipo de fecha habitual. Una fecha de caducidad necesita un día real, no solo un mes.",
+    "defaultKindMissing": "Elige el tipo de fecha o asigna una columna de tipo de fecha. Las filas sin tipo no se pueden importar.",
+    "moneyCurrency": "Los importes se leen en {{currency}}, la moneda de este negocio, tal como están escritos. Se rechazan los importes en otra moneda.",
+    "decimalMark": "Separador decimal de los importes",
+    "decimal": {
+      "dot": "1.50 (punto)",
+      "comma": "1,50 (coma)"
+    },
+    "decimalHint": "No se aceptan separadores de miles, así que un importe nunca se puede leer mal.",
+    "onExisting": "Cuando una fila coincide con un producto existente con datos distintos",
+    "existing": {
+      "skip": "Mantener el producto existente",
+      "update": "Actualizarlo desde el archivo"
+    },
+    "onDuplicate": "Cuando una fila es idéntica a otra fila o a un lote que ya tienes",
+    "duplicate": {
+      "skip": "Omitirla",
+      "import": "Importarla como lote aparte"
+    },
+    "neverMerged": "Los lotes nunca se fusionan: las filas con distinto lote, fecha, lugar o cantidad siempre se convierten en lotes aparte, aunque tengan el mismo código de barras.",
+    "toPreview": "Vista previa de la importación",
+    "summary": "Qué hará esta importación",
+    "count": {
+      "rows": "Filas del archivo",
+      "newProductsRows": "Productos nuevos",
+      "newBatches": "Lotes nuevos",
+      "newProducts": "Productos nuevos creados",
+      "newLocations": "Lugares nuevos",
+      "updated": "Productos actualizados",
+      "skipped": "Filas omitidas",
+      "errors": "Filas con problemas",
+      "conflicts": "Filas que difieren de un producto existente",
+      "warnings": "Notas para revisar",
+      "created": "Registros creados",
+      "notImported": "Filas no importadas"
+    },
+    "errorsNotImported": "Las filas con problemas no se importan. Corrígelas en el archivo y vuelve a importarlo, o importa el resto ahora.",
+    "atomicHint": "Todo se guarda a la vez en un solo paso: si algo falla, no se guarda nada.",
+    "confirm": "Importar {{count}} filas",
+    "confirmNothing": "Nada que importar",
+    "changeMapping": "Cambiar columnas o ajustes",
+    "issues": "Filas para revisar: {{count}}",
+    "noIssues": "No se han encontrado problemas.",
+    "issueLine": "Línea {{line}}",
+    "severity": {
+      "error": "No se importa",
+      "skip": "Omitida",
+      "warning": "Nota"
+    },
+    "history": "Historial de importaciones",
+    "historyCounts": "Creados: {{created}} · Actualizados: {{updated}} · No importados: {{skipped}}",
+    "kind": {
+      "products": "Productos",
+      "batches": "Lotes"
+    },
+    "result": {
+      "title": "Importación terminada",
+      "hint": "La importación se guarda en el historial de importaciones. Se bloquea volver a importar el mismo archivo."
+    },
+    "noSession": {
+      "title": "No hay archivo para previsualizar",
+      "body": "Vuelve atrás y elige primero un archivo CSV."
+    },
+    "field": {
+      "name": "Nombre del producto",
+      "barcode": "Código de barras",
+      "barcode_role": "Función del código de barras (unidad, paquete, caja)",
+      "sku": "SKU / código de artículo",
+      "category": "Categoría",
+      "supplier": "Proveedor",
+      "unit": "Unidad",
+      "cost": "Coste",
+      "price": "Precio de venta",
+      "currency": "Moneda",
+      "default_location": "Lugar habitual",
+      "default_date_kind": "Tipo de fecha habitual",
+      "notes": "Notas",
+      "date_kind": "Tipo de fecha",
+      "date": "Fecha",
+      "time": "Hora",
+      "lot": "Número de lote",
+      "quantity": "Cantidad",
+      "quantity_unit": "Unidad de cantidad",
+      "location": "Lugar",
+      "received_at": "Recepción",
+      "ignore": "No se importa"
+    },
+    "decode": {
+      "empty": "El archivo está vacío.",
+      "tooLarge": "El archivo es demasiado grande para importarlo. Divídelo en archivos más pequeños.",
+      "spreadsheet": "Es un archivo de hoja de cálculo, no un CSV. En Excel elige Archivo > Guardar como > CSV UTF-8 e importa ese archivo.",
+      "binary": "Este archivo no es un archivo de texto CSV legible.",
+      "tooManyRows": "El archivo tiene más de {{rows}} filas. Divídelo en archivos más pequeños.",
+      "tooManyColumns": "El archivo tiene más de {{columns}} columnas. Quita las columnas que no necesites.",
+      "cellTooLong": "Una celda del archivo es demasiado larga. Comprueba que el archivo es un CSV normal.",
+      "noDataRows": "El archivo tiene nombres de columnas pero ninguna fila.",
+      "readFailed": "No se pudo leer el archivo."
+    },
+    "blocker": {
+      "nameRequired": "Elige la columna que contiene el nombre del producto.",
+      "productIdRequired": "Elige una columna que identifique el producto: código de barras, SKU o nombre.",
+      "dateRequired": "Elige la columna que contiene la fecha.",
+      "alreadyImported": "Este archivo ya se importó en este negocio. No se puede importar dos veces.",
+      "moneyNoCurrency": "Este negocio no tiene moneda, así que las columnas de coste y precio no se pueden importar. Define la moneda en los ajustes del negocio o marca esas columnas como “No se importa”.",
+      "nothingToImport": "No hay nada nuevo que importar."
+    },
+    "error": {
+      "alreadyImported": "Este archivo ya se importó en este negocio. No se ha guardado nada.",
+      "importChanged": "Tus datos cambiaron desde la vista previa (por ejemplo, otro producto usa ahora un código de barras). No se ha guardado nada. Abre de nuevo la vista previa.",
+      "moneyNoCurrency": "Este negocio no tiene moneda, así que los costes y precios no se pueden importar. No se ha guardado nada.",
+      "nothingToImport": "No hay nada que importar.",
+      "noWorkspace": "El negocio ya no está disponible. No se ha guardado nada.",
+      "nameRequired": "Elige la columna que contiene el nombre del producto.",
+      "productIdRequired": "Elige una columna que identifique el producto.",
+      "dateRequired": "Elige la columna que contiene la fecha.",
+      "failed": "No se pudo guardar la importación. No se ha cambiado nada. Inténtalo de nuevo."
+    },
+    "issue": {
+      "nameRequired": "Falta el nombre del producto.",
+      "textTooLong": "{{field}} es demasiado largo: “{{value}}”.",
+      "badBarcode": "No se puede leer el código de barras “{{value}}”.",
+      "badBarcodeRole": "La función del código de barras “{{value}}” no es unidad, paquete ni caja.",
+      "badUnitCount": "El tamaño de paquete de un código de barras no es válido.",
+      "badUnit": "La unidad no es válida.",
+      "customUnitRequired": "Una unidad personalizada necesita un nombre.",
+      "badMoney": "Un importe no es válido.",
+      "invalidRow": "Esta fila no se puede importar.",
+      "currencyMismatch": "La moneda “{{value}}” no es la de este negocio ({{currency}}).",
+      "money_noCurrency": "{{field}}: este negocio no tiene moneda, así que el importe no se puede importar.",
+      "money_badMoney": "{{field}} “{{value}}” no es un importe. Revisa el ajuste del separador decimal.",
+      "money_moneyZero": "{{field}} es 0. Déjalo vacío si no se conoce.",
+      "money_currencyMismatch": "{{field}} “{{value}}” está en otra moneda. Este negocio usa {{currency}}.",
+      "money_tooManyDecimals": "{{field}} “{{value}}” tiene más decimales de los que permite {{currency}}. No se redondea.",
+      "badDateKind": "Tipo de fecha «{{value}}» no reconocido. Use uno de estos códigos: use_by, best_before, manufacturer_expiry, internal_cutoff, quality_review, none.",
+      "dateKindMissing": "No se conoce el tipo de fecha. Añade una columna de tipo de fecha o elige uno en la pantalla anterior.",
+      "badDate": "No se puede leer la fecha “{{value}}”.",
+      "badTime": "No se puede leer la hora “{{value}}” (usa HH:MM).",
+      "timeWithMonth": "No se puede añadir una hora a una fecha que solo indica el mes.",
+      "deadline_dateRequired": "{{kind}} necesita una fecha.",
+      "deadline_noDateAllowed": "Una fila sin tipo de fecha no puede tener fecha.",
+      "deadline_monthNotAllowed": "{{kind}} necesita un día real, no solo un mes (“{{value}}”).",
+      "deadline_invalidDate": "La fecha “{{value}}” no existe en el calendario.",
+      "badQuantity": "La cantidad “{{value}}” no es válida (mayor que 0, hasta 3 decimales).",
+      "badReceivedAt": "No se puede leer la fecha de recepción “{{value}}”.",
+      "productNotFound": "No hay ningún producto con {{field}} “{{value}}”. Añade una columna de nombre de producto para crearlo.",
+      "productIdRequired": "La fila no tiene nombre de producto, código de barras ni SKU.",
+      "barcodeConflict": "Los códigos de barras “{{value}}” pertenecen a productos distintos.",
+      "barcodeNotOnProduct": "El código de barras “{{value}}” no está en “{{product}}”; la fila se asoció a ese producto por SKU o nombre.",
+      "duplicateInFile": "Igual que la línea {{line}}.",
+      "duplicateExisting": "Ya existe un lote con el mismo producto, lote, fecha, lugar y cantidad.",
+      "duplicateInFileImported": "Igual que la línea {{line}}; importada como lote aparte, como elegiste.",
+      "duplicateExistingImported": "Igual que un lote que ya tienes; importada como lote aparte, como elegiste.",
+      "costNotApplied": "El coste “{{value}}” no se guarda: “{{product}}” ya tiene su propio coste, que una importación de lotes no cambia.",
+      "unchanged": "“{{value}}” ya existe con los mismos datos.",
+      "conflictSkipped": "“{{value}}” ya existe con distintos datos en: {{fields}}. Se mantiene como está.",
+      "willUpdate": "“{{value}}” se actualizará: {{fields}}."
     }
   }
 }

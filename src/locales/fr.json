@@ -588,24 +588,41 @@
       "attachDate": "Scanner le code-barres"
     },
     "hint": {
-      "find": "Visez un code-barres pour ouvrir son produit.",
-      "attach": "Visez le code-barres du produit.",
+      "find": "Visez un code-barres avec l'appareil photo pour ouvrir son produit.",
+      "attach": "Visez le code-barres du produit avec l'appareil photo.",
       "addDate": "Visez un code-barres pour ajouter sa date. Après l'enregistrement, vous revenez ici pour le suivant.",
-      "attachDate": "Visez le code-barres du produit."
+      "attachDate": "Visez le code-barres du produit.",
+      "add": "Visez le code-barres avec l'appareil photo. Vous saisirez ensuite la date.",
+      "open": "Visez le code-barres du produit que vous ouvrez."
     },
     "torch": "Lampe",
     "explainTitle": "TillExpiry a besoin de l'appareil photo pour lire les codes-barres",
-    "explainBody": "Les images sont lues sur ce téléphone uniquement, jamais enregistrées ni envoyées. Vous pouvez toujours taper le code.",
+    "explainBody": "Les images sont lues uniquement sur ce téléphone, jamais enregistrées ni envoyées. Vous pouvez toujours saisir le code à la place.",
     "explainContinue": "Continuer",
-    "permissionDenied": "L'accès à l'appareil photo est désactivé pour TillExpiry. Activez-le dans Réglages ou saisissez le code.",
-    "permissionAsk": "En attente de l'autorisation…",
-    "readyHint": "Prêt à scanner. Un même code lu deux fois de suite est ignoré.",
-    "lastScanned": "Dernier scan",
+    "permissionDenied": "L'accès à l'appareil photo est désactivé pour TillExpiry. Activez-le dans les réglages du téléphone, ou saisissez le code.",
+    "permissionAsk": "En attente de l'autorisation d'accès à l'appareil photo…",
+    "readyHint": "Prêt à scanner. Le même code lu deux fois de suite est ignoré.",
+    "lastScanned": "Dernier scanné",
     "notInCatalogue": "Pas encore dans vos produits",
     "notFoundTitle": "Nouveau code-barres",
-    "notFoundBody": "{{code}} n'est pas dans vos produits. L'ajouter comme nouveau produit ?",
+    "notFoundBody": "{{code}} ne figure pas parmi les produits de cet établissement. L'ajouter comme nouveau produit ?",
     "addNew": "Ajouter le produit",
-    "typeCode": "Taper le code"
+    "typeCode": "Saisir le code",
+    "codeHint": "Les chiffres imprimés sous le code-barres.",
+    "codeLabel": "Code-barres",
+    "dateStillAsked": "Un code-barres produit n'indique pas la date de l'emballage : elle vous sera demandée.",
+    "noCamera": "Pas d'appareil photo ici. Saisissez le code à la place.",
+    "noProductCodeBody": "Ce code ne contient pas de numéro de produit lisible de façon fiable. Saisissez le code ou choisissez le produit.",
+    "noProductCodeTitle": "Aucun code produit",
+    "notInProducts": "Pas encore dans vos produits",
+    "openSettings": "Ouvrir les réglages du téléphone",
+    "purpose": {
+      "add": "Scanner pour ajouter",
+      "attach": "Scanner le code-barres",
+      "find": "Rechercher par code-barres",
+      "open": "Scanner le produit ouvert"
+    },
+    "searchItems": "Rechercher des articles"
   },
   "dateType": {
     "useBy": "À consommer jusqu'au",
@@ -978,7 +995,20 @@
     "datesCsv": "Dates en rayon",
     "historyCsv": "Historique des dates",
     "shareUnavailable": "Le partage n'est pas disponible sur cet appareil.",
-    "failed": "Impossible de créer le fichier."
+    "failed": "Le fichier CSV n'a pas pu être créé. Veuillez réessayer.",
+    "screenTitle": "Exporter les données",
+    "intro": "Exportez les produits ou les lots de cet établissement dans un fichier CSV pour Excel ou une autre application. Vous voyez le fichier avant de le partager.",
+    "includeArchived": "Inclure les produits masqués et les lots terminés ou archivés",
+    "title": {
+      "products": "CSV des produits",
+      "batches": "CSV des lots"
+    },
+    "productsHint": "Une ligne par produit avec codes-barres, catégorie, fournisseur, unité, coût et prix de vente. Les coûts inconnus sont laissés vides.",
+    "batchesHint": "Une ligne par lot avec son n° de lot, sa quantité, son type de date, sa date, la date qui prévaut et son emplacement.",
+    "rows": "Lignes : {{count}}",
+    "preview": "Aperçu du CSV",
+    "empty": "Rien à exporter.",
+    "formulaHint": "Les cellules qu'un tableur pourrait exécuter comme formule sont écrites en texte brut. Le fichier peut être réimporté dans TillExpiry."
   },
   "checkSheet": {
     "title": "Fiche de contrôle des dates",
@@ -1133,7 +1163,7 @@
   },
   "productEdit": {
     "addTitle": "Nouveau produit",
-    "editTitle": "Produit",
+    "editTitle": "Modifier le produit",
     "addDate": "Ajouter une date",
     "openDates": "En rayon : {{count}}",
     "pastDates": "Dates passées",
@@ -1147,7 +1177,7 @@
     "shelfPh": "ex. Allée 3, froid",
     "category": "Catégorie",
     "categoryPh": "ex. Crèmerie",
-    "sku": "Référence interne",
+    "sku": "Référence / code interne",
     "usualDateType": "Type de date habituel",
     "shelfLife": "Durée de conservation habituelle en jours (facultatif)",
     "shelfLifePh": "ex. 7",
@@ -1155,7 +1185,7 @@
     "alertDays": "Prévenir ce nombre de jours avant (facultatif)",
     "alertDaysPh": "Réglage du magasin : {{days}}",
     "alertDaysHint": "Laissez vide pour le réglage du magasin. Mettez plus de jours pour les ventes lentes.",
-    "price": "Prix de vente normal (facultatif)",
+    "price": "Prix de vente ({{currency}})",
     "pricePh": "ex. 1,45",
     "priceHint": "Sert uniquement à proposer des démarques et à chiffrer les pertes.",
     "chooseCurrency": "Choisissez d'abord votre devise",
@@ -1183,8 +1213,53 @@
         "badDateType": "Choisissez le type de date.",
         "duplicateBarcode": "Un autre produit a déjà ce code-barres.",
         "notFound": "Ce produit n'existe plus."
-      }
-    }
+      },
+      "customUnitRequired": "Saisissez le nom de l'unité.",
+      "money_ambiguous": "Montant ambigu : utilisez un point ou une virgule uniquement pour les centimes (ex. 1.23).",
+      "money_empty": "Saisissez un montant ou laissez vide.",
+      "money_invalid": "Ce montant n'est pas valide.",
+      "money_noCurrency": "Choisissez d'abord une devise dans les paramètres de l'établissement.",
+      "money_tooManyDecimals": "Trop de décimales pour cette devise.",
+      "money_zero": "Saisissez un montant supérieur à zéro, ou laissez vide s'il est inconnu."
+    },
+    "addCode": "Ajouter un code",
+    "addCodeButton": "Ajouter le code",
+    "barcodes": "Codes-barres",
+    "barcodesHint": "Un produit peut avoir plusieurs codes, ex. unité, paquet et carton.",
+    "cost": "Coût unitaire ({{currency}})",
+    "customUnit": "Nom de l'unité",
+    "defaultDateKind": "Type de date habituel sur l'emballage",
+    "defaultLocation": "Emplacement de stockage habituel",
+    "defaultRule": "Règle habituelle (ouvert / préparé)",
+    "defaults": "Valeurs habituelles",
+    "defaultsHint": "Pré-remplies quand vous ajoutez ce produit. Vous pouvez les modifier à chaque fois.",
+    "grouping": "Catégorie et fournisseur",
+    "hiddenNote": "Ce produit est masqué. Ses lots et son historique sont conservés.",
+    "hide": "Masquer le produit",
+    "hideBody": "Il ne sera plus proposé lors de l'ajout d'articles. Ses lots et son historique sont conservés.",
+    "hideHint": "Les produits sont masqués, jamais supprimés, pour que l'historique reste lisible.",
+    "hideTitle": "Masquer ce produit ?",
+    "isPrepared": "Préparé sur place (recette / préparation)",
+    "isPreparedHint": "Les produits préparés sont proposés en premier quand vous ajoutez un article préparé.",
+    "money": "Coût et prix",
+    "moneyHint": "Facultatif. Laissez vide s'il est inconnu — une valeur inconnue n'est jamais comptée comme zéro.",
+    "name": "Nom du produit",
+    "namePh": "ex. Lait demi-écrémé 2 L",
+    "newCategory": "Nouvelle catégorie",
+    "newSupplier": "Nouveau fournisseur",
+    "newTitle": "Nouveau produit",
+    "noCurrency": "Choisissez une devise dans les paramètres de l'établissement pour enregistrer coût et prix.",
+    "notes": "Notes",
+    "removeCode": "Retirer le code {{code}}",
+    "role": {
+      "case": "Carton",
+      "pack": "Paquet",
+      "single": "Unité"
+    },
+    "scanCode": "Scanner un code",
+    "supplier": "Fournisseur",
+    "unhide": "Réafficher le produit",
+    "unit": "Compté en"
   },
   "importer": {
     "title": "Importer un fichier",
@@ -1686,6 +1761,493 @@
       "noPrice": "Ajoutez un prix de vente au produit pour utiliser l'aide au prix.",
       "noCost": "Ajoutez un coût au produit pour utiliser l'aide au prix.",
       "currencyMismatch": "Le coût et le prix du produit sont dans des devises différentes."
+    }
+  },
+  "add": {
+    "boughtIn": {
+      "title": "Ajouter un article acheté"
+    },
+    "choice": {
+      "bought_in": {
+        "body": "Stock avec une date sur l'emballage : DLC, DDM ou date d'expiration.",
+        "title": "Article acheté"
+      },
+      "opened": {
+        "body": "Ouvrir une partie d'un lot et fixer sa date après ouverture.",
+        "title": "Article ouvert"
+      },
+      "other": {
+        "body": "Articles non alimentaires ou divers avec une date d'expiration ou de contrôle.",
+        "title": "Autre article daté"
+      },
+      "prepared": {
+        "body": "Un produit fait sur place, avec l'heure limite issue de votre propre règle.",
+        "title": "Article préparé"
+      },
+      "scan": {
+        "body": "Trouvez le produit par son code-barres, puis saisissez la date et les détails.",
+        "title": "Scanner un code-barres"
+      }
+    },
+    "controls": {
+      "corrected": "Une date corrigée prévaut.",
+      "direct": "L'échéance que vous avez saisie prévaut.",
+      "none": "Aucune date ne prévaut : cet article est à vérifier.",
+      "original_hard": "La date d'origine de l'emballage est plus proche, elle prévaut donc toujours.",
+      "original_quality": "Seule la DDM d'origine s'applique : c'est une date de qualité, vérifiez alors la qualité.",
+      "printed": "La date imprimée sur l'emballage prévaut.",
+      "rule": "La date issue de votre règle prévaut."
+    },
+    "customUnit": "Nom de l'unité",
+    "dateKind": {
+      "hint": "Choisissez exactement ce qui est imprimé sur l'emballage. « À consommer jusqu'au » et « À consommer de préférence avant » n'ont pas le même sens.",
+      "section": "Type de date"
+    },
+    "errors": {
+      "amountRequired": "Indiquez combien vous en ouvrez.",
+      "amountTooHigh": "C'est plus que ce qui reste dans ce lot.",
+      "badQuantity": "Saisissez un nombre supérieur à zéro (3 décimales au maximum), ou laissez vide.",
+      "badTime": "Saisissez une date valide et une heure au format HH:MM.",
+      "customUnitRequired": "Saisissez le nom de l'unité.",
+      "dateKindRequired": "Choisissez le type de date.",
+      "dateRequired": "Saisissez la date.",
+      "gs1Confirm": "Vérifiez la date et son type sur l'emballage, puis cochez la case.",
+      "invalidDate": "Cette date n'est pas valide.",
+      "money_ambiguous": "Montant ambigu : utilisez un point ou une virgule uniquement pour les centimes (ex. 1.23).",
+      "money_empty": "Saisissez un montant ou laissez vide.",
+      "money_invalid": "Ce montant n'est pas valide.",
+      "money_noCurrency": "Choisissez d'abord une devise dans les paramètres de l'établissement.",
+      "money_tooManyDecimals": "Trop de décimales pour cette devise.",
+      "money_zero": "Saisissez un montant supérieur à zéro, ou laissez vide s'il est inconnu.",
+      "monthNotAllowed": "Une DLC exige un jour précis, pas seulement un mois.",
+      "noDateAllowed": "« Sans date » ne peut pas avoir de date.",
+      "productRequired": "Choisissez un produit ou saisissez le nom d'un nouveau produit.",
+      "ruleRequired": "Choisissez l'une de vos règles."
+    },
+    "intro": {
+      "food_prep": "Enregistrez ce que vous préparez ou ouvrez, avec l'heure limite issue de vos propres règles.",
+      "home_other": "Ajoutez tout ce qui a une date que vous voulez surveiller.",
+      "mixed": "Ajoutez le stock acheté, ou enregistrez ce que vous ouvrez et préparez.",
+      "retail": "Scannez ou choisissez un produit, puis saisissez la date imprimée sur l'emballage."
+    },
+    "location": "Emplacement de stockage",
+    "lot": "N° de lot",
+    "lotPlace": {
+      "section": "Lot et emplacement"
+    },
+    "lotShort": "Lot {{lot}}",
+    "manageLocations": "Emplacements de stockage",
+    "manageRules": "Vos règles pour les articles ouverts et préparés",
+    "money": {
+      "cost": "Coût unitaire ({{currency}})",
+      "hint": "Facultatif, enregistré sur le produit. Laissez vide s'il est inconnu — une valeur inconnue n'est jamais comptée comme zéro.",
+      "noCurrency": "Choisissez une devise dans les paramètres de l'établissement pour enregistrer coût et prix.",
+      "price": "Prix de vente ({{currency}})",
+      "section": "Coût et prix"
+    },
+    "noDateNeedsChecking": "Sans date : cet article sera listé dans « À vérifier » jusqu'à l'ajout d'une date.",
+    "noLocation": "Aucun emplacement défini",
+    "notes": "Notes",
+    "opened": {
+      "amount": "Quantité ouverte",
+      "amountLabel": "Combien en ouvrez-vous ?",
+      "amountLeft": "Obligatoire. Reste dans ce lot : {{left}}",
+      "amountOptional": "Facultatif : ce lot n'est pas compté.",
+      "another": "En ouvrir un autre",
+      "calculated": "Date après ouverture",
+      "controls": "Date qui prévaut",
+      "date": "Ouvert le",
+      "deadline": "Après ouverture",
+      "deadlineHint": "Utilisez la règle de votre établissement ou l'indication de l'emballage. TillExpiry ne propose aucune durée prédéfinie.",
+      "noCalculated": "Pas de date distincte après ouverture",
+      "noOriginal": "Aucune date d'origine connue",
+      "noParent": "Ne provient pas d'un lot enregistré",
+      "noParentHint": "Aucune date d'emballage d'origine ne sera connue.",
+      "original": "Date d'origine de l'emballage",
+      "parentLeft": "Lot non ouvert restant : {{left}}",
+      "preview": "Vérifiez les dates",
+      "previewIncomplete": "Choisissez une règle ou saisissez une échéance pour voir les dates.",
+      "qualityAlso": "Reste aussi affiché : {{line}} (une date de qualité, pas une limite)",
+      "saved": "Ouvert : {{name}}",
+      "title": "Ajouter un article ouvert",
+      "when": "Quand a-t-il été ouvert ?",
+      "which": "Quel lot ouvrez-vous ?",
+      "whichHint": "Choisir le lot garde sa date d'origine visible et ne déduit que la quantité ouverte."
+    },
+    "other": {
+      "title": "Ajouter un autre article daté"
+    },
+    "prepared": {
+      "choose": "Choisir un article préparé",
+      "chooseAny": "Choisir parmi tous les produits",
+      "date": "Préparé le",
+      "deadline": "Heure limite ou date de contrôle",
+      "deadlineHint": "Issue de la règle de votre établissement ou d'une échéance que vous saisissez. Rien n'est suggéré.",
+      "linkSources": "Lier les lots d'origine",
+      "newName": "Nom du nouvel article préparé",
+      "newNamePh": "ex. Sandwich jambon",
+      "noSources": "Aucun lot correspondant.",
+      "preview": "Vérifiez la date",
+      "previewIncomplete": "Choisissez une règle ou saisissez une échéance pour voir la date.",
+      "sources": "Préparé à partir de (facultatif)",
+      "sourcesHint": "Liez les lots utilisés, pour la traçabilité. Leurs quantités ne sont pas modifiées.",
+      "title": "Ajouter un article préparé",
+      "what": "Qu'avez-vous préparé ?",
+      "whatHint": "Choisissez un article préparé enregistré, ou ajoutez-en un nouveau.",
+      "when": "Quand a-t-il été préparé ?"
+    },
+    "printLabel": "Imprimer l'étiquette",
+    "product": {
+      "barcode": "Code-barres (facultatif)",
+      "change": "Changer de produit",
+      "choose": "Choisir un produit",
+      "createNamed": "Ajouter le nouveau produit « {{name}} »",
+      "createNew": "Ajouter un nouveau produit",
+      "newName": "Nom du nouveau produit",
+      "newNamePh": "ex. Lait demi-écrémé 2 L",
+      "noMatch": "Aucun produit correspondant.",
+      "orNew": "Ou ajoutez un nouveau produit :",
+      "scan": "Scanner le produit",
+      "scanBarcode": "Scanner son code-barres",
+      "searchPh": "Nom, référence ou code-barres",
+      "section": "Produit"
+    },
+    "quantity": {
+      "hint": "Facultatif. Laissez vide si vous ne comptez pas cet article.",
+      "label": "Quantité",
+      "section": "Quantité"
+    },
+    "reminder": {
+      "advance": "Rappel anticipé le {{date}} (jours avant : {{days}})",
+      "exact": "Rappel avant l'heure limite : {{time}} (minutes avant : {{minutes}})",
+      "none": "Sans date, donc sans rappel de date. L'article apparaît dans « À vérifier ».",
+      "note": "Les rappels nécessitent l'autorisation des notifications. Aujourd'hui affiche toujours l'état actuel.",
+      "off": "Les rappels de date sont désactivés dans les réglages des rappels.",
+      "past": "Cette date est déjà passée. L'article apparaîtra tout de suite dans Aujourd'hui.",
+      "sameDay": "Rappel le jour même : {{date}}",
+      "section": "Date et rappels",
+      "summary": "Figure aussi dans le résumé du matin à {{time}} tant qu'il demande votre attention."
+    },
+    "ruleUsed": "Règle : {{name}} (version {{version}}) · Origine : {{source}}",
+    "saved": {
+      "addAnother": "Ajouter un autre",
+      "title": "Enregistré : {{name}}",
+      "view": "Voir l'article"
+    },
+    "setNow": "Maintenant",
+    "source": {
+      "direct": "Saisir l'échéance directement",
+      "newRule": "Ajouter une règle",
+      "noRules": "Aucune règle pour l'instant. Ajoutez votre propre règle avec son origine.",
+      "original": "Pas de date distincte après ouverture",
+      "originalHint": "La date d'origine de l'emballage prévaut. Sans elle, l'article est à vérifier.",
+      "rule": "Utiliser une de vos règles enregistrées"
+    },
+    "storage": "Conservation : {{text}}",
+    "time": "Heure (24 h, HH:MM)",
+    "timeHint": "Fuseau horaire : {{zone}}",
+    "title": "Ajouter",
+    "unit": "Unité"
+  },
+  "gs1": {
+    "bestBefore": "À consommer de préférence avant (AI 15) : {{date}}",
+    "checkPack": "Un code-barres ne contient pas forcément la date. Comparez toujours avec l'emballage avant d'enregistrer.",
+    "confirm": "J'ai vérifié la date et son type sur l'emballage",
+    "expiry": "Date d'expiration (AI 17) : {{date}}",
+    "gtin": "Code produit (GTIN) : {{gtin}}",
+    "lot": "Lot : {{lot}}",
+    "noDate": "Aucune date n'a été lue dans ce code-barres.",
+    "partial": "Une partie de ce code-barres n'a pas pu être lue de façon fiable et a été ignorée.",
+    "section": "Lu dans le code-barres"
+  },
+  "locations": {
+    "activeCount": "Articles actifs : {{count}}",
+    "editTitle": "Modifier l'emplacement",
+    "emptyBody": "Ajoutez des emplacements comme Réfrigérateur 1, Congélateur A ou Rayon avant.",
+    "emptyTitle": "Aucun emplacement pour l'instant",
+    "errors": {
+      "nameRequired": "Saisissez un nom pour l'emplacement."
+    },
+    "hiddenTag": "Masqué",
+    "hide": "Masquer l'emplacement",
+    "hideBody": "Articles actifs ici : {{count}}. Ils gardent cet emplacement et leurs dates ; l'emplacement n'est plus proposé pour les nouveaux articles.",
+    "hideTitle": "Masquer cet emplacement ?",
+    "intro": "Réfrigérateurs, congélateurs, rayons et comptoirs. Déplacer un article ne change jamais sa date.",
+    "kindHint": "Sert uniquement au classement. Un emplacement ne change jamais la date d'un article.",
+    "kindSection": "Type d'emplacement",
+    "name": "Nom de l'emplacement",
+    "namePh": "ex. Réfrigérateur de préparation",
+    "nameSection": "Nom",
+    "new": "Nouvel emplacement",
+    "newTitle": "Nouvel emplacement",
+    "notes": "Notes",
+    "showHidden": "Afficher les masqués ({{count}})",
+    "showItems": "Voir les articles ici",
+    "title": "Emplacements de stockage",
+    "unhide": "Réafficher l'emplacement"
+  },
+  "rules": {
+    "appliesHint": {
+      "after_opening": "Compté à partir de l'ouverture d'un emballage.",
+      "after_preparation": "Compté à partir de la préparation d'un article.",
+      "manual_review": "Une date de contrôle que vous vérifiez vous-même."
+    },
+    "appliesSection": "S'applique à",
+    "appliesTo": {
+      "after_opening": "Après ouverture",
+      "after_preparation": "Après préparation",
+      "manual_review": "Contrôle"
+    },
+    "class": {
+      "hard_cutoff": "Limite stricte",
+      "quality_review": "Contrôle qualité"
+    },
+    "classHint": {
+      "hard_cutoff": "Passé ce délai, l'article ne doit être ni utilisé ni vendu — suivez votre procédure.",
+      "quality_review": "Passé ce délai, vérifiez la qualité avant d'utiliser ou de vendre."
+    },
+    "classSection": "Ce qui se passe à l'échéance",
+    "duration": {
+      "days": "Jours : {{count}}",
+      "hours": "Heures : {{count}}",
+      "minutes": "Minutes : {{count}}"
+    },
+    "durationHint": "Obligatoire. Nombres entiers uniquement.",
+    "durationLabel": "Durée",
+    "durationOptional": "Facultatif pour une règle de contrôle.",
+    "durationSection": "Durée",
+    "editTitle": "Modifier la règle",
+    "emptyBody": "Ajoutez les durées indiquées sur vos emballages, dans le cahier des charges du fournisseur ou dans votre procédure d'hygiène alimentaire.",
+    "emptyTitle": "Aucune règle pour l'instant",
+    "errors": {
+      "badDuration": "Saisissez un nombre entier supérieur à zéro (10 ans au maximum).",
+      "durationRequired": "Indiquez la durée.",
+      "nameRequired": "Saisissez un nom pour la règle.",
+      "sourceRequired": "Indiquez d'où vient cette durée."
+    },
+    "hiddenTag": "Masquée",
+    "hide": "Masquer la règle",
+    "hideBody": "Elle ne sera plus proposée. Les articles qui l'ont utilisée gardent leurs dates.",
+    "hideTitle": "Masquer cette règle ?",
+    "intro": "Les règles sont propres à votre établissement : combien de temps un article peut être conservé après ouverture ou préparation, et d'où vient cette durée. TillExpiry ne propose aucune durée prédéfinie.",
+    "name": "Nom de la règle",
+    "namePh": "ex. Sauces ouvertes",
+    "nameSection": "Nom",
+    "new": "Nouvelle règle",
+    "newTitle": "Nouvelle règle",
+    "noDuration": "Aucune durée fixée",
+    "ownRulesHint": "Saisissez la durée utilisée par votre établissement. Rien n'est suggéré.",
+    "showHidden": "Afficher les masquées ({{count}})",
+    "snapshotHint": "Chaque article garde une copie de la version de la règle utilisée : les modifications ultérieures ne changent jamais les articles passés.",
+    "source": "Origine",
+    "sourceHint": "Obligatoire. Par exemple : emballage du fabricant, cahier des charges du fournisseur, votre procédure d'hygiène alimentaire ou votre procédure qualité interne.",
+    "sourceLine": "Origine : {{source}}",
+    "sourcePh": "ex. Étiquette : après ouverture, à consommer dans le délai indiqué",
+    "sourceSection": "D'où vient cette durée",
+    "storage": "Consigne de conservation (facultatif)",
+    "storageLine": "Conservation : {{text}}",
+    "storageSection": "Consigne de conservation",
+    "title": "Vos règles",
+    "unhide": "Réafficher la règle",
+    "unit": {
+      "days": "Jours",
+      "hours": "Heures",
+      "minutes": "Minutes"
+    },
+    "versionHint": "L'enregistrement crée la version {{next}}. Les articles déjà enregistrés gardent la version avec laquelle ils ont été créés.",
+    "versionLine": "Version {{version}}"
+  },
+  "import": {
+    "title": {
+      "products": "Importer des produits",
+      "batches": "Importer des lots datés"
+    },
+    "subtitle": "Depuis un fichier CSV",
+    "stepFile": "1. Fichier",
+    "stepColumns": "2. Colonnes",
+    "stepDates": "3. Dates",
+    "stepMoney": "Coûts et prix",
+    "stepDuplicates": "Doublons",
+    "intro": {
+      "products": "Ajoutez ou mettez à jour des produits depuis un fichier CSV (par exemple enregistré depuis Excel). Rien n'est enregistré avant que vous ayez vérifié l'aperçu et confirmé.",
+      "batches": "Ajoutez des lots datés depuis un fichier CSV (par exemple enregistré depuis Excel). Chaque ligne devient un lot distinct. Rien n'est enregistré avant que vous ayez vérifié l'aperçu et confirmé."
+    },
+    "columnsHint": {
+      "products": "Colonnes reconnues par l'application : nom, code-barres, rôle du code-barres, référence, catégorie, fournisseur, unité, coût, prix de vente, devise, emplacement habituel, type de date habituel, notes. La première ligne doit contenir les noms des colonnes.",
+      "batches": "Colonnes reconnues par l'application : nom du produit, code-barres ou référence, type de date, date (AAAA-MM-JJ, JJ/MM/AAAA ou AAAA-MM pour un mois seul), heure, lot, quantité, unité de quantité, emplacement, reçu le, coût, notes. La première ligne doit contenir les noms des colonnes."
+    },
+    "limits": "Jusqu'à {{rows}} lignes et {{mb}} Mo par fichier.",
+    "pick": "Choisir un fichier CSV",
+    "pickOther": "Choisir un autre fichier",
+    "fileInfo": "Lignes : {{rows}} · Colonnes : {{columns}}",
+    "encodingNote": "Ce fichier n'est pas en UTF-8. Il a été lu comme du texte Windows (Excel). Vérifiez dans l'aperçu que les lettres accentuées et les symboles monétaires s'affichent correctement.",
+    "columnsHelp": "Vérifiez le contenu de chaque colonne. L'application l'a deviné d'après les noms des colonnes ; corrigez ce qui est faux. Les colonnes réglées sur « Non importée » sont ignorées.",
+    "columnN": "Colonne {{n}}",
+    "dateOrder": "Comment les dates comme 03/04/2026 sont-elles écrites ?",
+    "dateOrderHint": "Les dates au format AAAA-MM-JJ sont toujours lues correctement. L'application ne devine jamais l'ordre du jour et du mois.",
+    "order": {
+      "dmy": "Jour/mois/année",
+      "mdy": "Mois/jour/année",
+      "ymd": "Année/mois/jour"
+    },
+    "defaultKind": "Type de date pour les lignes qui n'en ont pas",
+    "defaultKindRequired": "Quel type de date contient ce fichier ?",
+    "defaultKindHint": "Utilisé uniquement pour les lignes sans type de date dont le produit n'a pas de type de date habituel. Une DLC exige un jour précis, pas seulement un mois.",
+    "defaultKindMissing": "Choisissez le type de date, ou associez une colonne de type de date. Les lignes sans type ne peuvent pas être importées.",
+    "moneyCurrency": "Les montants sont lus en {{currency}}, la devise de cet établissement, exactement comme ils sont écrits. Les montants dans une autre devise sont refusés.",
+    "decimalMark": "Séparateur décimal des montants",
+    "decimal": {
+      "dot": "1.50 (point)",
+      "comma": "1,50 (virgule)"
+    },
+    "decimalHint": "Les séparateurs de milliers ne sont pas acceptés, pour qu'un montant ne puisse jamais être mal lu.",
+    "onExisting": "Quand une ligne correspond à un produit existant avec des détails différents",
+    "existing": {
+      "skip": "Garder le produit existant",
+      "update": "Le mettre à jour depuis le fichier"
+    },
+    "onDuplicate": "Quand une ligne est identique à une autre ligne ou à un lot existant",
+    "duplicate": {
+      "skip": "L'ignorer",
+      "import": "L'importer comme lot distinct"
+    },
+    "neverMerged": "Les lots ne sont jamais fusionnés : les lignes dont le lot, la date, l'emplacement ou la quantité diffèrent deviennent toujours des lots distincts, même avec le même code-barres.",
+    "toPreview": "Aperçu de l'import",
+    "summary": "Ce que fera cet import",
+    "count": {
+      "rows": "Lignes dans le fichier",
+      "newProductsRows": "Nouveaux produits",
+      "newBatches": "Nouveaux lots",
+      "newProducts": "Nouveaux produits créés",
+      "newLocations": "Nouveaux emplacements",
+      "updated": "Produits mis à jour",
+      "skipped": "Lignes ignorées",
+      "errors": "Lignes avec des problèmes",
+      "conflicts": "Lignes différentes d'un produit existant",
+      "warnings": "Remarques à vérifier",
+      "created": "Enregistrements créés",
+      "notImported": "Lignes non importées"
+    },
+    "errorsNotImported": "Les lignes avec des problèmes ne sont pas importées. Corrigez-les dans le fichier et importez-le à nouveau, ou importez le reste maintenant.",
+    "atomicHint": "Tout est enregistré en une seule fois : en cas d'échec, rien n'est enregistré.",
+    "confirm": "Importer les lignes : {{count}}",
+    "confirmNothing": "Rien à importer",
+    "changeMapping": "Modifier les colonnes ou réglages",
+    "issues": "Lignes à vérifier : {{count}}",
+    "noIssues": "Aucun problème détecté.",
+    "issueLine": "Ligne {{line}}",
+    "severity": {
+      "error": "Non importée",
+      "skip": "Ignorée",
+      "warning": "Remarque"
+    },
+    "history": "Historique des imports",
+    "historyCounts": "Créés : {{created}} · Mis à jour : {{updated}} · Non importés : {{skipped}}",
+    "kind": {
+      "products": "Produits",
+      "batches": "Lots"
+    },
+    "result": {
+      "title": "Import terminé",
+      "hint": "L'import est enregistré dans l'historique des imports. Importer à nouveau le même fichier est bloqué."
+    },
+    "noSession": {
+      "title": "Aucun fichier à prévisualiser",
+      "body": "Revenez en arrière et choisissez d'abord un fichier CSV."
+    },
+    "field": {
+      "name": "Nom du produit",
+      "barcode": "Code-barres",
+      "barcode_role": "Rôle du code-barres (unité, paquet, carton)",
+      "sku": "Référence / code article",
+      "category": "Catégorie",
+      "supplier": "Fournisseur",
+      "unit": "Unité",
+      "cost": "Coût",
+      "price": "Prix de vente",
+      "currency": "Devise",
+      "default_location": "Emplacement habituel",
+      "default_date_kind": "Type de date habituel",
+      "notes": "Notes",
+      "date_kind": "Type de date",
+      "date": "Date",
+      "time": "Heure",
+      "lot": "N° de lot",
+      "quantity": "Quantité",
+      "quantity_unit": "Unité de quantité",
+      "location": "Emplacement",
+      "received_at": "Reçu le",
+      "ignore": "Non importée"
+    },
+    "decode": {
+      "empty": "Le fichier est vide.",
+      "tooLarge": "Le fichier est trop volumineux pour être importé. Divisez-le en fichiers plus petits.",
+      "spreadsheet": "Ceci est un fichier de tableur, pas un CSV. Dans Excel, choisissez Fichier > Enregistrer sous > CSV UTF-8, puis importez ce fichier.",
+      "binary": "Ce fichier n'est pas un fichier texte CSV lisible.",
+      "tooManyRows": "Le fichier contient plus de {{rows}} lignes. Divisez-le en fichiers plus petits.",
+      "tooManyColumns": "Le fichier contient plus de {{columns}} colonnes. Supprimez les colonnes inutiles.",
+      "cellTooLong": "Une cellule du fichier est trop longue. Vérifiez qu'il s'agit d'un fichier CSV normal.",
+      "noDataRows": "Le fichier contient des noms de colonnes mais aucune ligne.",
+      "readFailed": "Le fichier n'a pas pu être lu."
+    },
+    "blocker": {
+      "nameRequired": "Choisissez la colonne qui contient le nom du produit.",
+      "productIdRequired": "Choisissez une colonne qui identifie le produit : code-barres, référence ou nom.",
+      "dateRequired": "Choisissez la colonne qui contient la date.",
+      "alreadyImported": "Ce fichier a déjà été importé dans cet établissement. Il ne peut pas être importé deux fois.",
+      "moneyNoCurrency": "Cet établissement n'a pas de devise : les colonnes de coût et de prix ne peuvent pas être importées. Définissez la devise dans les paramètres de l'établissement, ou réglez ces colonnes sur « Non importée ».",
+      "nothingToImport": "Il n'y a rien de nouveau à importer."
+    },
+    "error": {
+      "alreadyImported": "Ce fichier a déjà été importé dans cet établissement. Rien n'a été enregistré.",
+      "importChanged": "Vos données ont changé depuis l'aperçu (par exemple, un code-barres est maintenant utilisé par un autre produit). Rien n'a été enregistré. Ouvrez à nouveau l'aperçu.",
+      "moneyNoCurrency": "Cet établissement n'a pas de devise : les coûts et les prix ne peuvent pas être importés. Rien n'a été enregistré.",
+      "nothingToImport": "Il n'y a rien à importer.",
+      "noWorkspace": "L'établissement n'est plus disponible. Rien n'a été enregistré.",
+      "nameRequired": "Choisissez la colonne qui contient le nom du produit.",
+      "productIdRequired": "Choisissez une colonne qui identifie le produit.",
+      "dateRequired": "Choisissez la colonne qui contient la date.",
+      "failed": "L'import n'a pas pu être enregistré. Rien n'a été modifié. Veuillez réessayer."
+    },
+    "issue": {
+      "nameRequired": "Le nom du produit est manquant.",
+      "textTooLong": "{{field}} est trop long : « {{value}} ».",
+      "badBarcode": "Le code-barres « {{value}} » ne peut pas être lu.",
+      "badBarcodeRole": "Le rôle de code-barres « {{value}} » n'est ni unité, ni paquet, ni carton.",
+      "badUnitCount": "Le conditionnement d'un code-barres n'est pas valide.",
+      "badUnit": "L'unité n'est pas valide.",
+      "customUnitRequired": "Une unité personnalisée doit avoir un nom.",
+      "badMoney": "Un montant n'est pas valide.",
+      "invalidRow": "Cette ligne ne peut pas être importée.",
+      "currencyMismatch": "La devise « {{value}} » n'est pas celle de cet établissement ({{currency}}).",
+      "money_noCurrency": "{{field}} : cet établissement n'a pas de devise, le montant ne peut donc pas être importé.",
+      "money_badMoney": "{{field}} « {{value}} » n'est pas un montant. Vérifiez le réglage du séparateur décimal.",
+      "money_moneyZero": "{{field}} vaut 0. Laissez vide si la valeur est inconnue.",
+      "money_currencyMismatch": "{{field}} « {{value}} » est dans une autre devise. Cet établissement utilise {{currency}}.",
+      "money_tooManyDecimals": "{{field}} « {{value}} » a plus de décimales que {{currency}} n'en permet. Il n'est pas arrondi.",
+      "badDateKind": "Type de date « {{value}} » non reconnu. Utilisez un de ces codes : use_by, best_before, manufacturer_expiry, internal_cutoff, quality_review, none.",
+      "dateKindMissing": "Le type de date est inconnu. Ajoutez une colonne de type de date ou choisissez-en un à l'écran précédent.",
+      "badDate": "La date « {{value}} » ne peut pas être lue.",
+      "badTime": "L'heure « {{value}} » ne peut pas être lue (utilisez HH:MM).",
+      "timeWithMonth": "On ne peut pas ajouter d'heure à une date limitée au mois.",
+      "deadline_dateRequired": "{{kind}} : une date est nécessaire.",
+      "deadline_noDateAllowed": "Une ligne sans type de date ne peut pas avoir de date.",
+      "deadline_monthNotAllowed": "{{kind}} : un jour précis est nécessaire, pas seulement un mois (« {{value}} »).",
+      "deadline_invalidDate": "La date « {{value}} » n'existe pas dans le calendrier.",
+      "badQuantity": "La quantité « {{value}} » n'est pas valide (supérieure à 0, 3 décimales au maximum).",
+      "badReceivedAt": "La date de réception « {{value}} » ne peut pas être lue.",
+      "productNotFound": "Aucun produit avec {{field}} « {{value}} ». Ajoutez une colonne de nom de produit pour le créer.",
+      "productIdRequired": "La ligne n'a ni nom de produit, ni code-barres, ni référence.",
+      "barcodeConflict": "Les codes-barres « {{value}} » appartiennent à des produits différents.",
+      "barcodeNotOnProduct": "Le code-barres « {{value}} » n'est pas associé à « {{product}} » ; la ligne a été rattachée à ce produit par sa référence ou son nom.",
+      "duplicateInFile": "Identique à la ligne {{line}}.",
+      "duplicateExisting": "Un lot avec les mêmes produit, n° de lot, date, emplacement et quantité existe déjà.",
+      "duplicateInFileImported": "Identique à la ligne {{line}} ; importée comme lot distinct, selon votre choix.",
+      "duplicateExistingImported": "Identique à un lot existant ; importée comme lot distinct, selon votre choix.",
+      "costNotApplied": "Le coût « {{value}} » n'est pas enregistré : « {{product}} » a déjà son propre coût, qu'un import de lots ne modifie pas.",
+      "unchanged": "« {{value}} » existe déjà avec les mêmes détails.",
+      "conflictSkipped": "« {{value}} » existe déjà avec des valeurs différentes ({{fields}}). Conservé tel quel.",
+      "willUpdate": "« {{value}} » sera mis à jour : {{fields}}."
     }
   }
 }

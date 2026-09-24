@@ -591,21 +591,38 @@
       "find": "Richten Sie die Kamera auf einen Barcode, um das Produkt zu öffnen.",
       "attach": "Richten Sie die Kamera auf den Barcode des Produkts.",
       "addDate": "Richte die Kamera auf einen Barcode, um sein Datum hinzuzufügen. Nach dem Speichern geht es hier weiter.",
-      "attachDate": "Richte die Kamera auf den Barcode des Artikels."
+      "attachDate": "Richte die Kamera auf den Barcode des Artikels.",
+      "add": "Richten Sie die Kamera auf den Barcode. Danach geben Sie das Datum ein.",
+      "open": "Richten Sie die Kamera auf den Barcode des Produkts, das Sie öffnen."
     },
-    "torch": "Licht",
+    "torch": "Taschenlampe",
     "explainTitle": "TillExpiry braucht die Kamera, um Barcodes zu lesen",
-    "explainBody": "Bilder werden nur auf diesem Telefon gelesen, nie gespeichert oder gesendet. Sie können den Code immer auch eintippen.",
+    "explainBody": "Bilder werden nur auf diesem Telefon ausgewertet und nie gespeichert oder gesendet. Sie können den Code jederzeit auch eintippen.",
     "explainContinue": "Weiter",
-    "permissionDenied": "Der Kamerazugriff ist für TillExpiry aus. Schalte ihn in den Einstellungen ein oder tippe den Code.",
-    "permissionAsk": "Warte auf Kamerafreigabe …",
-    "readyHint": "Bereit. Derselbe Code zweimal hintereinander wird ignoriert.",
+    "permissionDenied": "Der Kamerazugriff ist für TillExpiry ausgeschaltet. Schalten Sie ihn in den Telefoneinstellungen ein oder tippen Sie den Code ein.",
+    "permissionAsk": "Warten auf Kameraberechtigung…",
+    "readyHint": "Bereit zum Scannen. Derselbe Code, zweimal hintereinander gelesen, wird ignoriert.",
     "lastScanned": "Zuletzt gescannt",
     "notInCatalogue": "Noch nicht in Ihren Produkten",
     "notFoundTitle": "Neuer Barcode",
-    "notFoundBody": "{{code}} ist nicht in Ihren Produkten. Als neues Produkt anlegen?",
-    "addNew": "Produkt anlegen",
-    "typeCode": "Code eintippen"
+    "notFoundBody": "{{code}} ist nicht unter den Produkten dieses Betriebs. Als neues Produkt hinzufügen?",
+    "addNew": "Produkt hinzufügen",
+    "typeCode": "Code eintippen",
+    "codeHint": "Ziffern wie unter dem Barcode aufgedruckt.",
+    "codeLabel": "Barcode",
+    "dateStillAsked": "Ein Produkt-Barcode enthält nicht das Verpackungsdatum: Sie werden danach gefragt.",
+    "noCamera": "Keine Kamera verfügbar. Tippen Sie den Code ein.",
+    "noProductCodeBody": "Dieser Code enthält keine zuverlässig lesbare Produktnummer. Tippen Sie den Code ein oder wählen Sie das Produkt.",
+    "noProductCodeTitle": "Kein Produktcode",
+    "notInProducts": "Noch nicht in Ihren Produkten",
+    "openSettings": "Telefoneinstellungen öffnen",
+    "purpose": {
+      "add": "Zum Hinzufügen scannen",
+      "attach": "Barcode scannen",
+      "find": "Per Barcode suchen",
+      "open": "Geöffnetes Produkt scannen"
+    },
+    "searchItems": "Artikel suchen"
   },
   "dateType": {
     "useBy": "Verbrauchen bis",
@@ -978,7 +995,20 @@
     "datesCsv": "Daten im Regal",
     "historyCsv": "Datumsverlauf",
     "shareUnavailable": "Teilen ist auf diesem Gerät nicht verfügbar.",
-    "failed": "Die Datei konnte nicht erstellt werden."
+    "failed": "Die CSV-Datei konnte nicht erstellt werden. Versuchen Sie es erneut.",
+    "screenTitle": "Daten exportieren",
+    "intro": "Exportieren Sie die Produkte oder Chargen dieses Betriebs als CSV-Datei für Excel oder eine andere App. Sie sehen die Datei, bevor sie geteilt wird.",
+    "includeArchived": "Ausgeblendete Produkte und aufgebrauchte oder archivierte Chargen einschließen",
+    "title": {
+      "products": "Produkte als CSV",
+      "batches": "Chargen als CSV"
+    },
+    "productsHint": "Eine Zeile pro Produkt mit Barcodes, Kategorie, Lieferant, Einheit, Kosten und Verkaufspreis. Unbekannte Kosten bleiben leer.",
+    "batchesHint": "Eine Zeile pro Charge mit Chargennummer, Menge, Art des Datums, Datum, maßgeblichem Datum und Ort.",
+    "rows": "Zeilen: {{count}}",
+    "preview": "CSV-Vorschau",
+    "empty": "Nichts zu exportieren.",
+    "formulaHint": "Zellen, die eine Tabellenkalkulation als Formel ausführen könnte, werden als reiner Text geschrieben. Die Datei kann wieder in TillExpiry importiert werden."
   },
   "checkSheet": {
     "title": "Datums-Prüfliste",
@@ -1133,7 +1163,7 @@
   },
   "productEdit": {
     "addTitle": "Neuer Artikel",
-    "editTitle": "Artikel",
+    "editTitle": "Produkt bearbeiten",
     "addDate": "Datum hinzufügen",
     "openDates": "Im Regal: {{count}}",
     "pastDates": "Frühere Daten",
@@ -1147,7 +1177,7 @@
     "shelfPh": "z. B. Gang 3, Kühlung",
     "category": "Kategorie",
     "categoryPh": "z. B. Molkerei",
-    "sku": "Art.-Nr. / eigener Code",
+    "sku": "Artikelnr. / eigener Code",
     "usualDateType": "Übliche Datumsart",
     "shelfLife": "Übliche Haltbarkeit in Tagen (optional)",
     "shelfLifePh": "z. B. 7",
@@ -1155,7 +1185,7 @@
     "alertDays": "So viele Tage vorher warnen (optional)",
     "alertDaysPh": "Shop-Einstellung: {{days}}",
     "alertDaysHint": "Leer lassen für die Shop-Einstellung. Mehr Tage für Langsamdreher.",
-    "price": "Normaler Verkaufspreis (optional)",
+    "price": "Verkaufspreis ({{currency}})",
     "pricePh": "z. B. 1,45",
     "priceHint": "Nur für Reduzierungsvorschläge und die Bewertung von Abfall.",
     "chooseCurrency": "Wähle zuerst deine Währung",
@@ -1165,7 +1195,7 @@
     "restore": "Artikel zurückholen",
     "archiveHint": "Archivierte Artikel werden ausgeblendet; Daten und Verlauf bleiben erhalten.",
     "errors": {
-      "nameRequired": "Gib einen Artikelnamen ein.",
+      "nameRequired": "Geben Sie einen Produktnamen ein.",
       "shelfLife": "Gib eine ganze Zahl von 1 bis {{max}} Tagen ein.",
       "alertDays": "Gib eine ganze Zahl von 0 bis {{max}} Tagen ein.",
       "noCurrency": "Wähle deine Währung, bevor du einen Preis eingibst.",
@@ -1183,8 +1213,53 @@
         "badDateType": "Wähle die Art des Datums.",
         "duplicateBarcode": "Ein anderer Artikel hat diesen Barcode bereits.",
         "notFound": "Diesen Artikel gibt es nicht mehr."
-      }
-    }
+      },
+      "customUnitRequired": "Geben Sie den Namen der Einheit ein.",
+      "money_ambiguous": "Unklarer Betrag: Verwenden Sie Punkt oder Komma nur für Cent (z. B. 1,23).",
+      "money_empty": "Geben Sie einen Betrag ein oder lassen Sie das Feld leer.",
+      "money_invalid": "Dies ist kein gültiger Betrag.",
+      "money_noCurrency": "Wählen Sie zuerst eine Währung in den Einstellungen des Betriebs.",
+      "money_tooManyDecimals": "Zu viele Nachkommastellen für diese Währung.",
+      "money_zero": "Geben Sie einen Betrag über null ein oder lassen Sie das Feld leer, wenn er unbekannt ist."
+    },
+    "addCode": "Code hinzufügen",
+    "addCodeButton": "Code hinzufügen",
+    "barcodes": "Barcodes",
+    "barcodesHint": "Ein Produkt kann mehrere Codes haben, z. B. für Einzelstück, Packung und Karton.",
+    "cost": "Kosten pro Einheit ({{currency}})",
+    "customUnit": "Name der Einheit",
+    "defaultDateKind": "Übliche Art des Datums auf der Verpackung",
+    "defaultLocation": "Üblicher Lagerort",
+    "defaultRule": "Übliche Regel (geöffnet / zubereitet)",
+    "defaults": "Übliche Angaben",
+    "defaultsHint": "Werden beim Hinzufügen dieses Produkts für Sie ausgefüllt. Sie können sie jedes Mal ändern.",
+    "grouping": "Kategorie und Lieferant",
+    "hiddenNote": "Dieses Produkt ist ausgeblendet. Seine Chargen und sein Verlauf bleiben erhalten.",
+    "hide": "Produkt ausblenden",
+    "hideBody": "Es wird beim Hinzufügen von Artikeln nicht mehr angeboten. Seine Chargen und sein Verlauf bleiben erhalten.",
+    "hideHint": "Produkte werden ausgeblendet, nie gelöscht, damit der Verlauf lesbar bleibt.",
+    "hideTitle": "Dieses Produkt ausblenden?",
+    "isPrepared": "Hier zubereitet (Rezept / Zubereitungsartikel)",
+    "isPreparedHint": "Zubereitete Artikel werden beim Hinzufügen eines zubereiteten Artikels zuerst angeboten.",
+    "money": "Kosten und Preis",
+    "moneyHint": "Optional. Leer lassen, wenn unbekannt — Unbekanntes wird nie als null gezählt.",
+    "name": "Produktname",
+    "namePh": "z. B. Fettarme Milch 2 l",
+    "newCategory": "Neue Kategorie",
+    "newSupplier": "Neuer Lieferant",
+    "newTitle": "Neues Produkt",
+    "noCurrency": "Wählen Sie in den Einstellungen des Betriebs eine Währung, um Kosten und Preis zu erfassen.",
+    "notes": "Notizen",
+    "removeCode": "Code {{code}} entfernen",
+    "role": {
+      "case": "Karton",
+      "pack": "Packung",
+      "single": "Einzelstück"
+    },
+    "scanCode": "Code scannen",
+    "supplier": "Lieferant",
+    "unhide": "Produkt wieder anzeigen",
+    "unit": "Gezählt in"
   },
   "importer": {
     "title": "Aus Datei importieren",
@@ -1686,6 +1761,493 @@
       "noPrice": "Hinterlegen Sie beim Produkt einen Verkaufspreis, um die Preishilfe zu nutzen.",
       "noCost": "Hinterlegen Sie beim Produkt die Kosten, um die Preishilfe zu nutzen.",
       "currencyMismatch": "Kosten und Preis des Produkts sind in unterschiedlichen Währungen."
+    }
+  },
+  "add": {
+    "boughtIn": {
+      "title": "Zugekauften Artikel hinzufügen"
+    },
+    "choice": {
+      "bought_in": {
+        "body": "Ware mit Datum auf der Verpackung: zu verbrauchen bis, mindestens haltbar bis oder verwendbar bis.",
+        "title": "Zugekaufter Artikel"
+      },
+      "opened": {
+        "body": "Einen Teil einer Charge öffnen und das Datum nach dem Öffnen festlegen.",
+        "title": "Geöffneter Artikel"
+      },
+      "other": {
+        "body": "Non-Food oder allgemeine Artikel mit Ablauf- oder Prüfdatum.",
+        "title": "Sonstiger Artikel mit Datum"
+      },
+      "prepared": {
+        "body": "Etwas hier Hergestelltes, mit der Frist aus Ihrer eigenen Regel.",
+        "title": "Zubereiteter Artikel"
+      },
+      "scan": {
+        "body": "Das Produkt über den Barcode finden, dann Datum und Details eingeben.",
+        "title": "Barcode scannen"
+      }
+    },
+    "controls": {
+      "corrected": "Ein korrigiertes Datum ist maßgeblich.",
+      "direct": "Die von Ihnen eingegebene Frist ist maßgeblich.",
+      "none": "Kein Datum ist maßgeblich: Dieser Artikel muss geprüft werden.",
+      "original_hard": "Das ursprüngliche Verpackungsdatum ist früher und bleibt daher maßgeblich.",
+      "original_quality": "Nur das ursprüngliche MHD gilt: Es ist ein Qualitätsdatum, dann die Qualität prüfen.",
+      "printed": "Das auf der Verpackung aufgedruckte Datum ist maßgeblich.",
+      "rule": "Das Datum aus Ihrer Regel ist maßgeblich."
+    },
+    "customUnit": "Name der Einheit",
+    "dateKind": {
+      "hint": "Wählen Sie genau das, was auf der Verpackung steht. „Zu verbrauchen bis“ und „Mindestens haltbar bis“ bedeuten Unterschiedliches.",
+      "section": "Art des Datums"
+    },
+    "errors": {
+      "amountRequired": "Geben Sie an, wie viele Sie öffnen.",
+      "amountTooHigh": "Das ist mehr, als in dieser Charge übrig ist.",
+      "badQuantity": "Geben Sie eine Zahl größer als null ein (höchstens 3 Nachkommastellen) oder lassen Sie das Feld leer.",
+      "badTime": "Geben Sie ein gültiges Datum und eine Uhrzeit als HH:MM ein.",
+      "customUnitRequired": "Geben Sie den Namen der Einheit ein.",
+      "dateKindRequired": "Wählen Sie die Art des Datums.",
+      "dateRequired": "Geben Sie das Datum ein.",
+      "gs1Confirm": "Prüfen Sie Datum und Art des Datums auf der Verpackung und setzen Sie dann das Häkchen.",
+      "invalidDate": "Dies ist kein gültiges Datum.",
+      "money_ambiguous": "Unklarer Betrag: Verwenden Sie Punkt oder Komma nur für Cent (z. B. 1,23).",
+      "money_empty": "Geben Sie einen Betrag ein oder lassen Sie das Feld leer.",
+      "money_invalid": "Dies ist kein gültiger Betrag.",
+      "money_noCurrency": "Wählen Sie zuerst eine Währung in den Einstellungen des Betriebs.",
+      "money_tooManyDecimals": "Zu viele Nachkommastellen für diese Währung.",
+      "money_zero": "Geben Sie einen Betrag über null ein oder lassen Sie das Feld leer, wenn er unbekannt ist.",
+      "monthNotAllowed": "Ein Verbrauchsdatum („Zu verbrauchen bis“) braucht einen Tag, nicht nur einen Monat.",
+      "noDateAllowed": "„Kein Datum“ darf kein Datum haben.",
+      "productRequired": "Wählen Sie ein Produkt oder geben Sie einen Namen für ein neues ein.",
+      "ruleRequired": "Wählen Sie eine Ihrer Regeln."
+    },
+    "intro": {
+      "food_prep": "Erfassen Sie, was Sie zubereiten oder öffnen, mit der Frist aus Ihren eigenen Regeln.",
+      "home_other": "Fügen Sie alles mit einem Datum hinzu, das Sie im Blick behalten möchten.",
+      "mixed": "Fügen Sie zugekaufte Ware hinzu oder erfassen Sie, was Sie öffnen und zubereiten.",
+      "retail": "Scannen oder wählen Sie ein Produkt und geben Sie dann das aufgedruckte Datum ein."
+    },
+    "location": "Lagerort",
+    "lot": "Chargen- / Losnummer",
+    "lotPlace": {
+      "section": "Charge und Ort"
+    },
+    "lotShort": "Charge {{lot}}",
+    "manageLocations": "Lagerorte",
+    "manageRules": "Ihre Regeln für geöffnete und zubereitete Artikel",
+    "money": {
+      "cost": "Kosten pro Einheit ({{currency}})",
+      "hint": "Optional, wird beim Produkt gespeichert. Leer lassen, wenn unbekannt — Unbekanntes wird nie als null gezählt.",
+      "noCurrency": "Wählen Sie in den Einstellungen des Betriebs eine Währung, um Kosten und Preis zu erfassen.",
+      "price": "Verkaufspreis ({{currency}})",
+      "section": "Kosten und Preis"
+    },
+    "noDateNeedsChecking": "Kein Datum: Dieser Artikel wird als „Zu prüfen“ geführt, bis ein Datum eingegeben ist.",
+    "noLocation": "Kein Ort festgelegt",
+    "notes": "Notizen",
+    "opened": {
+      "amount": "Geöffnete Menge",
+      "amountLabel": "Wie viele geöffnet",
+      "amountLeft": "Erforderlich. Übrig in dieser Charge: {{left}}",
+      "amountOptional": "Optional: Diese Charge wird nicht gezählt.",
+      "another": "Weiteren öffnen",
+      "calculated": "Datum nach dem Öffnen",
+      "controls": "Maßgebliches Datum",
+      "date": "Geöffnet am",
+      "deadline": "Nach dem Öffnen",
+      "deadlineHint": "Verwenden Sie Ihre betriebliche Regel oder die Angabe auf der Verpackung. TillExpiry hat keine voreingestellten Zeiten.",
+      "noCalculated": "Kein eigenes Datum nach dem Öffnen",
+      "noOriginal": "Kein ursprüngliches Datum bekannt",
+      "noParent": "Nicht aus einer erfassten Charge",
+      "noParentHint": "Es ist dann kein ursprüngliches Verpackungsdatum bekannt.",
+      "original": "Ursprüngliches Verpackungsdatum",
+      "parentLeft": "Ungeöffnete Charge jetzt: {{left}}",
+      "preview": "Daten prüfen",
+      "previewIncomplete": "Wählen Sie eine Regel oder geben Sie eine Frist ein, um die Daten zu sehen.",
+      "qualityAlso": "Weiterhin sichtbar: {{line}} (ein Qualitätsdatum, keine Frist)",
+      "saved": "Geöffnet: {{name}}",
+      "title": "Geöffneten Artikel hinzufügen",
+      "when": "Wann wurde er geöffnet?",
+      "which": "Welche Charge öffnen Sie?",
+      "whichHint": "Wenn Sie die Charge wählen, bleibt ihr ursprüngliches Datum sichtbar und nur die geöffnete Menge wird abgezogen."
+    },
+    "other": {
+      "title": "Sonstigen Artikel mit Datum hinzufügen"
+    },
+    "prepared": {
+      "choose": "Zubereiteten Artikel wählen",
+      "chooseAny": "Aus allen Produkten wählen",
+      "date": "Zubereitet am",
+      "deadline": "Frist oder Prüfdatum",
+      "deadlineHint": "Aus Ihrer eigenen betrieblichen Regel oder einer Frist, die Sie eingeben. Es wird nichts vorgeschlagen.",
+      "linkSources": "Ausgangschargen verknüpfen",
+      "newName": "Name des neuen zubereiteten Artikels",
+      "newNamePh": "z. B. Schinkensandwich",
+      "noSources": "Keine passenden Chargen.",
+      "preview": "Datum prüfen",
+      "previewIncomplete": "Wählen Sie eine Regel oder geben Sie eine Frist ein, um das Datum zu sehen.",
+      "sources": "Hergestellt aus (optional)",
+      "sourcesHint": "Verknüpfen Sie die verwendeten Chargen zur Rückverfolgbarkeit. Ihre Mengen werden nicht geändert.",
+      "title": "Zubereiteten Artikel hinzufügen",
+      "what": "Was haben Sie zubereitet?",
+      "whatHint": "Wählen Sie einen gespeicherten zubereiteten Artikel oder fügen Sie einen neuen hinzu.",
+      "when": "Wann wurde er zubereitet?"
+    },
+    "printLabel": "Etikett drucken",
+    "product": {
+      "barcode": "Barcode (optional)",
+      "change": "Produkt ändern",
+      "choose": "Produkt wählen",
+      "createNamed": "Neues Produkt „{{name}}“ hinzufügen",
+      "createNew": "Neues Produkt hinzufügen",
+      "newName": "Name des neuen Produkts",
+      "newNamePh": "z. B. Fettarme Milch 2 l",
+      "noMatch": "Keine passenden Produkte.",
+      "orNew": "Oder ein neues Produkt hinzufügen:",
+      "scan": "Produkt scannen",
+      "scanBarcode": "Barcode scannen",
+      "searchPh": "Name, Artikelnr. oder Barcode",
+      "section": "Produkt"
+    },
+    "quantity": {
+      "hint": "Optional. Leer lassen, wenn Sie diesen Artikel nicht zählen.",
+      "label": "Wie viele",
+      "section": "Menge"
+    },
+    "reminder": {
+      "advance": "Vorab-Erinnerung am {{date}} (Tage vorher: {{days}})",
+      "exact": "Erinnerung vor der Frist: {{time}} (Minuten vorher: {{minutes}})",
+      "none": "Kein Datum, daher keine Datumserinnerung. Der Artikel erscheint unter „Zu prüfen“.",
+      "note": "Erinnerungen brauchen die Berechtigung für Benachrichtigungen. „Heute“ zeigt immer den aktuellen Status.",
+      "off": "Datumserinnerungen sind in den Erinnerungseinstellungen ausgeschaltet.",
+      "past": "Dieses Datum ist bereits überschritten. Der Artikel erscheint sofort unter „Heute“.",
+      "sameDay": "Erinnerung am Tag selbst: {{date}}",
+      "section": "Datum und Erinnerungen",
+      "summary": "Außerdem in der Morgenübersicht um {{time}}, solange er Aufmerksamkeit braucht."
+    },
+    "ruleUsed": "Regel: {{name}} (Version {{version}}) · Quelle: {{source}}",
+    "saved": {
+      "addAnother": "Weiteren hinzufügen",
+      "title": "Gespeichert: {{name}}",
+      "view": "Artikel anzeigen"
+    },
+    "setNow": "Auf jetzt setzen",
+    "source": {
+      "direct": "Frist direkt eingeben",
+      "newRule": "Regel hinzufügen",
+      "noRules": "Noch keine Regeln. Fügen Sie Ihre eigene Regel mit ihrer Quelle hinzu.",
+      "original": "Kein eigenes Datum nach dem Öffnen",
+      "originalHint": "Das ursprüngliche Verpackungsdatum bleibt maßgeblich. Ohne ein solches muss der Artikel geprüft werden.",
+      "rule": "Eine Ihrer gespeicherten Regeln verwenden"
+    },
+    "storage": "Lagerung: {{text}}",
+    "time": "Uhrzeit (24 Std., HH:MM)",
+    "timeHint": "Zeitzone: {{zone}}",
+    "title": "Hinzufügen",
+    "unit": "Einheit"
+  },
+  "gs1": {
+    "bestBefore": "Mindestens haltbar bis (AI 15): {{date}}",
+    "checkPack": "Ein Barcode enthält nicht unbedingt das Datum. Vergleichen Sie vor dem Speichern immer mit der Verpackung.",
+    "confirm": "Ich habe Datum und Art des Datums auf der Verpackung geprüft",
+    "expiry": "Verwendbar bis (AI 17): {{date}}",
+    "gtin": "Produktcode (GTIN): {{gtin}}",
+    "lot": "Charge / Los: {{lot}}",
+    "noDate": "Aus diesem Barcode wurde kein Datum gelesen.",
+    "partial": "Ein Teil dieses Barcodes konnte nicht zuverlässig gelesen werden und wurde weggelassen.",
+    "section": "Aus dem Barcode gelesen"
+  },
+  "locations": {
+    "activeCount": "Aktive Artikel: {{count}}",
+    "editTitle": "Ort bearbeiten",
+    "emptyBody": "Fügen Sie Orte wie Kühlschrank 1, Tiefkühler A oder Vorderes Regal hinzu.",
+    "emptyTitle": "Noch keine Orte",
+    "errors": {
+      "nameRequired": "Geben Sie einen Namen für den Ort ein."
+    },
+    "hiddenTag": "Ausgeblendet",
+    "hide": "Ort ausblenden",
+    "hideBody": "Aktive Artikel hier: {{count}}. Sie behalten diesen Ort und ihre Daten; der Ort wird für neue Artikel nicht mehr angeboten.",
+    "hideTitle": "Diesen Ort ausblenden?",
+    "intro": "Kühlschränke, Tiefkühler, Regale und Theken. Umlagern ändert nie das Datum eines Artikels.",
+    "kindHint": "Nur zum Gruppieren. Ein Ort ändert nie das Datum eines Artikels.",
+    "kindSection": "Art des Orts",
+    "name": "Name des Orts",
+    "namePh": "z. B. Kühlschrank Vorbereitung",
+    "nameSection": "Name",
+    "new": "Neuer Ort",
+    "newTitle": "Neuer Ort",
+    "notes": "Notizen",
+    "showHidden": "Ausgeblendete anzeigen ({{count}})",
+    "showItems": "Artikel hier anzeigen",
+    "title": "Lagerorte",
+    "unhide": "Ort wieder anzeigen"
+  },
+  "rules": {
+    "appliesHint": {
+      "after_opening": "Gerechnet ab dem Zeitpunkt, an dem eine Packung geöffnet wird.",
+      "after_preparation": "Gerechnet ab dem Zeitpunkt, an dem ein Artikel zubereitet wird.",
+      "manual_review": "Ein Prüfdatum, das Sie selbst kontrollieren."
+    },
+    "appliesSection": "Gilt für",
+    "appliesTo": {
+      "after_opening": "Nach dem Öffnen",
+      "after_preparation": "Nach der Zubereitung",
+      "manual_review": "Prüfung"
+    },
+    "class": {
+      "hard_cutoff": "Feste Frist",
+      "quality_review": "Qualitätsprüfung"
+    },
+    "classHint": {
+      "hard_cutoff": "Nach diesem Zeitpunkt darf der Artikel nicht mehr verwendet oder verkauft werden — befolgen Sie Ihr Verfahren.",
+      "quality_review": "Nach diesem Zeitpunkt vor Verwendung oder Verkauf die Qualität prüfen."
+    },
+    "classSection": "Was am Ende passiert",
+    "duration": {
+      "days": "Tage: {{count}}",
+      "hours": "Stunden: {{count}}",
+      "minutes": "Minuten: {{count}}"
+    },
+    "durationHint": "Erforderlich. Nur ganze Zahlen.",
+    "durationLabel": "Dauer",
+    "durationOptional": "Optional bei einer Prüfregel.",
+    "durationSection": "Wie lange",
+    "editTitle": "Regel bearbeiten",
+    "emptyBody": "Fügen Sie die Zeiten aus Ihrer Verpackung, der Lieferantenspezifikation oder Ihrem Verfahren zur Lebensmittelhygiene hinzu.",
+    "emptyTitle": "Noch keine Regeln",
+    "errors": {
+      "badDuration": "Geben Sie eine ganze Zahl über null ein (höchstens 10 Jahre).",
+      "durationRequired": "Geben Sie an, wie lange.",
+      "nameRequired": "Geben Sie einen Namen für die Regel ein.",
+      "sourceRequired": "Geben Sie an, woher diese Zeit stammt."
+    },
+    "hiddenTag": "Ausgeblendet",
+    "hide": "Regel ausblenden",
+    "hideBody": "Sie wird nicht mehr angeboten. Artikel, die sie verwendet haben, behalten ihre Daten.",
+    "hideTitle": "Diese Regel ausblenden?",
+    "intro": "Regeln sind die Ihres Betriebs: wie lange ein Artikel nach dem Öffnen oder der Zubereitung aufbewahrt werden darf und woher diese Angabe stammt. TillExpiry hat keine voreingestellten Zeiten.",
+    "name": "Name der Regel",
+    "namePh": "z. B. Geöffnete Soßen",
+    "nameSection": "Name",
+    "new": "Neue Regel",
+    "newTitle": "Neue Regel",
+    "noDuration": "Keine feste Zeit",
+    "ownRulesHint": "Geben Sie die Zeit ein, die Ihr Betrieb verwendet. Es wird nichts vorgeschlagen.",
+    "showHidden": "Ausgeblendete anzeigen ({{count}})",
+    "snapshotHint": "Jeder Artikel behält eine Kopie der verwendeten Regelversion, sodass spätere Änderungen frühere Artikel nie verändern.",
+    "source": "Quelle",
+    "sourceHint": "Erforderlich. Zum Beispiel: Herstellerverpackung, Lieferantenspezifikation, Ihr Verfahren zur Lebensmittelhygiene oder internes Qualitätsverfahren.",
+    "sourceLine": "Quelle: {{source}}",
+    "sourcePh": "z. B. Etikett: nach dem Öffnen innerhalb der angegebenen Zeit verbrauchen",
+    "sourceSection": "Woher diese Zeit stammt",
+    "storage": "Lagerhinweis (optional)",
+    "storageLine": "Lagerung: {{text}}",
+    "storageSection": "Lagerhinweis",
+    "title": "Ihre Regeln",
+    "unhide": "Regel wieder anzeigen",
+    "unit": {
+      "days": "Tage",
+      "hours": "Stunden",
+      "minutes": "Minuten"
+    },
+    "versionHint": "Beim Speichern wird Version {{next}} erstellt. Bereits erfasste Artikel behalten die Version, mit der sie erstellt wurden.",
+    "versionLine": "Version {{version}}"
+  },
+  "import": {
+    "title": {
+      "products": "Produkte importieren",
+      "batches": "Chargen mit Datum importieren"
+    },
+    "subtitle": "Aus einer CSV-Datei",
+    "stepFile": "1. Datei",
+    "stepColumns": "2. Spalten",
+    "stepDates": "3. Daten",
+    "stepMoney": "Kosten und Preise",
+    "stepDuplicates": "Duplikate",
+    "intro": {
+      "products": "Produkte aus einer CSV-Datei hinzufügen oder aktualisieren (zum Beispiel aus Excel gespeichert). Es wird nichts gespeichert, bis Sie die Vorschau geprüft und bestätigt haben.",
+      "batches": "Chargen mit Datum aus einer CSV-Datei hinzufügen (zum Beispiel aus Excel gespeichert). Jede Zeile wird zu einer eigenen Charge. Es wird nichts gespeichert, bis Sie die Vorschau geprüft und bestätigt haben."
+    },
+    "columnsHint": {
+      "products": "Spalten, die die App versteht: Name, Barcode, Barcode-Rolle, Artikelnr., Kategorie, Lieferant, Einheit, Kosten, Verkaufspreis, Währung, üblicher Ort, übliche Art des Datums, Notizen. Die erste Zeile muss die Spaltennamen enthalten.",
+      "batches": "Spalten, die die App versteht: Produktname, Barcode oder Artikelnr., Art des Datums, Datum (JJJJ-MM-TT, TT/MM/JJJJ oder JJJJ-MM für nur Monat), Uhrzeit, Charge, Menge, Mengeneinheit, Ort, Eingang, Kosten, Notizen. Die erste Zeile muss die Spaltennamen enthalten."
+    },
+    "limits": "Bis zu {{rows}} Zeilen und {{mb}} MB pro Datei.",
+    "pick": "CSV-Datei wählen",
+    "pickOther": "Andere Datei wählen",
+    "fileInfo": "Zeilen: {{rows}} · Spalten: {{columns}}",
+    "encodingNote": "Diese Datei ist nicht UTF-8. Sie wurde als Windows-Text (Excel) gelesen. Prüfen Sie in der Vorschau, ob Umlaute, Akzente und Währungszeichen richtig aussehen.",
+    "columnsHelp": "Prüfen Sie, was jede Spalte enthält. Die App hat anhand der Spaltennamen geraten; ändern Sie alles, was falsch ist. Spalten mit „Nicht importiert“ werden ausgelassen.",
+    "columnN": "Spalte {{n}}",
+    "dateOrder": "Wie sind Daten wie 03/04/2026 geschrieben?",
+    "dateOrderHint": "Daten im Format JJJJ-MM-TT werden immer richtig gelesen. Die App rät nie die Reihenfolge von Tag und Monat.",
+    "order": {
+      "dmy": "Tag/Monat/Jahr",
+      "mdy": "Monat/Tag/Jahr",
+      "ymd": "Jahr/Monat/Tag"
+    },
+    "defaultKind": "Art des Datums für Zeilen ohne Angabe",
+    "defaultKindRequired": "Welche Art von Datum steht in dieser Datei?",
+    "defaultKindHint": "Wird nur für Zeilen ohne Art des Datums verwendet, deren Produkt keine übliche Art des Datums hat. Ein Verbrauchsdatum („Zu verbrauchen bis“) braucht einen echten Tag, nicht nur einen Monat.",
+    "defaultKindMissing": "Wählen Sie die Art des Datums oder ordnen Sie eine Spalte für die Art des Datums zu. Zeilen ohne Art können nicht importiert werden.",
+    "moneyCurrency": "Beträge werden genau wie geschrieben als {{currency}} gelesen, die Währung dieses Betriebs. Beträge in einer anderen Währung werden abgelehnt.",
+    "decimalMark": "Dezimaltrennzeichen in Beträgen",
+    "decimal": {
+      "dot": "1.50 (Punkt)",
+      "comma": "1,50 (Komma)"
+    },
+    "decimalHint": "Tausendertrennzeichen werden nicht akzeptiert, damit ein Betrag nie falsch gelesen wird.",
+    "onExisting": "Wenn eine Zeile zu einem vorhandenen Produkt mit anderen Angaben passt",
+    "existing": {
+      "skip": "Vorhandenes Produkt behalten",
+      "update": "Aus der Datei aktualisieren"
+    },
+    "onDuplicate": "Wenn eine Zeile mit einer anderen Zeile oder einer vorhandenen Charge identisch ist",
+    "duplicate": {
+      "skip": "Überspringen",
+      "import": "Als eigene Charge importieren"
+    },
+    "neverMerged": "Chargen werden nie zusammengeführt: Zeilen mit anderer Charge, anderem Datum, Ort oder anderer Menge werden immer eigene Chargen, auch bei gleichem Barcode.",
+    "toPreview": "Importvorschau",
+    "summary": "Was dieser Import bewirkt",
+    "count": {
+      "rows": "Zeilen in der Datei",
+      "newProductsRows": "Neue Produkte",
+      "newBatches": "Neue Chargen",
+      "newProducts": "Neu erstellte Produkte",
+      "newLocations": "Neue Orte",
+      "updated": "Aktualisierte Produkte",
+      "skipped": "Übersprungene Zeilen",
+      "errors": "Zeilen mit Problemen",
+      "conflicts": "Zeilen, die von einem vorhandenen Produkt abweichen",
+      "warnings": "Zu prüfende Hinweise",
+      "created": "Erstellte Einträge",
+      "notImported": "Nicht importierte Zeilen"
+    },
+    "errorsNotImported": "Zeilen mit Problemen werden nicht importiert. Korrigieren Sie sie in der Datei und importieren Sie sie erneut, oder importieren Sie jetzt den Rest.",
+    "atomicHint": "Alles wird in einem Schritt gemeinsam gespeichert: Wenn etwas fehlschlägt, wird nichts gespeichert.",
+    "confirm": "Zeilen importieren: {{count}}",
+    "confirmNothing": "Nichts zu importieren",
+    "changeMapping": "Spalten oder Einstellungen ändern",
+    "issues": "Zu prüfende Zeilen: {{count}}",
+    "noIssues": "Keine Probleme gefunden.",
+    "issueLine": "Zeile {{line}}",
+    "severity": {
+      "error": "Nicht importiert",
+      "skip": "Übersprungen",
+      "warning": "Hinweis"
+    },
+    "history": "Importverlauf",
+    "historyCounts": "Erstellt: {{created}} · Aktualisiert: {{updated}} · Nicht importiert: {{skipped}}",
+    "kind": {
+      "products": "Produkte",
+      "batches": "Chargen"
+    },
+    "result": {
+      "title": "Import abgeschlossen",
+      "hint": "Der Import ist im Importverlauf gespeichert. Ein erneuter Import derselben Datei ist gesperrt."
+    },
+    "noSession": {
+      "title": "Keine Datei für die Vorschau",
+      "body": "Gehen Sie zurück und wählen Sie zuerst eine CSV-Datei."
+    },
+    "field": {
+      "name": "Produktname",
+      "barcode": "Barcode",
+      "barcode_role": "Barcode-Rolle (Einzelstück, Packung, Karton)",
+      "sku": "Artikelnr. / Artikelcode",
+      "category": "Kategorie",
+      "supplier": "Lieferant",
+      "unit": "Einheit",
+      "cost": "Kosten",
+      "price": "Verkaufspreis",
+      "currency": "Währung",
+      "default_location": "Üblicher Ort",
+      "default_date_kind": "Übliche Art des Datums",
+      "notes": "Notizen",
+      "date_kind": "Art des Datums",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "lot": "Chargen- / Losnummer",
+      "quantity": "Menge",
+      "quantity_unit": "Mengeneinheit",
+      "location": "Ort",
+      "received_at": "Eingang",
+      "ignore": "Nicht importiert"
+    },
+    "decode": {
+      "empty": "Die Datei ist leer.",
+      "tooLarge": "Die Datei ist zu groß für den Import. Teilen Sie sie in kleinere Dateien auf.",
+      "spreadsheet": "Dies ist eine Tabellendatei, keine CSV-Datei. Wählen Sie in Excel Datei > Speichern unter > CSV UTF-8 und importieren Sie dann diese Datei.",
+      "binary": "Diese Datei ist keine lesbare CSV-Textdatei.",
+      "tooManyRows": "Die Datei hat mehr als {{rows}} Zeilen. Teilen Sie sie in kleinere Dateien auf.",
+      "tooManyColumns": "Die Datei hat mehr als {{columns}} Spalten. Entfernen Sie die Spalten, die Sie nicht brauchen.",
+      "cellTooLong": "Eine Zelle in der Datei ist zu lang. Prüfen Sie, ob es eine normale CSV-Datei ist.",
+      "noDataRows": "Die Datei hat Spaltennamen, aber keine Zeilen.",
+      "readFailed": "Die Datei konnte nicht gelesen werden."
+    },
+    "blocker": {
+      "nameRequired": "Wählen Sie die Spalte mit dem Produktnamen.",
+      "productIdRequired": "Wählen Sie eine Spalte, die das Produkt identifiziert: Barcode, Artikelnr. oder Name.",
+      "dateRequired": "Wählen Sie die Spalte mit dem Datum.",
+      "alreadyImported": "Diese Datei wurde bereits in diesen Betrieb importiert. Sie kann nicht zweimal importiert werden.",
+      "moneyNoCurrency": "Dieser Betrieb hat keine Währung, daher können Spalten für Kosten und Preis nicht importiert werden. Legen Sie die Währung in den Einstellungen des Betriebs fest oder setzen Sie diese Spalten auf „Nicht importiert“.",
+      "nothingToImport": "Es gibt nichts Neues zu importieren."
+    },
+    "error": {
+      "alreadyImported": "Diese Datei wurde bereits in diesen Betrieb importiert. Es wurde nichts gespeichert.",
+      "importChanged": "Ihre Daten haben sich seit der Vorschau geändert (zum Beispiel wird ein Barcode jetzt von einem anderen Produkt verwendet). Es wurde nichts gespeichert. Öffnen Sie die Vorschau erneut.",
+      "moneyNoCurrency": "Dieser Betrieb hat keine Währung, daher können Kosten und Preise nicht importiert werden. Es wurde nichts gespeichert.",
+      "nothingToImport": "Es gibt nichts zu importieren.",
+      "noWorkspace": "Der Betrieb ist nicht mehr verfügbar. Es wurde nichts gespeichert.",
+      "nameRequired": "Wählen Sie die Spalte mit dem Produktnamen.",
+      "productIdRequired": "Wählen Sie eine Spalte, die das Produkt identifiziert.",
+      "dateRequired": "Wählen Sie die Spalte mit dem Datum.",
+      "failed": "Der Import konnte nicht gespeichert werden. Es wurde nichts geändert. Versuchen Sie es erneut."
+    },
+    "issue": {
+      "nameRequired": "Der Produktname fehlt.",
+      "textTooLong": "{{field}} ist zu lang: „{{value}}“.",
+      "badBarcode": "Barcode „{{value}}“ kann nicht gelesen werden.",
+      "badBarcodeRole": "Barcode-Rolle „{{value}}“ ist weder Einzelstück, Packung noch Karton.",
+      "badUnitCount": "Die Packungsgröße eines Barcodes ist ungültig.",
+      "badUnit": "Die Einheit ist ungültig.",
+      "customUnitRequired": "Eine eigene Einheit braucht einen Namen.",
+      "badMoney": "Ein Betrag ist ungültig.",
+      "invalidRow": "Diese Zeile kann nicht importiert werden.",
+      "currencyMismatch": "Währung „{{value}}“ ist nicht die Währung dieses Betriebs ({{currency}}).",
+      "money_noCurrency": "{{field}}: Dieser Betrieb hat keine Währung, daher kann der Betrag nicht importiert werden.",
+      "money_badMoney": "{{field}} „{{value}}“ ist kein Betrag. Prüfen Sie die Einstellung für das Dezimaltrennzeichen.",
+      "money_moneyZero": "{{field}} ist 0. Leer lassen, wenn der Wert nicht bekannt ist.",
+      "money_currencyMismatch": "{{field}} „{{value}}“ ist in einer anderen Währung. Dieser Betrieb verwendet {{currency}}.",
+      "money_tooManyDecimals": "{{field}} „{{value}}“ hat mehr Nachkommastellen, als {{currency}} erlaubt. Es wird nicht gerundet.",
+      "badDateKind": "Datumsart „{{value}}“ nicht erkannt. Verwenden Sie einen dieser Codes: use_by, best_before, manufacturer_expiry, internal_cutoff, quality_review, none.",
+      "dateKindMissing": "Die Art des Datums ist nicht bekannt. Fügen Sie eine Spalte für die Art des Datums hinzu oder wählen Sie eine auf dem vorherigen Bildschirm.",
+      "badDate": "Datum „{{value}}“ kann nicht gelesen werden.",
+      "badTime": "Uhrzeit „{{value}}“ kann nicht gelesen werden (HH:MM verwenden).",
+      "timeWithMonth": "Zu einem Datum mit nur Monat kann keine Uhrzeit hinzugefügt werden.",
+      "deadline_dateRequired": "{{kind}} braucht ein Datum.",
+      "deadline_noDateAllowed": "Eine Zeile ohne Art des Datums darf kein Datum haben.",
+      "deadline_monthNotAllowed": "{{kind}} braucht einen echten Tag, nicht nur einen Monat („{{value}}“).",
+      "deadline_invalidDate": "Datum „{{value}}“ ist kein echtes Kalenderdatum.",
+      "badQuantity": "Menge „{{value}}“ ist ungültig (mehr als 0, höchstens 3 Nachkommastellen).",
+      "badReceivedAt": "Eingangsdatum „{{value}}“ kann nicht gelesen werden.",
+      "productNotFound": "Kein Produkt mit {{field}} „{{value}}“. Fügen Sie eine Spalte mit dem Produktnamen hinzu, um es zu erstellen.",
+      "productIdRequired": "Die Zeile hat keinen Produktnamen, Barcode und keine Artikelnr.",
+      "barcodeConflict": "Die Barcodes „{{value}}“ gehören zu verschiedenen Produkten.",
+      "barcodeNotOnProduct": "Barcode „{{value}}“ gehört nicht zu „{{product}}“; die Zeile wurde diesem Produkt über Artikelnr. oder Name zugeordnet.",
+      "duplicateInFile": "Gleich wie Zeile {{line}}.",
+      "duplicateExisting": "Eine Charge mit demselben Produkt, derselben Charge, demselben Datum, Ort und derselben Menge ist bereits vorhanden.",
+      "duplicateInFileImported": "Gleich wie Zeile {{line}}; wie gewählt als eigene Charge importiert.",
+      "duplicateExistingImported": "Gleich wie eine vorhandene Charge; wie gewählt als eigene Charge importiert.",
+      "costNotApplied": "Die Kosten „{{value}}“ werden nicht gespeichert: „{{product}}“ hat bereits eigene Kosten, die durch einen Chargenimport nicht geändert werden.",
+      "unchanged": "„{{value}}“ ist bereits mit denselben Angaben vorhanden.",
+      "conflictSkipped": "„{{value}}“ ist bereits mit anderen Angaben vorhanden ({{fields}}). Unverändert beibehalten.",
+      "willUpdate": "„{{value}}“ wird aktualisiert: {{fields}}."
     }
   }
 }
