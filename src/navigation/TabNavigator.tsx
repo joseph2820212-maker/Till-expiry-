@@ -6,10 +6,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
 import { fs } from '../theme/responsive';
-import { HomeScreen } from '../modules/home/screens/HomeScreen';
-import { ProductsScreen } from '../modules/products/screens/ProductsScreen';
-import { DatesScreen } from '../modules/dates/screens/DatesScreen';
+import { TodayScreen } from '../modules/today/screens/TodayScreen';
+import { ItemsScreen } from '../modules/items/screens/ItemsScreen';
+import { AddChoiceScreen } from '../modules/add/screens/AddChoiceScreen';
+import { ReportsHomeScreen } from '../modules/reports/screens/ReportsHomeScreen';
 import { MoreScreen } from '../modules/more/screens/MoreScreen';
+import { WorkspaceSwitcherSheet } from '../modules/workspaces/WorkspaceSwitcherSheet';
+import { useNavigation } from '@react-navigation/native';
 import type { TabRoot } from './tabs';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -19,9 +22,10 @@ import { sharedScreens } from './sharedScreens';
 
 /** Each tab hosts its own stack: the tab's root screen plus every shared screen. */
 export type TabParamList = {
-  HomeTab: NavigatorScreenParams<TabStackParamList> | undefined;
-  DatesTab: NavigatorScreenParams<TabStackParamList> | undefined;
-  ProductsTab: NavigatorScreenParams<TabStackParamList> | undefined;
+  TodayTab: NavigatorScreenParams<TabStackParamList> | undefined;
+  ItemsTab: NavigatorScreenParams<TabStackParamList> | undefined;
+  AddTab: NavigatorScreenParams<TabStackParamList> | undefined;
+  ReportsTab: NavigatorScreenParams<TabStackParamList> | undefined;
   MoreTab: NavigatorScreenParams<TabStackParamList> | undefined;
 };
 
@@ -36,18 +40,20 @@ function makeTabStack(rootName: TabRoot, Root: React.ComponentType<any>): React.
   TabStack.displayName = `${rootName}Stack`;
   return TabStack;
 }
-const HomeStack = makeTabStack('Home', HomeScreen);
-const DatesStack = makeTabStack('Dates', DatesScreen);
-const ProductsStack = makeTabStack('Products', ProductsScreen);
+const TodayStack = makeTabStack('Today', TodayScreen);
+const ItemsStack = makeTabStack('Items', ItemsScreen);
+const AddStack = makeTabStack('AddChoice', AddChoiceScreen);
+const ReportsStack = makeTabStack('ReportsHome', ReportsHomeScreen);
 const MoreStack = makeTabStack('More', MoreScreen);
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
 const ICON_MAP: Record<string, { active: string; inactive: string }> = {
-  HomeTab:        { active: 'today',             inactive: 'today-outline' },
-  DatesTab:       { active: 'calendar',          inactive: 'calendar-outline' },
-  ProductsTab:    { active: 'pricetags',         inactive: 'pricetags-outline' },
-  MoreTab:        { active: 'menu',              inactive: 'menu-outline' },
+  TodayTab:   { active: 'today',        inactive: 'today-outline' },
+  ItemsTab:   { active: 'file-tray-full', inactive: 'file-tray-full-outline' },
+  AddTab:     { active: 'add-circle',   inactive: 'add-circle-outline' },
+  ReportsTab: { active: 'bar-chart',    inactive: 'bar-chart-outline' },
+  MoreTab:    { active: 'menu',         inactive: 'menu-outline' },
 };
 
 const ACTIVE_COLOR = '#FFFFFF';
@@ -59,7 +65,9 @@ export const TabNavigator: React.FC = () => {
   const insets = useSafeAreaInsets();
   const bottomPad = Math.max(insets.bottom, 7);
 
+  const nav = useNavigation<any>();
   return (
+    <>
     <Tab.Navigator
       screenOptions={({ route }: { route: { name: string } }) => ({
         headerShown: false,
@@ -78,11 +86,14 @@ export const TabNavigator: React.FC = () => {
         tabBarLabelStyle: styles.tabLabel,
       })}
     >
-      <Tab.Screen name="HomeTab" component={HomeStack} options={{ tabBarLabel: t('nav.home') }} />
-      <Tab.Screen name="DatesTab" component={DatesStack} options={{ tabBarLabel: t('nav.dates') }} />
-      <Tab.Screen name="ProductsTab" component={ProductsStack} options={{ tabBarLabel: t('nav.products') }} />
+      <Tab.Screen name="TodayTab" component={TodayStack} options={{ tabBarLabel: t('nav.today') }} />
+      <Tab.Screen name="ItemsTab" component={ItemsStack} options={{ tabBarLabel: t('nav.items') }} />
+      <Tab.Screen name="AddTab" component={AddStack} options={{ tabBarLabel: t('nav.add') }} />
+      <Tab.Screen name="ReportsTab" component={ReportsStack} options={{ tabBarLabel: t('nav.reports') }} />
       <Tab.Screen name="MoreTab" component={MoreStack} options={{ tabBarLabel: t('nav.more') }} />
     </Tab.Navigator>
+    <WorkspaceSwitcherSheet onManage={() => nav.navigate('Tabs', { screen: 'MoreTab', params: { screen: 'Workspaces', initial: false } })} />
+    </>
   );
 };
 

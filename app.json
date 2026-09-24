@@ -60,7 +60,10 @@
           "color": "#1A2540"
         }
       ],
-      "expo-document-picker"
+      "expo-document-picker",
+      "@config-plugins/react-native-blob-util",
+      "@config-plugins/react-native-pdf",
+      "./plugins/pdfiumAndroidVersion"
     ],
     "locales": {
       "en": "./native-locales/en.json",

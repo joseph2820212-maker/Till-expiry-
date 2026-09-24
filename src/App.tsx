@@ -15,13 +15,10 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { AppAlertOverlay } from './components/AppAlertOverlay';
 import { installGlobalErrorLogger } from './utils/errorLog';
 import { AppNavigator } from './navigation/AppNavigator';
-import { BillingProvider } from './modules/billing/BillingProvider';
 import { colors } from './theme/colors';
 import { initializeLanguage } from './i18n';
-import { initCurrency } from './utils/currency';
 import { recoverInterruptedRestore } from './modules/backup/backupFile';
-import { loadSettings } from './modules/settings/settingsStore';
-import { startReminderSync } from './modules/reminders/reminderService';
+import { bootstrapData } from './app/bootstrap';
 
 installGlobalErrorLogger();
 
@@ -64,9 +61,7 @@ function FontBootstrap({ onRetry }: { onRetry: () => void }) {
     (async () => {
       try { await recoverInterruptedRestore(); } catch { /* a broken journal must never block startup */ }
       await initializeLanguage();
-      await initCurrency();
-      try { await loadSettings(); } catch { /* defaults stay; settings screen can re-save */ }
-      startReminderSync();
+      await bootstrapData();
       if (!cancelled) setBootstrapped(true);
     })();
     return () => { cancelled = true; };
@@ -82,12 +77,10 @@ function FontBootstrap({ onRetry }: { onRetry: () => void }) {
     <GestureHandlerRootView style={rootStyle}>
       <KeyboardProvider>
         <SafeAreaProvider>
-          <BillingProvider>
-            <ErrorBoundary>
-              <AppNavigator />
-            </ErrorBoundary>
-            <AppAlertOverlay />
-          </BillingProvider>
+          <ErrorBoundary>
+            <AppNavigator />
+          </ErrorBoundary>
+          <AppAlertOverlay />
           <StatusBar style="dark" />
         </SafeAreaProvider>
       </KeyboardProvider>

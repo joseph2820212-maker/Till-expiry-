@@ -8,9 +8,12 @@
     "ios": "expo start --ios",
     "typecheck": "tsc --noEmit",
     "test": "TZ=UTC jest --passWithNoTests",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 0"
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 0",
+    "provenance": "node scripts/genProvenance.mjs"
   },
   "dependencies": {
+    "@config-plugins/react-native-blob-util": "12.0.0",
+    "@config-plugins/react-native-pdf": "12.0.0",
     "@expo-google-fonts/ibm-plex-sans-arabic": "^0.4.2",
     "@expo/vector-icons": "~15.1.1",
     "@noble/ciphers": "^2.2.0",
@@ -36,9 +39,10 @@
     "react": "19.1.0",
     "react-i18next": "^17.0.8",
     "react-native": "0.81.5",
+    "react-native-blob-util": "^0.24.9",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-keyboard-controller": "1.18.5",
-    "react-native-purchases": "^10.4.0",
+    "react-native-pdf": "^7.0.4",
     "react-native-reanimated": "~4.1.1",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.16.0",
@@ -74,12 +78,13 @@
       "^expo$": "<rootDir>/__mocks__/expo.ts",
       "^react-native$": "<rootDir>/__mocks__/react-native.ts",
       "^react-native-keyboard-controller$": "<rootDir>/__mocks__/react-native-keyboard-controller.tsx",
-      "^react-native-purchases$": "<rootDir>/__mocks__/react-native-purchases.ts",
       "^react-native-reanimated$": "<rootDir>/__mocks__/react-native-reanimated.ts",
       "^expo-camera$": "<rootDir>/__mocks__/expo-camera.tsx",
       "^expo-haptics$": "<rootDir>/__mocks__/expo-haptics.ts",
       "^expo-document-picker$": "<rootDir>/__mocks__/expo-document-picker.ts",
-      "^expo-notifications$": "<rootDir>/__mocks__/expo-notifications.ts"
+      "^expo-notifications$": "<rootDir>/__mocks__/expo-notifications.ts",
+      "^react-native-pdf$": "<rootDir>/__mocks__/react-native-pdf.tsx",
+      "^react-native-blob-util$": "<rootDir>/__mocks__/react-native-blob-util.ts"
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|@noble))",

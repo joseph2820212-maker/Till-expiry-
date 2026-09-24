@@ -1,0 +1,54 @@
+diff --git a/android-pdf-viewer/src/main/java/com/github/barteksc/pdfviewer/RenderingHandler.java b/android-pdf-viewer/src/main/java/com/github/barteksc/pdfviewer/RenderingHandler.java
+index 22f55f4..f51142a 100644
+--- a/android-pdf-viewer/src/main/java/com/github/barteksc/pdfviewer/RenderingHandler.java
++++ b/android-pdf-viewer/src/main/java/com/github/barteksc/pdfviewer/RenderingHandler.java
+@@ -47,5 +47,5 @@ class RenderingHandler extends Handler {
+     private Rect roundedRenderBounds = new Rect();
+     private Matrix renderMatrix = new Matrix();
+-    private boolean running = false;
++    private volatile boolean running = false;
+-
++
+     RenderingHandler(Looper looper, PDFView pdfView) {
+@@ -87,11 +87,32 @@ class RenderingHandler extends Handler {
+     }
+-
++
+-    private PagePart proceed(RenderingTask renderingTask) throws PageRenderingException {
+-        PdfFile pdfFile = pdfView.pdfFile;
+-        pdfFile.openPage(renderingTask.page);
+-
+-        int w = Math.round(renderingTask.width);
+-        int h = Math.round(renderingTask.height);
+-
+-        if (w == 0 || h == 0 || pdfFile.pageHasError(renderingTask.page)) {
++    private PagePart proceed(RenderingTask renderingTask) throws PageRenderingException {
++        if (!running) {
++            return null;
++        }
++        PdfFile pdfFile = pdfView.pdfFile;
++        if (pdfFile == null) {
++            return null;
++        }
++
++        try {
++            return render(pdfFile, renderingTask);
++        } catch (RuntimeException exception) {
++            // recycle() stops this handler before disposing PdfFile. A render that
++            // was already running can otherwise race into the closed document.
++            if (!running || pdfView.pdfFile != pdfFile) {
++                Log.d(TAG, "Dropped stale PDF rendering task after recycle");
++                return null;
++            }
++            throw exception;
++        }
++    }
++
++    private PagePart render(PdfFile pdfFile, RenderingTask renderingTask) throws PageRenderingException {
++        pdfFile.openPage(renderingTask.page);
++
++        int w = Math.round(renderingTask.width);
++        int h = Math.round(renderingTask.height);
++
++        if (w == 0 || h == 0 || pdfFile.pageHasError(renderingTask.page)) {
+             return null;

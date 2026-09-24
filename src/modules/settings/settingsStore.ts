@@ -1,63 +1,88 @@
 /**
- * Shop settings for dates and reminders. One small record, cached in memory so every screen reads the same
- * values synchronously; `useExpirySettings()` re-renders when they change (e.g. after a restore).
+ * General and reminder settings (§22). Stored per data scope (real / demo), cached in memory so every screen reads the
+ * same values synchronously. Notification lead times are reminder settings, never shelf-life rules.
  */
 import { useSyncExternalStore } from 'react';
-import { TE_KEYS } from '../../storage/keys';
-import { readObject, writeObject } from '../../storage/repo';
-import { DATE_TYPES, DEFAULT_SETTINGS, type ExpirySettings } from '../../domain/types';
-import { clampAlertDays } from '../../domain/expiry';
+import { K } from '../../storage/keys';
+import { readRecord, runTxn } from '../../storage/entityStore';
+import { onScopeChanged } from '../../storage/scope';
+import { notifyDataChanged } from '../../storage/changeBus';
+import { DEFAULT_STATUS_SETTINGS, type StatusSettings } from '../../domain/expiry/expiryTypes';
 
-let current: ExpirySettings = DEFAULT_SETTINGS;
-const listeners = new Set<() => void>();
-const emit = () => listeners.forEach(l => l());
+export interface GeneralSettings extends StatusSettings { schemaVersion: 1 }
 
-/** Repair anything a hand-edited or older file could contain; unknown values fall back to the defaults. */
-export function sanitizeSettings(raw: Partial<ExpirySettings> | null | undefined): ExpirySettings {
-  const r = raw ?? {};
-  const rem = (r.reminder ?? {}) as Partial<ExpirySettings['reminder']>;
-  const int = (v: unknown, lo: number, hi: number, fb: number) => (typeof v === 'number' && Number.isInteger(v) && v >= lo && v <= hi ? v : fb);
+export interface ReminderSettings {
+  schemaVersion: 1;
+  /** Morning summary of what needs attention. */
+  dailySummary: { enabled: boolean; hour: number; minute: number };
+  /** Warning N days before a date-only deadline (0 = off). */
+  advanceDays: number;
+  /** Warning on the morning of the deadline day. */
+  sameDay: boolean;
+  /** Warning shortly before an exact-time (opened / prepared) cutoff; lead in minutes. */
+  exactTime: { enabled: boolean; leadMinutes: number };
+}
+
+export const DEFAULT_GENERAL: GeneralSettings = { schemaVersion: 1, ...DEFAULT_STATUS_SETTINGS };
+export const DEFAULT_REMINDERS: ReminderSettings = {
+  schemaVersion: 1,
+  dailySummary: { enabled: true, hour: 8, minute: 0 },
+  advanceDays: 1,
+  sameDay: true,
+  exactTime: { enabled: true, leadMinutes: 60 },
+};
+
+const int = (v: unknown, lo: number, hi: number, fb: number) => (typeof v === 'number' && Number.isInteger(v) && v >= lo && v <= hi ? v : fb);
+
+export function sanitizeGeneral(r: Partial<GeneralSettings> | null | undefined): GeneralSettings {
+  const x = r ?? {};
+  return { schemaVersion: 1, soonDays: int(x.soonDays, 1, 60, DEFAULT_GENERAL.soonDays), urgentHours: int(x.urgentHours, 1, 72, DEFAULT_GENERAL.urgentHours) };
+}
+
+export function sanitizeReminders(r: Partial<ReminderSettings> | null | undefined): ReminderSettings {
+  const x = (r ?? {}) as Partial<ReminderSettings>;
+  const d = (x.dailySummary ?? {}) as Partial<ReminderSettings['dailySummary']>;
+  const e = (x.exactTime ?? {}) as Partial<ReminderSettings['exactTime']>;
   return {
     schemaVersion: 1,
-    alertDays: clampAlertDays(r.alertDays, DEFAULT_SETTINGS.alertDays),
-    defaultDateType: DATE_TYPES.includes(r.defaultDateType as any) ? (r.defaultDateType as ExpirySettings['defaultDateType']) : DEFAULT_SETTINGS.defaultDateType,
-    reminder: {
-      enabled: rem.enabled === true,
-      hour: int(rem.hour, 0, 23, DEFAULT_SETTINGS.reminder.hour),
-      minute: int(rem.minute, 0, 59, DEFAULT_SETTINGS.reminder.minute),
-    },
+    dailySummary: { enabled: typeof d.enabled === 'boolean' ? d.enabled : DEFAULT_REMINDERS.dailySummary.enabled, hour: int(d.hour, 0, 23, 8), minute: int(d.minute, 0, 59, 0) },
+    advanceDays: int(x.advanceDays, 0, 14, DEFAULT_REMINDERS.advanceDays),
+    sameDay: typeof x.sameDay === 'boolean' ? x.sameDay : DEFAULT_REMINDERS.sameDay,
+    exactTime: { enabled: typeof e.enabled === 'boolean' ? e.enabled : true, leadMinutes: int(e.leadMinutes, 0, 24 * 60, 60) },
   };
 }
 
-export async function loadSettings(): Promise<ExpirySettings> {
-  current = sanitizeSettings(await readObject<Partial<ExpirySettings>>(TE_KEYS.settings, DEFAULT_SETTINGS));
-  emit();
-  return current;
-}
+let general = DEFAULT_GENERAL;
+let reminders = DEFAULT_REMINDERS;
+const listeners = new Set<() => void>();
+const emit = () => listeners.forEach(l => l());
 
-export function getSettings(): ExpirySettings {
-  return current;
-}
-
-export async function updateSettings(patch: Partial<Omit<ExpirySettings, 'reminder'>> & { reminder?: Partial<ExpirySettings['reminder']> }): Promise<ExpirySettings> {
-  const next = sanitizeSettings({ ...current, ...patch, reminder: { ...current.reminder, ...(patch.reminder ?? {}) } });
-  await writeObject(TE_KEYS.settings, next);
-  current = next;
+export async function loadSettings(): Promise<void> {
+  general = sanitizeGeneral(await readRecord<Partial<GeneralSettings>>(K.settingsGeneral));
+  reminders = sanitizeReminders(await readRecord<Partial<ReminderSettings>>(K.settingsReminders));
   emit();
+}
+onScopeChanged(() => { loadSettings().catch(() => undefined); });
+
+export const getGeneral = () => general;
+export const getReminderSettings = () => reminders;
+
+export async function saveGeneral(patch: Partial<GeneralSettings>): Promise<GeneralSettings> {
+  const next = sanitizeGeneral({ ...general, ...patch });
+  await runTxn(async tx => { tx.set(K.settingsGeneral, next); });
+  general = next; emit(); notifyDataChanged();
   return next;
 }
 
-export function subscribeSettings(l: () => void): () => void {
-  listeners.add(l);
-  return () => { listeners.delete(l); };
+export async function saveReminderSettings(patch: Partial<ReminderSettings>): Promise<ReminderSettings> {
+  const next = sanitizeReminders({ ...reminders, ...patch, dailySummary: { ...reminders.dailySummary, ...(patch.dailySummary ?? {}) }, exactTime: { ...reminders.exactTime, ...(patch.exactTime ?? {}) } });
+  await runTxn(async tx => { tx.set(K.settingsReminders, next); });
+  reminders = next; emit(); notifyDataChanged();
+  return next;
 }
 
-export function useExpirySettings(): ExpirySettings {
-  return useSyncExternalStore(subscribeSettings, getSettings, getSettings);
-}
+function subscribe(l: () => void) { listeners.add(l); return () => { listeners.delete(l); }; }
+export const useGeneralSettings = () => useSyncExternalStore(subscribe, getGeneral, getGeneral);
+export const useReminderSettings = () => useSyncExternalStore(subscribe, getReminderSettings, getReminderSettings);
 
-/** Test helper: back to defaults without touching storage. */
-export function resetSettingsCache(): void {
-  current = DEFAULT_SETTINGS;
-  emit();
-}
+export function __resetSettingsForTests(): void { general = DEFAULT_GENERAL; reminders = DEFAULT_REMINDERS; emit(); }
