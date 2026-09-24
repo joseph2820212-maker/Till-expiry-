@@ -148,8 +148,6 @@
   "settings": {
     "language": "Langue",
     "languageValue": "Français",
-    "proTitle": "TillExpiry Pro",
-    "proDesc": "Rapport des pertes, export de l'historique, fiche de contrôle et produits illimités",
     "appGroup": "APPLICATION",
     "offlinePrivate": "Hors ligne et privé",
     "offlinePrivateSub": "Vos données restent sur votre appareil",
@@ -179,183 +177,17 @@
     "languageSwitching": "Changement de langue…",
     "languageRolledBack": "Impossible de passer à {{lang}}. Retour à la langue précédente.",
     "languageChangeFailed": "Échec du changement de langue. Veuillez réessayer.",
-    "backupSecureNote": "Les sauvegardes contiennent vos produits, dates, historique et réglages, chiffrés avec votre phrase secrète. Votre achat Pro et les rappels de ce téléphone n'y figurent pas.",
     "currencyScreenTitle": "Devise",
     "currencyScreenSub": "Définir la devise d'affichage par défaut",
     "currentCurrency": "DEVISE ACTUELLE",
     "chooseCurrency": "CHOISIR LA DEVISE",
     "numberFormatNote": "Le format des nombres (séparateurs décimaux et de milliers) suit le réglage de la langue de l'application.",
     "defaultsNote": "La devise sert aux prix des produits et aux démarques. Un prix enregistré garde sa devise ; rien n'est converti.",
-    "proActive": "TillExpiry Pro est actif",
-    "proActiveFooter": "Merci. Tout est débloqué sur cet appareil et le reste hors ligne.",
-    "proFreeFooter": "L'offre gratuite ne verrouille jamais ce que vous avez saisi. Pro est un achat unique, sans abonnement.",
     "dataStorageNotice": "Avis stockage et sauvegarde",
     "aboutApp": "À propos de {{app}}",
     "currencyNotSet": "Pas encore choisie",
     "openSettings": "Ouvrir les réglages",
     "currencySaveFailed": "La devise n'a pas pu être enregistrée. Veuillez réessayer."
-  },
-  "billing": {
-    "settingsTitle": "Facturation",
-    "restorePurchases": "Restaurer les achats",
-    "purchaseFailed": "Échec de l’achat. Réessayez.",
-    "retry": "Réessayer",
-    "statusLifetime": "À vie",
-    "purchaseEntitlementMissing": "Votre achat a abouti mais Pro n'est pas encore confirmé. Touchez Réessayer pour vérifier à nouveau, ou Restaurer l'achat. Vous ne serez pas facturé deux fois.",
-    "unlockPro": "Débloquer Pro – {{price}}",
-    "notNow": "Pas maintenant",
-    "restorePurchase": "Restaurer un achat précédent",
-    "lifetimePlaceholderPrice": "paiement unique",
-    "oncePrice": "{{price}} une fois",
-    "proSummary": "Le rapport des pertes et démarques, l'export de l'historique, la fiche de contrôle imprimable et des produits illimités. Payez une fois, gardez-le pour toujours. Sans abonnement.",
-    "unlocked": "Pro est débloqué. Merci !",
-    "storeUnavailable": "La boutique est injoignable pour le moment. Vos données sont en sécurité – réessayez en ligne.",
-    "restoreTitle": "Restaurer l'achat",
-    "nothingToRestore": "Aucun achat précédent trouvé pour ce compte.",
-    "proName": "{{app}} Pro",
-    "limit": {
-      "products": {
-        "eyebrow": "Offre gratuite : {{n}} produits enregistrés",
-        "title": "Votre liste de produits est pleine",
-        "keepsWorking": "Chaque produit et chaque date déjà enregistrés continuent de fonctionner : contrôle, démarque, export et sauvegarde. Pro supprime la limite."
-      },
-      "proFeature": {
-        "eyebrow": "Offre gratuite",
-        "title": "Cette fonction nécessite Pro",
-        "keepsWorking": "Tout ce que vous avez enregistré continue de fonctionner. Pro ajoute le rapport des pertes, l'export de l'historique, la fiche de contrôle imprimable et des produits illimités."
-      }
-    }
-  },
-  "help": {
-    "tabGuide": "Mode d'emploi",
-    "guideIntro": "Instructions courtes, tâche par tâche, pour le quotidien.",
-    "guide": {
-      "backup": {
-        "title": "Sauvegarde et restauration",
-        "l1": "Plus → Sauvegarde et restauration → Créer une sauvegarde. Le fichier est chiffré avec une phrase secrète de votre choix.",
-        "l2": "Conservez le fichier en lieu sûr (cloud, e-mail à vous-même). Sans la phrase secrète il ne peut être ouvert – même pas par nous.",
-        "l3": "Restaurez sur un nouveau téléphone depuis le même écran. Produits, dates, historique et réglages reviennent et les rappels sont replanifiés ; une restauration interrompue est annulée sans risque."
-      },
-      "languages": {
-        "title": "Langues et devise",
-        "l1": "Six langues : anglais, arabe, turc, français, espagnol et allemand. L'arabe passe la mise en page de droite à gauche.",
-        "l2": "Les dates suivent le format de la langue de l'application. Les chiffres restent occidentaux dans toutes les langues.",
-        "l3": "La devise ne sert qu'aux prix et aux démarques. La changer ne convertit jamais les prix enregistrés."
-      },
-      "support": {
-        "title": "Obtenir un support en sécurité",
-        "l1": "Plus → À propos → Écrire au support. L'e-mail s'ouvre avec la version de l'app et l'appareil déjà renseignés.",
-        "l2": "Décrivez l'écran et ce que vous vouliez faire ; ajoutez une capture si elle ne montre pas de chiffres sensibles.",
-        "l3": "N'envoyez jamais de phrases secrètes de sauvegarde, de coordonnées bancaires, de mots de passe de store ou de listes de produits non masquées. Le support ne demandera que des informations masquées."
-      },
-      "firstDates": {
-        "title": "Vos premières dates",
-        "l1": "Choisissez la langue, puis Aujourd'hui → Dates et rappels : combien de jours à l'avance comptent comme « bientôt » et le type de date le plus courant.",
-        "l2": "Touchez « Scanner et ajouter » et scannez un produit. Pour un nouveau code, saisissez le nom une fois ; la prochaine fois, le produit est retrouvé par son code.",
-        "l3": "Choisissez la date imprimée et son type (à consommer jusqu'au, de préférence avant, à vendre avant, présenter jusqu'au). Quantité et emplacement sont facultatifs mais accélèrent le contrôle.",
-        "l4": "Un même produit à la même date reste une seule ligne : l'ajouter à nouveau augmente la quantité."
-      },
-      "dateCheck": {
-        "title": "Le contrôle quotidien",
-        "l1": "Aujourd'hui → Contrôle des dates liste tout ce qui est dépassé, du jour ou bientôt à date, du plus ancien au plus récent, les DLC avant les autres le même jour.",
-        "l2": "Au rayon, touchez OK, Épuisé ou Jeté sur chaque ligne. Touchez la ligne elle-même pour démarquer ou noter une partie du stock.",
-        "l3": "« Tout le reste est OK » coche le reste d'un coup. Ce qui arrive encore à date revient au contrôle de demain.",
-        "l4": "Pro : imprimez la fiche de contrôle, groupée par emplacement, pour faire le tour au stylo."
-      },
-      "reduceWaste": {
-        "title": "Démarquer, vendre, jeter",
-        "l1": "Démarquer garde la date en rayon avec son nouveau prix. Avec un prix normal enregistré, −25 %, −50 % et −75 % se font en une touche ; les prix sont exacts au centime.",
-        "l2": "Vendu, Jeté, Retourné et Donné retirent des unités du rayon. Laissez le nombre vide pour tout ce qui reste ; la date se clôture et passe dans l'historique.",
-        "l3": "Mauvais bouton ? Ouvrez la date et utilisez Annuler la dernière action ; une date clôturée se rouvre.",
-        "l4": "Supprimer ne sert qu'aux dates saisies par erreur : aucun historique ne reste. Pour du vrai stock, notez ce qu'il est devenu."
-      },
-      "reminders": {
-        "title": "Rappels quotidiens",
-        "l1": "Dates et rappels → Rappel quotidien. Choisissez l'heure d'ouverture ; le téléphone demande l'autorisation une fois.",
-        "l2": "Un rappel n'apparaît que les jours où quelque chose est dépassé ou arrive à date, et indique combien. Il est planifié sur 7 jours et mis à jour à chaque changement.",
-        "l3": "L'économie d'énergie et le mode ne pas déranger peuvent retarder ou masquer les notifications. Ouvrez l'application chaque matin si vous comptez dessus."
-      },
-      "reports": {
-        "title": "Historique et pertes",
-        "l1": "Menu → Historique et pertes liste les dates qui ont quitté le rayon. Chaque date garde aussi son propre historique.",
-        "l2": "Pro : totaux jetés, démarqués, vendus, retournés et donnés sur 7, 30 ou 90 jours, avec la valeur et les produits les plus gaspillés.",
-        "l3": "Dates → Exporter partage les dates en rayon en CSV (gratuit). Pro exporte aussi tout l'historique."
-      },
-      "scanning": {
-        "title": "Scanner les codes-barres",
-        "l1": "Scanner et ajouter garde l'appareil photo ouvert : enregistrez la date et passez au produit suivant.",
-        "l2": "L'appareil photo sert uniquement à lire le code. Utilisez la lampe dans les frigos sombres, ou saisissez le code.",
-        "l3": "Un code UPC à 12 chiffres et le même code précédé d'un zéro sont un seul produit : rien n'est ajouté deux fois."
-      },
-      "products": {
-        "title": "Produits",
-        "l1": "Un produit contient ce qui ne change pas : nom, code-barres, emplacement, type de date et durée de conservation habituels. Chaque date en rayon est séparée.",
-        "l2": "Avec une durée de conservation (ex. 5 jours pour le pain), l'ajout propose « aujourd'hui + 5 » en une touche. Les ventes lentes peuvent alerter plus tôt que le réglage du magasin.",
-        "l3": "Le prix normal est facultatif. Il sert seulement à proposer des démarques et à chiffrer les pertes dans le rapport."
-      },
-      "importing": {
-        "title": "Importer produits et dates",
-        "l1": "Menu → Importer un fichier lit un CSV issu de votre caisse ou d'un tableur (virgules, points-virgules ou tabulations).",
-        "l2": "Vérifiez quelle colonne est le nom, le code-barres, la date, etc. S'il y a une colonne de dates, choisissez leur format ; l'application ne devine jamais 03/04.",
-        "l3": "Les lignes sont rapprochées de vos produits par code-barres, puis référence, puis nom exact. L'aperçu compte les nouveaux produits, les existants, les dates et les lignes ignorées.",
-        "l4": "Rien n'est enregistré avant de toucher Importer ; ensuite toutes les lignes valides sont enregistrées, ou aucune."
-      }
-    },
-    "tabFaq": "Questions",
-    "faqIntro": "Réponses courtes aux questions les plus fréquentes des commerçants.",
-    "faq": {
-      "gettingStarted": {
-        "title": "Premiers pas",
-        "q1": "{{app}} est-elle une app en ligne ?",
-        "a1": "{{app}} fonctionne hors ligne. Vos produits, dates et historique sont stockés sur votre appareil. Seul l'achat Pro communique avec Apple ou Google et RevenueCat, et seuls les fichiers que vous choisissez d'importer, exporter, partager ou sauvegarder quittent l'application."
-      },
-      "dataPrivacy": {
-        "title": "Données et confidentialité",
-        "q1": "{{app}} envoie-t-elle mes chiffres à un serveur ?",
-        "a1": "Non. Vos produits et dates ne sont pas envoyés aux serveurs de {{app}} ; il n'y a ni compte ni cloud. Vous êtes responsable des sauvegardes, des exports et de ce que vous partagez hors de l'application."
-      },
-      "permissions": {
-        "title": "Appareil photo, fichiers et notifications",
-        "q1": "Pourquoi l'app demande-t-elle la caméra ou les fichiers ?",
-        "a1": "L'appareil photo sert uniquement à lire les codes-barres sur l'écran de scan ; aucune photo n'est prise ni conservée. Les fichiers ne sont utilisés que pour importer ou exporter un CSV, partager un PDF, ou créer et restaurer une sauvegarde. Les notifications ne servent que si vous activez le rappel quotidien. L'application demande à la première utilisation."
-      },
-      "troubleshooting": {
-        "title": "Dépannage",
-        "q1": "Que se passe-t-il si je perds mon téléphone ?",
-        "a1": "Sans sauvegarde, les données du téléphone sont perdues. Créez une sauvegarde depuis Plus → Sauvegarde et restauration, gardez le fichier en lieu sûr et retenez sa phrase secrète ; restaurez-la sur le nouveau téléphone depuis le même écran.",
-        "q2": "Supprimer l'app supprime-t-il mes données ?",
-        "a2": "Oui. Tout étant stocké sur l'appareil, la désinstallation supprime vos produits, dates et historique si vous ne les avez pas sauvegardés. Les sauvegardes et exports conservés ailleurs ne sont pas touchés."
-      },
-      "support": {
-        "title": "Contacter le support",
-        "q1": "Comment contacter le support ?",
-        "a1": "Écrivez à {{supportEmail}} – le bouton dans Plus → À propos pré-remplit les détails de l'app et de l'appareil. Ajoutez l'écran concerné, ce que vous vouliez faire et des captures si elles ne contiennent pas de chiffres sensibles.",
-        "q2": "Que puis-je envoyer au support en toute sécurité ?",
-        "a2": "Le type d'appareil, la version du système, la version de l'app, le nom de l'écran, une courte description et des captures sans chiffres sensibles. N'envoyez jamais de phrases secrètes de sauvegarde, de coordonnées bancaires, de mots de passe de compte store ni de listes de produits non masquées."
-      },
-      "plans": {
-        "title": "Gratuit et Pro",
-        "q1": "Qu'apporte Pro ?",
-        "a1": "La version gratuite comprend jusqu'à 100 produits, des dates illimitées, le scan, le contrôle des dates, démarquer / vendre / jeter, les rappels quotidiens, l'import CSV, l'export CSV des dates en rayon, la sauvegarde et les six langues. Pro est un achat unique qui ajoute des produits illimités, le rapport des pertes et démarques, l'export de l'historique et la fiche de contrôle imprimable. Les données existantes ne sont jamais verrouillées."
-      },
-      "dates": {
-        "title": "Dates",
-        "q1": "Quelle différence entre « à consommer jusqu'au » et « de préférence avant » ?",
-        "a1": "Dans de nombreux pays, la DLC concerne la sécurité et la date de préférence la qualité, mais les règles dépendent de votre pays. L'application les distingue et formule différemment une date de préférence dépassée ; elle ne décide jamais à votre place de ce qui peut être vendu.",
-        "q2": "Un produit peut-il avoir plusieurs dates ?",
-        "a2": "Oui. Chaque livraison peut avoir sa date et sa quantité. L'onglet Produits affiche la plus proche et le nombre d'autres.",
-        "q3": "Pourquoi une date ajoutée aujourd'hui est-elle déjà dépassée ?",
-        "a3": "La date choisie est antérieure à aujourd'hui. Ouvrez-la et utilisez Corriger la date, ou notez ce que vous avez fait du stock."
-      },
-      "reminders": {
-        "title": "Rappels",
-        "q1": "Je n'ai pas reçu de rappel ce matin.",
-        "a1": "Un rappel n'apparaît que si quelque chose est dépassé ou arrive à date. Vérifiez que les notifications sont autorisées, que l'économie d'énergie ne les bloque pas, et ouvrez l'application une fois pour qu'elle planifie les jours suivants.",
-        "q2": "Les rappels fonctionnent-ils si je n'ouvre pas l'application pendant des semaines ?",
-        "a2": "Ils sont planifiés 7 jours à l'avance à chaque ouverture ou changement de date. Ensuite, rouvrez l'application pour planifier la semaine suivante."
-      }
-    },
-    "title": "Aide"
   },
   "about": {
     "publisherLine": "Publié par {{publisher}}",
@@ -365,101 +197,6 @@
     "description": "{{app}} suit les dates limites (DLC et DDM) pour les commerces et petites entreprises : scannez un produit, ajoutez sa date et voyez ce qui arrive à date aujourd'hui et les jours suivants. Vos produits et dates sont stockés sur votre appareil.",
     "reviewBuild": "Version d'évaluation",
     "reviewBuildSub": "Toutes les fonctions débloquées · aucun achat"
-  },
-  "legal": {
-    "privacy": {
-      "title": "Politique de confidentialité",
-      "intro": "Cette politique de confidentialité explique comment {{app}}, fourni par {{publisher}}, traite vos informations.",
-      "h1": "Hors ligne par conception",
-      "p1": "Vos produits, dates, historique et réglages sont stockés uniquement sur votre appareil. {{app}} n'a ni système de compte ni serveur qui conserve vos données.",
-      "h2": "Pas de suivi",
-      "p2": "L'application ne contient aucune bibliothèque d'analyse, de publicité ou de rapport de plantage. Vos produits, dates et historique restent sur votre appareil et ne sont pas envoyés aux serveurs de TillExpiry.",
-      "h3": "Fonctions de l'appareil utilisées",
-      "l1": "Caméra – uniquement pour lire les codes-barres quand vous ouvrez le scanner. Aucune photo n'est stockée.",
-      "l2": "Fichiers – quand vous importez un CSV, ou exportez, partagez ou sauvegardez vos données.",
-      "l3": "Partage – quand vous envoyez un PDF ou un CSV à une autre app. Ce que vous partagez quitte l'app et n'est plus sous son contrôle.",
-      "l4": "Achat intégré – géré par Apple ou Google et le service d'achat RevenueCat, qui reçoit un reçu d'achat et un identifiant d'installation anonyme. Aucun nom, e-mail ni donnée d'entreprise n'est envoyé.",
-      "h4": "Votre contrôle",
-      "p3": "Vous pouvez modifier ou supprimer tout contenu de l'app à tout moment. Désinstaller l'app efface ses données de l'appareil, hormis les sauvegardes et exports que vous avez faits.",
-      "h5": "Sauvegardes",
-      "p4": "Les fichiers de sauvegarde sont chiffrés avec une phrase secrète de votre choix. Nous ne pouvons ni les ouvrir ni les récupérer. Leur emplacement dépend de vous.",
-      "h6": "Enfants",
-      "p5": "{{app}} s'adresse aux professionnels et n'est pas destiné aux enfants. {{publisher}} ne collecte pas sciemment de données personnelles d'enfants.",
-      "h7": "Questions de confidentialité et demandes de données",
-      "p6": "Pour toute question de confidentialité ou demande de données, contactez {{privacyEmail}}.",
-      "l5": "Mises à jour – les nouvelles versions n'arrivent que par l'App Store ou Google Play. L'app ne télécharge pas de mises à jour de code elle-même.",
-      "h8": "Vos responsabilités",
-      "p7": "Vous êtes responsable des fichiers que vous exportez ou partagez, de vos fichiers de sauvegarde et de leurs phrases secrètes, ainsi que des réglages de sauvegarde de votre appareil. Les fichiers exportés ou partagés quittent l'app et ne sont plus sous son contrôle.",
-      "h9": "Contacter le support en sécurité",
-      "p8": "N'envoyez pas vos listes de produits, vos dates ou vos sauvegardes au support sauf demande précise et après les avoir expurgées. N'envoyez jamais de phrase secrète de sauvegarde, de coordonnées bancaires ou de mot de passe de compte store.",
-      "h10": "Modifications de cette politique",
-      "p9": "Nous pouvons mettre à jour cette politique de temps à autre. Les changements importants apparaîtront dans l'app et la date ci-dessus sera mise à jour ; la version dans l'app fait foi.",
-      "l6": "Notifications – uniquement si vous activez le rappel quotidien. Les rappels sont créés sur l'appareil ; rien n'est envoyé à un serveur."
-    },
-    "terms": {
-      "title": "Conditions d'utilisation",
-      "intro": "Ces conditions d'utilisation s'appliquent à {{app}}, fourni par {{publisher}}.",
-      "h1": "Ce qu'est l'app",
-      "p1": "{{app}} enregistre les dates que vous saisissez pour vos produits et vous les rappelle. Elle ne lit pas elle-même les dates sur les emballages, ne se connecte pas à votre caisse et ne décide pas de ce qui peut être vendu.",
-      "h2": "Pas un conseil professionnel",
-      "p2": "L'app ne fournit pas de conseil fiscal, comptable, juridique ou financier. Taux, règles et décisions restent votre responsabilité ; vérifiez-les auprès d'un conseiller qualifié si nécessaire.",
-      "n1": "Les règles d'hygiène alimentaire et d'étiquetage des dates varient selon le pays et le produit. Vous restez responsable du retrait des produits dangereux ou périmés et du respect des règles applicables à votre activité.",
-      "h3": "Vos données",
-      "p3": "Vos données professionnelles sont stockées sur votre appareil et ne sont pas envoyées aux serveurs de TillExpiry. Vous êtes responsable de vos sauvegardes et des fichiers que vous exportez ou partagez.",
-      "h4": "Achats",
-      "p4": "Pro est un achat intégré unique vendu par Apple ou Google selon leurs conditions. Restaurer un achat nécessite le même compte. L'offre gratuite ne retire jamais l'accès aux données déjà saisies.",
-      "h5": "Responsabilité",
-      "p5": "L'application est fournie en l'état. Dans les limites permises par la loi, {{publisher}} n'est pas responsable des pertes résultant de décisions prises avec l'application, notamment des dates manquées ou erronées, des rappels non affichés, de la perte de données ou de bénéfices. Rien dans ces conditions ne limite une responsabilité qui ne peut l'être légalement.",
-      "h6": "Droit applicable",
-      "p6": "Ces conditions sont régies par le droit de l'Angleterre et du pays de Galles, sans préjudice des droits impératifs des consommateurs prévus par la loi de votre pays.",
-      "h7": "Acceptation de ces conditions",
-      "p7": "En téléchargeant ou en utilisant l'app, vous acceptez ces conditions d'utilisation. Si vous ne les acceptez pas, n'utilisez pas l'app.",
-      "h8": "Admissibilité",
-      "p8": "L'app est destinée à un usage professionnel par des personnes d'au moins 18 ans (ou l'âge de la majorité dans votre pays).",
-      "h9": "Fournisseur",
-      "p9": "{{app}} est fourni par {{publisher}}.",
-      "h10": "Exactitude de vos chiffres",
-      "p10": "Vous êtes responsable de l'exactitude des produits, dates et quantités saisis, et du contrôle de vos rayons. L'application ne connaît que les dates que vous lui donnez.",
-      "h11": "Fourni « en l'état »",
-      "p11": "L'app est fournie « en l'état » et « selon disponibilité », sans garantie d'aucune sorte, expresse ou implicite, dans toute la mesure permise par la loi.",
-      "h12": "Perte de données",
-      "p12": "{{publisher}} n'est pas responsable de la perte de vos données due à la perte ou réinitialisation de l'appareil, à la désinstallation de l'app, à une sauvegarde échouée, à une phrase secrète oubliée ou à vos propres exports et partages, sauf lorsque la loi interdit d'exclure cette responsabilité.",
-      "h13": "Propriété intellectuelle",
-      "p13": "L'app, y compris son design, ses textes et son logiciel (à l'exclusion de vos propres données), appartient à {{publisher}} ou à ses concédants et est protégée par les lois applicables. Un droit d'utilisation personnel, non exclusif et non transférable vous est accordé.",
-      "h14": "Modifications de l'app et de ces conditions",
-      "p14": "L'app peut évoluer au fil du temps, avec des fonctions ajoutées, améliorées ou retirées. Nous pouvons aussi mettre à jour ces conditions ; continuer à utiliser l'app après une mise à jour vaut acceptation des conditions mises à jour.",
-      "h15": "Questions juridiques et sur les conditions",
-      "p15": "Pour toute notification juridique ou question sur les conditions, contactez {{legalEmail}}."
-    },
-    "licences": {
-      "title": "Licences open source",
-      "intro": "{{app}} est construit avec {{count}} paquets open source. Inventaire généré le {{date}}.",
-      "p1": "Chaque paquet reste sous sa propre licence, listée ci-dessous par type puis par paquet. Touchez un paquet pour lire sa licence. Merci à leurs auteurs.",
-      "noText": "texte de licence non fourni par le paquet"
-    },
-    "lastUpdated": "Dernière mise à jour : {{date}}.",
-    "companyNote": "{{publisher}}. Numéro de société : {{companyNumber}}. Siège social : {{registeredOffice}}. Statut TVA : {{vatStatus}}.",
-    "vatNotRegistered": "Non assujetti à la TVA",
-    "dataStorage": {
-      "title": "Avis sur le stockage et la sauvegarde des données",
-      "p1": "Vos produits, dates, historique et réglages sont stockés localement sur votre appareil.",
-      "l1": "Supprimer l'app supprime ses données stockées localement.",
-      "l2": "La perte, la casse, la réinitialisation ou la désinstallation peuvent entraîner une perte de données.",
-      "l3": "Sauvegardez régulièrement depuis Plus → Sauvegarde et restauration ; conservez le fichier en lieu sûr.",
-      "l4": "Les fichiers de sauvegarde et d'export contiennent vos produits et dates ; conservez-les en sécurité et ne les partagez qu'avec des personnes de confiance.",
-      "l5": "Les sauvegardes sont chiffrées avec la phrase secrète de votre choix. Si vous la perdez, la sauvegarde ne peut plus être restaurée – ni par vous ni par nous.",
-      "n1": "{{app}} ne peut pas récupérer les données stockées localement si l'appareil, la phrase secrète ou une sauvegarde utilisable est perdu.",
-      "h1": "Signaler un problème de sécurité",
-      "p2": "Pour signaler un problème de sécurité, contactez {{securityEmail}}. N'incluez pas de phrases secrètes, de coordonnées bancaires ni de fichiers de prix non masqués dans le premier message."
-    },
-    "contact": {
-      "title": "Contact et support",
-      "body": "Pour obtenir de l'aide, écrivez à {{supportEmail}}. Indiquez votre type d'appareil, la version du système, la version de l'app, l'écran concerné et une courte description. Les captures d'écran aident si elles ne contiennent pas de chiffres sensibles.",
-      "never": "N'envoyez jamais de phrases secrètes de sauvegarde, de coordonnées bancaires, de mots de passe de compte store ni de listes de produits non masquées, sauf si le support demande expressément des informations de diagnostic masquées.",
-      "security": "Problème de sécurité ? Contactez {{securityEmail}}.",
-      "emailButton": "Écrire au support",
-      "mailBody": "App : {{app}} {{version}}\nAppareil : {{platform}} {{osVersion}}\nÉcran :\nCe que j'essayais de faire :\n\n(N'incluez pas de phrases secrètes de sauvegarde, de coordonnées bancaires ni de listes de produits non masquées.)"
-    }
   },
   "backup": {
     "subtitle": "Vos produits, dates et réglages dans un seul fichier chiffré",
@@ -867,7 +604,6 @@
     "valueNote": "Valeur = unités × prix démarqué si la date a été démarquée, sinon × prix normal du produit. Les dates non comptées ou les produits sans prix n'ajoutent rien. Les devises ne sont jamais additionnées.",
     "topWasted": "Les plus jetés",
     "unitsShort": "Unités : {{count}}",
-    "proTitle": "Le rapport des pertes fait partie de Pro",
     "proBody": "Voyez ce que vous avez jeté, démarqué et vendu, sa valeur et les produits les plus gaspillés. Votre historique ci-dessous reste gratuit.",
     "unlock": "Voir ce qu'ajoute Pro",
     "exportHistory": "Exporter l'historique (CSV)",
@@ -1695,7 +1431,8 @@
     "sauce": "Sauce tomate",
     "sandwich": "Sandwich au fromage",
     "peas": "Petits pois surgelés",
-    "yoghurt": "Yaourt"
+    "yoghurt": "Yaourt",
+    "ham": "Jambon en tranches"
   },
   "general": {
     "title": "Réglages d'échéance proche",

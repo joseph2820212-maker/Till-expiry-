@@ -33,7 +33,7 @@ const PRIVACY_MAP: [string, string][] = [
   ['Your responsibilities', 'Your responsibilities'],
   ['Your control over your data', 'Your control'],
   ['Children', 'Children'],
-  ['Contacting support safely', 'Contacting support safely'],
+  ['Contacting support safely', 'Contacting support'],
   ['Changes to this policy', 'Changes to this policy'],
   ['Privacy questions and data requests', 'Privacy questions and data requests'],
 ];
@@ -41,7 +41,7 @@ const TERMS_MAP: [string, string][] = [
   ['Acceptance of these Terms', 'Acceptance of these Terms'],
   ['Eligibility', 'Eligibility'],
   ['Provider', 'Provider'],
-  ['Accuracy of your records', 'Accuracy of your figures'],
+  ['Accuracy of your records', 'Accuracy of your records'],
   ['Not professional advice', 'No professional advice'],
   ['Provided "as is"', 'Provided "as is"'],
   ['Limitation of liability', 'Liability'],
@@ -70,6 +70,16 @@ describe('legal parity with Till Note', () => {
     expect(getLegalDoc(t, 'dataStorage').title).toBe('Data Storage & Backup Notice');
   });
 
+  it('terms carry the date / rule / label disclaimer right after "What the app is"', () => {
+    const got = headings('terms');
+    expect(got.indexOf('Dates, rules and labels')).toBe(got.indexOf('What the app is') + 1);
+    const text = getLegalDoc(t, 'terms').blocks.map(b => b.t).join('\n');
+    expect(text).toMatch(/does not determine, check or validate the shelf life/);
+    expect(text).toMatch(/do not replace ingredient, allergen or other consumer labelling/);
+    expect(text).toMatch(/responsible for your food-safety procedures, storage controls and legal labelling/);
+    expect(headings('terms')).toContain('Review build');
+  });
+
   it('uses the same publisher identity as Till Note and dates every document', () => {
     expect(PUBLISHER).toBe('LLILL LTD');
     expect(COMPANY_DETAILS.registrationNumber).toBe('11792206');
@@ -96,17 +106,19 @@ describe('legal parity with Till Note', () => {
   it('FAQ mirrors the Till Note chapter set and the guide has the safe-support chapter', () => {
     // The family (Till Note) chapter set comes first, unchanged and in order; TillExpiry's date chapters follow.
     expect(FAQ_CHAPTER_IDS.slice(0, 5)).toEqual(['gettingStarted', 'dataPrivacy', 'permissions', 'troubleshooting', 'support']);
-    expect(FAQ_CHAPTER_IDS.slice(5)).toEqual(['dates', 'reminders', 'plans']);
+    expect(FAQ_CHAPTER_IDS.slice(5)).toEqual(['dates', 'reminders']);
     expect(GUIDE_CHAPTER_IDS).toContain('support');
     const faq = getFaqChapters(t);
-    expect(faq.flatMap(c => c.blocks).filter(b => b.k === 'h').map(b => b.t).slice(0, 7)).toEqual([
+    expect(faq.flatMap(c => c.blocks).filter(b => b.k === 'h').map(b => b.t).slice(0, 9)).toEqual([
       'Is TillExpiry an online app?',
-      'Does TillExpiry send my figures to a server?',
-      'Why does the app ask for the camera or files?',
+      'Does this version have purchases or limits?',
+      'Does TillExpiry send my records to a server?',
+      'Are my businesses kept apart?',
+      'Why does the app ask for the camera, files or notifications?',
       'What happens if I lose my phone?',
       'Does deleting the app delete my data?',
       'How do I contact support?',
-      'What can I safely send to support?',
+      'What can I send to support?',
     ]);
   });
 

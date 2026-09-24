@@ -148,8 +148,6 @@
   "settings": {
     "language": "Sprache",
     "languageValue": "Deutsch",
-    "proTitle": "TillExpiry Pro",
-    "proDesc": "Abfallbericht, Verlaufsexport, Prüfliste und unbegrenzte Artikel",
     "appGroup": "APP",
     "offlinePrivate": "Offline und privat",
     "offlinePrivateSub": "Ihre Daten bleiben auf Ihrem Gerät",
@@ -179,183 +177,17 @@
     "languageSwitching": "Sprache wird gewechselt…",
     "languageRolledBack": "Wechsel zu {{lang}} fehlgeschlagen. Zurück zur vorherigen Sprache.",
     "languageChangeFailed": "Sprachwechsel fehlgeschlagen. Bitte erneut versuchen.",
-    "backupSecureNote": "Sicherungen enthalten deine Artikel, Daten, deinen Verlauf und deine Einstellungen, verschlüsselt mit deinem Passwort. Dein Pro-Kauf und die Erinnerungen auf diesem Telefon sind nicht enthalten.",
     "currencyScreenTitle": "Währung",
     "currencyScreenSub": "Standard-Anzeigewährung festlegen",
     "currentCurrency": "AKTUELLE WÄHRUNG",
     "chooseCurrency": "WÄHRUNG WÄHLEN",
     "numberFormatNote": "Die Zahlenformatierung (Dezimal- und Tausendertrennzeichen) richtet sich nach Ihrer App-Spracheinstellung.",
     "defaultsNote": "Die Währung gilt für Artikelpreise und Reduzierungen. Ein gespeicherter Preis behält seine Währung; nichts wird umgerechnet.",
-    "proActive": "TillExpiry Pro ist aktiv",
-    "proActiveFooter": "Danke. Auf diesem Gerät ist alles freigeschaltet und bleibt es auch offline.",
-    "proFreeFooter": "Der Gratis-Plan sperrt nie, was Sie schon eingegeben haben. Pro ist ein Einmalkauf, kein Abo.",
     "dataStorageNotice": "Hinweis Datenspeicherung & Sicherung",
     "aboutApp": "Über {{app}}",
     "currencyNotSet": "Noch nicht gewählt",
     "openSettings": "Einstellungen öffnen",
     "currencySaveFailed": "Die Währung konnte nicht gespeichert werden. Bitte erneut versuchen."
-  },
-  "billing": {
-    "settingsTitle": "Abrechnung",
-    "restorePurchases": "Käufe wiederherstellen",
-    "purchaseFailed": "Kauf fehlgeschlagen. Bitte erneut versuchen.",
-    "retry": "Erneut versuchen",
-    "statusLifetime": "Lebenslang",
-    "purchaseEntitlementMissing": "Ihr Kauf ist durchgegangen, aber Pro wurde noch nicht bestätigt. Tippen Sie auf Erneut versuchen oder Kauf wiederherstellen. Es wird nicht doppelt abgebucht.",
-    "unlockPro": "Pro freischalten – {{price}}",
-    "notNow": "Jetzt nicht",
-    "restorePurchase": "Früheren Kauf wiederherstellen",
-    "lifetimePlaceholderPrice": "einmalig",
-    "oncePrice": "{{price}} einmalig",
-    "proSummary": "Abfall- und Reduzierungsbericht, Verlaufsexport, druckbare Prüfliste und unbegrenzte Artikel. Einmal zahlen, für immer behalten. Kein Abo.",
-    "unlocked": "Pro ist freigeschaltet. Danke!",
-    "storeUnavailable": "Der Store ist gerade nicht erreichbar. Ihre Daten sind sicher – online erneut versuchen.",
-    "restoreTitle": "Kauf wiederherstellen",
-    "nothingToRestore": "Für dieses Store-Konto wurde kein früherer Kauf gefunden.",
-    "proName": "{{app}} Pro",
-    "limit": {
-      "products": {
-        "eyebrow": "Gratis-Tarif: {{n}} gespeicherte Produkte",
-        "title": "Ihre Produktliste ist voll",
-        "keepsWorking": "Jeder gespeicherte Artikel und jedes Datum funktioniert weiter: prüfen, reduzieren, exportieren und sichern. Pro hebt die Grenze auf."
-      },
-      "proFeature": {
-        "eyebrow": "Gratis-Tarif",
-        "title": "Dafür ist Pro nötig",
-        "keepsWorking": "Alles Gespeicherte funktioniert weiter. Pro bietet Abfallbericht, Verlaufsexport, druckbare Prüfliste und unbegrenzte Artikel."
-      }
-    }
-  },
-  "help": {
-    "tabGuide": "Anleitung",
-    "guideIntro": "Kurze Anleitungen, Aufgabe für Aufgabe, für den Alltag.",
-    "guide": {
-      "backup": {
-        "title": "Sicherung und Wiederherstellung",
-        "l1": "Mehr → Sichern & wiederherstellen → Sicherung erstellen. Die Datei wird mit einer selbst gewählten Passphrase verschlüsselt.",
-        "l2": "Bewahren Sie die Datei sicher auf (Cloud, E-Mail an sich selbst). Ohne Passphrase lässt sie sich nicht öffnen – auch nicht von uns.",
-        "l3": "Stelle auf einem neuen Telefon über denselben Bildschirm wieder her. Artikel, Daten, Verlauf und Einstellungen kommen zurück und Erinnerungen werden neu geplant; eine unterbrochene Wiederherstellung wird sicher zurückgesetzt."
-      },
-      "languages": {
-        "title": "Sprachen und Währung",
-        "l1": "Sechs Sprachen: Englisch, Arabisch, Türkisch, Französisch, Spanisch und Deutsch. Arabisch dreht das Layout auf rechts-nach-links.",
-        "l2": "Daten werden im Format der App-Sprache angezeigt. Zahlen bleiben in allen Sprachen westliche Ziffern.",
-        "l3": "Die Währung gilt nur für Preise und Reduzierungen. Eine Änderung rechnet gespeicherte Preise nie um."
-      },
-      "support": {
-        "title": "Sicher Hilfe bekommen",
-        "l1": "Mehr → Info → Support anschreiben. Die E-Mail öffnet sich mit App-Version und Gerät bereits eingetragen.",
-        "l2": "Beschreiben Sie den Bildschirm und Ihr Vorhaben; fügen Sie einen Screenshot bei, wenn er keine sensiblen Zahlen zeigt.",
-        "l3": "Senden Sie nie Sicherungs-Passphrasen, Bankdaten, Store-Passwörter oder ungeschwärzte Produktlisten. Der Support fragt nur nach geschwärzten Angaben."
-      },
-      "firstDates": {
-        "title": "Deine ersten Daten",
-        "l1": "Wähle die Sprache, dann Heute → Daten & Erinnerungen: wie viele Tage vorher als „bald fällig“ gelten und welche Datumsart du meist nutzt.",
-        "l2": "Tippe auf „Scannen & Datum“ und scanne einen Artikel. Bei einem neuen Barcode gibst du einmal den Namen ein; danach wird der Artikel über den Code gefunden.",
-        "l3": "Wähle das aufgedruckte Datum und seine Art (verbrauchen bis, mindestens haltbar bis, verkaufen bis, auslegen bis). Menge und Platz sind optional, beschleunigen aber die Kontrolle.",
-        "l4": "Derselbe Artikel mit demselben Datum bleibt eine Zeile: Erneutes Hinzufügen erhöht die Menge."
-      },
-      "dateCheck": {
-        "title": "Die tägliche Datumskontrolle",
-        "l1": "Heute → Datumskontrolle zeigt alles Abgelaufene, heute und bald Fällige, das Älteste zuerst, Verbrauchsdaten vor anderen am selben Tag.",
-        "l2": "Am Regal tippst du bei jeder Zeile auf OK, Ausverkauft oder Entsorgt. Tippe die Zeile selbst an, um zu reduzieren oder nur einen Teil zu erfassen.",
-        "l3": "„Alles Übrige ist OK“ hakt den Rest auf einmal ab. Was weiter fällig ist, kommt morgen wieder.",
-        "l4": "Pro: Drucke die nach Platz gruppierte Prüfliste und geh mit dem Stift durch die Regale."
-      },
-      "reduceWaste": {
-        "title": "Reduzieren, verkaufen, entsorgen",
-        "l1": "Preis reduzieren lässt das Datum mit neuem Preis im Regal. Mit gespeichertem Normalpreis sind −25 %, −50 % und −75 % ein Tipp; Preise sind centgenau.",
-        "l2": "Verkauft, Entsorgt, Retour und Spende nehmen Stück aus dem Regal. Lass die Zahl leer für alles Übrige; das Datum wird abgeschlossen und landet im Verlauf.",
-        "l3": "Falsch getippt? Öffne das Datum und nutze „Letzte Aktion rückgängig“; ein abgeschlossenes Datum öffnet sich wieder.",
-        "l4": "Löschen ist nur für versehentlich eingegebene Daten: Es bleibt kein Verlauf. Für echte Ware erfasse, was damit passiert ist."
-      },
-      "reminders": {
-        "title": "Tägliche Erinnerungen",
-        "l1": "Daten & Erinnerungen → Tägliche Erinnerung. Wähle die Uhrzeit, zu der du öffnest; das Telefon fragt einmal nach der Erlaubnis.",
-        "l2": "Eine Erinnerung erscheint nur an Tagen mit Abgelaufenem oder Fälligem und nennt die Anzahl. Sie wird für 7 Tage geplant und bei jeder Änderung aktualisiert.",
-        "l3": "Energiesparmodus und „Nicht stören“ können Mitteilungen verzögern oder ausblenden. Öffne die App jeden Morgen, wenn du dich darauf verlässt."
-      },
-      "reports": {
-        "title": "Verlauf und Abfall",
-        "l1": "Menü → Verlauf & Abfall listet die Daten, die das Regal verlassen haben. Jedes Datum hat außerdem seinen eigenen Verlauf.",
-        "l2": "Pro: Summen für entsorgt, reduziert, verkauft, retourniert und gespendet über 7, 30 oder 90 Tage, mit Wert und den meistentsorgten Artikeln.",
-        "l3": "Daten → Export teilt die Daten im Regal als CSV (kostenlos). Pro exportiert zusätzlich den ganzen Verlauf."
-      },
-      "scanning": {
-        "title": "Barcodes scannen",
-        "l1": "Beim Scannen für ein Datum bleibt die Kamera offen: Datum speichern und weiter zum nächsten Artikel.",
-        "l2": "Die Kamera liest nur den Code. Nutze in dunklen Kühlregalen die Taschenlampe oder tippe den Code ein.",
-        "l3": "Ein 12-stelliger UPC und derselbe Code mit führender Null gelten als ein Artikel – nichts wird doppelt angelegt."
-      },
-      "products": {
-        "title": "Artikel",
-        "l1": "Ein Artikel enthält, was gleich bleibt: Name, Barcode, üblicher Platz, übliche Datumsart und Haltbarkeit. Jedes Datum im Regal ist separat.",
-        "l2": "Mit Haltbarkeit (z. B. 5 Tage für frisches Brot) schlägt das Hinzufügen „heute + 5“ mit einem Tipp vor. Langsamdreher können früher warnen als die Shop-Einstellung.",
-        "l3": "Der Normalpreis ist optional. Er dient nur Reduzierungsvorschlägen und der Bewertung von Abfall im Bericht."
-      },
-      "importing": {
-        "title": "Artikel und Daten importieren",
-        "l1": "Menü → Aus Datei importieren liest eine CSV aus Kasse oder Tabelle (Komma, Semikolon oder Tab).",
-        "l2": "Prüfe, welche Spalte Name, Barcode, Datum usw. ist. Gibt es eine Datumsspalte, wähle das Format; die App rät bei 03/04 nie.",
-        "l3": "Zeilen werden per Barcode, dann Art.-Nr., dann exaktem Namen zugeordnet. Die Vorschau zählt neue und vorhandene Artikel, Daten und übersprungene Zeilen.",
-        "l4": "Nichts wird gespeichert, bis du auf Importieren tippst; dann werden alle gültigen Zeilen gespeichert – oder keine."
-      }
-    },
-    "tabFaq": "Fragen",
-    "faqIntro": "Kurze Antworten auf die häufigsten Fragen von Ladeninhabern.",
-    "faq": {
-      "gettingStarted": {
-        "title": "Erste Schritte",
-        "q1": "Ist {{app}} eine Online-App?",
-        "a1": "{{app}} funktioniert offline. Deine Artikel, Daten und dein Verlauf werden auf deinem Gerät gespeichert. Nur der Pro-Kauf kommuniziert mit Apple oder Google und RevenueCat, und nur Dateien, die du importierst, exportierst, teilst oder sicherst, verlassen die App."
-      },
-      "dataPrivacy": {
-        "title": "Daten & Datenschutz",
-        "q1": "Sendet {{app}} meine Zahlen an einen Server?",
-        "a1": "Nein. Deine Artikel und Daten werden nicht an {{app}}-Server gesendet; es gibt kein Konto und keine Cloud. Du bist für Sicherungen, Exporte und alles verantwortlich, was du außerhalb der App teilst."
-      },
-      "permissions": {
-        "title": "Kamera, Dateien & Mitteilungen",
-        "q1": "Warum fragt die App nach Kamera oder Dateien?",
-        "a1": "Die Kamera liest nur auf dem Scan-Bildschirm Barcodes; es werden keine Fotos gemacht oder gespeichert. Auf Dateien wird nur beim Import oder Export einer CSV, beim Teilen eines PDFs oder beim Sichern und Wiederherstellen zugegriffen. Mitteilungen werden nur genutzt, wenn du die tägliche Erinnerung einschaltest. Die App fragt bei der ersten Nutzung jeder Funktion."
-      },
-      "troubleshooting": {
-        "title": "Fehlerbehebung",
-        "q1": "Was passiert, wenn ich mein Telefon verliere?",
-        "a1": "Ohne Sicherung sind die Daten auf dem Telefon verloren. Erstellen Sie unter Mehr → Sicherung & Wiederherstellung eine Sicherung, bewahren Sie die Datei sicher auf und merken Sie sich die Passphrase; auf dem neuen Telefon stellen Sie sie vom selben Bildschirm aus wieder her.",
-        "q2": "Löscht das Deinstallieren der App meine Daten?",
-        "a2": "Ja. Da alles auf dem Gerät gespeichert ist, entfernt die Deinstallation deine Artikel, Daten und deinen Verlauf, wenn du sie nicht vorher gesichert hast. Anderswo gespeicherte Sicherungen und Exporte bleiben unberührt."
-      },
-      "support": {
-        "title": "Support kontaktieren",
-        "q1": "Wie erreiche ich den Support?",
-        "a1": "Schreiben Sie an {{supportEmail}} – die Schaltfläche unter Mehr → Info füllt App- und Gerätedaten aus. Ergänzen Sie den Bildschirm, was Sie tun wollten, und Screenshots ohne sensible Zahlen.",
-        "q2": "Was kann ich dem Support gefahrlos senden?",
-        "a2": "Gerätetyp, Betriebssystem- und App-Version, Bildschirmname, eine kurze Beschreibung und Screenshots ohne sensible Zahlen. Senden Sie nie Sicherungs-Passphrasen, Bankdaten, Store-Kontopasswörter oder ungeschwärzte Produktlisten."
-      },
-      "plans": {
-        "title": "Gratis und Pro",
-        "q1": "Was bietet Pro?",
-        "a1": "Kostenlos: bis 100 Artikel, unbegrenzte Daten, Scannen, Datumskontrolle, reduzieren / verkaufen / entsorgen, tägliche Erinnerungen, CSV-Import, CSV-Export der Daten im Regal, Sicherung und alle sechs Sprachen. Pro ist ein Einmalkauf und bietet unbegrenzte Artikel, den Abfall- und Reduzierungsbericht, Verlaufsexport und die druckbare Prüfliste. Vorhandene Daten werden nie gesperrt."
-      },
-      "dates": {
-        "title": "Daten",
-        "q1": "Was ist der Unterschied zwischen „verbrauchen bis“ und „mindestens haltbar bis“?",
-        "a1": "In vielen Ländern betrifft „verbrauchen bis“ die Sicherheit und das MHD die Qualität, die Regeln legt aber dein Land fest. Die App hält beides getrennt und formuliert ein überschrittenes MHD anders; sie entscheidet nie für dich, was verkauft werden darf.",
-        "q2": "Kann ein Artikel mehrere Daten haben?",
-        "a2": "Ja. Jede Lieferung kann ihr eigenes Datum und ihre Menge haben. Der Tab Artikel zeigt das nächste und wie viele weitere es gibt.",
-        "q3": "Warum ist ein heute hinzugefügtes Datum schon abgelaufen?",
-        "a3": "Das gewählte Datum liegt vor heute. Öffne es und nutze „Datum korrigieren“ oder erfasse, was mit der Ware passiert ist."
-      },
-      "reminders": {
-        "title": "Erinnerungen",
-        "q1": "Heute Morgen kam keine Erinnerung.",
-        "a1": "Eine Erinnerung erscheint nur, wenn etwas abgelaufen oder fällig ist. Prüfe, ob Mitteilungen erlaubt sind und der Energiesparmodus sie nicht blockiert, und öffne die App einmal, damit sie die nächsten Tage plant.",
-        "q2": "Funktionieren Erinnerungen, wenn ich die App wochenlang nicht öffne?",
-        "a2": "Sie werden bei jedem Öffnen der App oder jeder Datumsänderung 7 Tage im Voraus geplant. Danach öffne die App wieder, damit sie die nächste Woche plant."
-      }
-    },
-    "title": "Hilfe"
   },
   "about": {
     "publisherLine": "Herausgegeben von {{publisher}}",
@@ -365,101 +197,6 @@
     "description": "{{app}} behält Verbrauchs- und Mindesthaltbarkeitsdaten für Läden und kleine Betriebe im Blick: Artikel scannen, Datum hinzufügen und sehen, was heute und in den nächsten Tagen abläuft. Deine Artikel und Daten werden auf deinem Gerät gespeichert.",
     "reviewBuild": "Review-Build",
     "reviewBuildSub": "Alle Funktionen freigeschaltet · keine Käufe"
-  },
-  "legal": {
-    "privacy": {
-      "title": "Datenschutzerklärung",
-      "intro": "Diese Datenschutzerklärung erklärt, wie {{app}}, bereitgestellt von {{publisher}}, mit Ihren Daten umgeht.",
-      "h1": "Offline von Grund auf",
-      "p1": "Deine Artikel, Daten, dein Verlauf und deine Einstellungen werden nur auf deinem Gerät gespeichert. {{app}} hat kein Kontosystem und keinen Server mit deinen Daten.",
-      "h2": "Kein Tracking",
-      "p2": "Die App enthält keine Analyse-, Werbe- oder Absturzbericht-Bibliotheken. Deine Artikel, Daten und dein Verlauf bleiben auf deinem Gerät und werden nicht an TillExpiry-Server gesendet.",
-      "h3": "Gerätefunktionen, die die App nutzen kann",
-      "l1": "Kamera – nur zum Lesen von Barcodes, wenn Sie den Scanner öffnen. Es wird kein Foto gespeichert.",
-      "l2": "Dateien – wenn Sie eine CSV importieren oder Ihre Daten exportieren, teilen oder sichern.",
-      "l3": "Teilen – wenn Sie ein PDF oder eine CSV an eine andere App senden. Was Sie teilen, verlässt die App und ist nicht mehr unter ihrer Kontrolle.",
-      "l4": "In-App-Kauf – abgewickelt von Apple oder Google und dem Kaufdienst RevenueCat, der einen Kaufbeleg und eine anonyme App-Installations-ID erhält. Es werden weder Name, E-Mail noch Geschäftsdaten gesendet.",
-      "h4": "Ihre Kontrolle",
-      "p3": "Sie können jederzeit alles in der App ändern oder löschen. Das Deinstallieren der App löscht ihre Daten vom Gerät, abgesehen von Backups und Exporten, die Sie selbst gemacht haben.",
-      "h5": "Backups",
-      "p4": "Backup-Dateien werden mit einer selbst gewählten Passphrase verschlüsselt. Wir können sie weder öffnen noch wiederherstellen. Wo Sie sie speichern, liegt bei Ihnen.",
-      "h6": "Kinder",
-      "p5": "{{app}} richtet sich an gewerbliche Nutzer und nicht an Kinder. {{publisher}} erhebt wissentlich keine personenbezogenen Daten von Kindern.",
-      "h7": "Datenschutzfragen und Datenanfragen",
-      "p6": "Bei Datenschutzfragen oder Datenanfragen wenden Sie sich an {{privacyEmail}}.",
-      "l5": "App-Updates – neue Versionen kommen nur über den App Store oder Google Play. Die App lädt selbst keine Code-Updates herunter.",
-      "h8": "Ihre Verantwortung",
-      "p7": "Sie sind verantwortlich für die Dateien, die Sie exportieren oder teilen, für Ihre Sicherungsdateien und deren Passphrasen sowie für die Sicherungseinstellungen Ihres Geräts. Exportierte oder geteilte Dateien verlassen die App und stehen nicht mehr unter ihrer Kontrolle.",
-      "h9": "Sicherer Kontakt zum Support",
-      "p8": "Sende deine Artikellisten, Daten oder Sicherungsdateien nur auf ausdrückliche Anfrage und geschwärzt an den Support. Sende niemals Sicherungspasswörter, Bankdaten oder Store-Passwörter.",
-      "h10": "Änderungen dieser Richtlinie",
-      "p9": "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wesentliche Änderungen erscheinen in der App und das obige Datum wird angepasst; die Version in der App ist die gültige.",
-      "l6": "Mitteilungen – nur wenn du die tägliche Erinnerung einschaltest. Die Erinnerungen werden auf dem Gerät erstellt; nichts wird an einen Server gesendet."
-    },
-    "terms": {
-      "title": "Nutzungsbedingungen",
-      "intro": "Diese Nutzungsbedingungen gelten für {{app}}, bereitgestellt von {{publisher}}.",
-      "h1": "Was die App ist",
-      "p1": "{{app}} erfasst die Daten, die du für deine Artikel eingibst, und erinnert dich daran. Die App liest keine Daten von Packungen, verbindet sich nicht mit deiner Kasse und entscheidet nicht, was verkauft werden darf.",
-      "h2": "Keine professionelle Beratung",
-      "p2": "Die App bietet keine Steuer-, Buchhaltungs-, Rechts- oder Finanzberatung. Steuersätze, Regeln und Geschäftsentscheidungen bleiben Ihre Verantwortung; prüfen Sie sie bei Bedarf mit einer qualifizierten Beratung.",
-      "n1": "Lebensmittelsicherheits- und Datumskennzeichnungsregeln unterscheiden sich je nach Land und Produkt. Du bleibst dafür verantwortlich, unsichere oder abgelaufene Ware zu entfernen und die für deinen Betrieb geltenden Regeln einzuhalten.",
-      "h3": "Ihre Daten",
-      "p3": "Deine Geschäftsdaten werden auf deinem Gerät gespeichert und nicht an TillExpiry-Server gesendet. Du bist für Sicherungen und für exportierte oder geteilte Dateien verantwortlich.",
-      "h4": "Käufe",
-      "p4": "Pro ist ein einmaliger In-App-Kauf über Apple oder Google zu deren Bedingungen. Die Wiederherstellung erfordert dasselbe Store-Konto. Der Gratis-Plan entzieht nie den Zugriff auf bereits eingegebene Daten.",
-      "h5": "Haftung",
-      "p5": "Die App wird so bereitgestellt, wie sie ist. Soweit gesetzlich zulässig, haftet {{publisher}} nicht für Verluste aus Entscheidungen, die mit der App getroffen wurden, einschließlich verpasster oder falscher Daten, nicht erschienener Erinnerungen, Daten- oder Gewinnverlust. Nichts in diesen Bedingungen beschränkt eine Haftung, die gesetzlich nicht beschränkt werden kann.",
-      "h6": "Anwendbares Recht",
-      "p6": "Diese Bedingungen unterliegen dem Recht von England und Wales, unbeschadet zwingender Verbraucherrechte nach dem Recht Ihres Landes.",
-      "h7": "Annahme dieser Bedingungen",
-      "p7": "Mit dem Herunterladen oder Nutzen der App stimmen Sie diesen Nutzungsbedingungen zu. Wenn Sie nicht zustimmen, nutzen Sie die App bitte nicht.",
-      "h8": "Nutzungsberechtigung",
-      "p8": "Die App ist für die geschäftliche Nutzung durch Personen ab 18 Jahren (oder dem Volljährigkeitsalter in Ihrem Land) bestimmt.",
-      "h9": "Anbieter",
-      "p9": "{{app}} wird von {{publisher}} bereitgestellt.",
-      "h10": "Richtigkeit Ihrer Zahlen",
-      "p10": "Du bist für die Richtigkeit der eingegebenen Artikel, Daten und Mengen verantwortlich und dafür, deine Regale selbst zu prüfen. Die App kennt nur die Daten, die du ihr gibst.",
-      "h11": "Bereitstellung „wie besehen“",
-      "p11": "Die App wird „wie besehen“ und „wie verfügbar“ bereitgestellt, ohne jegliche ausdrückliche oder stillschweigende Gewährleistung, soweit gesetzlich zulässig.",
-      "h12": "Datenverlust",
-      "p12": "{{publisher}} haftet nicht für Datenverlust durch Geräteverlust oder -zurücksetzung, Deinstallation der App, eine fehlgeschlagene Sicherung, eine vergessene Sicherungs-Passphrase oder Ihre eigenen Export- oder Teilvorgänge, soweit die Haftung gesetzlich ausgeschlossen werden kann.",
-      "h13": "Geistiges Eigentum",
-      "p13": "Die App einschließlich Design, Texten und Software (ohne Ihre eigenen Geschäftsdaten) gehört {{publisher}} oder deren Lizenzgebern und ist gesetzlich geschützt. Ihnen wird ein persönliches, nicht ausschließliches, nicht übertragbares Nutzungsrecht eingeräumt.",
-      "h14": "Änderungen der App und dieser Bedingungen",
-      "p14": "Die App kann sich im Laufe der Zeit ändern, wenn Funktionen hinzugefügt, verbessert oder entfernt werden. Auch diese Bedingungen können wir aktualisieren; die weitere Nutzung der App nach einer Aktualisierung gilt als Zustimmung.",
-      "h15": "Rechtliche Fragen und Fragen zu den Bedingungen",
-      "p15": "Für rechtliche Mitteilungen oder Fragen zu den Bedingungen wenden Sie sich an {{legalEmail}}."
-    },
-    "licences": {
-      "title": "Open-Source-Lizenzen",
-      "intro": "{{app}} ist mit {{count}} Open-Source-Paketen gebaut. Inventar erstellt am {{date}}.",
-      "p1": "Jedes Paket steht unter seiner eigenen Lizenz, unten nach Lizenztyp und dann nach Paket aufgeführt. Tippen Sie auf ein Paket, um den Lizenztext zu lesen. Danke an die Autoren.",
-      "noText": "Lizenztext nicht im Paket enthalten"
-    },
-    "lastUpdated": "Zuletzt aktualisiert: {{date}}.",
-    "companyNote": "{{publisher}}. Firmennummer: {{companyNumber}}. Eingetragener Sitz: {{registeredOffice}}. USt-Status: {{vatStatus}}.",
-    "vatNotRegistered": "Nicht umsatzsteuerlich registriert",
-    "dataStorage": {
-      "title": "Hinweis zu Datenspeicherung und Sicherung",
-      "p1": "Deine Artikel, Daten, dein Verlauf und deine Einstellungen werden lokal auf deinem Gerät gespeichert.",
-      "l1": "Das Löschen der App löscht ihre lokal gespeicherten Daten.",
-      "l2": "Geräteverlust, Beschädigung, Zurücksetzen oder Deinstallation können zu Datenverlust führen.",
-      "l3": "Sichern Sie regelmäßig unter Mehr → Sicherung & Wiederherstellung; bewahren Sie die Datei sicher auf.",
-      "l4": "Sicherungs- und Exportdateien enthalten deine Artikel und Daten; bewahre sie sicher auf und teile sie nur mit Personen, denen du vertraust.",
-      "l5": "Sicherungen werden mit der von Ihnen gewählten Passphrase verschlüsselt. Geht sie verloren, kann die Sicherung nicht wiederhergestellt werden – weder von Ihnen noch von uns.",
-      "n1": "{{app}} kann lokal gespeicherte Daten nicht wiederherstellen, wenn das Gerät, die Sicherungs-Passphrase oder eine brauchbare Sicherung verloren geht.",
-      "h1": "Sicherheitsproblem melden",
-      "p2": "Um ein Sicherheitsproblem zu melden, wenden Sie sich an {{securityEmail}}. Fügen Sie der ersten Meldung keine Sicherungs-Passphrasen, Bankdaten oder ungeschwärzte Preisdateien bei."
-    },
-    "contact": {
-      "title": "Kontakt & Support",
-      "body": "Für Hilfe schreiben Sie an {{supportEmail}}. Bitte nennen Sie Gerätetyp, Betriebssystemversion, App-Version, den betreffenden Bildschirm und eine kurze Beschreibung. Screenshots helfen, wenn sie keine sensiblen Zahlen enthalten.",
-      "never": "Senden Sie nie Sicherungs-Passphrasen, Bankdaten, Store-Kontopasswörter oder ungeschwärzte Produktlisten, außer der Support bittet ausdrücklich um geschwärzte Diagnosedaten.",
-      "security": "Sicherheitsproblem? Wenden Sie sich an {{securityEmail}}.",
-      "emailButton": "Support anschreiben",
-      "mailBody": "App: {{app}} {{version}}\nGerät: {{platform}} {{osVersion}}\nBildschirm:\nWas ich tun wollte:\n\n(Keine Sicherungs-Passphrasen, Bankdaten oder ungeschwärzten Produktlisten angeben.)"
-    }
   },
   "backup": {
     "subtitle": "Deine Artikel, Daten und Einstellungen in einer verschlüsselten Datei",
@@ -867,7 +604,6 @@
     "valueNote": "Wert = Stück × reduzierter Preis, falls das Datum reduziert wurde, sonst × Normalpreis des Artikels. Ungezählte Daten oder Artikel ohne Preis zählen nicht. Währungen werden nie addiert.",
     "topWasted": "Am häufigsten entsorgt",
     "unitsShort": "Stück: {{count}}",
-    "proTitle": "Der Abfallbericht gehört zu Pro",
     "proBody": "Sieh, was du entsorgt, reduziert und verkauft hast, was es wert war und welche Artikel du am meisten wegwirfst. Dein Verlauf unten bleibt kostenlos.",
     "unlock": "Was Pro bietet",
     "exportHistory": "Verlauf exportieren (CSV)",
@@ -1695,7 +1431,8 @@
     "sauce": "Tomatensoße",
     "sandwich": "Käsesandwich",
     "peas": "Tiefkühlerbsen",
-    "yoghurt": "Joghurt"
+    "yoghurt": "Joghurt",
+    "ham": "Schinkenscheiben"
   },
   "general": {
     "title": "Einstellungen „Bald fällig“",

@@ -69,9 +69,10 @@ describe('OfflinePrivateScreen content (A10/A12)', () => {
     expect(src).not.toContain('backupRequired');
   });
 
-  it('contains factual local-calculation claims', () => {
+  it('contains the factual local-records claims (records local, notifications local, files only when chosen, no code updates)', () => {
     expect(src).toContain('calculationsLocalOnly');
     expect(src).toContain('offlineInfoMsg');
+    for (const k of ['about.noAnalytics', 'legal.offline.notifications', 'legal.offline.camera', 'legal.offline.files', 'legal.offline.updates']) expect(src).toContain(k);
   });
 });
 

@@ -62,11 +62,20 @@ export function statusColors(s: ExpiryStatus): { fg: string; bg: string } {
   }
 }
 
+function unitSuffix(t: T, u: string | undefined): string {
+  return !u ? '' : (TRACKING_UNITS as readonly string[]).includes(u) ? ` ${t(`unit.${u}`)}` : ` ${u}`;
+}
+
+/** "Left: 4 pack" for cards and lists. */
 export function quantityLine(t: T, b: Pick<Batch, 'quantityRemaining' | 'quantityInitial' | 'quantityUnit'>): string | null {
   if (b.quantityRemaining == null) return null;
-  const u = b.quantityUnit;
-  const unit = !u ? '' : (TRACKING_UNITS as readonly string[]).includes(u) ? ` ${t(`unit.${u}`)}` : ` ${u}`;
-  return t('batch.left', { count: b.quantityRemaining, unit });
+  return t('batch.left', { count: b.quantityRemaining, unit: unitSuffix(t, b.quantityUnit) });
+}
+
+/** "4 pack" for a field that already has its own "Left" label. */
+export function quantityValue(t: T, b: Pick<Batch, 'quantityRemaining' | 'quantityUnit'>): string | null {
+  if (b.quantityRemaining == null) return null;
+  return `${b.quantityRemaining}${unitSuffix(t, b.quantityUnit)}`;
 }
 
 export function kindLabel(t: T, b: Pick<Batch, 'kind'>): string {

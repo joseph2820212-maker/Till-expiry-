@@ -34,6 +34,11 @@ export const OfflinePrivateScreen: React.FC = () => {
           <PrivacyRow icon="cloud-offline-outline" label={t('settings.offlineFirst')} sub={t('settings.offlineFirstSub')} />
           <PrivacyRow icon="lock-closed-outline" label={t('settings.calculationsLocalOnly')} sub={t('settings.calculationsLocalOnlySub')} />
           <PrivacyRow icon="person-outline" label={t('settings.noAccountRequired')} sub={t('settings.noAccountRequiredSub')} />
+          <PrivacyRow icon="eye-off-outline" label={t('about.noAnalytics')} sub={t('about.noAnalyticsSub')} />
+          <PrivacyRow icon="notifications-outline" label={t('legal.offline.notifications')} sub={t('legal.offline.notificationsSub')} />
+          <PrivacyRow icon="barcode-outline" label={t('legal.offline.camera')} sub={t('legal.offline.cameraSub')} />
+          <PrivacyRow icon="share-outline" label={t('legal.offline.files')} sub={t('legal.offline.filesSub')} />
+          <PrivacyRow icon="download-outline" label={t('legal.offline.updates')} sub={t('legal.offline.updatesSub')} />
         </View>
 
         <View style={styles.disclaimerCard}>

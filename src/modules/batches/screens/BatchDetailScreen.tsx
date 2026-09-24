@@ -23,7 +23,7 @@ import { newId } from '../../../storage/entityStore';
 import { getBatch, setBatchArchived, REMOVAL_TYPES, type RemovalType } from '../batchStore';
 import { getProduct } from '../../products/productStore';
 import { listLocations } from '../../locations/locationStore';
-import { deadlineLine, kindLabel, moneyText, quantityLine, reasonLine } from '../format';
+import { deadlineLine, kindLabel, moneyText, quantityValue, reasonLine } from '../format';
 import { RemovalSheet } from '../components/RemovalSheet';
 import { MarkdownHelperSheet } from '../../markdown/MarkdownHelperSheet';
 import { snoozeBatchReminder } from '../../reminders/reminderService';
@@ -101,7 +101,7 @@ export const BatchDetailScreen: React.FC = () => {
 
       <Section title={t('batch.details')}>
         <Row label={t('batch.product')} value={product?.name ?? batch.productName} onPress={() => nav.navigate('ProductDetail', { id: batch.productId })} />
-        <Row label={t('batch.quantity')} value={quantityLine(t, batch) ?? t('batch.notCounted')} />
+        <Row label={t('batch.quantity')} value={quantityValue(t, batch) ?? t('batch.notCounted')} />
         <Row label={t('batch.lot')} value={batch.lotNumber ?? t('common.notSet')} ltr />
         <Row label={t('batch.location')} value={location?.name ?? t('common.notSet')} />
         {batch.openedAt ? <Row label={t('batch.openedAt')} value={when(batch.openedAt) ?? ''} ltr /> : null}

@@ -148,8 +148,6 @@
   "settings": {
     "language": "Language",
     "languageValue": "English (UK)",
-    "proTitle": "TillExpiry Pro",
-    "proDesc": "Waste report, history export, check sheet and unlimited products",
     "appGroup": "APP",
     "offlinePrivate": "Offline & Private",
     "offlinePrivateSub": "Your data stays on device",
@@ -179,183 +177,17 @@
     "languageSwitching": "Switching language…",
     "languageRolledBack": "Could not switch to {{lang}}. Reverted to previous language.",
     "languageChangeFailed": "Language change failed. Please try again.",
-    "backupSecureNote": "Backups contain your products, dates, history and settings, encrypted with your passphrase. Your Pro purchase and reminders on this phone are not included.",
     "currencyScreenTitle": "Currency",
     "currencyScreenSub": "Set your default display currency",
     "currentCurrency": "CURRENT CURRENCY",
     "chooseCurrency": "CHOOSE CURRENCY",
     "numberFormatNote": "Number formatting (decimal and thousands separators) follows your app language setting.",
     "defaultsNote": "The currency is used for product prices and reductions. A saved price keeps its own currency; nothing is converted.",
-    "proActive": "TillExpiry Pro is active",
-    "proActiveFooter": "Thank you. Everything is unlocked on this device and stays unlocked offline.",
-    "proFreeFooter": "The free plan never locks what you already entered. Pro is a one-time purchase, no subscription.",
     "dataStorageNotice": "Data storage & backup notice",
     "aboutApp": "About {{app}}",
     "currencyNotSet": "Not chosen yet",
     "openSettings": "Open Settings",
     "currencySaveFailed": "The currency could not be saved. Please try again."
-  },
-  "billing": {
-    "settingsTitle": "Billing",
-    "restorePurchases": "Restore purchases",
-    "purchaseFailed": "Purchase failed. Please try again.",
-    "retry": "Retry",
-    "statusLifetime": "Lifetime",
-    "purchaseEntitlementMissing": "Your purchase went through but Pro has not been confirmed yet. Tap Retry to check again, or Restore purchase. You will not be charged twice.",
-    "unlockPro": "Unlock Pro – {{price}}",
-    "notNow": "Not now",
-    "restorePurchase": "Restore a previous purchase",
-    "lifetimePlaceholderPrice": "one-time",
-    "oncePrice": "{{price}} once",
-    "proSummary": "The waste and reduction report, history export, the printable date-check sheet and unlimited products. Pay once, keep forever. No subscription.",
-    "unlocked": "Pro is unlocked. Thank you!",
-    "storeUnavailable": "The store is not reachable right now. Your data is safe – try again when you are online.",
-    "restoreTitle": "Restore purchase",
-    "nothingToRestore": "No previous purchase was found for this store account.",
-    "proName": "{{app}} Pro",
-    "limit": {
-      "products": {
-        "eyebrow": "Free plan: {{n}} saved products",
-        "title": "Your product list is full",
-        "keepsWorking": "Every product and date you already saved keeps working: check, reduce, export and back it up. Pro removes the limit."
-      },
-      "proFeature": {
-        "eyebrow": "Free plan",
-        "title": "This needs Pro",
-        "keepsWorking": "Everything you already saved keeps working. Pro adds the waste report, history export, the printable check sheet and unlimited products."
-      }
-    }
-  },
-  "help": {
-    "tabGuide": "How to",
-    "guideIntro": "Short, task-by-task instructions for the everyday jobs.",
-    "guide": {
-      "backup": {
-        "title": "Backup and restore",
-        "l1": "More → Backup & restore → Create backup. The file is encrypted with a passphrase you choose.",
-        "l2": "Keep the file somewhere safe (cloud drive, email to yourself). Without the passphrase it cannot be opened – not even by us.",
-        "l3": "Restore on a new phone from the same screen. Your products, dates, history and settings come back and reminders are planned again; an interrupted restore is rolled back safely."
-      },
-      "languages": {
-        "title": "Languages and currency",
-        "l1": "Six languages: English, Arabic, Turkish, French, Spanish and German. Arabic flips the layout right-to-left.",
-        "l2": "Dates are shown in the style of the app language. Numbers keep Western digits in every language.",
-        "l3": "The currency is only for prices and reductions. Changing it never converts saved prices."
-      },
-      "support": {
-        "title": "Getting safe support",
-        "l1": "More → About → Email support. The email opens with your app version and device already filled in.",
-        "l2": "Describe the screen and what you were trying to do; add a screenshot if it shows no sensitive figures.",
-        "l3": "Never send backup passphrases, bank details, store passwords or unredacted product lists. Support will only ever ask for redacted information."
-      },
-      "firstDates": {
-        "title": "Your first dates",
-        "l1": "Choose the app language, then Today → Dates & reminders: how many days ahead counts as “due soon” and the kind of date you use most.",
-        "l2": "Tap “Scan to add a date” and scan a product. For a new barcode, type the name once; next time the product is found by its code.",
-        "l3": "Pick the date printed on the pack and its kind (use by, best before, sell by, display until). The count and place are optional but make the date check faster.",
-        "l4": "The same product with the same date is kept as one line: adding it again adds to the count."
-      },
-      "dateCheck": {
-        "title": "The daily date check",
-        "l1": "Today → Date check lists everything expired, due today and due soon, oldest first, use-by dates before others on the same day.",
-        "l2": "At the shelf, tap Fine, Sold out or Thrown away on each line. Tap the line itself to reduce the price or record only part of the stock.",
-        "l3": "“All the rest are fine” ticks what is left in one go. Anything still due comes back in tomorrow's check.",
-        "l4": "Pro: print the check sheet to walk the shelves with a pen, grouped by place."
-      },
-      "reduceWaste": {
-        "title": "Reduce, sell, throw away",
-        "l1": "Reduce the price keeps the date on the shelf with its new price. With a normal price saved, 25 %, 50 % and 75 % are one tap; prices are exact to the cent.",
-        "l2": "Sold, Thrown away, Returned and Donated take units off the shelf. Leave the number empty for all that is left; the date then closes and moves to History.",
-        "l3": "Pressed the wrong button? Open the date and use Undo the last action; a closed date opens again.",
-        "l4": "Delete is only for a date typed by mistake: it leaves no history. For real stock, record what happened to it."
-      },
-      "reminders": {
-        "title": "Daily reminders",
-        "l1": "Dates & reminders → Daily reminder. Choose the time you open the shop; the phone asks for permission once.",
-        "l2": "A reminder appears only on days with something expired or due, and says how many. It is planned for the next 7 days and updated whenever dates change.",
-        "l3": "Battery savers and do-not-disturb can delay or hide notifications. Open the app every morning if you rely on it."
-      },
-      "reports": {
-        "title": "History and waste",
-        "l1": "Menu → History & waste lists the dates that left the shelf. Every date also keeps its own history.",
-        "l2": "Pro: totals for thrown away, reduced, sold, returned and donated over 7, 30 or 90 days, with value and the products you waste most.",
-        "l3": "Dates → Export shares the dates on the shelf as CSV (free). Pro also exports the full history."
-      },
-      "scanning": {
-        "title": "Scanning barcodes",
-        "l1": "Scan to add a date keeps the camera open: save the date and you are back for the next product.",
-        "l2": "The camera is used only to read the code. Use the torch in dim fridges, or type the code instead.",
-        "l3": "A 12-digit UPC and the same code with a leading zero are treated as one product, so a product is never added twice."
-      },
-      "products": {
-        "title": "Products",
-        "l1": "A product holds what stays the same: name, barcode, usual place, usual kind of date and shelf life. Each date on the shelf is separate.",
-        "l2": "With a shelf life (for example 5 days for fresh bread), adding a date offers “today + 5” in one tap. Slow sellers can warn more days ahead than the shop setting.",
-        "l3": "A normal price is optional. It is used only to suggest reductions and to value waste in the report."
-      },
-      "importing": {
-        "title": "Importing products and dates",
-        "l1": "Menu → Import from a file reads a CSV saved from your till or a spreadsheet (commas, semicolons or tabs).",
-        "l2": "Check which column is the name, barcode, date and so on. If there is a date column, choose how dates are written; the app never guesses 03/04.",
-        "l3": "Rows match your products by barcode, then SKU, then exact name. The preview counts new products, existing ones, dates and skipped rows.",
-        "l4": "Nothing is saved until you tap Import; then every valid row is saved, or none."
-      }
-    },
-    "tabFaq": "Questions",
-    "faqIntro": "Short answers to the questions shop owners ask most.",
-    "faq": {
-      "gettingStarted": {
-        "title": "Getting started",
-        "q1": "Is {{app}} an online app?",
-        "a1": "{{app}} works offline. Your products, dates and history are stored on your device. Only the Pro purchase talks to Apple or Google and RevenueCat, and only files you choose to import, export, share or back up leave the app."
-      },
-      "dataPrivacy": {
-        "title": "Data & privacy",
-        "q1": "Does {{app}} send my figures to a server?",
-        "a1": "No. Your products and dates are not sent to {{app}} servers; there is no account and no cloud. You are responsible for backup files, exports and anything you share outside the app."
-      },
-      "permissions": {
-        "title": "Camera, files & notifications",
-        "q1": "Why does the app ask for the camera or files?",
-        "a1": "The camera is used only to read barcodes on the scan screen; no photo is taken or stored. Files are accessed only when you import or export a CSV, share a PDF, or create and restore a backup. Notifications are used only if you turn on the daily reminder. The app asks the first time you use each feature."
-      },
-      "troubleshooting": {
-        "title": "Troubleshooting",
-        "q1": "What happens if I lose my phone?",
-        "a1": "If you have no backup, the data on the phone is lost. Create a backup from More → Backup & restore, keep the file somewhere safe and remember its passphrase; restore it on the new phone from the same screen.",
-        "q2": "Does deleting the app delete my data?",
-        "a2": "Yes. Because everything is stored on the device, uninstalling removes your products, dates and history unless you backed them up first. Backups and exports you saved elsewhere are not affected."
-      },
-      "support": {
-        "title": "Contact support",
-        "q1": "How do I contact support?",
-        "a1": "Email {{supportEmail}} – the button in More → About fills in your app and device details. Add the screen you were on, what you were trying to do and screenshots if they contain no sensitive figures.",
-        "q2": "What can I safely send to support?",
-        "a2": "Your device type, operating system version, app version, the screen name, a short description and screenshots with sensitive figures hidden. Never send backup passphrases, bank details, store account passwords or unredacted product lists."
-      },
-      "plans": {
-        "title": "Free and Pro",
-        "q1": "What does Pro add?",
-        "a1": "Free includes up to 100 products, unlimited dates, scanning, the date check, reduce / sell / waste, daily reminders, CSV import, CSV export of the dates on the shelf, backup and all six languages. Pro is a one-time purchase that adds unlimited products, the waste and reduction report, history export and the printable check sheet. Existing data is never locked."
-      },
-      "dates": {
-        "title": "Dates",
-        "q1": "What is the difference between use by and best before?",
-        "a1": "In many countries a use-by date is about safety and a best-before date about quality, but the rules are set by your country. The app keeps the two apart and words past best-before dates differently; it never decides for you what may be sold.",
-        "q2": "Can one product have several dates?",
-        "a2": "Yes. Each delivery can have its own date and count. The Products tab shows the soonest one and how many more there are.",
-        "q3": "Why is a date I added today already in Expired?",
-        "a3": "The date you picked is before today. Open it and use Correct the date, or record what you did with the stock."
-      },
-      "reminders": {
-        "title": "Reminders",
-        "q1": "I did not get a reminder this morning.",
-        "a1": "A reminder appears only when something is expired or due. Check that notifications are allowed for the app, that battery saving is not stopping it, and open the app once so it can plan the next days.",
-        "q2": "Do reminders work if I do not open the app for weeks?",
-        "a2": "They are planned 7 days ahead each time the app opens or a date changes. After that, open the app again so it can plan the following week."
-      }
-    },
-    "title": "Help"
   },
   "about": {
     "publisherLine": "Published by {{publisher}}",
@@ -365,101 +197,6 @@
     "description": "{{app}} keeps track of use-by and best-before dates for shops and small businesses: scan a product, add its date, and see what runs out today and in the next few days. Your products and dates are stored on your device.",
     "reviewBuild": "Review Build",
     "reviewBuildSub": "All features unlocked · no purchases"
-  },
-  "legal": {
-    "privacy": {
-      "title": "Privacy policy",
-      "intro": "This Privacy Policy explains how {{app}}, provided by {{publisher}}, handles your information.",
-      "h1": "Offline by design",
-      "p1": "Your products, dates, history and settings are stored only on your device. {{app}} has no account system and no server that holds your data.",
-      "h2": "No tracking",
-      "p2": "The app contains no analytics, advertising or crash-reporting libraries. Your products, dates and history stay on your device and are not sent to TillExpiry servers.",
-      "h3": "Device features the app may use",
-      "l1": "Camera – only to read barcodes when you open the scanner. No photo is stored.",
-      "l2": "Files – when you import a CSV, or export, share or back up your data.",
-      "l3": "Sharing – when you send a PDF or CSV to another app. What you share leaves the app and is no longer under its control.",
-      "l4": "In-app purchase – handled by Apple or Google and the purchase service RevenueCat, which receives a purchase receipt and an anonymous app-install identifier. No name, email or business data is sent.",
-      "h4": "Your control",
-      "p3": "You can edit or delete anything in the app at any time. Uninstalling the app deletes its data from the device, apart from backups and exports you made yourself.",
-      "h5": "Backups",
-      "p4": "Backup files are encrypted with a passphrase you choose. We cannot open or recover them. Where you store them is up to you.",
-      "h6": "Children",
-      "p5": "{{app}} is intended for business users and is not directed at children. {{publisher}} does not knowingly collect personal data from children.",
-      "h7": "Privacy questions and data requests",
-      "p6": "For privacy questions or data requests, contact {{privacyEmail}}.",
-      "l5": "App updates – new versions come only through the App Store or Google Play. The app does not download code updates itself.",
-      "h8": "Your responsibilities",
-      "p7": "You are responsible for the files you export or share, for your backup files and their passphrases, and for your device-level backup settings. Files you export or share leave the app and are no longer under its control.",
-      "h9": "Contacting support safely",
-      "p8": "Do not send your product lists, dates or backup files to support unless they are specifically requested and have been redacted. Never send backup passphrases, bank details or store account passwords.",
-      "h10": "Changes to this policy",
-      "p9": "We may update this Privacy Policy from time to time. Material changes will be reflected in the app and the date above will be updated; the version in the app is the current one.",
-      "l6": "Notifications – only if you turn on the daily reminder. The reminders are created on the device; nothing is sent to a server."
-    },
-    "terms": {
-      "title": "Terms of use",
-      "intro": "These Terms of Use apply to {{app}}, provided by {{publisher}}.",
-      "h1": "What the app is",
-      "p1": "{{app}} records the dates you enter for your products and reminds you of them. It does not read dates from packs by itself, does not connect to your till and does not decide what may be sold.",
-      "h2": "No professional advice",
-      "p2": "The app does not give tax, accounting, legal or financial advice. Tax rates, rules and business decisions remain your responsibility; check them with a qualified adviser where needed.",
-      "n1": "Food safety and date-labelling rules differ by country and product. You remain responsible for removing unsafe or out-of-date stock and for following the rules that apply to your business.",
-      "h3": "Your data",
-      "p3": "Your business data is stored on your device and is not sent to TillExpiry servers. You are responsible for keeping backups and for the files you export or share.",
-      "h4": "Purchases",
-      "p4": "Pro is a one-time in-app purchase sold through Apple or Google under their terms. Restoring a purchase requires the same store account. The free plan never removes access to data you already entered.",
-      "h5": "Liability",
-      "p5": "The app is provided as is. To the extent permitted by law, {{publisher}} is not liable for losses arising from decisions made using the app, including missed or wrong dates, reminders that did not appear, lost data or lost profit. Nothing in these terms limits liability that cannot be limited by law.",
-      "h6": "Governing law",
-      "p6": "These Terms are governed by the laws of England and Wales, without affecting any mandatory consumer rights you have under the laws of your own country.",
-      "h7": "Acceptance of these Terms",
-      "p7": "By downloading or using the app, you agree to these Terms of Use. If you do not agree, please do not use the app.",
-      "h8": "Eligibility",
-      "p8": "The app is intended for business use by individuals who are at least 18 years old (or the age of majority in your country).",
-      "h9": "Provider",
-      "p9": "{{app}} is provided by {{publisher}}.",
-      "h10": "Accuracy of your figures",
-      "p10": "You are responsible for the accuracy of the products, dates and quantities you enter, and for checking your shelves yourself. The app only knows the dates you give it.",
-      "h11": "Provided \"as is\"",
-      "p11": "The app is provided on an \"as is\" and \"as available\" basis, without warranties of any kind, whether express or implied, to the maximum extent permitted by law.",
-      "h12": "Data loss",
-      "p12": "{{publisher}} is not responsible for loss of your data caused by device loss or reset, uninstalling the app, a failed backup, a forgotten backup passphrase, or your own export or sharing actions, except where responsibility cannot be excluded by law.",
-      "h13": "Intellectual property",
-      "p13": "The app, including its design, text and software (but excluding your own business data), is owned by {{publisher}} or its licensors and is protected by applicable laws. You are granted a personal, non-exclusive, non-transferable right to use the app.",
-      "h14": "Changes to the app and these Terms",
-      "p14": "The app may change over time as features are added, improved or removed. We may also update these Terms from time to time; continued use of the app after an update means you accept the updated Terms.",
-      "h15": "Legal and terms questions",
-      "p15": "For legal notices or terms-related questions, contact {{legalEmail}}."
-    },
-    "licences": {
-      "title": "Open-source licences",
-      "intro": "{{app}} is built with {{count}} open-source packages. Inventory generated on {{date}}.",
-      "p1": "Each package remains under its own licence, listed below by licence type and then by package. Tap a package to read its licence text. Thank you to their authors.",
-      "noText": "licence text not shipped by the package"
-    },
-    "lastUpdated": "Last updated: {{date}}.",
-    "companyNote": "{{publisher}}. Company number: {{companyNumber}}. Registered office: {{registeredOffice}}. VAT status: {{vatStatus}}.",
-    "vatNotRegistered": "Not VAT registered",
-    "dataStorage": {
-      "title": "Data Storage & Backup Notice",
-      "p1": "Your products, dates, history and settings are stored locally on your device.",
-      "l1": "Deleting the app deletes its locally stored data.",
-      "l2": "Device loss, damage, reset or uninstall may cause data loss.",
-      "l3": "Back up regularly from More → Backup & restore; keep the file somewhere safe.",
-      "l4": "Backup and export files contain your products and dates and should be stored securely and shared only with people you trust.",
-      "l5": "Backups are encrypted with the passphrase you choose. If you lose that passphrase, the backup cannot be restored – not by you and not by us.",
-      "n1": "{{app}} cannot recover locally stored data if the device, the backup passphrase or a usable backup is lost.",
-      "h1": "Reporting a security concern",
-      "p2": "To report a security concern, contact {{securityEmail}}. Do not include backup passphrases, bank details or unredacted price files in the initial report."
-    },
-    "contact": {
-      "title": "Contact & support",
-      "body": "For help, email {{supportEmail}}. Please include your device type, operating system version, app version, the screen you were on and a short description of the issue. Screenshots help if they contain no sensitive figures.",
-      "never": "Never send backup passphrases, bank details, store account passwords or unredacted product lists unless support specifically asks for redacted diagnostic information.",
-      "security": "Security concern? Contact {{securityEmail}}.",
-      "emailButton": "Email support",
-      "mailBody": "App: {{app}} {{version}}\nDevice: {{platform}} {{osVersion}}\nScreen:\nWhat I was trying to do:\n\n(Do not include backup passphrases, bank details or unredacted product lists.)"
-    }
   },
   "backup": {
     "subtitle": "Your products, dates and settings in one encrypted file",
@@ -867,7 +604,6 @@
     "valueNote": "Value = units × the reduced price if the date was reduced, otherwise × the product's normal price. Uncounted dates or products without a price add no value. Currencies are never added together.",
     "topWasted": "Most thrown away",
     "unitsShort": "Units: {{count}}",
-    "proTitle": "The waste report is part of Pro",
     "proBody": "See what you threw away, reduced and sold, what it was worth, and which products you waste most. Your history below stays free.",
     "unlock": "See what Pro adds",
     "exportHistory": "Export history (CSV)",
@@ -1695,7 +1431,8 @@
     "sauce": "Tomato sauce",
     "sandwich": "Cheese sandwich",
     "peas": "Frozen peas",
-    "yoghurt": "Yoghurt"
+    "yoghurt": "Yoghurt",
+    "ham": "Sliced ham"
   },
   "general": {
     "title": "Due-soon settings",

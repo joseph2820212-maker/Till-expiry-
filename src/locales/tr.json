@@ -148,8 +148,6 @@
   "settings": {
     "language": "Dil",
     "languageValue": "Türkçe",
-    "proTitle": "TillExpiry Pro",
-    "proDesc": "Fire raporu, geçmiş dışa aktarma, kontrol listesi ve sınırsız ürün",
     "appGroup": "UYGULAMA",
     "offlinePrivate": "Çevrimdışı ve Gizli",
     "offlinePrivateSub": "Verileriniz cihazınızda kalır",
@@ -179,183 +177,17 @@
     "languageSwitching": "Dil değiştiriliyor…",
     "languageRolledBack": "{{lang}} diline geçilemedi. Önceki dile geri dönüldü.",
     "languageChangeFailed": "Dil değiştirme başarısız oldu. Lütfen tekrar deneyin.",
-    "backupSecureNote": "Yedekler ürünlerinizi, tarihlerinizi, geçmişinizi ve ayarlarınızı parolanızla şifreli olarak içerir. Pro satın alımınız ve bu telefondaki hatırlatmalar dahil değildir.",
     "currencyScreenTitle": "Para Birimi",
     "currencyScreenSub": "Varsayılan görüntüleme para birimini ayarla",
     "currentCurrency": "MEVCUT PARA BİRİMİ",
     "chooseCurrency": "PARA BİRİMİ SEÇ",
     "numberFormatNote": "Sayı biçimlendirmesi (ondalık ve binlik ayırıcılar) uygulama dili ayarınıza göre belirlenir.",
     "defaultsNote": "Para birimi ürün fiyatları ve indirimler için kullanılır. Kayıtlı bir fiyat kendi para birimini korur; dönüştürme yapılmaz.",
-    "proActive": "TillExpiry Pro etkin",
-    "proActiveFooter": "Teşekkürler. Bu cihazda her şey açık ve çevrimdışıyken de açık kalır.",
-    "proFreeFooter": "Ücretsiz plan girdiklerinizi asla kilitlemez. Pro tek seferlik satın almadır, abonelik yoktur.",
     "dataStorageNotice": "Veri depolama ve yedekleme bildirimi",
     "aboutApp": "{{app}} hakkında",
     "currencyNotSet": "Henüz seçilmedi",
     "openSettings": "Ayarları aç",
     "currencySaveFailed": "Para birimi kaydedilemedi. Lütfen tekrar deneyin."
-  },
-  "billing": {
-    "settingsTitle": "Faturalama",
-    "restorePurchases": "Satın alımları geri yükle",
-    "purchaseFailed": "Satın alma başarısız. Tekrar deneyin.",
-    "retry": "Tekrar dene",
-    "statusLifetime": "Ömür boyu",
-    "purchaseEntitlementMissing": "Satın alma tamamlandı ancak Pro henüz doğrulanmadı. Yeniden denemek için Tekrar Dene'ye dokunun veya satın almayı geri yükleyin. İki kez ücretlendirilmezsiniz.",
-    "unlockPro": "Pro'yu aç – {{price}}",
-    "notNow": "Şimdi değil",
-    "restorePurchase": "Önceki satın almayı geri yükle",
-    "lifetimePlaceholderPrice": "tek seferlik",
-    "oncePrice": "{{price}} bir kez",
-    "proSummary": "Fire ve indirim raporu, geçmiş dışa aktarma, yazdırılabilir tarih kontrol listesi ve sınırsız ürün. Bir kez ödeyin, sonsuza dek kullanın. Abonelik yok.",
-    "unlocked": "Pro açıldı. Teşekkürler!",
-    "storeUnavailable": "Mağazaya şu anda ulaşılamıyor. Verileriniz güvende – çevrimiçi olunca tekrar deneyin.",
-    "restoreTitle": "Satın almayı geri yükle",
-    "nothingToRestore": "Bu mağaza hesabı için önceki satın alma bulunamadı.",
-    "proName": "{{app}} Pro",
-    "limit": {
-      "products": {
-        "eyebrow": "Ücretsiz plan: {{n}} kayıtlı ürün",
-        "title": "Ürün listeniz dolu",
-        "keepsWorking": "Kaydettiğiniz her ürün ve tarih çalışmaya devam eder: kontrol edin, indirin, dışa aktarın ve yedekleyin. Pro sınırı kaldırır."
-      },
-      "proFeature": {
-        "eyebrow": "Ücretsiz plan",
-        "title": "Bunun için Pro gerekir",
-        "keepsWorking": "Kaydettiğiniz her şey çalışmaya devam eder. Pro; fire raporu, geçmiş dışa aktarma, yazdırılabilir kontrol listesi ve sınırsız ürün ekler."
-      }
-    }
-  },
-  "help": {
-    "tabGuide": "Nasıl yapılır",
-    "guideIntro": "Günlük işler için kısa, adım adım talimatlar.",
-    "guide": {
-      "backup": {
-        "title": "Yedekleme ve geri yükleme",
-        "l1": "Daha Fazla → Yedekle ve geri yükle → Yedek oluştur. Dosya seçtiğiniz bir parolayla şifrelenir.",
-        "l2": "Dosyayı güvenli bir yerde saklayın (bulut sürücü, kendinize e-posta). Parola olmadan açılamaz – bizim tarafımızdan bile.",
-        "l3": "Yeni telefonda aynı ekrandan geri yükleyin. Ürünleriniz, tarihleriniz, geçmişiniz ve ayarlarınız geri gelir, hatırlatmalar yeniden planlanır; yarıda kalan geri yükleme güvenle geri alınır."
-      },
-      "languages": {
-        "title": "Diller ve para birimi",
-        "l1": "Altı dil: İngilizce, Arapça, Türkçe, Fransızca, İspanyolca ve Almanca. Arapça düzeni sağdan sola çevirir.",
-        "l2": "Tarihler uygulama dilinin biçiminde gösterilir. Rakamlar her dilde Batı rakamlarıyla kalır.",
-        "l3": "Para birimi yalnızca fiyatlar ve indirimler içindir. Değiştirmek kayıtlı fiyatları asla dönüştürmez."
-      },
-      "support": {
-        "title": "Güvenli destek almak",
-        "l1": "Diğer → Hakkında → Desteğe e-posta gönder. E-posta, uygulama sürümünüz ve cihazınız dolu olarak açılır.",
-        "l2": "Ekranı ve yapmaya çalıştığınızı anlatın; hassas rakam göstermiyorsa bir ekran görüntüsü ekleyin.",
-        "l3": "Yedek parolalarını, banka bilgilerini, mağaza parolalarını veya karartılmamış ürün listelerini asla göndermeyin. Destek yalnızca karartılmış bilgi ister."
-      },
-      "firstDates": {
-        "title": "İlk tarihleriniz",
-        "l1": "Uygulama dilini seçin, sonra Bugün → Tarihler ve hatırlatıcılar: kaç gün önceden “yakında” sayılacağını ve en çok kullandığınız tarih türünü belirleyin.",
-        "l2": "“Tarayıp tarih ekle”ye dokunup bir ürün tarayın. Yeni bir barkod için adı bir kez yazın; bir dahaki sefere ürün koduyla bulunur.",
-        "l3": "Ambalajdaki tarihi ve türünü seçin (son kullanma, tavsiye edilen, son satış, teşhir sonu). Adet ve yer isteğe bağlıdır ama kontrolü hızlandırır.",
-        "l4": "Aynı tarihli aynı ürün tek satır olarak tutulur: tekrar eklemek adedi artırır."
-      },
-      "dateCheck": {
-        "title": "Günlük tarih kontrolü",
-        "l1": "Bugün → Tarih kontrolü; süresi geçen, bugün ve yakında dolan her şeyi en eskiden başlayarak, aynı gün içinde son kullanma tarihlilerini önce listeler.",
-        "l2": "Rafta her satırda Sorun yok, Tükendi veya Atıldı'ya dokunun. Fiyatı indirmek veya yalnızca bir kısmını kaydetmek için satırın kendisine dokunun.",
-        "l3": "“Kalanların hepsi iyi” kalanları tek seferde işaretler. Hâlâ vadesi gelenler yarınki kontrolde tekrar çıkar.",
-        "l4": "Pro: raflarda kalemle dolaşmak için yere göre gruplanmış kontrol listesini yazdırın."
-      },
-      "reduceWaste": {
-        "title": "İndir, sat, at",
-        "l1": "Fiyatı indir, tarihi yeni fiyatıyla rafta tutar. Normal fiyat kayıtlıysa %25, %50 ve %75 tek dokunuştur; fiyatlar kuruşuna kadar kesindir.",
-        "l2": "Satıldı, Atıldı, İade ve Bağış raftan adet düşer. Kalanların hepsi için sayıyı boş bırakın; tarih kapanır ve Geçmiş'e geçer.",
-        "l3": "Yanlış düğmeye mi bastınız? Tarihi açıp Son işlemi geri al'ı kullanın; kapanan tarih yeniden açılır.",
-        "l4": "Silme yalnızca yanlış yazılmış bir tarih içindir: geçmiş bırakmaz. Gerçek stok için ne olduğunu kaydedin."
-      },
-      "reminders": {
-        "title": "Günlük hatırlatmalar",
-        "l1": "Tarihler ve hatırlatıcılar → Günlük hatırlatma. Dükkânı açtığınız saati seçin; telefon bir kez izin ister.",
-        "l2": "Hatırlatma yalnızca süresi geçen veya dolan bir şey olan günlerde görünür ve kaç tane olduğunu söyler. Önümüzdeki 7 gün için planlanır ve tarihler değiştikçe güncellenir.",
-        "l3": "Pil tasarrufu ve rahatsız etme modu bildirimleri geciktirebilir veya gizleyebilir. Güveniyorsanız uygulamayı her sabah açın."
-      },
-      "reports": {
-        "title": "Geçmiş ve fire",
-        "l1": "Menü → Geçmiş ve fire, raftan çıkan tarihleri listeler. Her tarihin kendi geçmişi de vardır.",
-        "l2": "Pro: 7, 30 veya 90 günde atılan, indirilen, satılan, iade ve bağış toplamları; değer ve en çok atılan ürünlerle.",
-        "l3": "Tarihler → Dışa aktar, raftaki tarihleri CSV olarak paylaşır (ücretsiz). Pro tüm geçmişi de dışa aktarır."
-      },
-      "scanning": {
-        "title": "Barkod tarama",
-        "l1": "Tarih eklemek için tarama kamerayı açık tutar: tarihi kaydedin ve sıradaki ürüne dönün.",
-        "l2": "Kamera yalnızca kodu okumak için kullanılır. Loş dolaplarda feneri kullanın ya da kodu yazın.",
-        "l3": "12 haneli UPC ile başına sıfır eklenmiş aynı kod tek ürün sayılır; böylece bir ürün iki kez eklenmez."
-      },
-      "products": {
-        "title": "Ürünler",
-        "l1": "Ürün değişmeyenleri tutar: ad, barkod, olağan yer, olağan tarih türü ve raf ömrü. Raftaki her tarih ayrıdır.",
-        "l2": "Raf ömrü girilmişse (ör. taze ekmek için 5 gün) tarih eklerken tek dokunuşla “bugün + 5” önerilir. Yavaş satılanlar mağaza ayarından daha erken uyarabilir.",
-        "l3": "Normal fiyat isteğe bağlıdır. Yalnızca indirim önermek ve raporda fireyi değerlemek için kullanılır."
-      },
-      "importing": {
-        "title": "Ürün ve tarihleri içe aktarma",
-        "l1": "Menü → Dosyadan içe aktar; kasanızdan veya bir tablodan kaydedilmiş CSV'yi (virgül, noktalı virgül veya sekme) okur.",
-        "l2": "Hangi sütunun ad, barkod, tarih vb. olduğunu kontrol edin. Tarih sütunu varsa tarihlerin nasıl yazıldığını seçin; uygulama 03/04'ü asla tahmin etmez.",
-        "l3": "Satırlar ürünlerinizle önce barkod, sonra stok kodu, sonra tam ad ile eşleşir. Önizleme yeni ve mevcut ürünleri, tarihleri ve atlanan satırları sayar.",
-        "l4": "İçe aktar'a dokunana kadar hiçbir şey kaydedilmez; sonra geçerli satırların hepsi kaydedilir ya da hiçbiri."
-      }
-    },
-    "tabFaq": "Sorular",
-    "faqIntro": "Dükkân sahiplerinin en çok sorduğu sorulara kısa yanıtlar.",
-    "faq": {
-      "gettingStarted": {
-        "title": "Başlarken",
-        "q1": "{{app}} çevrimiçi bir uygulama mı?",
-        "a1": "{{app}} çevrimdışı çalışır. Ürünleriniz, tarihleriniz ve geçmişiniz cihazınızda saklanır. Yalnızca Pro satın alımı Apple veya Google ve RevenueCat ile iletişim kurar; uygulamadan yalnızca içe/dışa aktarmayı, paylaşmayı veya yedeklemeyi seçtiğiniz dosyalar çıkar."
-      },
-      "dataPrivacy": {
-        "title": "Veri ve gizlilik",
-        "q1": "{{app}} rakamlarımı bir sunucuya gönderir mi?",
-        "a1": "Hayır. Ürünleriniz ve tarihleriniz {{app}} sunucularına gönderilmez; hesap ve bulut yoktur. Yedek dosyaları, dışa aktarımlar ve uygulama dışında paylaştıklarınız sizin sorumluluğunuzdadır."
-      },
-      "permissions": {
-        "title": "Kamera, dosyalar ve bildirimler",
-        "q1": "Uygulama neden kamera veya dosya izni istiyor?",
-        "a1": "Kamera yalnızca tarama ekranında barkod okumak için kullanılır; fotoğraf çekilmez veya saklanmaz. Dosyalara yalnızca CSV içe/dışa aktarırken, PDF paylaşırken veya yedek oluşturup geri yüklerken erişilir. Bildirimler yalnızca günlük hatırlatmayı açarsanız kullanılır. Uygulama her özelliği ilk kullandığınızda sorar."
-      },
-      "troubleshooting": {
-        "title": "Sorun giderme",
-        "q1": "Telefonumu kaybedersem ne olur?",
-        "a1": "Yedeğiniz yoksa telefondaki veriler kaybolur. Diğer → Yedekleme ve geri yükleme bölümünden yedek oluşturun, dosyayı güvenli bir yerde saklayın ve parolasını unutmayın; yeni telefonda aynı ekrandan geri yükleyin.",
-        "q2": "Uygulamayı silmek verilerimi siler mi?",
-        "a2": "Evet. Her şey cihazda saklandığı için, önce yedeklemediyseniz kaldırma işlemi ürünlerinizi, tarihlerinizi ve geçmişinizi siler. Başka yerde sakladığınız yedekler ve dışa aktarımlar etkilenmez."
-      },
-      "support": {
-        "title": "Destekle iletişim",
-        "q1": "Desteğe nasıl ulaşırım?",
-        "a1": "{{supportEmail}} adresine yazın – Diğer → Hakkında bölümündeki düğme uygulama ve cihaz bilgilerinizi otomatik doldurur. Bulunduğunuz ekranı, yapmaya çalıştığınızı ve hassas rakam içermiyorsa ekran görüntülerini ekleyin.",
-        "q2": "Desteğe güvenle ne gönderebilirim?",
-        "a2": "Cihaz türünüz, işletim sistemi sürümünüz, uygulama sürümü, ekran adı, kısa bir açıklama ve hassas rakamları gizlenmiş ekran görüntüleri. Yedek parolalarını, banka bilgilerini, mağaza hesabı parolalarını veya karartılmamış ürün listelerini asla göndermeyin."
-      },
-      "plans": {
-        "title": "Ücretsiz ve Pro",
-        "q1": "Pro ne ekler?",
-        "a1": "Ücretsiz sürüm 100 ürüne kadar, sınırsız tarih, tarama, tarih kontrolü, indir / sat / at, günlük hatırlatmalar, CSV içe aktarma, raftaki tarihlerin CSV dışa aktarımı, yedekleme ve altı dilin tümünü içerir. Pro; sınırsız ürün, fire ve indirim raporu, geçmiş dışa aktarma ve yazdırılabilir kontrol listesi ekleyen tek seferlik bir satın alımdır. Mevcut veriler asla kilitlenmez."
-      },
-      "dates": {
-        "title": "Tarihler",
-        "q1": "Son kullanma ile tavsiye edilen tüketim arasındaki fark nedir?",
-        "a1": "Birçok ülkede son kullanma tarihi güvenlikle, tavsiye edilen tarih ise kaliteyle ilgilidir; ancak kuralları ülkeniz belirler. Uygulama ikisini ayrı tutar ve tavsiye tarihi geçenleri farklı ifade eder; neyin satılabileceğine sizin yerinize karar vermez.",
-        "q2": "Bir ürünün birden fazla tarihi olabilir mi?",
-        "a2": "Evet. Her teslimatın kendi tarihi ve adedi olabilir. Ürünler sekmesi en yakın olanı ve kaç tane daha olduğunu gösterir.",
-        "q3": "Bugün eklediğim bir tarih neden şimdiden Süresi geçmiş'te?",
-        "a3": "Seçtiğiniz tarih bugünden önce. Açıp Tarihi düzelt'i kullanın ya da stokla ne yaptığınızı kaydedin."
-      },
-      "reminders": {
-        "title": "Hatırlatmalar",
-        "q1": "Bu sabah hatırlatma gelmedi.",
-        "a1": "Hatırlatma yalnızca süresi geçen veya dolan bir şey olduğunda görünür. Uygulama için bildirimlere izin verildiğini, pil tasarrufunun engellemediğini kontrol edin ve sonraki günleri planlaması için uygulamayı bir kez açın.",
-        "q2": "Uygulamayı haftalarca açmazsam hatırlatmalar çalışır mı?",
-        "a2": "Uygulama her açıldığında veya bir tarih değiştiğinde 7 gün ilerisi için planlanırlar. Sonrasında bir sonraki haftayı planlaması için uygulamayı tekrar açın."
-      }
-    },
-    "title": "Yardım"
   },
   "about": {
     "publisherLine": "Yayıncı: {{publisher}}",
@@ -365,101 +197,6 @@
     "description": "{{app}}, dükkânlar ve küçük işletmeler için son kullanma ve tavsiye edilen tüketim tarihlerini takip eder: ürünü tarayın, tarihini ekleyin, bugün ve önümüzdeki günlerde dolacakları görün. Ürünleriniz ve tarihleriniz cihazınızda saklanır.",
     "reviewBuild": "İnceleme Sürümü",
     "reviewBuildSub": "Tüm özellikler açık · satın alma yok"
-  },
-  "legal": {
-    "privacy": {
-      "title": "Gizlilik politikası",
-      "intro": "Bu Gizlilik Politikası, {{publisher}} tarafından sunulan {{app}} uygulamasının bilgilerinizi nasıl işlediğini açıklar.",
-      "h1": "Tasarım gereği çevrimdışı",
-      "p1": "Ürünleriniz, tarihleriniz, geçmişiniz ve ayarlarınız yalnızca cihazınızda saklanır. {{app}}'nin hesap sistemi ve verilerinizi tutan bir sunucusu yoktur.",
-      "h2": "İzleme yok",
-      "p2": "Uygulamada analiz, reklam veya çökme raporlama kitaplığı yoktur. Ürünleriniz, tarihleriniz ve geçmişiniz cihazınızda kalır ve TillExpiry sunucularına gönderilmez.",
-      "h3": "Uygulamanın kullanabileceği cihaz özellikleri",
-      "l1": "Kamera – yalnızca tarayıcıyı açtığınızda barkod okumak için. Fotoğraf saklanmaz.",
-      "l2": "Dosyalar – CSV içe aktardığınızda veya verilerinizi dışa aktardığınızda, paylaştığınızda ya da yedeklediğinizde.",
-      "l3": "Paylaşım – bir PDF veya CSV'yi başka bir uygulamaya gönderdiğinizde. Paylaştıklarınız uygulamadan çıkar ve artık onun kontrolünde değildir.",
-      "l4": "Uygulama içi satın alma – Apple veya Google ile satın alma hizmeti RevenueCat tarafından yürütülür; bunlar bir satın alma makbuzu ve anonim bir uygulama yükleme tanımlayıcısı alır. Ad, e-posta veya işletme verisi gönderilmez.",
-      "h4": "Kontrolünüz",
-      "p3": "Uygulamadaki her şeyi istediğiniz zaman düzenleyebilir veya silebilirsiniz. Uygulamayı kaldırmak, kendi yaptığınız yedekler ve dışa aktarmalar dışında verilerini cihazdan siler.",
-      "h5": "Yedekler",
-      "p4": "Yedek dosyaları seçtiğiniz bir parolayla şifrelenir. Onları açamayız veya kurtaramayız. Nerede sakladığınız size kalmış.",
-      "h6": "Çocuklar",
-      "p5": "{{app}} iş kullanıcıları içindir ve çocuklara yönelik değildir. {{publisher}} çocuklardan bilerek kişisel veri toplamaz.",
-      "h7": "Gizlilik soruları ve veri talepleri",
-      "p6": "Gizlilik soruları veya veri talepleri için {{privacyEmail}} adresine yazın.",
-      "l5": "Uygulama güncellemeleri – yeni sürümler yalnızca App Store veya Google Play üzerinden gelir. Uygulama kendi başına kod güncellemesi indirmez.",
-      "h8": "Sorumluluklarınız",
-      "p7": "Dışa aktardığınız veya paylaştığınız dosyalardan, yedek dosyalarınız ve parolalarından ve cihaz düzeyindeki yedekleme ayarlarından siz sorumlusunuz. Dışa aktardığınız veya paylaştığınız dosyalar uygulamadan çıkar ve artık onun denetiminde değildir.",
-      "h9": "Destekle güvenli iletişim",
-      "p8": "Özellikle istenmedikçe ve karartılmadıkça ürün listelerinizi, tarihlerinizi veya yedek dosyalarınızı desteğe göndermeyin. Yedek parolalarını, banka bilgilerini veya mağaza hesabı şifrelerini asla göndermeyin.",
-      "h10": "Bu politikadaki değişiklikler",
-      "p9": "Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Önemli değişiklikler uygulamaya yansıtılır ve yukarıdaki tarih güncellenir; uygulamadaki sürüm geçerli olandır.",
-      "l6": "Bildirimler – yalnızca günlük hatırlatmayı açarsanız. Hatırlatmalar cihazda oluşturulur; hiçbir şey sunucuya gönderilmez."
-    },
-    "terms": {
-      "title": "Kullanım koşulları",
-      "intro": "Bu Kullanım Koşulları, {{publisher}} tarafından sunulan {{app}} için geçerlidir.",
-      "h1": "Uygulama nedir",
-      "p1": "{{app}}, ürünleriniz için girdiğiniz tarihleri kaydeder ve size hatırlatır. Ambalajdaki tarihleri kendisi okumaz, kasanıza bağlanmaz ve neyin satılabileceğine karar vermez.",
-      "h2": "Profesyonel danışmanlık değildir",
-      "p2": "Uygulama vergi, muhasebe, hukuk veya finans danışmanlığı vermez. Vergi oranları, kurallar ve iş kararları sizin sorumluluğunuzdadır; gerektiğinde nitelikli bir danışmanla kontrol edin.",
-      "n1": "Gıda güvenliği ve tarih etiketleme kuralları ülkeye ve ürüne göre değişir. Güvensiz veya tarihi geçmiş ürünleri kaldırmak ve işletmenize uygulanan kurallara uymak sizin sorumluluğunuzdadır.",
-      "h3": "Verileriniz",
-      "p3": "İşletme verileriniz cihazınızda saklanır ve TillExpiry sunucularına gönderilmez. Yedekleri saklamak ve dışa aktardığınız veya paylaştığınız dosyalar sizin sorumluluğunuzdadır.",
-      "h4": "Satın almalar",
-      "p4": "Pro, Apple veya Google üzerinden kendi koşullarıyla satılan tek seferlik bir uygulama içi satın almadır. Satın almayı geri yüklemek aynı mağaza hesabını gerektirir. Ücretsiz plan, girdiğiniz verilere erişimi asla kaldırmaz.",
-      "h5": "Sorumluluk",
-      "p5": "Uygulama olduğu gibi sunulur. Yasaların izin verdiği ölçüde {{publisher}}, kaçırılan veya yanlış tarihler, görünmeyen hatırlatmalar, veri veya kâr kaybı dahil, uygulama kullanılarak alınan kararlardan doğan kayıplardan sorumlu değildir. Bu koşullardaki hiçbir şey yasayla sınırlanamayan sorumluluğu sınırlamaz.",
-      "h6": "Geçerli hukuk",
-      "p6": "Bu koşullar, kendi ülkenizin yasaları kapsamında sahip olduğunuz zorunlu tüketici haklarını etkilemeksizin İngiltere ve Galler yasalarına tabidir.",
-      "h7": "Bu koşulların kabulü",
-      "p7": "Uygulamayı indirerek veya kullanarak bu Kullanım Koşullarını kabul etmiş olursunuz. Kabul etmiyorsanız lütfen uygulamayı kullanmayın.",
-      "h8": "Uygunluk",
-      "p8": "Uygulama, en az 18 yaşında (veya ülkenizdeki reşit olma yaşında) olan kişilerin iş amaçlı kullanımı içindir.",
-      "h9": "Sağlayıcı",
-      "p9": "{{app}}, {{publisher}} tarafından sunulur.",
-      "h10": "Rakamlarınızın doğruluğu",
-      "p10": "Girdiğiniz ürünlerin, tarihlerin ve adetlerin doğruluğundan ve raflarınızı kendiniz kontrol etmekten siz sorumlusunuz. Uygulama yalnızca verdiğiniz tarihleri bilir.",
-      "h11": "\"Olduğu gibi\" sunulur",
-      "p11": "Uygulama, yasaların izin verdiği azami ölçüde, açık veya zımni hiçbir garanti olmaksızın \"olduğu gibi\" ve \"mevcut olduğu şekliyle\" sunulur.",
-      "h12": "Veri kaybı",
-      "p12": "{{publisher}}, cihaz kaybı veya sıfırlanması, uygulamanın kaldırılması, başarısız bir yedekleme, unutulan bir yedek parolası veya kendi dışa aktarma ya da paylaşma işlemleriniz nedeniyle oluşan veri kaybından, yasal olarak sorumluluğun hariç tutulamadığı haller dışında sorumlu değildir.",
-      "h13": "Fikri mülkiyet",
-      "p13": "Uygulama, tasarımı, metinleri ve yazılımı dahil (kendi iş verileriniz hariç) {{publisher}} veya lisans verenlerine aittir ve geçerli yasalarla korunur. Size uygulamayı kullanmak için kişisel, münhasır olmayan ve devredilemez bir hak verilir.",
-      "h14": "Uygulamadaki ve bu koşullardaki değişiklikler",
-      "p14": "Özellikler eklendikçe, geliştirildikçe veya kaldırıldıkça uygulama zamanla değişebilir. Bu koşulları da zaman zaman güncelleyebiliriz; bir güncellemeden sonra uygulamayı kullanmaya devam etmeniz güncellenmiş koşulları kabul ettiğiniz anlamına gelir.",
-      "h15": "Hukuki ve koşullarla ilgili sorular",
-      "p15": "Yasal bildirimler veya koşullarla ilgili sorular için {{legalEmail}} adresine yazın."
-    },
-    "licences": {
-      "title": "Açık kaynak lisansları",
-      "intro": "{{app}}, {{count}} açık kaynak paketle oluşturulmuştur. Envanter {{date}} tarihinde oluşturuldu.",
-      "p1": "Her paket kendi lisansı altında kalır; aşağıda lisans türüne ve ardından pakete göre listelenmiştir. Lisans metnini okumak için bir pakete dokunun. Yazarlarına teşekkürler.",
-      "noText": "paket lisans metni içermiyor"
-    },
-    "lastUpdated": "Son güncelleme: {{date}}.",
-    "companyNote": "{{publisher}}. Şirket numarası: {{companyNumber}}. Kayıtlı ofis: {{registeredOffice}}. KDV durumu: {{vatStatus}}.",
-    "vatNotRegistered": "KDV mükellefi değil",
-    "dataStorage": {
-      "title": "Veri Depolama ve Yedekleme Bildirimi",
-      "p1": "Ürünleriniz, tarihleriniz, geçmişiniz ve ayarlarınız cihazınızda yerel olarak saklanır.",
-      "l1": "Uygulamayı silmek yerel olarak saklanan verilerini siler.",
-      "l2": "Cihaz kaybı, hasarı, sıfırlanması veya kaldırma veri kaybına yol açabilir.",
-      "l3": "Diğer → Yedekleme ve geri yükleme bölümünden düzenli yedek alın; dosyayı güvenli bir yerde saklayın.",
-      "l4": "Yedek ve dışa aktarma dosyaları ürünlerinizi ve tarihlerinizi içerir; güvenle saklanmalı ve yalnızca güvendiğiniz kişilerle paylaşılmalıdır.",
-      "l5": "Yedekler seçtiğiniz parola ile şifrelenir. Bu parolayı kaybederseniz yedek geri yüklenemez – ne siz ne de biz açabiliriz.",
-      "n1": "Cihaz, yedek parolası veya kullanılabilir bir yedek kaybolursa {{app}} yerel olarak saklanan verileri kurtaramaz.",
-      "h1": "Güvenlik sorunu bildirme",
-      "p2": "Bir güvenlik sorunu bildirmek için {{securityEmail}} adresine yazın. İlk bildirime yedek parolalarını, banka bilgilerini veya düzenlenmemiş fiyat dosyalarını eklemeyin."
-    },
-    "contact": {
-      "title": "İletişim ve destek",
-      "body": "Yardım için {{supportEmail}} adresine yazın. Lütfen cihaz türünüzü, işletim sistemi sürümünü, uygulama sürümünü, bulunduğunuz ekranı ve sorunun kısa bir açıklamasını ekleyin. Hassas rakam içermiyorsa ekran görüntüleri yardımcı olur.",
-      "never": "Destek özellikle karartılmış tanı bilgisi istemedikçe yedek parolalarını, banka bilgilerini, mağaza hesabı parolalarını veya karartılmamış ürün listelerini asla göndermeyin.",
-      "security": "Güvenlik sorunu mu? {{securityEmail}} adresine yazın.",
-      "emailButton": "Desteğe e-posta gönder",
-      "mailBody": "Uygulama: {{app}} {{version}}\nCihaz: {{platform}} {{osVersion}}\nEkran:\nNe yapmaya çalışıyordum:\n\n(Yedek parolalarını, banka bilgilerini veya karartılmamış ürün listelerini eklemeyin.)"
-    }
   },
   "backup": {
     "subtitle": "Ürünleriniz, tarihleriniz ve ayarlarınız tek bir şifreli dosyada",
@@ -867,7 +604,6 @@
     "valueNote": "Değer = adet × tarih indirildiyse indirimli fiyat, değilse ürünün normal fiyatı. Sayılmamış tarihler veya fiyatsız ürünler değer eklemez. Para birimleri asla toplanmaz.",
     "topWasted": "En çok atılanlar",
     "unitsShort": "Adet: {{count}}",
-    "proTitle": "Fire raporu Pro'ya dahildir",
     "proBody": "Neyi attığınızı, indirdiğinizi ve sattığınızı, değerini ve en çok hangi ürünleri attığınızı görün. Aşağıdaki geçmişiniz ücretsiz kalır.",
     "unlock": "Pro'nun eklediklerini gör",
     "exportHistory": "Geçmişi dışa aktar (CSV)",
@@ -1695,7 +1431,8 @@
     "sauce": "Domates sosu",
     "sandwich": "Peynirli sandviç",
     "peas": "Dondurulmuş bezelye",
-    "yoghurt": "Yoğurt"
+    "yoghurt": "Yoğurt",
+    "ham": "Dilimlenmiş jambon"
   },
   "general": {
     "title": "Yakında dolma ayarları",

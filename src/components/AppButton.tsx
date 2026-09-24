@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ActivityIndicator, ViewStyle, TextStyle } from 'react-native';
+import { TouchableOpacity, Text, View, StyleSheet, ActivityIndicator, ViewStyle, TextStyle } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { rs } from '../theme/responsive';
@@ -35,20 +36,33 @@ export const AppButton: React.FC<Props> = ({
     >
       {loading
         ? <ActivityIndicator color={variant === 'primary' || variant === 'danger' ? '#fff' : colors.primaryBlue} size="small" />
-        : <Text
-            style={[styles.text, styles[`${variant}Text` as keyof typeof styles] as TextStyle, isDisabled && styles.disabledText, textStyle]}
-            numberOfLines={1}
-            adjustsFontSizeToFit
-            minimumFontScale={0.75}
-          >
-            {icon ? `${icon}  ${label}` : label}
-          </Text>
+        : (
+          <View style={styles.row}>
+            {icon && ICON_NAME.test(icon) ? <Ionicons name={icon as any} size={18} color={isDisabled ? colors.disabledText : ICON_COLOR[variant]} /> : null}
+            <Text
+              style={[styles.text, styles[`${variant}Text` as keyof typeof styles] as TextStyle, isDisabled && styles.disabledText, textStyle, styles.shrink]}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              minimumFontScale={0.75}
+            >
+              {icon && !ICON_NAME.test(icon) ? `${icon}  ${label}` : label}
+            </Text>
+          </View>
+        )
       }
     </TouchableOpacity>
   );
 };
 
+/** An Ionicons name (e.g. "add", "checkmark-done-outline"); anything else (an emoji) is shown as text before the label. */
+const ICON_NAME = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const ICON_COLOR: Record<Variant, string> = {
+  primary: '#fff', danger: '#fff', secondary: colors.textDark, outline: colors.primaryBlue, ghost: colors.textMuted, dangerLink: colors.dangerRed,
+};
+
 const styles = StyleSheet.create({
+  row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, maxWidth: '100%' },
+  shrink: { flexShrink: 1 },
   base: { paddingVertical: rs(14), paddingHorizontal: rs(20), borderRadius: 14, alignItems: 'center', justifyContent: 'center', minHeight: rs(50) },
   primary: { backgroundColor: colors.primaryBlue, shadowColor: colors.primaryBlue, shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.25, shadowRadius: 8, elevation: 4 },
   secondary: { backgroundColor: colors.cardWhite, borderWidth: 1.5, borderColor: colors.border },

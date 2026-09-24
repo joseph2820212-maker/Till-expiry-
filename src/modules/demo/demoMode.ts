@@ -66,6 +66,9 @@ export async function seedDemo(now: number = Date.now()): Promise<void> {
   const peas = await saveProduct(ws.id, { name: t('demo.peas'), defaultLocationId: freezer.id });
   await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: peas.id, dateKind: 'none', quantity: 2, locationId: freezer.id });
 
+  const ham = await saveProduct(ws.id, { name: t('demo.ham'), defaultLocationId: fridge.id, defaultDateKind: 'use_by', costPerTrackingUnit: money(180) });
+  await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: ham.id, dateKind: 'use_by', deadline: { precision: 'date', date: addDays(today, -1) }, quantity: 2, lotNumber: 'H0921', locationId: fridge.id });
+
   const yoghurt = await saveProduct(ws.id, { name: t('demo.yoghurt'), defaultLocationId: fridge.id, costPerTrackingUnit: money(60) });
   const y = await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: yoghurt.id, dateKind: 'use_by', deadline: { precision: 'date', date: addDays(today, -1) }, quantity: 2, locationId: fridge.id });
   await recordRemoval(ws.id, y.id, 'wasted', { quantity: 2, reason: 'past_deadline' });
