@@ -146,3 +146,33 @@ device checklist (`docs/DEVICE_CHECKLIST.md`, all rows NOT TESTED).
 - The reminder preview on the add forms is computed from settings, not read back from the scheduled notifications.
 - Tapping a notification opens the batch; the daily summary opens Today.
 - Web preview (development only) shows English only; it is not a supported platform.
+
+## Independent review remediation (review of `e056e93`, 25 Sep 2026) — fixes PASS (automated) · G9 HOLD until re-audit
+
+| Field | Value |
+|---|---|
+| Reviewed SHA | `e056e93417b340d48fb5af7cf36c37fc5e8033ec` |
+| Remediation commits | `794e393` (EXP-REV-01/02/06/07/08/09/10) · `3319919` + the final "review remediation" commit (EXP-REV-03/04/05, backup wording, translations, docs) |
+| Scope | only the review findings; no redesign |
+
+| Finding | Fix | Regression tests |
+|---|---|---|
+| EXP-REV-01 opened-child correction could drop the parent's earlier hard date | `correctDeadline` on an opened child re-derives through `openedDeadline` with the parent; the correction replaces only the child's own date; the correction screen edits the child's own date and links to the parent for pack-date corrections | batchStore: 26 Sep use-by vs 30 Sep cutoff; correction to none; best-before parent keeps quality secondary; history before/after/reason + idempotent |
+| EXP-REV-02 product money edit and new batch were two writes | `DatedInput.productMoney` is applied inside the batch's journaled transaction | addFlows: injected write failure leaves product money, batches, events and indexes unchanged; repeat tap idempotent |
+| EXP-REV-03 restore could report success, then roll back on launch | commit marker written and read back before success; otherwise immediate rollback (or `restoreUnconfirmed` with a deterministic launch outcome); cleanup failure after commit keeps the new data | backupFile "REV-03 durable commit point" block (6 cases) |
+| EXP-REV-04 failed restore recovery was swallowed at start-up | `runStartupRecovery` → blocking `RecoveryRequiredScreen` with Retry; journal kept; unreadable `prepared` journal blocks instead of being discarded; new restores refused while a journal is pending | backupFile recovery cases, `recoveryRequiredScreen.test.tsx` |
+| EXP-REV-05 backup silently dropped bad records | normal backup fails closed (`backupBlocked` + category names, no file, no share sheet); referential validation (index ↔ item, workspace ownership, orphan items, active workspace, per-batch event lists) on backup and restore | corrupt product, missing item, orphan item, broken event list, hidden active workspace, "no valid record disappears" |
+| EXP-REV-06 currency change relabelled money | `updateWorkspace` refuses a currency change while products hold other-currency amounts (`currencyInUse`) unless the user explicitly clears them to unknown; forms never prefill or rewrite other-currency amounts | `currencyPolicy.test.ts` (4), addFlows GBP→EUR case |
+| EXP-REV-07 exact reminders on Android 12+ | **Option B** (D9): reminders are best effort; `SCHEDULE_EXACT_ALARM` and `USE_EXACT_ALARM` are blocked (manifest `tools:node="remove"`); expo-notifications falls back to inexact alarms; wording states possible delay and that Today is authoritative | `reminderPolicy.test.ts` |
+| EXP-REV-08 label_printed recorded when the Android print dialog merely opened | after `printAsync` the user is asked "Did the label print?"; only Yes records `label_printed` | reportScreens E31 (No records nothing, Yes records once) |
+| EXP-REV-09 GS1 AI 17 DD=00 treated as month-only | AI 17 DD=00 → last calendar day (leap years); AI 15 keeps month precision; user confirmation unchanged | gs1: 2027-02-28, 2028-02-29, 2026-11-30, 2026-12-31 |
+| EXP-REV-10 waste cost changed with later product cost | wasted events store `unitCost` snapshot; legacy events without it show unknown cost | reports: £1 snapshot survives change to £2; legacy → unknown |
+| §4 share wording | `lastBackupPreparedAt`; "Backup file prepared — choose where to save it"; never "backup complete" from `shareAsync` | backupScreens wording cases |
+
+Gates after remediation: `npm run typecheck` clean · `npm run lint` clean · `npm test` 65 suites / 602 tests passed ·
+`npx expo config --type introspect` OK · `npx expo export --platform android` Hermes bundle 6.76 MB. 38 new strings
+translated into ar / tr / fr / es / de (machine translation, for human review; German "erstellt" for a prepared file,
+"Wiederherstellung" used for both recovery and restore — flagged).
+
+Still required before release: independent re-audit of this SHA, then the native APK on a networked Android build
+machine (G10 HOLD unchanged) and the device checklist, including the new rows 35–38.

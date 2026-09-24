@@ -133,7 +133,8 @@
     "rule_nameRequired": "Introduce un nombre para la regla.",
     "rule_sourceRequired": "Indica de dónde viene esta regla (etiqueta, proveedor, tu procedimiento).",
     "rule_durationRequired": "Indica cuánto tiempo.",
-    "rule_badDuration": "Introduce una duración entre 1 minuto y 3 años."
+    "rule_badDuration": "Introduce una duración entre 1 minuto y 3 años.",
+    "currencyInUse": "Hay productos que aún tienen costes o precios en la moneda anterior."
   },
   "nav": {
     "more": "Más",
@@ -185,9 +186,6 @@
     "subtitle": "Tus productos, fechas y ajustes en un solo archivo cifrado",
     "createSection": "Crear copia de seguridad",
     "createNow": "Crear copia",
-    "lastBackup": "Última copia: {{when}}",
-    "never": "Aún no hay copia en este dispositivo",
-    "createdTitle": "Copia creada",
     "restoreSection": "Restaurar desde una copia",
     "chooseFile": "Elegir archivo de copia",
     "pw": {
@@ -205,9 +203,6 @@
     },
     "title": "Copia de seguridad y restauración",
     "createHint": "Todo lo de todos tus negocios va en un solo archivo, cifrado con una contraseña que eliges tú. Sin la contraseña nadie puede abrirlo, ni siquiera nosotros. Guarda el archivo fuera de este teléfono, por ejemplo en tu nube o en tu correo.",
-    "createdShared": "Se ha creado {{file}}. Guárdalo fuera de este teléfono.",
-    "createdNotShared": "Se ha creado {{file}}, pero compartir no está disponible en este dispositivo.",
-    "skippedRecords": "Se omitieron registros que no se pudieron leer: {{count}}",
     "demoNotice": "Estás en la demo. Sal de la demo para hacer una copia de seguridad o restaurar tus propios datos. Los datos de la demo nunca se incluyen en una copia de seguridad.",
     "restoreHint": "Elige un archivo de copia de seguridad de TillExpiry. Verás lo que contiene antes de que cambie nada en este teléfono.",
     "notIncluded": "No se incluye: los recordatorios ya programados en este teléfono (se vuelven a programar tras restaurar), la demo y el idioma de la app.",
@@ -232,7 +227,10 @@
       "writeFailed": "No se pudo guardar el archivo de copia de seguridad en este teléfono.",
       "snapshotFailed": "No se pudieron apartar los datos actuales antes de restaurar, así que no se ha cambiado nada.",
       "restoreRolledBack": "La restauración falló. Se han recuperado tus datos anteriores.",
-      "rollbackFailed": "La restauración falló y aún no se han podido recuperar tus datos anteriores. Cierra y vuelve a abrir la app: recuperará tus datos anteriores al iniciarse."
+      "rollbackFailed": "La restauración falló y aún no se han podido recuperar tus datos anteriores. Cierra y vuelve a abrir la app: recuperará tus datos anteriores al iniciarse.",
+      "backupBlocked": "No se ha creado ningún archivo de copia de seguridad. Algunos registros guardados están dañados o son incoherentes, por lo que no es posible una copia completa: {{categories}}. No se ha compartido nada.",
+      "recoveryRequired": "Aún hay que terminar o deshacer una restauración anterior. Cierra y vuelve a abrir la app y después inténtalo de nuevo. No se ha cambiado nada.",
+      "restoreUnconfirmed": "No se pudo confirmar la restauración. Cierra y vuelve a abrir la app ahora, antes de hacer cualquier cambio: entonces mostrará tus datos anteriores o la copia de seguridad completa, nunca una mezcla."
     },
     "preview": {
       "title": "Restaurar copia de seguridad",
@@ -261,6 +259,23 @@
       "failedTitle": "Restauración no completada",
       "noFileTitle": "No se ha elegido ningún archivo",
       "noFileBody": "Vuelve atrás y elige un archivo de copia de seguridad para restaurar."
+    },
+    "preparedTitle": "Archivo de copia de seguridad preparado — elige dónde guardarlo",
+    "preparedShared": "{{file}} está listo. Elige dónde guardarlo en el menú de compartir, por ejemplo en tu nube o en tu correo. TillExpiry no puede ver si el archivo se guardó realmente, así que comprueba que esté allí.",
+    "preparedNotShared": "{{file}} se ha preparado, pero compartir no está disponible en este dispositivo, así que no se ha guardado en ningún sitio fuera de este teléfono.",
+    "lastPrepared": "Último archivo de copia de seguridad preparado: {{when}}",
+    "neverPrepared": "Aún no se ha preparado ningún archivo de copia de seguridad en este dispositivo",
+    "category": {
+      "workspaces": "Negocios",
+      "settings": "Ajustes",
+      "products": "Productos",
+      "batches": "Lotes",
+      "events": "Entradas del historial",
+      "rules": "Reglas",
+      "locations": "Lugares",
+      "lists": "Categorías y proveedores",
+      "imports": "Historial de importaciones",
+      "unknown": "Otros datos"
     }
   },
   "scan": {
@@ -506,9 +521,9 @@
     "sameDaySection": "Aviso el mismo día",
     "sameDayToggle": "Avisar la mañana de la fecha",
     "sameDayHint": "Se envía a la hora del resumen el día de la fecha.",
-    "exactSection": "Hora límite exacta",
-    "exactToggle": "Avisar antes de una hora límite exacta",
-    "exactHint": "Para artículos abiertos y elaborados con hora límite.",
+    "exactSection": "Recordatorio de hora límite",
+    "exactToggle": "Recordar antes de la hora límite de un artículo abierto o elaborado",
+    "exactHint": "Para artículos abiertos y elaborados con hora límite. Android puede entregar los recordatorios con unos minutos de retraso; la pantalla Hoy siempre muestra el estado actual.",
     "leadLabel": "Con cuánta antelación",
     "minutesBefore": "Minutos antes: {{count}}",
     "notShelfLife": "Las horas de recordatorio solo deciden cuándo te avisa el teléfono. No son reglas de vida útil y nunca cambian una fecha."
@@ -864,7 +879,9 @@
     "qtyTitle": "Cantidad restante",
     "qtyNow": "Cantidad actual",
     "qtyReasonPh": "p. ej. conté el estante",
-    "saveQty": "Guardar cantidad"
+    "saveQty": "Guardar cantidad",
+    "childHint": "Esto corrige la fecha propia del artículo abierto. La fecha del envase original sigue aplicándose si es anterior.",
+    "parentDate": "Corregir la fecha del envase original"
   },
   "move": {
     "title": "Mover",
@@ -936,7 +953,10 @@
     "zoneChangeHint": "Cambiar la zona horaria cambia cómo se calcula “hoy” a partir de ahora. Las fechas guardadas mantienen su significado.",
     "hide": "Ocultar negocio",
     "hideTitle": "¿Ocultar este negocio?",
-    "hideBody": "Sus datos se conservan y se puede restaurar desde la lista. No estará activo."
+    "hideBody": "Sus datos se conservan y se puede restaurar desde la lista. No estará activo.",
+    "currencyChangeTitle": "¿Cambiar la moneda?",
+    "currencyChangeBody": "Productos con coste o precio en otra moneda: {{count}}. Los importes nunca se convierten. Si continúas, esos importes se eliminan (dejan de estar registrados) y puedes volver a introducirlos en {{currency}}.",
+    "currencyChangeConfirm": "Eliminar importes y cambiar"
   },
   "onboarding": {
     "promise": "Sabe qué tiene la fecha superada, qué vence hoy y qué vence pronto — en stock, productos abiertos y alimentos elaborados.",
@@ -1024,7 +1044,11 @@
     "location": "Lugar: {{name}}",
     "notPpds": "Etiqueta interna — no es una etiqueta alimentaria legal (no PPDS). No sustituye el etiquetado legal de ingredientes, alérgenos ni otra información al consumidor.",
     "nothingToPrint": "Las etiquetas son para lotes elaborados o abiertos. Ninguno de los lotes seleccionados se puede etiquetar.",
-    "skipped": "Lotes excluidos (no elaborados ni abiertos, o no encontrados): {{count}}"
+    "skipped": "Lotes excluidos (no elaborados ni abiertos, o no encontrados): {{count}}",
+    "confirmTitle": "¿Se imprimió la etiqueta?",
+    "confirmBody": "La ventana de impresión no le indica a la app si se imprimió. Confirma solo si la etiqueta salió de la impresora.",
+    "confirmYes": "Sí, se imprimió",
+    "confirmNo": "No"
   },
   "markdown": {
     "title": "Ayuda de precios",
@@ -1596,7 +1620,7 @@
       },
       "reminders": {
         "title": "Recordatorios",
-        "l1": "Más → Recordatorios: un resumen diario a la hora que elijas, un aviso con varios días de antelación, un aviso el mismo día y un aviso antes de una hora límite exacta de un artículo abierto o elaborado.",
+        "l1": "Más → Recordatorios: un resumen diario a la hora que elijas, un aviso con varios días de antelación, un aviso el mismo día y un aviso antes de la hora límite de un artículo abierto o elaborado. Los recordatorios se envían en la medida de lo posible, sin garantía: Android puede entregarlos con unos minutos de retraso.",
         "l2": "Los recordatorios se crean en este teléfono. El teléfono pide una vez permiso para mostrar notificaciones.",
         "l3": "Las horas de los recordatorios solo deciden cuándo se te avisa. No son reglas de vida útil y nunca cambian una fecha.",
         "l4": "El ahorro de batería o el modo No molestar pueden retrasar u ocultar las notificaciones. Hoy siempre muestra el estado actual, así que abre la app para revisar tus fechas.",
@@ -1776,5 +1800,13 @@
       "updates": "Sin actualizaciones de código descargadas",
       "updatesSub": "Las nuevas versiones solo llegan a través de App Store o Google Play."
     }
+  },
+  "recovery": {
+    "title": "Se necesita una recuperación antes de abrir TillExpiry",
+    "body": "Se interrumpió una restauración desde una copia de seguridad y aún no se han podido devolver los datos de este teléfono a su estado anterior.",
+    "bodyUnreadable": "Se interrumpió una restauración desde una copia de seguridad y no se pudo leer su registro de recuperación en este teléfono, así que TillExpiry no puede saber si tus datos están completos. El registro se conserva, no se elimina.",
+    "dataHidden": "Los datos de tus negocios no se muestran hasta que termine la recuperación, para que nunca trabajes sobre una copia reemplazada a medias.",
+    "retry": "Reintentar",
+    "hint": "Si sigue ocurriendo, asegúrate de que el teléfono tenga espacio de almacenamiento libre, reinícialo y vuelve a tocar Reintentar. No desinstales la app: eso eliminaría los datos que intenta recuperar."
   }
 }

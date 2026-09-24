@@ -133,7 +133,8 @@
     "rule_nameRequired": "Saisissez un nom pour la règle.",
     "rule_sourceRequired": "Indiquez l'origine de cette règle (étiquette, fournisseur, votre procédure).",
     "rule_durationRequired": "Saisissez une durée.",
-    "rule_badDuration": "Saisissez une durée comprise entre 1 minute et 3 ans."
+    "rule_badDuration": "Saisissez une durée comprise entre 1 minute et 3 ans.",
+    "currencyInUse": "Des produits ont encore des coûts ou des prix dans l'ancienne devise."
   },
   "nav": {
     "more": "Plus",
@@ -185,9 +186,6 @@
     "subtitle": "Vos produits, dates et réglages dans un seul fichier chiffré",
     "createSection": "Créer une sauvegarde",
     "createNow": "Créer une sauvegarde",
-    "lastBackup": "Dernière sauvegarde : {{when}}",
-    "never": "Aucune sauvegarde sur cet appareil",
-    "createdTitle": "Sauvegarde créée",
     "restoreSection": "Restaurer une sauvegarde",
     "chooseFile": "Choisir un fichier de sauvegarde",
     "pw": {
@@ -205,9 +203,6 @@
     },
     "title": "Sauvegarde et restauration",
     "createHint": "Toutes les données de tous vos établissements sont regroupées dans un seul fichier, chiffré avec un mot de passe de votre choix. Sans ce mot de passe, personne ne peut l'ouvrir, pas même nous. Enregistrez le fichier ailleurs que sur ce téléphone, par exemple dans votre stockage en ligne ou par e-mail.",
-    "createdShared": "{{file}} a été créé. Conservez-le ailleurs que sur ce téléphone.",
-    "createdNotShared": "{{file}} a été créé, mais le partage n'est pas disponible sur cet appareil.",
-    "skippedRecords": "Enregistrements illisibles laissés de côté : {{count}}",
     "demoNotice": "Vous êtes dans la démo. Quittez la démo pour sauvegarder ou restaurer vos propres données. Les données de démo ne sont jamais incluses dans une sauvegarde.",
     "restoreHint": "Choisissez un fichier de sauvegarde TillExpiry. Vous verrez son contenu avant que quoi que ce soit ne change sur ce téléphone.",
     "notIncluded": "Non inclus : les rappels déjà programmés sur ce téléphone (ils sont reprogrammés après une restauration), la démo et la langue de l'application.",
@@ -232,7 +227,10 @@
       "writeFailed": "Le fichier de sauvegarde n'a pas pu être enregistré sur ce téléphone.",
       "snapshotFailed": "Les données actuelles n'ont pas pu être mises de côté avant la restauration : rien n'a été modifié.",
       "restoreRolledBack": "La restauration a échoué. Vos données précédentes ont été rétablies.",
-      "rollbackFailed": "La restauration a échoué et vos données précédentes n'ont pas encore pu être rétablies. Fermez puis rouvrez l'application : elle rétablira vos données précédentes au démarrage."
+      "rollbackFailed": "La restauration a échoué et vos données précédentes n'ont pas encore pu être rétablies. Fermez puis rouvrez l'application : elle rétablira vos données précédentes au démarrage.",
+      "backupBlocked": "Aucun fichier de sauvegarde n'a été créé. Certains enregistrements stockés sont endommagés ou incohérents, une sauvegarde complète est donc impossible : {{categories}}. Rien n'a été partagé.",
+      "recoveryRequired": "Une restauration précédente doit encore être terminée ou annulée. Fermez puis rouvrez l'application, puis réessayez. Rien n'a été modifié.",
+      "restoreUnconfirmed": "La restauration n'a pas pu être confirmée. Fermez puis rouvrez l'application maintenant, avant toute modification : elle affichera alors soit vos données précédentes, soit la totalité de la sauvegarde, jamais un mélange des deux."
     },
     "preview": {
       "title": "Restaurer une sauvegarde",
@@ -261,6 +259,23 @@
       "failedTitle": "Restauration non terminée",
       "noFileTitle": "Aucun fichier de sauvegarde choisi",
       "noFileBody": "Revenez en arrière et choisissez un fichier de sauvegarde à restaurer."
+    },
+    "preparedTitle": "Fichier de sauvegarde préparé — choisissez où l'enregistrer",
+    "preparedShared": "{{file}} est prêt. Choisissez où l'enregistrer dans le menu de partage, par exemple votre stockage en ligne ou un e-mail. TillExpiry ne peut pas savoir si le fichier a réellement été enregistré : vérifiez qu'il s'y trouve bien.",
+    "preparedNotShared": "{{file}} a été préparé, mais le partage n'est pas disponible sur cet appareil : il n'a donc été enregistré nulle part en dehors de ce téléphone.",
+    "lastPrepared": "Dernier fichier de sauvegarde préparé : {{when}}",
+    "neverPrepared": "Aucun fichier de sauvegarde préparé sur cet appareil pour l'instant",
+    "category": {
+      "workspaces": "Établissements",
+      "settings": "Réglages",
+      "products": "Produits",
+      "batches": "Lots",
+      "events": "Entrées d'historique",
+      "rules": "Règles",
+      "locations": "Emplacements",
+      "lists": "Catégories et fournisseurs",
+      "imports": "Historique des imports",
+      "unknown": "Autres données"
     }
   },
   "scan": {
@@ -506,9 +521,9 @@
     "sameDaySection": "Alerte le jour même",
     "sameDayToggle": "Alerter le matin de la date",
     "sameDayHint": "Envoyée à l'heure du résumé, le jour de la date.",
-    "exactSection": "Heure limite précise",
-    "exactToggle": "Alerter avant une heure limite précise",
-    "exactHint": "Pour les articles ouverts et préparés avec une heure limite.",
+    "exactSection": "Rappel avant l'heure limite",
+    "exactToggle": "Rappeler avant l'heure limite d'un article ouvert ou préparé",
+    "exactHint": "Pour les articles ouverts et préparés avec une heure limite. Android peut délivrer les rappels avec quelques minutes de retard ; l'écran Aujourd'hui affiche toujours l'état actuel.",
     "leadLabel": "Combien de temps avant",
     "minutesBefore": "Minutes avant : {{count}}",
     "notShelfLife": "Les heures de rappel déterminent seulement quand le téléphone vous prévient. Ce ne sont pas des règles de durée de conservation et elles ne changent jamais une date."
@@ -864,7 +879,9 @@
     "qtyTitle": "Quantité restante",
     "qtyNow": "Quantité actuelle",
     "qtyReasonPh": "ex. rayon recompté",
-    "saveQty": "Enregistrer la quantité"
+    "saveQty": "Enregistrer la quantité",
+    "childHint": "Ceci corrige la date propre de l'article ouvert. La date figurant sur l'emballage d'origine reste applicable si elle est antérieure.",
+    "parentDate": "Corriger la date de l'emballage d'origine"
   },
   "move": {
     "title": "Déplacer",
@@ -936,7 +953,10 @@
     "zoneChangeHint": "Changer de fuseau horaire modifie dès maintenant le calcul d'« aujourd'hui ». Les dates enregistrées gardent leur signification.",
     "hide": "Masquer l'établissement",
     "hideTitle": "Masquer cet établissement ?",
-    "hideBody": "Ses données sont conservées et il peut être restauré depuis la liste. Il ne sera plus actif."
+    "hideBody": "Ses données sont conservées et il peut être restauré depuis la liste. Il ne sera plus actif.",
+    "currencyChangeTitle": "Changer de devise ?",
+    "currencyChangeBody": "Produits avec un coût ou un prix dans une autre devise : {{count}}. Les montants ne sont jamais convertis. Si vous continuez, ces montants sont supprimés (ils ne sont plus enregistrés) et vous pourrez les saisir à nouveau en {{currency}}.",
+    "currencyChangeConfirm": "Supprimer montants et changer"
   },
   "onboarding": {
     "promise": "Sachez ce qui a dépassé sa date, arrive à échéance aujourd'hui ou bientôt — pour le stock, les produits ouverts et les préparations.",
@@ -1024,7 +1044,11 @@
     "location": "Emplacement : {{name}}",
     "notPpds": "Étiquette interne — pas une étiquette alimentaire réglementaire (pas PPDS). Elle ne remplace pas l'étiquetage réglementaire des ingrédients, des allergènes ou autre information du consommateur.",
     "nothingToPrint": "Les étiquettes concernent les lots préparés ou ouverts. Aucun des lots sélectionnés ne peut être étiqueté.",
-    "skipped": "Lots ignorés (ni préparés ni ouverts, ou introuvables) : {{count}}"
+    "skipped": "Lots ignorés (ni préparés ni ouverts, ou introuvables) : {{count}}",
+    "confirmTitle": "L'étiquette a-t-elle été imprimée ?",
+    "confirmBody": "La fenêtre d'impression n'indique pas à l'application si l'impression a eu lieu. Ne confirmez que si l'étiquette est sortie de l'imprimante.",
+    "confirmYes": "Oui, elle est imprimée",
+    "confirmNo": "Non"
   },
   "markdown": {
     "title": "Aide au prix",
@@ -1596,7 +1620,7 @@
       },
       "reminders": {
         "title": "Rappels",
-        "l1": "Plus → Rappels : un résumé quotidien à l'heure de votre choix, une alerte un certain nombre de jours avant, une alerte le jour même et une alerte avant une heure limite précise pour les articles ouverts ou préparés.",
+        "l1": "Plus → Rappels : un résumé quotidien à l'heure de votre choix, une alerte un certain nombre de jours avant, une alerte le jour même et une alerte avant l'heure limite d'un article ouvert ou préparé. Les rappels sont envoyés au mieux, sans garantie : Android peut les délivrer avec quelques minutes de retard.",
         "l2": "Les rappels sont créés sur ce téléphone. Le téléphone demande une seule fois l'autorisation d'afficher des notifications.",
         "l3": "Les heures de rappel déterminent seulement quand vous êtes prévenu. Ce ne sont pas des règles de durée de conservation et elles ne modifient jamais une date.",
         "l4": "L'économiseur de batterie ou le mode Ne pas déranger peuvent retarder ou masquer les notifications. Aujourd'hui affiche toujours la situation actuelle : ouvrez donc l'application pour votre contrôle des dates.",
@@ -1776,5 +1800,13 @@
       "updates": "Aucune mise à jour de code téléchargée",
       "updatesSub": "Les nouvelles versions sont distribuées uniquement via l'App Store ou Google Play."
     }
+  },
+  "recovery": {
+    "title": "Récupération nécessaire avant l'ouverture de TillExpiry",
+    "body": "Une restauration à partir d'une sauvegarde a été interrompue, et les données de ce téléphone n'ont pas encore pu être remises dans leur état précédent.",
+    "bodyUnreadable": "Une restauration à partir d'une sauvegarde a été interrompue, et son journal de récupération sur ce téléphone est illisible : TillExpiry ne peut donc pas savoir si vos données sont complètes. Le journal est conservé, pas supprimé.",
+    "dataHidden": "Les données de vos établissements ne sont pas affichées tant que la récupération n'est pas terminée, afin que vous ne travailliez jamais sur une copie à moitié remplacée.",
+    "retry": "Réessayer",
+    "hint": "Si le problème se reproduit, vérifiez que le téléphone dispose d'espace de stockage libre, redémarrez-le puis appuyez à nouveau sur Réessayer. Ne désinstallez pas l'application : cela supprimerait les données qu'elle tente de récupérer."
   }
 }

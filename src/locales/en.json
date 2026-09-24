@@ -133,7 +133,8 @@
     "rule_nameRequired": "Enter a name for the rule.",
     "rule_sourceRequired": "Say where this rule comes from (label, supplier, your procedure).",
     "rule_durationRequired": "Enter how long.",
-    "rule_badDuration": "Enter a duration between 1 minute and 3 years."
+    "rule_badDuration": "Enter a duration between 1 minute and 3 years.",
+    "currencyInUse": "Products still have costs or prices in the old currency."
   },
   "nav": {
     "more": "More",
@@ -185,9 +186,6 @@
     "subtitle": "Your products, dates and settings in one encrypted file",
     "createSection": "Create a backup",
     "createNow": "Create backup",
-    "lastBackup": "Last backup: {{when}}",
-    "never": "No backup made on this device yet",
-    "createdTitle": "Backup created",
     "restoreSection": "Restore from a backup",
     "chooseFile": "Choose a backup file",
     "pw": {
@@ -205,9 +203,6 @@
     },
     "title": "Backup & restore",
     "createHint": "Everything in all your workspaces goes into one file, encrypted with a password you choose. Without the password nobody can open it, including us. Save the file somewhere off this phone, such as your cloud drive or email.",
-    "createdShared": "{{file}} was created. Keep it somewhere off this phone.",
-    "createdNotShared": "{{file}} was created, but sharing is not available on this device.",
-    "skippedRecords": "Records that could not be read were left out: {{count}}",
     "demoNotice": "You are in the demo. Leave the demo to back up or restore your own data. Demo data is never included in a backup.",
     "restoreHint": "Choose a TillExpiry backup file. You will see what is in it before anything on this phone changes.",
     "notIncluded": "Not included: reminders already scheduled on this phone (they are planned again after a restore), the demo, and the app language.",
@@ -232,7 +227,10 @@
       "writeFailed": "The backup file could not be saved on this phone.",
       "snapshotFailed": "The current data could not be saved aside before restoring, so nothing was changed.",
       "restoreRolledBack": "The restore failed. Your previous data has been put back.",
-      "rollbackFailed": "The restore failed and your previous data could not be put back yet. Close and reopen the app: it will put your previous data back when it starts."
+      "rollbackFailed": "The restore failed and your previous data could not be put back yet. Close and reopen the app: it will put your previous data back when it starts.",
+      "backupBlocked": "No backup file was made. Some stored records are damaged or inconsistent, so a complete backup is not possible: {{categories}}. Nothing was shared.",
+      "recoveryRequired": "An earlier restore still has to be finished or undone. Close and reopen the app, then try again. Nothing was changed.",
+      "restoreUnconfirmed": "The restore could not be confirmed. Close and reopen the app now, before making any changes: it will then show either your previous data or the whole backup, never a mix."
     },
     "preview": {
       "title": "Restore backup",
@@ -261,6 +259,23 @@
       "failedTitle": "Restore not completed",
       "noFileTitle": "No backup file chosen",
       "noFileBody": "Go back and choose a backup file to restore."
+    },
+    "preparedTitle": "Backup file prepared — choose where to save it",
+    "preparedShared": "{{file}} is ready. Choose where to save it in the share sheet, such as your cloud drive or email. TillExpiry cannot see whether the file was actually saved, so check that it is there.",
+    "preparedNotShared": "{{file}} was prepared, but sharing is not available on this device, so it has not been saved anywhere off this phone.",
+    "lastPrepared": "Last backup file prepared: {{when}}",
+    "neverPrepared": "No backup file prepared on this device yet",
+    "category": {
+      "workspaces": "Workspaces",
+      "settings": "Settings",
+      "products": "Products",
+      "batches": "Batches",
+      "events": "History entries",
+      "rules": "Rules",
+      "locations": "Locations",
+      "lists": "Categories and suppliers",
+      "imports": "Import history",
+      "unknown": "Other data"
     }
   },
   "scan": {
@@ -506,9 +521,9 @@
     "sameDaySection": "Same-day warning",
     "sameDayToggle": "Warn on the morning of the date",
     "sameDayHint": "Sent at the summary time on the day of the date.",
-    "exactSection": "Exact-time cutoff",
-    "exactToggle": "Warn before an exact cutoff time",
-    "exactHint": "For opened and prepared items with a cutoff time.",
+    "exactSection": "Cutoff-time reminder",
+    "exactToggle": "Remind before an opened or prepared cutoff time",
+    "exactHint": "For opened and prepared items with a cutoff time. Android may deliver reminders a few minutes late; the Today screen always shows the current status.",
     "leadLabel": "How long before",
     "minutesBefore": "Minutes before: {{count}}",
     "notShelfLife": "Reminder times only decide when the phone reminds you. They are not shelf-life rules and never change a date."
@@ -864,7 +879,9 @@
     "qtyTitle": "Quantity left",
     "qtyNow": "Quantity now",
     "qtyReasonPh": "e.g. counted the shelf",
-    "saveQty": "Save quantity"
+    "saveQty": "Save quantity",
+    "childHint": "This corrects the opened item's own date. The date on the original pack still applies when it is earlier.",
+    "parentDate": "Correct the date on the original pack"
   },
   "move": {
     "title": "Move",
@@ -936,7 +953,10 @@
     "zoneChangeHint": "Changing the time zone changes how “today” is counted from now on. Saved dates keep their meaning.",
     "hide": "Hide business",
     "hideTitle": "Hide this business?",
-    "hideBody": "Its data is kept and it can be restored from the list. It will not be active."
+    "hideBody": "Its data is kept and it can be restored from the list. It will not be active.",
+    "currencyChangeTitle": "Change the currency?",
+    "currencyChangeBody": "Products with a cost or price in another currency: {{count}}. Amounts are never converted. If you continue, those amounts are removed (not recorded) and you can enter them again in {{currency}}.",
+    "currencyChangeConfirm": "Remove amounts and change"
   },
   "onboarding": {
     "promise": "Know what is past its date, due today and due soon — for stock, opened and prepared food.",
@@ -1024,7 +1044,11 @@
     "location": "Location: {{name}}",
     "notPpds": "Internal label — not a legal food label (not PPDS). It does not replace ingredient, allergen or other legal consumer labelling.",
     "nothingToPrint": "Labels are for prepared or opened batches. None of the selected batches can be labelled.",
-    "skipped": "Batches left out (not prepared or opened, or not found): {{count}}"
+    "skipped": "Batches left out (not prepared or opened, or not found): {{count}}",
+    "confirmTitle": "Did the label print?",
+    "confirmBody": "The print window does not tell the app whether printing happened. Only confirm if the label came out of the printer.",
+    "confirmYes": "Yes, it printed",
+    "confirmNo": "No"
   },
   "markdown": {
     "title": "Price helper",
@@ -1596,7 +1620,7 @@
       },
       "reminders": {
         "title": "Reminders",
-        "l1": "More → Reminders: a daily summary at the time you choose, a warning a number of days before, a warning on the day, and a warning before an exact opened or prepared cutoff.",
+        "l1": "More → Reminders: a daily summary at the time you choose, a warning a number of days before, a warning on the day, and a warning before an opened or prepared cutoff time. Reminders are best effort: Android may deliver them a few minutes late.",
         "l2": "Reminders are created on this phone. The phone asks once for permission to show notifications.",
         "l3": "Reminder times only decide when you are reminded. They are not shelf-life rules and never change a date.",
         "l4": "Battery saving or Do Not Disturb can delay or hide notifications. Today always shows the current state, so open the app for your date check.",
@@ -1776,5 +1800,13 @@
       "updates": "No downloaded code updates",
       "updatesSub": "New versions come only through the App Store or Google Play."
     }
+  },
+  "recovery": {
+    "title": "Recovery needed before TillExpiry can open",
+    "body": "A restore from a backup was interrupted, and the data on this phone could not be put back to how it was before yet.",
+    "bodyUnreadable": "A restore from a backup was interrupted, and its recovery record on this phone could not be read, so TillExpiry cannot tell whether your data is complete. The record is kept, not deleted.",
+    "dataHidden": "Your business data is not shown until the recovery is complete, so you never work on a half-replaced copy.",
+    "retry": "Retry",
+    "hint": "If this keeps happening, make sure the phone has free storage space, restart it and tap Retry again. Do not uninstall the app: that would delete the data it is trying to recover."
   }
 }

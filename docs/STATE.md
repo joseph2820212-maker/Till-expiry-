@@ -9,9 +9,9 @@ Single live state file (master handoff §38). Updated at every gate.
 | Branch | `claude/till-expiry-app-e7267q` (the session's mandated branch; the handoff names `claude/build-till-expiry-v1`, which this session is not permitted to push to — recorded as a deviation) |
 | Primary reference | TillCalc `e7ea8caadd1b2f2e663b3c8059b4102d5515adcc` (verified present; on `origin/main` and `claude/audit-repair-release1`) |
 | Secondary reference | Till Note `6fa6e941ac7e94334519c435f8bae3bf9d160826` on `codex/till-note-visual-correction` (verified present, 15 Sep 2026 "Apply red-marked UI-only repairs") |
-| Current gate | G10 — HOLD (APK cannot be built in this environment; everything else PASS) |
+| Current gate | G9 — HOLD (independent review findings EXP-REV-01…10 fixed; awaiting re-audit) · G10 — HOLD (no APK: this environment cannot build it) |
 | Blockers | G10 native build: `dl.google.com` (Android SDK / NDK) and `api.expo.dev` (EAS) are denied by this environment's network policy; see the G10 section of `MASTER_BUILD_REPORT.md` |
-| Last verified | typecheck clean · lint clean · 62 suites / 564 tests · Android JS bundle exported |
+| Last verified | typecheck clean · lint clean · 65 suites / 602 tests · config introspection OK · Android JS bundle exported |
 
 ## Decisions taken under §42 ("resolve routine implementation details yourself")
 
@@ -25,3 +25,6 @@ Single live state file (master handoff §38). Updated at every gate.
 | D6 | Batch cost is not stored separately; reports use the product's cost per unit and show unknown when missing | §7 data model; unknown cost stays unknown (§18) |
 | D7 | Review build shows no purchase wording anywhere (help, legal, privacy rewritten) | §29; statements must be true for the build being reviewed |
 | D8 | Demo never schedules notifications and never assumes a currency | §27 isolation; family no-default-currency rule |
+| D9 | Reminders are best effort (EXP-REV-07 Option B): no exact-alarm permission is requested; Android 12+ may deliver a few minutes late; the Today screen is authoritative | The app cannot detect exact-alarm access without a native module; no user-facing promise of exact delivery |
+| D10 | Currency change with recorded amounts needs an explicit decision that clears them to unknown (EXP-REV-06) | Amounts are never converted or relabelled |
+| D11 | Normal backup fails closed on any unreadable or inconsistent record; no salvage export in this release (EXP-REV-05) | A backup must never silently omit records |

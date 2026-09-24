@@ -41,3 +41,7 @@ Device: _not yet assigned_ · Android version: _—_ · APK SHA-256: _— (G10 H
 | 32 | Small-screen scrolling | NOT TESTED | | |
 | 33 | Large text / font scaling spot-check | NOT TESTED | | |
 | 34 | No crash through all bottom tabs | NOT TESTED | | |
+| 35 | Android 12/13/14: cutoff reminder with exact alarms not granted arrives (possibly late); app closed; after reboot | NOT TESTED | | EXP-REV-07 best effort |
+| 36 | Label print: cancel the Android print dialog → answer No → no "Label printed" in history; print → Yes → recorded once | NOT TESTED | | EXP-REV-08 |
+| 37 | Restore interrupted (kill app mid-restore) → next launch recovers or shows the recovery screen, never a mixed dataset | NOT TESTED | | EXP-REV-03/04 |
+| 38 | Change business currency with priced products → warning, cancel keeps amounts; confirm clears them | NOT TESTED | | EXP-REV-06 |

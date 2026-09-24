@@ -133,7 +133,8 @@
     "rule_nameRequired": "Geben Sie einen Namen für die Regel ein.",
     "rule_sourceRequired": "Geben Sie an, woher diese Regel stammt (Etikett, Lieferant, Ihr Verfahren).",
     "rule_durationRequired": "Geben Sie die Dauer ein.",
-    "rule_badDuration": "Geben Sie eine Dauer zwischen 1 Minute und 3 Jahren ein."
+    "rule_badDuration": "Geben Sie eine Dauer zwischen 1 Minute und 3 Jahren ein.",
+    "currencyInUse": "Produkte haben noch Kosten oder Preise in der alten Währung."
   },
   "nav": {
     "more": "Mehr",
@@ -185,9 +186,6 @@
     "subtitle": "Deine Artikel, Daten und Einstellungen in einer verschlüsselten Datei",
     "createSection": "Sicherung erstellen",
     "createNow": "Sicherung erstellen",
-    "lastBackup": "Letzte Sicherung: {{when}}",
-    "never": "Noch keine Sicherung auf diesem Gerät",
-    "createdTitle": "Sicherung erstellt",
     "restoreSection": "Aus Sicherung wiederherstellen",
     "chooseFile": "Sicherungsdatei wählen",
     "pw": {
@@ -205,9 +203,6 @@
     },
     "title": "Sichern & wiederherstellen",
     "createHint": "Alle Daten aller Ihrer Betriebe kommen in eine Datei, verschlüsselt mit einem Passwort Ihrer Wahl. Ohne das Passwort kann niemand sie öffnen, auch wir nicht. Speichern Sie die Datei außerhalb dieses Telefons, etwa in Ihrem Cloud-Speicher oder per E-Mail.",
-    "createdShared": "{{file}} wurde erstellt. Bewahren Sie die Datei außerhalb dieses Telefons auf.",
-    "createdNotShared": "{{file}} wurde erstellt, aber Teilen ist auf diesem Gerät nicht verfügbar.",
-    "skippedRecords": "Einträge, die nicht gelesen werden konnten, wurden ausgelassen: {{count}}",
     "demoNotice": "Sie sind in der Demo. Verlassen Sie die Demo, um Ihre eigenen Daten zu sichern oder wiederherzustellen. Demodaten sind nie Teil einer Sicherung.",
     "restoreHint": "Wählen Sie eine TillExpiry-Sicherungsdatei. Sie sehen den Inhalt, bevor auf diesem Telefon etwas geändert wird.",
     "notIncluded": "Nicht enthalten: bereits auf diesem Telefon geplante Erinnerungen (sie werden nach der Wiederherstellung neu geplant), die Demo und die App-Sprache.",
@@ -232,7 +227,10 @@
       "writeFailed": "Die Sicherungsdatei konnte nicht auf diesem Telefon gespeichert werden.",
       "snapshotFailed": "Die aktuellen Daten konnten vor der Wiederherstellung nicht zwischengespeichert werden, daher wurde nichts geändert.",
       "restoreRolledBack": "Die Wiederherstellung ist fehlgeschlagen. Ihre vorherigen Daten wurden zurückgespielt.",
-      "rollbackFailed": "Die Wiederherstellung ist fehlgeschlagen und Ihre vorherigen Daten konnten noch nicht zurückgespielt werden. Schließen Sie die App und öffnen Sie sie erneut: Beim Start werden Ihre vorherigen Daten zurückgespielt."
+      "rollbackFailed": "Die Wiederherstellung ist fehlgeschlagen und Ihre vorherigen Daten konnten noch nicht zurückgespielt werden. Schließen Sie die App und öffnen Sie sie erneut: Beim Start werden Ihre vorherigen Daten zurückgespielt.",
+      "backupBlocked": "Es wurde keine Sicherungsdatei erstellt. Einige gespeicherte Einträge sind beschädigt oder widersprüchlich, daher ist keine vollständige Sicherung möglich: {{categories}}. Es wurde nichts geteilt.",
+      "recoveryRequired": "Eine frühere Wiederherstellung muss noch abgeschlossen oder rückgängig gemacht werden. Schließen Sie die App, öffnen Sie sie erneut und versuchen Sie es dann noch einmal. Es wurde nichts geändert.",
+      "restoreUnconfirmed": "Die Wiederherstellung konnte nicht bestätigt werden. Schließen Sie die App jetzt und öffnen Sie sie erneut, bevor Sie etwas ändern: Sie zeigt dann entweder Ihre vorherigen Daten oder die gesamte Sicherung an, nie eine Mischung."
     },
     "preview": {
       "title": "Sicherung wiederherstellen",
@@ -261,6 +259,23 @@
       "failedTitle": "Wiederherstellung nicht abgeschlossen",
       "noFileTitle": "Keine Sicherungsdatei gewählt",
       "noFileBody": "Gehen Sie zurück und wählen Sie eine Sicherungsdatei zum Wiederherstellen."
+    },
+    "preparedTitle": "Sicherungsdatei erstellt — wählen Sie jetzt den Speicherort",
+    "preparedShared": "{{file}} ist bereit. Wählen Sie im Teilen-Menü, wo die Datei gespeichert werden soll, etwa in Ihrem Cloud-Speicher oder per E-Mail. TillExpiry kann nicht erkennen, ob die Datei tatsächlich gespeichert wurde. Prüfen Sie daher, ob sie dort vorhanden ist.",
+    "preparedNotShared": "{{file}} wurde erstellt, aber Teilen ist auf diesem Gerät nicht verfügbar. Die Datei wurde daher nirgendwo außerhalb dieses Telefons gespeichert.",
+    "lastPrepared": "Zuletzt erstellte Sicherungsdatei: {{when}}",
+    "neverPrepared": "Auf diesem Gerät wurde noch keine Sicherungsdatei erstellt",
+    "category": {
+      "workspaces": "Betriebe",
+      "settings": "Einstellungen",
+      "products": "Produkte",
+      "batches": "Chargen",
+      "events": "Verlaufseinträge",
+      "rules": "Regeln",
+      "locations": "Orte",
+      "lists": "Kategorien und Lieferanten",
+      "imports": "Importverlauf",
+      "unknown": "Sonstige Daten"
     }
   },
   "scan": {
@@ -506,9 +521,9 @@
     "sameDaySection": "Warnung am selben Tag",
     "sameDayToggle": "Am Morgen des Datums warnen",
     "sameDayHint": "Wird am Tag des Datums zur Uhrzeit der Übersicht gesendet.",
-    "exactSection": "Frist mit genauer Uhrzeit",
-    "exactToggle": "Vor einer genauen Fristuhrzeit warnen",
-    "exactHint": "Für geöffnete und zubereitete Artikel mit Fristuhrzeit.",
+    "exactSection": "Erinnerung vor Fristuhrzeit",
+    "exactToggle": "Vor der Fristuhrzeit geöffneter oder zubereiteter Artikel erinnern",
+    "exactHint": "Für geöffnete und zubereitete Artikel mit Fristuhrzeit. Android kann Erinnerungen einige Minuten verspätet zustellen; der Bildschirm „Heute“ zeigt immer den aktuellen Stand.",
     "leadLabel": "Wie lange vorher",
     "minutesBefore": "Minuten vorher: {{count}}",
     "notShelfLife": "Erinnerungszeiten bestimmen nur, wann das Telefon Sie erinnert. Sie sind keine Haltbarkeitsregeln und ändern niemals ein Datum."
@@ -864,7 +879,9 @@
     "qtyTitle": "Restmenge",
     "qtyNow": "Aktuelle Menge",
     "qtyReasonPh": "z. B. Regal gezählt",
-    "saveQty": "Menge speichern"
+    "saveQty": "Menge speichern",
+    "childHint": "Damit korrigieren Sie das eigene Datum des geöffneten Artikels. Das Datum auf der Originalverpackung gilt weiterhin, wenn es früher liegt.",
+    "parentDate": "Datum auf der Originalverpackung korrigieren"
   },
   "move": {
     "title": "Umlagern",
@@ -936,7 +953,10 @@
     "zoneChangeHint": "Eine Änderung der Zeitzone ändert ab jetzt, wie „heute“ berechnet wird. Gespeicherte Daten behalten ihre Bedeutung.",
     "hide": "Betrieb ausblenden",
     "hideTitle": "Diesen Betrieb ausblenden?",
-    "hideBody": "Seine Daten bleiben erhalten und er kann aus der Liste wiederhergestellt werden. Er ist dann nicht aktiv."
+    "hideBody": "Seine Daten bleiben erhalten und er kann aus der Liste wiederhergestellt werden. Er ist dann nicht aktiv.",
+    "currencyChangeTitle": "Währung ändern?",
+    "currencyChangeBody": "Produkte mit Kosten oder Preis in einer anderen Währung: {{count}}. Beträge werden nie umgerechnet. Wenn Sie fortfahren, werden diese Beträge entfernt (nicht mehr erfasst) und Sie können sie in {{currency}} neu eingeben.",
+    "currencyChangeConfirm": "Beträge entfernen und ändern"
   },
   "onboarding": {
     "promise": "Wissen, was abgelaufen, heute fällig oder bald fällig ist — für Ware, geöffnete und zubereitete Lebensmittel.",
@@ -1024,7 +1044,11 @@
     "location": "Ort: {{name}}",
     "notPpds": "Internes Etikett — keine gesetzliche Lebensmittelkennzeichnung (kein PPDS). Es ersetzt nicht die Angabe von Zutaten, Allergenen oder andere gesetzliche Verbraucherinformationen.",
     "nothingToPrint": "Etiketten sind für zubereitete oder geöffnete Chargen. Keine der ausgewählten Chargen kann etikettiert werden.",
-    "skipped": "Ausgelassene Chargen (nicht zubereitet oder geöffnet oder nicht gefunden): {{count}}"
+    "skipped": "Ausgelassene Chargen (nicht zubereitet oder geöffnet oder nicht gefunden): {{count}}",
+    "confirmTitle": "Wurde das Etikett gedruckt?",
+    "confirmBody": "Das Druckfenster teilt der App nicht mit, ob gedruckt wurde. Bestätigen Sie nur, wenn das Etikett aus dem Drucker gekommen ist.",
+    "confirmYes": "Ja, es wurde gedruckt",
+    "confirmNo": "Nein"
   },
   "markdown": {
     "title": "Preishilfe",
@@ -1596,7 +1620,7 @@
       },
       "reminders": {
         "title": "Erinnerungen",
-        "l1": "Mehr → Erinnerungen: eine tägliche Übersicht zur gewählten Uhrzeit, eine Warnung einige Tage vorher, eine Warnung am Tag selbst und eine Warnung vor einer genauen Frist für geöffnete oder zubereitete Artikel.",
+        "l1": "Mehr → Erinnerungen: eine tägliche Übersicht zur gewählten Uhrzeit, eine Warnung einige Tage vorher, eine Warnung am Tag selbst und eine Warnung vor der Fristuhrzeit geöffneter oder zubereiteter Artikel. Erinnerungen werden nur nach bestem Bemühen zugestellt: Android kann sie einige Minuten verspätet anzeigen.",
         "l2": "Erinnerungen werden auf diesem Telefon erstellt. Das Telefon fragt einmal nach der Berechtigung, Benachrichtigungen anzuzeigen.",
         "l3": "Erinnerungszeiten bestimmen nur, wann Sie erinnert werden. Sie sind keine Haltbarkeitsregeln und ändern niemals ein Datum.",
         "l4": "Energiesparmodus oder „Nicht stören“ können Benachrichtigungen verzögern oder ausblenden. „Heute“ zeigt immer den aktuellen Stand, öffnen Sie daher für Ihre Datumsprüfung die App.",
@@ -1776,5 +1800,13 @@
       "updates": "Keine heruntergeladenen Code-Updates",
       "updatesSub": "Neue Versionen kommen ausschließlich über den App Store oder Google Play."
     }
+  },
+  "recovery": {
+    "title": "Wiederherstellung nötig, bevor TillExpiry öffnen kann",
+    "body": "Eine Wiederherstellung aus einer Sicherung wurde unterbrochen, und die Daten auf diesem Telefon konnten noch nicht in den vorherigen Zustand zurückversetzt werden.",
+    "bodyUnreadable": "Eine Wiederherstellung aus einer Sicherung wurde unterbrochen, und ihr Wiederherstellungsprotokoll auf diesem Telefon konnte nicht gelesen werden. Daher kann TillExpiry nicht erkennen, ob Ihre Daten vollständig sind. Das Protokoll wird aufbewahrt, nicht gelöscht.",
+    "dataHidden": "Ihre Betriebsdaten werden erst angezeigt, wenn die Wiederherstellung abgeschlossen ist, damit Sie nie mit einer halb ersetzten Kopie arbeiten.",
+    "retry": "Erneut versuchen",
+    "hint": "Wenn das weiterhin passiert, sorgen Sie für freien Speicherplatz auf dem Telefon, starten Sie es neu und tippen Sie noch einmal auf „Erneut versuchen“. Deinstallieren Sie die App nicht: Dabei würden die Daten gelöscht, die sie wiederherzustellen versucht."
   }
 }

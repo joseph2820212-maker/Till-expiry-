@@ -133,7 +133,8 @@
     "rule_nameRequired": "Kural için bir ad girin.",
     "rule_sourceRequired": "Bu kuralın nereden geldiğini belirtin (etiket, tedarikçi, kendi prosedürünüz).",
     "rule_durationRequired": "Süreyi girin.",
-    "rule_badDuration": "1 dakika ile 3 yıl arasında bir süre girin."
+    "rule_badDuration": "1 dakika ile 3 yıl arasında bir süre girin.",
+    "currencyInUse": "Bazı ürünlerde hâlâ eski para biriminde maliyet veya fiyat var."
   },
   "nav": {
     "more": "Diğer",
@@ -185,9 +186,6 @@
     "subtitle": "Ürünleriniz, tarihleriniz ve ayarlarınız tek bir şifreli dosyada",
     "createSection": "Yedek oluştur",
     "createNow": "Yedek oluştur",
-    "lastBackup": "Son yedek: {{when}}",
-    "never": "Bu cihazda henüz yedek alınmadı",
-    "createdTitle": "Yedek oluşturuldu",
     "restoreSection": "Yedekten geri yükle",
     "chooseFile": "Yedek dosyası seç",
     "pw": {
@@ -205,9 +203,6 @@
     },
     "title": "Yedekle ve geri yükle",
     "createHint": "Tüm işletmelerinizdeki her şey, seçtiğiniz bir parolayla şifrelenmiş tek bir dosyaya gider. Parola olmadan biz dahil hiç kimse açamaz. Dosyayı bu telefonun dışında, örneğin bulut depolamanızda veya e-postanızda saklayın.",
-    "createdShared": "{{file}} oluşturuldu. Bu telefonun dışında bir yerde saklayın.",
-    "createdNotShared": "{{file}} oluşturuldu, ancak bu cihazda paylaşım kullanılamıyor.",
-    "skippedRecords": "Okunamayan kayıtlar dışarıda bırakıldı: {{count}}",
     "demoNotice": "Demodasınız. Kendi verilerinizi yedeklemek veya geri yüklemek için demodan çıkın. Demo verileri asla yedeğe dahil edilmez.",
     "restoreHint": "Bir TillExpiry yedek dosyası seçin. Bu telefonda herhangi bir şey değişmeden önce içinde ne olduğunu göreceksiniz.",
     "notIncluded": "Dahil değil: bu telefonda zaten planlanmış hatırlatıcılar (geri yüklemeden sonra yeniden planlanır), demo ve uygulama dili.",
@@ -232,7 +227,10 @@
       "writeFailed": "Yedek dosyası bu telefona kaydedilemedi.",
       "snapshotFailed": "Geri yüklemeden önce mevcut veriler bir kenara kaydedilemedi, bu yüzden hiçbir şey değişmedi.",
       "restoreRolledBack": "Geri yükleme başarısız oldu. Önceki verileriniz geri getirildi.",
-      "rollbackFailed": "Geri yükleme başarısız oldu ve önceki verileriniz henüz geri getirilemedi. Uygulamayı kapatıp yeniden açın: açılırken önceki verilerinizi geri getirecek."
+      "rollbackFailed": "Geri yükleme başarısız oldu ve önceki verileriniz henüz geri getirilemedi. Uygulamayı kapatıp yeniden açın: açılırken önceki verilerinizi geri getirecek.",
+      "backupBlocked": "Yedek dosyası oluşturulmadı. Saklanan bazı kayıtlar hasarlı veya tutarsız olduğundan eksiksiz bir yedek alınamıyor: {{categories}}. Hiçbir şey paylaşılmadı.",
+      "recoveryRequired": "Önceki bir geri yüklemenin hâlâ tamamlanması veya geri alınması gerekiyor. Uygulamayı kapatıp yeniden açın, ardından tekrar deneyin. Hiçbir şey değiştirilmedi.",
+      "restoreUnconfirmed": "Geri yükleme doğrulanamadı. Herhangi bir değişiklik yapmadan önce uygulamayı şimdi kapatıp yeniden açın: uygulama ardından ya önceki verilerinizi ya da yedeğin tamamını gösterir, asla ikisinin karışımını göstermez."
     },
     "preview": {
       "title": "Yedeği geri yükle",
@@ -261,6 +259,23 @@
       "failedTitle": "Geri yükleme tamamlanmadı",
       "noFileTitle": "Yedek dosyası seçilmedi",
       "noFileBody": "Geri dönüp geri yüklenecek bir yedek dosyası seçin."
+    },
+    "preparedTitle": "Yedek dosyası hazırlandı — nereye kaydedileceğini seçin",
+    "preparedShared": "{{file}} hazır. Paylaşım menüsünde nereye kaydedileceğini seçin, örneğin bulut depolamanız veya e-postanız. TillExpiry dosyanın gerçekten kaydedilip kaydedilmediğini göremez, bu yüzden dosyanın orada olduğunu kontrol edin.",
+    "preparedNotShared": "{{file}} hazırlandı, ancak bu cihazda paylaşım kullanılamıyor; bu yüzden dosya bu telefonun dışında hiçbir yere kaydedilmedi.",
+    "lastPrepared": "Son hazırlanan yedek dosyası: {{when}}",
+    "neverPrepared": "Bu cihazda henüz yedek dosyası hazırlanmadı",
+    "category": {
+      "workspaces": "İşletmeler",
+      "settings": "Ayarlar",
+      "products": "Ürünler",
+      "batches": "Partiler",
+      "events": "Geçmiş kayıtları",
+      "rules": "Kurallar",
+      "locations": "Yerler",
+      "lists": "Kategoriler ve tedarikçiler",
+      "imports": "İçe aktarma geçmişi",
+      "unknown": "Diğer veriler"
     }
   },
   "scan": {
@@ -506,9 +521,9 @@
     "sameDaySection": "Aynı gün uyarısı",
     "sameDayToggle": "Tarihin olduğu sabah uyar",
     "sameDayHint": "Tarihin olduğu gün özet saatinde gönderilir.",
-    "exactSection": "Kesin son saat",
-    "exactToggle": "Kesin son saatten önce uyar",
-    "exactHint": "Son saati olan açılmış ve hazırlanmış ürünler için.",
+    "exactSection": "Son saat hatırlatıcısı",
+    "exactToggle": "Açılmış veya hazırlanmış ürünün son saatinden önce hatırlat",
+    "exactHint": "Son saati olan açılmış ve hazırlanmış ürünler için. Android hatırlatıcıları birkaç dakika geç iletebilir; Bugün ekranı her zaman güncel durumu gösterir.",
     "leadLabel": "Ne kadar önce",
     "minutesBefore": "Kaç dakika önce: {{count}}",
     "notShelfLife": "Hatırlatıcı saatleri yalnızca telefonun size ne zaman hatırlatacağını belirler. Raf ömrü kuralı değildir ve hiçbir tarihi değiştirmez."
@@ -864,7 +879,9 @@
     "qtyTitle": "Kalan miktar",
     "qtyNow": "Şu anki miktar",
     "qtyReasonPh": "ör. rafı saydım",
-    "saveQty": "Miktarı kaydet"
+    "saveQty": "Miktarı kaydet",
+    "childHint": "Bu, açılmış ürünün kendi tarihini düzeltir. Orijinal ambalajdaki tarih daha erkense geçerli olmaya devam eder.",
+    "parentDate": "Orijinal ambalajdaki tarihi düzelt"
   },
   "move": {
     "title": "Taşı",
@@ -936,7 +953,10 @@
     "zoneChangeHint": "Saat dilimini değiştirmek, bundan sonra “bugün”ün nasıl hesaplandığını değiştirir. Kayıtlı tarihlerin anlamı aynı kalır.",
     "hide": "İşletmeyi gizle",
     "hideTitle": "Bu işletme gizlensin mi?",
-    "hideBody": "Verileri saklanır ve listeden geri yüklenebilir. Etkin olmaz."
+    "hideBody": "Verileri saklanır ve listeden geri yüklenebilir. Etkin olmaz.",
+    "currencyChangeTitle": "Para birimi değiştirilsin mi?",
+    "currencyChangeBody": "Başka bir para biriminde maliyeti veya fiyatı olan ürün: {{count}}. Tutarlar asla dönüştürülmez. Devam ederseniz bu tutarlar kaldırılır (artık kayıtlı olmaz) ve bunları {{currency}} cinsinden yeniden girebilirsiniz.",
+    "currencyChangeConfirm": "Tutarları kaldır ve değiştir"
   },
   "onboarding": {
     "promise": "Stok, açılmış ve hazırlanmış gıdalar için neyin tarihi geçmiş, bugün ve yakında dolacak olduğunu bilin.",
@@ -1024,7 +1044,11 @@
     "location": "Yer: {{name}}",
     "notPpds": "İç etiket — yasal gıda etiketi değildir (PPDS değildir). İçindekiler, alerjen veya diğer yasal tüketici etiketlemesinin yerini tutmaz.",
     "nothingToPrint": "Etiketler hazırlanmış veya açılmış partiler içindir. Seçilen partilerin hiçbiri etiketlenemez.",
-    "skipped": "Dışarıda bırakılan partiler (hazırlanmamış veya açılmamış ya da bulunamadı): {{count}}"
+    "skipped": "Dışarıda bırakılan partiler (hazırlanmamış veya açılmamış ya da bulunamadı): {{count}}",
+    "confirmTitle": "Etiket yazdırıldı mı?",
+    "confirmBody": "Yazdırma penceresi, yazdırmanın gerçekleşip gerçekleşmediğini uygulamaya bildirmez. Yalnızca etiket yazıcıdan çıktıysa onaylayın.",
+    "confirmYes": "Evet, yazdırıldı",
+    "confirmNo": "Hayır"
   },
   "markdown": {
     "title": "Fiyat yardımcısı",
@@ -1596,7 +1620,7 @@
       },
       "reminders": {
         "title": "Hatırlatıcılar",
-        "l1": "Diğer → Hatırlatıcılar: seçtiğiniz saatte günlük özet, belirli sayıda gün önceden uyarı, gününde uyarı ve açılmış veya hazırlanmış ürünlerde kesin son saatten önce uyarı.",
+        "l1": "Diğer → Hatırlatıcılar: seçtiğiniz saatte günlük özet, belirli sayıda gün önceden uyarı, gününde uyarı ve açılmış veya hazırlanmış ürünlerde son saatten önce uyarı. Hatırlatıcılar garanti edilmez, mümkün olduğunca iletilir: Android bunları birkaç dakika geç iletebilir.",
         "l2": "Hatırlatıcılar bu telefonda oluşturulur. Telefon, bildirim göstermek için bir kez izin ister.",
         "l3": "Hatırlatıcı saatleri yalnızca size ne zaman hatırlatılacağını belirler. Raf ömrü kuralı değildir ve hiçbir tarihi değiştirmez.",
         "l4": "Pil tasarrufu veya Rahatsız Etmeyin, bildirimleri geciktirebilir veya gizleyebilir. Bugün ekranı her zaman güncel durumu gösterir; bu nedenle tarih kontrolü için uygulamayı açın.",
@@ -1776,5 +1800,13 @@
       "updates": "İndirilen kod güncellemesi yok",
       "updatesSub": "Yeni sürümler yalnızca App Store veya Google Play üzerinden gelir."
     }
+  },
+  "recovery": {
+    "title": "TillExpiry açılmadan önce kurtarma gerekiyor",
+    "body": "Bir yedekten geri yükleme yarıda kesildi ve bu telefondaki veriler henüz önceki hâline getirilemedi.",
+    "bodyUnreadable": "Bir yedekten geri yükleme yarıda kesildi ve bu telefondaki kurtarma kaydı okunamadı; bu yüzden TillExpiry verilerinizin eksiksiz olup olmadığını anlayamıyor. Kayıt silinmez, saklanır.",
+    "dataHidden": "Yarısı değiştirilmiş bir kopya üzerinde asla çalışmamanız için işletme verileriniz kurtarma tamamlanana kadar gösterilmez.",
+    "retry": "Tekrar dene",
+    "hint": "Bu durum tekrarlanırsa telefonda boş depolama alanı olduğundan emin olun, telefonu yeniden başlatın ve yeniden Tekrar dene'ye dokunun. Uygulamayı kaldırmayın: bu, kurtarmaya çalıştığı verileri siler."
   }
 }
