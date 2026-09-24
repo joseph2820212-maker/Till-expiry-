@@ -80,7 +80,7 @@ export const DataExportScreen: React.FC = () => {
           <Text style={s.meta}>{counts ? t('export.rows', { count: counts.batches }) : t('common.loading')}</Text>
           <AppButton label={t('export.preview')} onPress={() => open('batches')} disabled={!data} testID="export-batches" />
         </Section>
-        <Hint text={t('export.safetyHint')} />
+        <Hint text={t('export.formulaHint')} />
       </AppKeyboardScrollView>
       <CsvPreviewModal
         visible={!!preview}

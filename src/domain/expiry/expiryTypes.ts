@@ -225,10 +225,15 @@ export interface ImportRecord {
   workspaceId: string;
   kind: 'products' | 'batches';
   fileName: string;
-  /** SHA-256 of the file bytes: the same file is never imported twice. */
+  /** SHA-256 of the normalised file content + kind + workspace id: the same file is never imported twice. */
   fingerprint: string;
   createdCount: number;
   skippedCount: number;
+  updatedCount?: number;
+  errorCount?: number;
+  newProductCount?: number;
+  newLocationCount?: number;
+  requestId?: string;
   at: IsoDateTime;
 }
 
