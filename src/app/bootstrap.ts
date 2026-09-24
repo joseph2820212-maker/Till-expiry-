@@ -6,6 +6,8 @@
 import { recoverInterruptedTransaction } from '../storage/entityStore';
 import { loadScope } from '../storage/scope';
 import { loadActiveWorkspace } from '../modules/workspaces/workspaceStore';
+import { loadSettings } from '../modules/settings/settingsStore';
+import { registerReminders } from '../modules/reminders/reminderService';
 import { logError } from '../utils/errorLog';
 
 const startupHooks: (() => Promise<void> | void)[] = [];
@@ -19,7 +21,10 @@ export async function bootstrapData(): Promise<void> {
   try { await recoverInterruptedTransaction(); } catch (e) { logError('bootstrap.txnRecovery', e); }
   try { await loadScope(); } catch (e) { logError('bootstrap.scope', e); }
   try { await loadActiveWorkspace(); } catch (e) { logError('bootstrap.workspace', e); }
+  try { await loadSettings(); } catch (e) { logError('bootstrap.settings', e); }
   for (const hook of startupHooks) {
     try { await hook(); } catch (e) { logError('bootstrap.hook', e); }
   }
+  // Reminders reconcile from the stored batches in the background: Today never waits for the notification system.
+  try { void Promise.resolve(registerReminders()).catch(e => logError('bootstrap.reminders', e)); } catch (e) { logError('bootstrap.reminders', e); }
 }

@@ -21,6 +21,9 @@ export const cancelScheduledNotificationAsync = jest.fn(async (id: string) => { 
 export const cancelAllScheduledNotificationsAsync = jest.fn(async () => { scheduled = []; });
 export const getAllScheduledNotificationsAsync = jest.fn(async () => scheduled.map(s => ({ identifier: s.identifier, content: s.content, trigger: s.trigger })));
 
+export const addNotificationResponseReceivedListener = jest.fn(() => ({ remove: jest.fn() }));
+export const getLastNotificationResponseAsync = jest.fn(async () => null);
+
 /** Test helpers (not part of the real API). */
 export const __setPermission = (p: typeof permission) => { permission = p; };
 export const __reset = () => { scheduled = []; permission = 'undetermined'; seq = 0; };

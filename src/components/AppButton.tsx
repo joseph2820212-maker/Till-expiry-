@@ -15,10 +15,11 @@ interface Props {
   style?: ViewStyle;
   textStyle?: TextStyle;
   icon?: string;
+  testID?: string;
 }
 
 export const AppButton: React.FC<Props> = ({
-  label, onPress, variant = 'primary', disabled = false, loading = false, style, textStyle, icon,
+  label, onPress, variant = 'primary', disabled = false, loading = false, style, textStyle, icon, testID,
 }) => {
   const isDisabled = disabled || loading;
   return (
@@ -30,6 +31,7 @@ export const AppButton: React.FC<Props> = ({
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityState={{ disabled: isDisabled, busy: loading }}
+      testID={testID}
     >
       {loading
         ? <ActivityIndicator color={variant === 'primary' || variant === 'danger' ? '#fff' : colors.primaryBlue} size="small" />

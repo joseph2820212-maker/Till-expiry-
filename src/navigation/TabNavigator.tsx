@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,7 +12,7 @@ import { AddChoiceScreen } from '../modules/add/screens/AddChoiceScreen';
 import { ReportsHomeScreen } from '../modules/reports/screens/ReportsHomeScreen';
 import { MoreScreen } from '../modules/more/screens/MoreScreen';
 import { WorkspaceSwitcherSheet } from '../modules/workspaces/WorkspaceSwitcherSheet';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import type { TabRoot } from './tabs';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -34,7 +34,7 @@ function makeTabStack(rootName: TabRoot, Root: React.ComponentType<any>): React.
   const TabStack: React.FC = () => (
     <S.Navigator screenOptions={{ headerShown: false }}>
       <S.Screen name={rootName} component={Root} />
-      {sharedScreens(S)}
+      {sharedScreens(S, rootName)}
     </S.Navigator>
   );
   TabStack.displayName = `${rootName}Stack`;
@@ -56,6 +56,9 @@ const ICON_MAP: Record<string, { active: string; inactive: string }> = {
   MoreTab:    { active: 'menu',         inactive: 'menu-outline' },
 };
 
+/** The only screens allowed to hide the tab bar (§5): the camera scanner and the native PDF preview. */
+export const FULL_SCREEN = new Set(['BarcodeScanner', 'ReportPreview', 'InternalLabelPreview']);
+
 const ACTIVE_COLOR = '#FFFFFF';
 const INACTIVE_COLOR = '#C7CFDE';
 const ACCENT_MARK = '#E8842D';
@@ -69,7 +72,7 @@ export const TabNavigator: React.FC = () => {
   return (
     <>
     <Tab.Navigator
-      screenOptions={({ route }: { route: { name: string } }) => ({
+      screenOptions={({ route }: { route: any }) => ({
         headerShown: false,
         tabBarIcon: ({ focused }: { focused: boolean }) => {
           const iconName = focused ? ICON_MAP[route.name]?.active : ICON_MAP[route.name]?.inactive;
@@ -82,7 +85,9 @@ export const TabNavigator: React.FC = () => {
         },
         tabBarActiveTintColor: ACTIVE_COLOR,
         tabBarInactiveTintColor: INACTIVE_COLOR,
-        tabBarStyle: [styles.tabBar, { paddingBottom: bottomPad, height: 62 + bottomPad }],
+        tabBarStyle: FULL_SCREEN.has(getFocusedRouteNameFromRoute(route) ?? '')
+          ? { display: 'none' as const }
+          : [styles.tabBar, { paddingBottom: bottomPad, height: 62 + bottomPad }],
         tabBarLabelStyle: styles.tabLabel,
       })}
     >

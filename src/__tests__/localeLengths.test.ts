@@ -22,7 +22,10 @@ function flatten(obj: any, prefix = ''): Record<string, string> {
 const flat = Object.fromEntries(LOCALES.map(l => [l, flatten(bundles[l])]));
 
 // Keys rendered on full-width AppButtons / tab labels / chips. Longest tolerated: 34 chars (DE/FR at 0.75 scale).
-const BUTTON_KEYS = ['common.save', 'common.cancel', 'common.continue', 'billing.notNow', 'billing.restorePurchase', 'backup.createNow', 'backup.restoreAction', 'legal.contact.emailButton', 'nav.home', 'nav.dates', 'nav.products', 'nav.more', 'check.fine', 'check.soldOut', 'check.binned', 'check.allFineAction', 'dateDetail.checked', 'dateDetail.reduce', 'dateDetail.sold', 'dateDetail.wasted', 'dateDetail.otherRemoval', 'addDate.saveAnother', 'importer.run', 'importer.pick', 'reports.exportHistory', 'check.printSheet', 'productEdit.addDate'];
+const BUTTON_KEYS = ['common.save', 'common.cancel', 'common.continue', 'common.done', 'common.retry', 'legal.contact.emailButton',
+  'nav.today', 'nav.items', 'nav.add', 'nav.reports', 'nav.more', 'today.startCheck', 'today.quickAdd', 'check.confirm', 'check.wrongDate', 'check.skip',
+  'removal.action.used', 'removal.action.sold', 'removal.action.wasted', 'removal.action.returned', 'move.save', 'correct.saveDate', 'correct.saveQty',
+  'onboarding.start', 'onboarding.tryDemo', 'onboarding.create', 'demo.enter', 'demo.exit', 'items.newProduct', 'items.clearFilters', 'workspace.add'];
 
 describe('locale completeness', () => {
   it('all six languages are present and non-empty', () => {
@@ -51,7 +54,7 @@ describe('locale completeness', () => {
   });
   it('no English text leaked into another language for the new modules (spot check on long keys)', () => {
     const suspects: string[] = [];
-    const prefixes = ['products.', 'dates.', 'addDate.', 'dateDetail.', 'check.', 'reminders.', 'importer.', 'reports.', 'home.', 'help.', 'legal.', 'backup.', 'billing.'];
+    const prefixes = ['today.', 'items.', 'batch.', 'product.', 'check.', 'reminders.', 'reports.', 'backup.', 'onboarding.', 'workspace.', 'more.', 'help.', 'legal.', 'import.', 'export.', 'add.', 'rules.', 'locations.', 'label.', 'markdown.', 'dateKindHelp.', 'status.'];
     for (const l of ['ar', 'tr', 'fr', 'es', 'de']) for (const [k, en] of Object.entries(flat.en)) {
       if (!prefixes.some(p => k.startsWith(p)) || en.length < 25) continue;
       if (flat[l][k] === en) suspects.push(`${l}:${k}`);

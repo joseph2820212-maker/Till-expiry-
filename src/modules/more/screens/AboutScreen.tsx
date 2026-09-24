@@ -63,6 +63,7 @@ export const AboutScreen: React.FC = () => {
           <Text style={styles.tagline}>{t('settings.appTagline')}</Text>
           <Text style={styles.description}>{t('about.description', vars)}</Text>
           <Text style={styles.version}>v{APP_VERSION} · {t('about.publisherLine', { publisher: PUBLISHER })}</Text>
+          <Text style={styles.version} testID="about-review-build">{t('about.reviewBuild')} · {t('about.reviewBuildSub')}</Text>
         </View>
 
         <Text style={styles.section}>{t('settings.dataPrivacyModel')}</Text>

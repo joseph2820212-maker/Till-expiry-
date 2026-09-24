@@ -1,10 +1,12 @@
-import React from 'react';
-import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import * as Notifications from 'expo-notifications';
+import { NavigationContainer, NavigatorScreenParams, createNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TabNavigator, TabParamList } from './TabNavigator';
 import type { LegalDocId } from '../modules/more/content/legalContent';
 import type { StatusGroup } from '../domain/expiry/statusEngine';
-import { useActiveWorkspace } from '../modules/workspaces/workspaceStore';
+import { getActiveWorkspace, setActiveWorkspace, useActiveWorkspace } from '../modules/workspaces/workspaceStore';
+import { logError } from '../utils/errorLog';
 import { OnboardingNavigator } from '../modules/onboarding/OnboardingNavigator';
 
 /** Filters a list of batches can be opened with (Today tiles, location chips, reports). */
@@ -21,7 +23,7 @@ export interface BatchQuery {
 export type TabStackParamList = {
   // Tab roots
   Today: undefined;                                  // E05
-  Items: { query?: BatchQuery; mode?: 'batches' | 'products' } | undefined; // E09 (+ batches view)
+  Items: { query?: BatchQuery; mode?: 'batches' | 'products'; text?: string } | undefined; // E09 (+ batches view)
   AddChoice: undefined;                              // E14
   ReportsHome: undefined;                            // E27
   More: undefined;                                   // E37
@@ -75,6 +77,30 @@ export type TabStackParamList = {
 export type RootStackParamList = TabStackParamList & { Tabs: NavigatorScreenParams<TabParamList> | undefined };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+export const navigationRef = createNavigationContainerRef<RootStackParamList>();
+
+/**
+ * A tapped reminder opens the batch it is about (or Today for the daily summary), switching to its workspace first.
+ * The notification only points at the record: what is shown is always read fresh from storage (T45).
+ */
+export async function openFromNotification(data: { type?: string; workspaceId?: string; batchId?: string } | undefined): Promise<void> {
+  if (!data || !navigationRef.isReady()) return;
+  try {
+    if (data.workspaceId && getActiveWorkspace()?.id !== data.workspaceId) await setActiveWorkspace(data.workspaceId);
+  } catch (e) { logError('notification.workspace', e); return; }
+  if (data.batchId) navigationRef.navigate('Tabs', { screen: 'TodayTab', params: { screen: 'BatchDetail', params: { id: data.batchId }, initial: false } });
+  else navigationRef.navigate('Tabs', { screen: 'TodayTab', params: { screen: 'Today' } });
+}
+
+function useNotificationTaps(): void {
+  useEffect(() => {
+    let sub: { remove: () => void } | undefined;
+    try {
+      sub = Notifications.addNotificationResponseReceivedListener(r => { void openFromNotification(r.notification.request.content.data as any); });
+    } catch (e) { logError('notification.listener', e); }
+    return () => sub?.remove();
+  }, []);
+}
 
 /**
  * Root: onboarding until a workspace exists, then a single "Tabs" route. All feature screens live in the per-tab
@@ -82,8 +108,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
  */
 export const AppNavigator: React.FC = () => {
   const ws = useActiveWorkspace();
+  useNotificationTaps();
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef} onReady={() => {
+      Notifications.getLastNotificationResponseAsync?.().then(r => { if (r) void openFromNotification(r.notification.request.content.data as any); }).catch(() => undefined);
+    }}>
       {ws ? (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Tabs" component={TabNavigator} />

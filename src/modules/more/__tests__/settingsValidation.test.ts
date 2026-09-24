@@ -7,15 +7,7 @@ function readScreen(name: string): string {
   return fs.readFileSync(path.join(screensDir, name), 'utf8');
 }
 
-describe('CurrencyScreen canonical persistence (A2/A12)', () => {
-  const src = readScreen('CurrencyScreen.tsx');
-
-  it('uses setCurrencyOption from currency.ts, not direct AsyncStorage', () => {
-    expect(src).toContain('setCurrencyOption');
-    expect(src).not.toMatch(/AsyncStorage\.setItem/);
-    expect(src).not.toMatch(/import.*AsyncStorage/);
-  });
-});
+// CurrencyScreen removed in G3: currency is chosen per workspace (WorkspaceForm, §21); its tests moved to the workspace form.
 
 describe('LanguageScreen result handling (A5/A12)', () => {
   const src = readScreen('LanguageScreen.tsx');

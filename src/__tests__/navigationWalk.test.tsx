@@ -1,6 +1,6 @@
 /**
  * Gate 5 — navigation walk. Every route registered in AppNavigator is rendered
- * with realistic params, in each of the six languages, with REAL i18next
+ * (the §15 register E01–E44) with realistic params, in each of the six languages, with REAL i18next
  * resources. A screen fails the walk if it throws, shows a raw translation
  * key, or still says "coming soon". Heavy native-backed components are
  * stubbed; everything that decides what text appears is real.
@@ -23,10 +23,11 @@ jest.mock('react-native', () => ({
   Animated: { Value: class { setValue() {} interpolate() { return 0; } }, timing: () => ({ start: (cb?: () => void) => cb?.() }), spring: () => ({ start: (cb?: () => void) => cb?.() }), View: 'Animated.View', Text: 'Animated.Text', createAnimatedComponent: (c: any) => c },
   PixelRatio: { get: () => 2, roundToNearestPixel: (n: number) => n }, AppState: { currentState: 'active', addEventListener: () => ({ remove() {} }) }, NativeModules: {},
 }));
-const mockNav = { navigate: jest.fn(), goBack: jest.fn(), replace: jest.fn(), setParams: jest.fn() };
+const mockNav = { navigate: jest.fn(), goBack: jest.fn(), replace: jest.fn(), setParams: jest.fn(), push: jest.fn(), canGoBack: () => true };
 let mockParams: any = {};
 jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => mockNav, useRoute: () => ({ params: mockParams }), useIsFocused: () => true,
+  useNavigation: () => mockNav, useRoute: () => ({ params: mockParams, key: 'route-key', name: 'Walk' }), useIsFocused: () => true,
+  useNavigationState: (sel: (s: any) => any) => sel({ index: 0, routes: [{ key: 'route-key' }] }),
   useFocusEffect: (cb: () => void | (() => void)) => { require('react').useEffect(() => cb(), [cb]); },
   NavigationContainer: mockPass('NavigationContainer'),
 }));
@@ -41,7 +42,6 @@ jest.mock('../i18n', () => {
   const m = require('i18next'); const inst = m.default ?? m;
   return { __esModule: true, default: inst, SUPPORTED_LANGUAGES: ['en', 'ar', 'tr', 'fr', 'es', 'de'], changeLanguage: async () => ({ status: 'applied' }), loadSavedLanguage: async () => 'en', saveLanguage: async () => {}, initializeLanguage: async () => ({}), retryLanguageTransition: async () => true, rollbackLanguageTransition: async () => true };
 });
-jest.mock('../modules/billing/BillingProvider', () => ({ useBilling: () => ({ status: 'unknown', entitlement: { isPremium: false, packages: [], source: 'unknown' }, purchase: async () => ({ success: false, cancelled: true }), restore: async () => ({ success: false }), refresh: async () => {} }), BillingProvider: (p: any) => p.children }));
 // Native-backed / sheet components render as plain nodes; their logic is covered by their own tests.
 jest.mock('../components/DropdownField', () => ({ DropdownField: 'DropdownField' }));
 jest.mock('../components/ToggleSegment', () => ({ ToggleSegment: 'ToggleSegment' }));
@@ -66,61 +66,59 @@ import tr from '../locales/tr.json';
 import fr from '../locales/fr.json';
 import es from '../locales/es.json';
 import de from '../locales/de.json';
-import { TE_KEYS } from '../storage/keys';
-import { addDays, todayLocal } from '../domain/dates';
+import { createWorkspace, loadActiveWorkspace, __resetWorkspaceCache } from '../modules/workspaces/workspaceStore';
+import { saveProduct } from '../modules/products/productStore';
+import { saveLocation } from '../modules/locations/locationStore';
+import { saveRule } from '../modules/rules/ruleStore';
+import { createDatedBatch, openBatch, prepareBatch, recordRemoval } from '../modules/batches/batchStore';
+import { addDays, todayIn } from '../domain/expiry/datePrecision';
 
 const LANGS = ['en', 'ar', 'tr', 'fr', 'es', 'de'] as const;
 const RAW_KEY = /^[a-z][a-zA-Z]+\.[a-zA-Z0-9_.]+$/;
 const KEY_WITH_VARS = /^[a-z][a-zA-Z]+\.[a-zA-Z0-9_.]+\|/;
+const ids: Record<string, string> = {};
 
 async function seed() {
   (AsyncStorage as any).clear();
-  const today = todayLocal();
-  const price = { minor: 145, currency: 'EUR', exponent: 2 };
-  const at = '2026-09-24T10:00:00Z';
-  await AsyncStorage.setItem(TE_KEYS.products, JSON.stringify([
-    { schemaVersion: 1, id: 'P1', name: 'Semi-skimmed milk 2L', barcodes: [{ raw: '5000157024671', normalized: '5000157024671', format: 'ean13' }], sku: 'MILK-2', shelfLocation: 'Chiller 1', defaultDateType: 'useBy', shelfLifeDays: 7, price, status: 'active', isSample: false, createdAt: at, updatedAt: at },
-    { schemaVersion: 1, id: 'P2', name: 'Sourdough loaf', barcodes: [], shelfLifeDays: 3, alertDays: 1, status: 'active', isSample: false, createdAt: at, updatedAt: at },
-    { schemaVersion: 1, id: 'P3', name: 'Tinned tomatoes 400 g', barcodes: [], status: 'archived', isSample: false, createdAt: at, updatedAt: at },
-  ]));
-  const batch = (id: string, productId: string, productName: string, date: string, extra: any = {}) => ({ schemaVersion: 1, id, productId, productName, date, dateType: 'useBy', status: 'open', events: [], createdAt: at, updatedAt: at, ...extra });
-  await AsyncStorage.setItem(TE_KEYS.batches, JSON.stringify([
-    batch('D1', 'P1', 'Semi-skimmed milk 2L', addDays(today, -2), { quantity: 6, location: 'Chiller 1' }),
-    batch('D2', 'P1', 'Semi-skimmed milk 2L', today, { quantity: 4, events: [{ id: 'e1', kind: 'reduced', on: today, at, price: { minor: 99, currency: 'EUR', exponent: 2 } }] }),
-    batch('D3', 'P2', 'Sourdough loaf', addDays(today, 1), { dateType: 'bestBefore' }),
-    batch('D4', 'P2', 'Sourdough loaf', addDays(today, 20), { dateType: 'bestBefore' }),
-    batch('D5', 'P1', 'Semi-skimmed milk 2L', addDays(today, -5), { quantity: 3, status: 'closed', closedAt: at, events: [{ id: 'e2', kind: 'reduced', on: addDays(today, -6), at, price: { minor: 70, currency: 'EUR', exponent: 2 } }, { id: 'e3', kind: 'wasted', on: addDays(today, -5), at, quantity: 3, reason: 'expired' }] }),
-  ]));
-  await AsyncStorage.setItem(TE_KEYS.settings, JSON.stringify({ schemaVersion: 1, alertDays: 3, defaultDateType: 'bestBefore', reminder: { enabled: true, hour: 8, minute: 0 } }));
+  __resetWorkspaceCache();
+  const tz = 'Europe/London';
+  const today = todayIn(tz);
+  const w = await createWorkspace({ name: 'Corner Shop', mode: 'mixed', currency: 'EUR', timeZone: tz });
+  const fridge = await saveLocation(w.id, { name: 'Chiller 1', kind: 'fridge' });
+  await saveLocation(w.id, { name: 'Shelf A', kind: 'shelf' });
+  const rule = await saveRule(w.id, { name: 'Opened sauce', appliesTo: 'after_opening', class: 'hard_cutoff', durationMinutes: 3 * 1440, sourceText: 'Manufacturer label' });
+  const prep = await saveRule(w.id, { name: 'Sandwiches', appliesTo: 'after_preparation', class: 'hard_cutoff', durationMinutes: 480, sourceText: 'Our HACCP plan' });
+  const milk = await saveProduct(w.id, { name: 'Semi-skimmed milk 2L', sku: 'MILK-2', barcodes: [{ code: '5000157024671' }], defaultLocationId: fridge.id, costPerTrackingUnit: { minor: 90, currency: 'EUR' }, sellingPrice: { minor: 145, currency: 'EUR' } });
+  const past = await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', productId: milk.id, dateKind: 'use_by', deadline: { precision: 'date', date: addDays(today, -2) }, quantity: 6, lotNumber: 'L1', locationId: fridge.id });
+  const bb = await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', newProduct: { name: 'Tomato sauce' }, dateKind: 'best_before', deadline: { precision: 'month', month: addDays(today, 120).slice(0, 7) }, quantity: 4 });
+  const opened = await openBatch({ workspaceId: w.id, parentBatchId: bb.id, quantity: 1, openedAt: new Date().toISOString(), ruleId: rule.id });
+  const sandwich = await prepareBatch({ workspaceId: w.id, newProduct: { name: 'Cheese sandwich', isPrepared: true }, preparedAt: new Date().toISOString(), ruleId: prep.id, quantity: 5 } as any);
+  await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', newProduct: { name: 'Frozen peas' }, dateKind: 'none' });
+  await recordRemoval(w.id, past.id, 'wasted', { quantity: 2, reason: 'past_deadline' });
+  await loadActiveWorkspace();
+  Object.assign(ids, { ws: w.id, fridge: fridge.id, rule: rule.id, product: milk.id, batch: past.id, opened: opened.child.id, prepared: sandwich.id });
 }
 
 const S = {
-  Home: () => require('../modules/home/screens/HomeScreen').HomeScreen,
-  Dates: () => require('../modules/dates/screens/DatesScreen').DatesScreen,
-  Products: () => require('../modules/products/screens/ProductsScreen').ProductsScreen,
+  Welcome: () => require('../modules/onboarding/screens/WelcomeScreen').WelcomeScreen,
+  ChooseMode: () => require('../modules/onboarding/screens/ChooseModeScreen').ChooseModeScreen,
+  WorkspaceSetup: () => require('../modules/onboarding/screens/WorkspaceSetupScreen').WorkspaceSetupScreen,
+  Today: () => require('../modules/today/screens/TodayScreen').TodayScreen,
+  AddChoice: () => require('../modules/add/screens/AddChoiceScreen').AddChoiceScreen,
+  ReportsHome: () => require('../modules/reports/screens/ReportsHomeScreen').ReportsHomeScreen,
   More: () => require('../modules/more/screens/MoreScreen').MoreScreen,
-  SettingsCurrency: () => require('../modules/more/screens/CurrencyScreen').CurrencyScreen,
-  SettingsLanguage: () => require('../modules/more/screens/LanguageScreen').LanguageScreen,
-  SettingsHelp: () => require('../modules/more/screens/HelpScreen').HelpScreen,
-  SettingsLegal: () => require('../modules/more/screens/LegalScreen').LegalScreen,
-  SettingsBackup: () => require('../modules/backup/screens/BackupScreen').BackupScreen,
-  SettingsAbout: () => require('../modules/more/screens/AboutScreen').AboutScreen,
-  SettingsOfflinePrivate: () => require('../modules/more/screens/OfflinePrivateScreen').OfflinePrivateScreen,
-  SettingsDates: () => require('../modules/settings/screens/DatesSettingsScreen').DatesSettingsScreen,
-  AddDate: () => require('../modules/dates/screens/AddDateScreen').AddDateScreen,
-  DateDetail: () => require('../modules/dates/screens/DateDetailScreen').DateDetailScreen,
-  DateCheck: () => require('../modules/dates/screens/DateCheckScreen').DateCheckScreen,
-  Reports: () => require('../modules/reports/screens/ReportsScreen').ReportsScreen,
-  ProductDetail: () => require('../modules/products/screens/ProductDetailScreen').ProductDetailScreen,
-  Scan: () => require('../modules/products/screens/ScanScreen').ScanScreen,
-  Import: () => require('../modules/import/screens/ImportScreen').ImportScreen,
-};
-const PARAMS: () => Record<keyof typeof S, any> = () => ({
-  Home: undefined, Dates: { filter: 'attention' }, Products: undefined, More: undefined,
-  SettingsCurrency: undefined, SettingsLanguage: undefined, SettingsHelp: { tab: 'faq', chapter: 'dates' }, SettingsLegal: { doc: 'privacy' },
-  SettingsBackup: undefined, SettingsAbout: undefined, SettingsOfflinePrivate: undefined, SettingsDates: undefined,
-  AddDate: { productId: 'P1' }, DateDetail: { id: 'D1' }, DateCheck: undefined, Reports: undefined,
-  ProductDetail: { id: 'P1' }, Scan: { mode: 'addDate' }, Import: undefined,
+  ...Object.fromEntries(Object.entries(require('../navigation/sharedScreens').SHARED_SCREENS).map(([k, v]) => [k, () => v])),
+} as Record<string, () => React.ComponentType<any>>;
+
+const PARAMS = (): Record<string, any> => ({
+  WorkspaceSetup: { mode: 'retail' },
+  ExpiryQueue: { query: { group: 'attention' } }, CheckRound: undefined, Items: undefined,
+  ProductDetail: { id: ids.product }, ProductEdit: { id: ids.product }, BatchDetail: { id: ids.batch }, BatchHistory: { id: ids.batch },
+  DeadlineCorrection: { id: ids.opened }, MoveLocation: { id: ids.batch }, BarcodeScanner: { purpose: 'add' },
+  AddBoughtIn: { productId: ids.product }, AddOpened: { productId: ids.product }, AddPrepared: undefined, AddOtherDated: undefined,
+  RuleEdit: { id: ids.rule }, LocationDetail: { id: ids.fridge }, ReportPreview: { report: 'expiry' },
+  InternalLabelPreview: { batchIds: [ids.prepared] }, CsvImport: { kind: 'batches' }, CsvImportPreview: { kind: 'batches' },
+  WorkspaceSettings: { id: ids.ws }, SettingsHelp: { tab: 'faq' }, SettingsLegal: { doc: 'privacy' },
 });
 
 const allTexts = (r: any): string[] => r.root.findAllByType('Text').flatMap((t: any) => {
@@ -135,19 +133,13 @@ beforeAll(async () => {
   await seed();
 });
 
-describe('navigation walk — every registered route renders in every language', () => {
-  const routes = Object.keys(S) as (keyof typeof S)[];
-  beforeAll(async () => { await require('../modules/settings/settingsStore').loadSettings(); });
-  it('covers every route registered in the shared per-tab stacks plus the four tab roots', () => {
-    const src = require('fs').readFileSync(require('path').join(__dirname, '../navigation/sharedScreens.tsx'), 'utf8');
-    const registered = [...src.matchAll(/<Stack\.Screen name="([A-Za-z]+)"/g)].map(m => m[1]).filter(n => n !== 'Tabs');
-    const missing = registered.filter(n => !(n in S));
-    expect(missing).toEqual([]);
-    // + Home / Dates / Products / More
-    expect(routes.length).toBe(registered.length + 4);
+describe('navigation walk — every registered route renders in every language (T59, T60)', () => {
+  const routes = Object.keys(S);
+  it('covers the whole register: onboarding, five tab roots and every shared screen', () => {
+    expect(routes.length).toBeGreaterThanOrEqual(44);
   });
   for (const lang of LANGS) {
-    it(`${lang}: no throw, no raw key, no "coming soon" on any of ${routes.length} screens`, async () => {
+    it(`${lang}: no throw, no raw key, no "coming soon" on any screen`, async () => {
       await i18next.changeLanguage(lang);
       const failures: string[] = [];
       const params = PARAMS();
@@ -156,12 +148,11 @@ describe('navigation walk — every registered route renders in every language',
         let renderer: any;
         try {
           const Screen = S[name]();
-          await act(async () => { renderer = TestRenderer.create(React.createElement(Screen)); await flush(); await flush(); });
+          await act(async () => { renderer = TestRenderer.create(React.createElement(Screen)); await flush(); await flush(); await flush(); });
           const texts = allTexts(renderer);
-          const raw = texts.filter(t => (RAW_KEY.test(t) || KEY_WITH_VARS.test(t)) && !/^[a-z]+\.[a-z]+$/.test(t) === true && t.split('.').length > 1 && !/\d/.test(t.split('.')[0]));
+          const raw = texts.filter(t => (RAW_KEY.test(t) || KEY_WITH_VARS.test(t)) && t.split('.').length > 1 && !/\d/.test(t.split('.')[0]));
           if (raw.length) failures.push(`${name} [${lang}] raw keys: ${[...new Set(raw)].slice(0, 5).join(', ')}`);
           if (texts.some(t => /coming soon/i.test(t) || /comingSoon/.test(t))) failures.push(`${name} [${lang}] still says coming soon`);
-          // Evidence: `TE_RENDER_OUT=<dir> npx jest navigationWalk` writes each screen's visible text per language.
           if (process.env.TE_RENDER_OUT && (lang === 'en' || lang === 'ar')) {
             const fsm = require('fs'); const pth = require('path');
             fsm.mkdirSync(process.env.TE_RENDER_OUT, { recursive: true });

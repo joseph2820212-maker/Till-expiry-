@@ -7,6 +7,9 @@ import type { Evaluation, ExpiryStatus } from '../../domain/expiry/statusEngine'
 import { localDateOf, localTimeOf } from '../../domain/expiry/datePrecision';
 import { localDate, localDateShort } from '../../utils/locale';
 import { colors } from '../../theme/colors';
+import i18n from '../../i18n';
+import type { MoneyValue } from '../../domain/expiry/expiryTypes';
+import { formatMoney } from '../../domain/formatMoney';
 
 type T = (k: string, o?: Record<string, unknown>) => string;
 
@@ -66,4 +69,9 @@ export function quantityLine(t: T, b: Pick<Batch, 'quantityRemaining' | 'quantit
 
 export function kindLabel(t: T, b: Pick<Batch, 'kind'>): string {
   return t(`batchKind.${b.kind}`);
+}
+
+/** Exact money in the current app language; unknown stays visibly unknown (callers pass undefined → "Not recorded"). */
+export function moneyText(m: MoneyValue): string {
+  return formatMoney(m.minor, m.currency, (i18n.language || 'en') as Parameters<typeof formatMoney>[2]);
 }

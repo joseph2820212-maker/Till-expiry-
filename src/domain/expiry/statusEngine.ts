@@ -67,9 +67,18 @@ export function evaluateBatch(b: Pick<Batch, 'effective' | 'timeZone'>, now: num
   return evaluateDeadline(b.effective, b.timeZone, now, settings);
 }
 
-/** Past a hard deadline: a price / markdown action must never be offered (§17, T57). */
-export function priceActionAllowed(b: Pick<Batch, 'effective' | 'timeZone' | 'status'>, now: number, settings: StatusSettings): boolean {
+/**
+ * May a price / markdown action be offered (§17, T57)? Never past a hard deadline, never for an unknown date, and never
+ * when a kept secondary hard date (e.g. the original use-by of an opened pack) has passed.
+ */
+export function priceActionAllowed(b: Pick<Batch, 'effective' | 'secondary' | 'timeZone' | 'status'>, now: number, settings: StatusSettings): boolean {
   if (b.status !== 'active') return false;
   const e = evaluateBatch(b, now, settings);
-  return !(e.isHard && e.status === 'past_deadline');
+  if (e.status === 'unknown') return false;
+  if (e.isHard && e.status === 'past_deadline') return false;
+  if (b.secondary && isHardKind(b.secondary.dateKind)) {
+    const s2 = evaluateDeadline(b.secondary, b.timeZone, now, settings);
+    if (s2.status === 'past_deadline') return false;
+  }
+  return true;
 }

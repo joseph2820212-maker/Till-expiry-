@@ -4,6 +4,7 @@
  * namespace. TillExpiry uses the simple, fixed `demo:` prefix, which the backup allowlist excludes, so demo records can
  * never be read, written, backed up or restored as real ones (T65–T66).
  */
+import { useSyncExternalStore } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DEVICE_KEYS } from './keys';
 
@@ -34,6 +35,11 @@ export async function setScope(next: DataScope): Promise<void> {
 export function onScopeChanged(l: () => void): () => void {
   listeners.add(l);
   return () => { listeners.delete(l); };
+}
+
+/** Re-render when the app switches between real data and the demo. */
+export function useScope(): DataScope {
+  return useSyncExternalStore(onScopeChanged, getScope, getScope);
 }
 
 /** Test helper. */

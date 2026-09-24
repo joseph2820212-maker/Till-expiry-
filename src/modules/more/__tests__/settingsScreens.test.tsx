@@ -77,67 +77,7 @@ beforeEach(() => {
   mockLoadDefaults.mockImplementation(async () => ({ ...MOCK_DEFAULTS }));
 });
 
-// ── CurrencyScreen ────────────────────────────────────────────────
-
-describe('CurrencyScreen', () => {
-  let CurrencyScreen: React.FC;
-  beforeAll(() => {
-    ({ CurrencyScreen } = require('../screens/CurrencyScreen'));
-  });
-
-  it('renders currency rows from SYMBOL_MAP', () => {
-    const renderer = render(<CurrencyScreen />);
-    const rows = renderer.root.findAllByType('TouchableOpacity');
-    expect(rows.length).toBe(3); // £ GBP, € EUR, $ USD
-  });
-
-  it('shows active checkmark for current currency', () => {
-    const renderer = render(<CurrencyScreen />);
-    const icons = renderer.root.findAllByType('Ionicons');
-    const checkmarks = icons.filter((i: any) => i.props.name === 'checkmark-circle');
-    expect(checkmarks.length).toBe(1);
-  });
-
-  it('calls setCurrencyOption on row press', () => {
-    const renderer = render(<CurrencyScreen />);
-    const rows = renderer.root.findAllByType('TouchableOpacity');
-    const eurRow = rows.find((r: any) => {
-      const texts = r.findAllByType('Text');
-      return texts.some((t: any) => t.props.children === 'EUR');
-    });
-    act(() => { eurRow.props.onPress(); });
-    expect(mockSetCurrencyOption).toHaveBeenCalledWith('€ EUR');
-  });
-
-  it('renders header with correct title', () => {
-    const renderer = render(<CurrencyScreen />);
-    const header = renderer.root.findByType('ScreenHeader');
-    expect(header.props.title).toBe('settings.currencyScreenTitle');
-  });
-
-  it('shows error banner when setCurrencyOption throws', async () => {
-    mockSetCurrencyOption.mockImplementationOnce(async () => { throw new Error('storage fail'); });
-    const renderer = render(<CurrencyScreen />);
-    const eurRow = renderer.root.findAllByType('TouchableOpacity')
-      .find((r: any) => {
-        const texts = r.findAllByType('Text');
-        return texts.some((t: any) => t.props.children === 'EUR');
-      });
-    await act(async () => { eurRow.props.onPress(); });
-    await flushPromises();
-    const errorTexts = renderer.root.findAllByType('Text')
-      .filter((t: any) => t.props.children === 'settings.currencySaveFailed');
-    expect(errorTexts.length).toBeGreaterThanOrEqual(1);
-  });
-});
-
-// ── TaxDefaultsScreen ─────────────────────────────────────────────
-
-// ── TargetDefaultsScreen ──────────────────────────────────────────
-
-// ── PaymentFeesScreen ─────────────────────────────────────────────
-
-// ── LanguageScreen ────────────────────────────────────────────────
+// CurrencyScreen removed in G3: currency is per workspace (WorkspaceForm, §21).
 
 describe('LanguageScreen', () => {
   let LanguageScreen: React.FC;

@@ -16,6 +16,17 @@ import { saveProduct } from '../products/productStore';
 import { createDatedBatch, openBatch, prepareBatch, recordRemoval } from '../batches/batchStore';
 import { loadSettings } from '../settings/settingsStore';
 import { notifyDataChanged } from '../../storage/changeBus';
+import { getLocales } from 'expo-localization';
+import type { MoneyValue } from '../../domain/expiry/expiryTypes';
+import { SYMBOL_MAP } from '../../utils/currency';
+
+/** The demo never assumes a currency: it uses the phone's own currency when known, otherwise it records no money. */
+function demoCurrency(): string {
+  try {
+    const c = getLocales()[0]?.currencyCode ?? '';
+    return c && Object.keys(SYMBOL_MAP).some(o => o.split(' ').pop() === c) ? c : '';
+  } catch { return ''; }
+}
 
 export function isDemo(): boolean { return getScope() === 'demo'; }
 
@@ -29,18 +40,20 @@ export async function seedDemo(now: number = Date.now()): Promise<void> {
   const t = i18n.t.bind(i18n);
   const tz = deviceTimeZone();
   const today = todayIn(tz, now);
-  const ws = await createWorkspace({ name: t('demo.workspaceName'), mode: 'mixed', currency: 'GBP', timeZone: tz });
+  const currency = demoCurrency();
+  const money = (minor: number): MoneyValue | undefined => (currency ? { minor, currency } : undefined);
+  const ws = await createWorkspace({ name: t('demo.workspaceName'), mode: 'mixed', currency, timeZone: tz });
   const fridge = await saveLocation(ws.id, { name: t('demo.fridge'), kind: 'fridge' });
   const freezer = await saveLocation(ws.id, { name: t('demo.freezer'), kind: 'freezer' });
   const shelf = await saveLocation(ws.id, { name: t('demo.shelf'), kind: 'shelf' });
   const openRule = await saveRule(ws.id, { name: t('demo.ruleOpened'), appliesTo: 'after_opening', class: 'hard_cutoff', durationMinutes: 3 * 1440, sourceText: t('demo.ruleSource') });
   const prepRule = await saveRule(ws.id, { name: t('demo.rulePrepared'), appliesTo: 'after_preparation', class: 'hard_cutoff', durationMinutes: 8 * 60, sourceText: t('demo.ruleSource') });
 
-  const milk = await saveProduct(ws.id, { name: t('demo.milk'), barcodes: [{ code: '5000000000017' }], defaultLocationId: fridge.id, defaultDateKind: 'use_by', costPerTrackingUnit: { minor: 95, currency: 'GBP' }, sellingPrice: { minor: 145, currency: 'GBP' } });
+  const milk = await saveProduct(ws.id, { name: t('demo.milk'), barcodes: [{ code: '5000000000017' }], defaultLocationId: fridge.id, defaultDateKind: 'use_by', costPerTrackingUnit: money(95), sellingPrice: money(145) });
   await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: milk.id, dateKind: 'use_by', deadline: { precision: 'date', date: today }, quantity: 4, lotNumber: 'L2401', locationId: fridge.id });
   await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: milk.id, dateKind: 'use_by', deadline: { precision: 'date', date: addDays(today, 5) }, quantity: 6, lotNumber: 'L2405', locationId: fridge.id });
 
-  const biscuits = await saveProduct(ws.id, { name: t('demo.biscuits'), defaultLocationId: shelf.id, defaultDateKind: 'best_before', sellingPrice: { minor: 120, currency: 'GBP' } });
+  const biscuits = await saveProduct(ws.id, { name: t('demo.biscuits'), defaultLocationId: shelf.id, defaultDateKind: 'best_before', sellingPrice: money(120) });
   await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: biscuits.id, dateKind: 'best_before', deadline: { precision: 'date', date: addDays(today, -3) }, quantity: 3, locationId: shelf.id });
 
   const sauce = await saveProduct(ws.id, { name: t('demo.sauce'), defaultLocationId: shelf.id, defaultRuleId: openRule.id });
@@ -53,7 +66,7 @@ export async function seedDemo(now: number = Date.now()): Promise<void> {
   const peas = await saveProduct(ws.id, { name: t('demo.peas'), defaultLocationId: freezer.id });
   await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: peas.id, dateKind: 'none', quantity: 2, locationId: freezer.id });
 
-  const yoghurt = await saveProduct(ws.id, { name: t('demo.yoghurt'), defaultLocationId: fridge.id, costPerTrackingUnit: { minor: 60, currency: 'GBP' } });
+  const yoghurt = await saveProduct(ws.id, { name: t('demo.yoghurt'), defaultLocationId: fridge.id, costPerTrackingUnit: money(60) });
   const y = await createDatedBatch({ workspaceId: ws.id, kind: 'bought_in', productId: yoghurt.id, dateKind: 'use_by', deadline: { precision: 'date', date: addDays(today, -1) }, quantity: 2, locationId: fridge.id });
   await recordRemoval(ws.id, y.id, 'wasted', { quantity: 2, reason: 'past_deadline' });
 }

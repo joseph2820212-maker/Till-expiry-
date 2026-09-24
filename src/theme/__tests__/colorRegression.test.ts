@@ -11,25 +11,7 @@ const BANNED_BEIGE_VALUES = [
   '#FAF3DE',
 ];
 
-const ACTIVE_SOURCE_FILES = [
-  'src/modules/backup/screens/BackupScreen.tsx',
-  'src/modules/home/screens/HomeScreen.tsx',
-  'src/modules/more/screens/AboutScreen.tsx',
-  'src/modules/more/screens/CurrencyScreen.tsx',
-  'src/modules/more/screens/HelpScreen.tsx',
-  'src/modules/more/screens/LanguageScreen.tsx',
-  'src/modules/more/screens/LegalScreen.tsx',
-  'src/modules/more/screens/MoreScreen.tsx',
-  'src/modules/more/screens/OfflinePrivateScreen.tsx',
-  'src/modules/products/screens/ProductsScreen.tsx',
-  'src/modules/products/screens/ProductDetailScreen.tsx',
-  'src/modules/dates/screens/DatesScreen.tsx',
-  'src/modules/dates/screens/AddDateScreen.tsx',
-  'src/modules/dates/screens/DateDetailScreen.tsx',
-  'src/modules/dates/screens/DateCheckScreen.tsx',
-  'src/modules/reports/screens/ReportsScreen.tsx',
-  'src/modules/settings/screens/DatesSettingsScreen.tsx',
-  'src/modules/import/screens/ImportScreen.tsx',
+const FIXED_FILES = [
   'src/components/DemoBackArrow.tsx',
   'src/components/ScreenHeader.tsx',
   'src/components/AppButton.tsx',
@@ -42,7 +24,23 @@ const ACTIVE_SOURCE_FILES = [
   'src/theme/typography.ts',
 ];
 
+
 const root = path.resolve(__dirname, '../../..');
+/** Every screen file of the app (found on disk, so a new screen can never be forgotten here). */
+function screenFiles(): string[] {
+  const out: string[] = [];
+  const walk = (d: string) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) { if (e.name !== '__tests__') walk(p); }
+      else if (/Screen\.tsx$/.test(e.name)) out.push(path.relative(root, p).split(path.sep).join('/'));
+    }
+  };
+  walk(path.resolve(root, 'src/modules'));
+  return out.sort();
+}
+const ACTIVE_SOURCE_FILES = [...FIXED_FILES, ...screenFiles()];
+
 const bannedPattern = new RegExp(BANNED_BEIGE_VALUES.map(v => v.replace('#', '#')).join('|'), 'gi');
 
 describe('TillCalc palette regression guard', () => {

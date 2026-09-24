@@ -9,7 +9,7 @@ import { spacing } from '../theme/spacing';
 import { HeaderTopBleed } from './HeaderTopBleed';
 import { useActiveWorkspace } from '../modules/workspaces/workspaceStore';
 import { WorkspaceSwitcher } from '../modules/workspaces/WorkspaceSwitcherSheet';
-import { getScope } from '../storage/scope';
+import { useScope } from '../storage/scope';
 
 /**
  * Navy header of every tab root (TillCalc TabRootHeader look): screen title, the active business (tap to switch) and
@@ -19,7 +19,7 @@ export const WorkspaceHeader: React.FC<{ title: string; onSearch?: () => void }>
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const ws = useActiveWorkspace();
-  const demo = getScope() === 'demo';
+  const demo = useScope() === 'demo';
   return (
     <>
       <HeaderTopBleed color={colors.primaryBlue} />

@@ -10,11 +10,11 @@ import tr from '../locales/tr.json';
 const LOCALES: Record<string, any> = { en, ar, de, es, fr, tr };
 
 const GUARDED_KEYS = [
-  'home.setupFooter',
-  'products.emptyBody',
-  'dates.emptyBody',
-  'reminders.howItWorks',
-  'billing.limit.products.keepsWorking',
+  'onboarding.disclaimer',
+  'dateKindHelp.best_before',
+  'deadlineInput.monthHint',
+  'status.past.use_by',
+  'workspace.zoneChangeHint',
 ];
 
 const get = (obj: any, path: string): unknown =>

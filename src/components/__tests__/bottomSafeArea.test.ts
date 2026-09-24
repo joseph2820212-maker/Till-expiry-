@@ -15,35 +15,28 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const ACTIVE_SCREENS = [
-  'src/modules/backup/screens/BackupScreen.tsx',
-  'src/modules/home/screens/HomeScreen.tsx',
-  'src/modules/more/screens/AboutScreen.tsx',
-  'src/modules/more/screens/CurrencyScreen.tsx',
-  'src/modules/more/screens/HelpScreen.tsx',
-  'src/modules/more/screens/LanguageScreen.tsx',
-  'src/modules/more/screens/LegalScreen.tsx',
-  'src/modules/more/screens/MoreScreen.tsx',
-  'src/modules/more/screens/OfflinePrivateScreen.tsx',
-  'src/modules/products/screens/ProductsScreen.tsx',
-  'src/modules/products/screens/ProductDetailScreen.tsx',
-  'src/modules/dates/screens/DatesScreen.tsx',
-  'src/modules/dates/screens/AddDateScreen.tsx',
-  'src/modules/dates/screens/DateDetailScreen.tsx',
-  'src/modules/dates/screens/DateCheckScreen.tsx',
-  'src/modules/reports/screens/ReportsScreen.tsx',
-  'src/modules/settings/screens/DatesSettingsScreen.tsx',
-  'src/modules/import/screens/ImportScreen.tsx',
-];
+
 
 const root = path.resolve(__dirname, '../../..');
+/** Every screen file of the app (found on disk, so a new screen can never be forgotten here). */
+function screenFiles(): string[] {
+  const out: string[] = [];
+  const walk = (d: string) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) { if (e.name !== '__tests__') walk(p); }
+      else if (/Screen\.tsx$/.test(e.name)) out.push(path.relative(root, p).split(path.sep).join('/'));
+    }
+  };
+  walk(path.resolve(root, 'src/modules'));
+  return out.sort();
+}
+const ACTIVE_SCREENS = screenFiles();
+
 
 describe('Android edge-to-edge bottom safe-area regression', () => {
-  it('all expected active screens exist on disk', () => {
-    const missing = ACTIVE_SCREENS.filter(
-      rel => !fs.existsSync(path.resolve(root, rel)),
-    );
-    expect(missing).toEqual([]);
+  it('finds the screen register on disk (E01–E44 minus sheets)', () => {
+    expect(ACTIVE_SCREENS.length).toBeGreaterThanOrEqual(40);
   });
 
   it('no active screen has an unprotected footer-bar paddingBottom: 28', () => {

@@ -1,6 +1,8 @@
 /** App identity used by About / Help / exports. `APP_VERSION` must match app.json (guarded by a test). */
 export const APP_NAME = 'TillExpiry';
 export const APP_VERSION = '0.1.0';
+/** Review build (§29): every feature unlocked, no billing, no store upload. */
+export const BUILD_KIND = 'review' as const;
 export const PUBLISHER = 'LLILL LTD';
 /** Support address: Codex sets EXPO_PUBLIC_SUPPORT_EMAIL before the store build (see docs/RELEASE_RECIPE.md). */
 export const SUPPORT_EMAIL = process.env.EXPO_PUBLIC_SUPPORT_EMAIL || 'support@tillnote.com';
