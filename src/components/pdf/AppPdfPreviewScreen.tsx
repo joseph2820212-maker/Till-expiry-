@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ActivityIndicator, I18nManager } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system/legacy';
@@ -171,7 +171,7 @@ export const AppPdfPreviewScreen: React.FC<AppPdfPreviewScreenProps> = ({
             accessibilityRole="button"
             accessibilityLabel={t('common.back')}
           >
-            <Ionicons name="chevron-back" size={22} color={ICON} />
+            <Ionicons name={I18nManager.isRTL ? 'chevron-forward' : 'chevron-back'} size={22} color={ICON} />
           </TouchableOpacity>
 
           <Text style={st.title} numberOfLines={1}>{title}</Text>

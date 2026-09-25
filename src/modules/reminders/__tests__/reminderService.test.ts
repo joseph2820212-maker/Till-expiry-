@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as N from 'expo-notifications';
 import { createWorkspace, __resetWorkspaceCache } from '../../workspaces/workspaceStore';
 import { correctDeadline, createDatedBatch, getBatch, setBatchArchived } from '../../batches/batchStore';
+import * as batchStore from '../../batches/batchStore';
 import { saveReminderSettings, __resetSettingsForTests } from '../../settings/settingsStore';
 import { DEVICE_KEYS } from '../../../storage/keys';
 import { __setScopeForTests } from '../../../storage/scope';
@@ -172,6 +173,27 @@ describe('reminder reconciliation', () => {
     expect(evaluateBatch(after!, Date.now(), DEFAULT_STATUS_SETTINGS)).toEqual(evaluateBatch(before!, Date.now(), DEFAULT_STATUS_SETTINGS));
     expect(JSON.parse((await AsyncStorage.getItem(DEVICE_KEYS.snoozes))!)[a.id]).toBe(until);
     await expect(snoozeBatchReminder(a.id, 'soon')).rejects.toThrow();
+  });
+
+  it('a snooze saved while a reconcile is loading data survives that reconcile pruning an expired snooze', async () => {
+    const { a, b } = await setup();
+    mock.__setPermission('granted');
+    await AsyncStorage.setItem(DEVICE_KEYS.snoozes, JSON.stringify({ [b.id]: new Date(Date.now() - 60_000).toISOString() }));
+    const until = zonedIso(addDays(today, 4), '12:00', TZ);
+    // Hold the reconcile inside its data load until the user's snooze is on disk.
+    let release!: () => void;
+    const gate = new Promise<void>(r => { release = r; });
+    const realList = batchStore.listBatches;
+    const spy = jest.spyOn(batchStore, 'listBatches').mockImplementationOnce(async (...args) => { await gate; return realList(...args); });
+    const running = reconcileReminders('foreground');
+    while (!spy.mock.calls.length) await new Promise(r => setTimeout(r, 1));
+    const snoozed = snoozeBatchReminder(a.id, until);
+    while (!(await AsyncStorage.getItem(DEVICE_KEYS.snoozes))?.includes(a.id)) await new Promise(r => setTimeout(r, 1));
+    release();
+    await Promise.all([running, snoozed]);
+    spy.mockRestore();
+    expect(JSON.parse((await AsyncStorage.getItem(DEVICE_KEYS.snoozes))!)).toEqual({ [a.id]: until });
+    expect(forBatch(await scheduledIds(), a.id).map(id => id.split(':')[1])).toEqual(['same_day']);
   });
 
   it('turning every type off cancels ours and records off', async () => {

@@ -30,6 +30,7 @@ import { listWorkspaces } from '../workspaces/workspaceStore';
 import { listBatches } from '../batches/batchStore';
 import { getGeneral, getReminderSettings, loadSettings } from '../settings/settingsStore';
 import { logError } from '../../utils/errorLog';
+import { withStorageKeyLock } from '../../utils/storageSafety';
 import { anyReminderEnabled, planReminders, REMINDER_ID_PREFIX, type PlannedReminder, type WorkspaceBatches } from './reminderPlan';
 
 export const CHANNEL_ID = 'expiry-reminders';
@@ -156,18 +157,25 @@ export async function getSnoozes(): Promise<Record<string, string>> {
  */
 export async function snoozeBatchReminder(batchId: string, untilIso: string): Promise<ReminderState> {
   if (!batchId || !Number.isFinite(Date.parse(untilIso))) throw new RangeError('bad snooze');
-  const snoozes = await getSnoozes();
-  snoozes[batchId] = untilIso;
-  await AsyncStorage.setItem(DEVICE_KEYS.snoozes, JSON.stringify(snoozes));
+  await withStorageKeyLock(DEVICE_KEYS.snoozes, async () => {
+    const snoozes = await getSnoozes();
+    snoozes[batchId] = untilIso;
+    await AsyncStorage.setItem(DEVICE_KEYS.snoozes, JSON.stringify(snoozes));
+  });
   return reconcileReminders('snooze');
 }
 
-async function pruneSnoozes(snoozes: Record<string, string>, now: number): Promise<Record<string, string>> {
-  const live = Object.fromEntries(Object.entries(snoozes).filter(([, v]) => Date.parse(v) > now));
-  if (Object.keys(live).length !== Object.keys(snoozes).length) {
-    await AsyncStorage.setItem(DEVICE_KEYS.snoozes, JSON.stringify(live)).catch(() => undefined);
-  }
-  return live;
+// Read-modify-write under the key lock, re-reading inside it: a snooze saved while a reconcile was loading data
+// must never be overwritten by that reconcile's pruned copy.
+async function pruneSnoozes(now: number): Promise<Record<string, string>> {
+  return withStorageKeyLock(DEVICE_KEYS.snoozes, async () => {
+    const snoozes = await getSnoozes();
+    const live = Object.fromEntries(Object.entries(snoozes).filter(([, v]) => Date.parse(v) > now));
+    if (Object.keys(live).length !== Object.keys(snoozes).length) {
+      await AsyncStorage.setItem(DEVICE_KEYS.snoozes, JSON.stringify(live)).catch(() => undefined);
+    }
+    return live;
+  });
 }
 
 // ─── reconcile ──────────────────────────────────────────────────────────────
@@ -212,8 +220,8 @@ async function runOnce(reason: string | undefined, now: number): Promise<Reminde
 
   let plan: PlannedReminder[];
   try {
-    const [data, snoozes] = await Promise.all([loadData(), getSnoozes()]);
-    const live = await pruneSnoozes(snoozes, now);
+    const data = await loadData();
+    const live = await pruneSnoozes(now);
     plan = planReminders({ workspaces: data, settings, status: getGeneral(), snoozes: live, now, deviceTimeZone: deviceTimeZone(), t: i18n.t.bind(i18n) as never });
   } catch (e) {
     // Data could not be read: keep what is scheduled (it was built from the last good data) and say so.
