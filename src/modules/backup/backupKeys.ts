@@ -21,7 +21,10 @@
  *     event is listed in its batch's list.
  */
 import { BACKUP_NAMESPACES, type EntityNs } from '../../storage/keys';
-import { DATE_KINDS } from '../../domain/expiry/expiryTypes';
+import { DATE_KINDS, type Batch, type DateKind, type DeadlineValue } from '../../domain/expiry/expiryTypes';
+import { isLocalDate, isLocalMonth, isOffsetIso, isValidTimeZone } from '../../domain/expiry/datePrecision';
+import { validateDeadline } from '../../domain/expiry/expiryValidation';
+import { ownDeadline } from '../../domain/expiry/deadlineEngine';
 
 const ID = '[A-Za-z0-9_-]{1,100}';
 const ENTITY_NS: readonly EntityNs[] = ['products', 'batches', 'events', 'rules', 'locations', 'lists', 'imports'];
@@ -75,11 +78,46 @@ const optMoney = (v: unknown) => v === undefined
   || (isObj(v) && Number.isSafeInteger(v.minor) && (v.minor as number) >= 0 && typeof v.currency === 'string' && /^[A-Z]{3}$/.test(v.currency));
 const optCount = (v: unknown) => v === undefined || (Number.isSafeInteger(v) && (v as number) >= 0);
 
+const DEADLINE_REASONS = ['printed', 'direct', 'rule', 'original_hard', 'original_quality', 'corrected', 'none'];
+
+/** A stored DeadlineValue: a real calendar date, a real month, or an offset ISO instant. */
+function validDeadlineValue(v: unknown): v is DeadlineValue {
+  if (!isObj(v)) return false;
+  if (v.precision === 'date') return typeof v.date === 'string' && isLocalDate(v.date);
+  if (v.precision === 'month') return typeof v.month === 'string' && isLocalMonth(v.month);
+  if (v.precision === 'datetime') return typeof v.at === 'string' && isOffsetIso(v.at);
+  return false;
+}
+
+/** A DeadlineInfo (effective / secondary): kind, reason, and a deadline that fits the kind (use-by never month-only). */
+function validDeadlineInfo(v: unknown): boolean {
+  if (!isObj(v) || !oneOf(v.dateKind, DATE_KINDS) || !oneOf(v.reason, DEADLINE_REASONS)) return false;
+  if (v.dateKind === 'none') return v.deadline === undefined;
+  return validDeadlineValue(v.deadline) && validateDeadline(v.dateKind as DateKind, v.deadline) === null;
+}
+
+/** A batch's own stored date fields, its effective / secondary dates and its time zone (P1-REOPEN audit). */
+function validBatchDates(r: Obj): boolean {
+  if (!nonEmpty(r.timeZone) || !isValidTimeZone(r.timeZone)) return false;
+  if (!oneOf(r.datePrecision, ['date', 'month', 'datetime'])) return false;
+  if (r.printedDate !== undefined && !(typeof r.printedDate === 'string' && isLocalDate(r.printedDate))) return false;
+  if (r.printedMonth !== undefined && !(typeof r.printedMonth === 'string' && isLocalMonth(r.printedMonth))) return false;
+  if (r.exactDeadlineAt !== undefined && !(typeof r.exactDeadlineAt === 'string' && isOffsetIso(r.exactDeadlineAt))) return false;
+  const own = ownDeadline(r as unknown as Batch);
+  if (validateDeadline(r.dateKind as DateKind, r.dateKind === 'none' ? undefined : own) !== null) return false;
+  if (!validDeadlineInfo(r.effective)) return false;
+  if (r.secondary !== undefined && !validDeadlineInfo(r.secondary)) return false;
+  for (const t of [r.openedAt, r.preparedAt, r.receivedAt]) if (t !== undefined && !(typeof t === 'string' && isOffsetIso(t))) return false;
+  if (r.sourceBatchIds !== undefined && !isIdList(r.sourceBatchIds)) return false;
+  if (r.parentBatchId !== undefined && !nonEmpty(r.parentBatchId)) return false;
+  return true;
+}
+
 const ITEM_CHECKS: Record<EntityNs, (r: Obj) => boolean> = {
   products: r => nonEmpty(r.name) && Array.isArray(r.barcodes) && oneOf(r.status, ['active', 'hidden'])
     && optMoney(r.costPerTrackingUnit) && optMoney(r.sellingPrice),
   batches: r => nonEmpty(r.productId) && str(r.productName) && oneOf(r.status, ['active', 'completed', 'archived'])
-    && oneOf(r.dateKind, DATE_KINDS) && isObj(r.effective) && oneOf((r.effective as Obj).dateKind, DATE_KINDS),
+    && oneOf(r.dateKind, DATE_KINDS) && validBatchDates(r),
   // `unitCost` (wasted events, EXP-REV-10) is optional: older events without it stay valid.
   events: r => nonEmpty(r.batchId) && nonEmpty(r.type) && nonEmpty(r.at) && optMoney(r.unitCost),
   rules: r => nonEmpty(r.name) && oneOf(r.appliesTo, ['after_opening', 'after_preparation', 'manual_review'])
@@ -118,7 +156,7 @@ export function validateBackupData(data: Record<string, string>): EntryProblem[]
   for (const p of parsed) {
     if (p.info.kind !== 'workspace') continue;
     const w = p.value;
-    if (!isObj(w) || w.id !== p.info.id || !nonEmpty(w.name) || !oneOf(w.status, ['active', 'hidden']) || !nonEmpty(w.timeZone) || !str(w.mode)) {
+    if (!isObj(w) || w.id !== p.info.id || !nonEmpty(w.name) || !oneOf(w.status, ['active', 'hidden']) || !nonEmpty(w.timeZone) || !isValidTimeZone(w.timeZone) || !str(w.mode)) {
       problems.push({ key: p.key, reason: 'badWorkspace' });
       continue;
     }
@@ -223,6 +261,15 @@ export function validateBackupData(data: Record<string, string>): EntryProblem[]
     if (!has(`batches:item:${String(ev.batchId)}`)) problems.push({ key, reason: 'unknownBatch' });
     else if (batch && batch.workspaceId !== ev.workspaceId) problems.push({ key, reason: 'eventMismatch' });
     else if (!inBatchList.has(info.id)) problems.push({ key, reason: 'orphanItem' });
+  }
+  // Batch references stay inside their own workspace (P1-REOPEN audit): product, original pack, source batches.
+  for (const [key, b] of items) {
+    const info = backupKeyInfo(key);
+    if (info?.kind !== 'item' || info.ns !== 'batches') continue;
+    const sameWs = (k: string) => has(k) && items.get(k)?.workspaceId === b.workspaceId;
+    if (!sameWs(`products:item:${String(b.productId)}`)) problems.push({ key, reason: 'unknownProduct' });
+    if (b.parentBatchId !== undefined && !sameWs(`batches:item:${String(b.parentBatchId)}`)) problems.push({ key, reason: 'unknownParent' });
+    if (Array.isArray(b.sourceBatchIds) && b.sourceBatchIds.some(id => !sameWs(`batches:item:${String(id)}`))) problems.push({ key, reason: 'unknownSource' });
   }
   return problems;
 }

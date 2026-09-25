@@ -176,3 +176,24 @@ translated into ar / tr / fr / es / de (machine translation, for human review; G
 
 Still required before release: independent re-audit of this SHA, then the native APK on a networked Android build
 machine (G10 HOLD unchanged) and the device checklist, including the new rows 35–38.
+
+## Re-audit remediation (re-audit of `ac4916d`) — fixes PASS (automated) · G9 HOLD until the final narrow re-audit
+
+| Field | Value |
+|---|---|
+| Re-audited SHA | `ac4916ddd5bb5fd2edbb7892b6f612c0d3051916` |
+| Remediation commit | the commit "Re-audit fixes P1-REOPEN-01/02, P2-01/02 …" (SHA returned with this pass) |
+| Scope | only the re-audit findings; no redesign; no APK |
+
+| Finding | Fix | Regression tests |
+|---|---|---|
+| P1-REOPEN-01 parent correction left opened children stale | `correctDeadline` on a pack re-derives every direct opened child (`openedDeadline` against the corrected parent, keeping the child's own date or rule) in the SAME transaction; each changed child gets a `deadline_corrected` event with before / after / `fromParent`; a child whose parent record is missing fails closed (`parentMissing`, also in `applyRule`) | batchStore: 30→26 child becomes 26; 26→30 child returns to its own 28; best-before correction updates the child secondary; rule-based child; injected failure rolls back parent + all children; Today / report / reminder inputs see the new date; missing parent fails closed |
+| P1-REOPEN-02 an unsettled restore could be escaped with Back | global write gate (`src/storage/writeGate.ts`): `restoreUnconfirmed`, `rollbackFailed` and unresolved `recoveryRequired` close it at once; App.tsx then renders only `RecoveryRequiredScreen` (no Back, no header, no tabs) in place of the navigator; `runTxn`, settings saves and new restores refuse while it is closed; Retry = `settleRecovery`, which opens the gate only after recovery returns ready and the data is reloaded | backupFile: gate closes on unconfirmed; no business write (product, workspace, settings) possible and nothing changes on disk; Retry prepared → old dataset then writes allowed; Retry committed → new dataset kept; Retry that cannot settle keeps the gate and journal; restore screen shows no Back / failed state |
+| P2-01 stale appliedRule after a manual correction | a manual correction removes `appliedRule` from the batch; the old snapshot is kept in the event's `before.appliedRule` | opened and prepared × direct and no-date corrections |
+| P2-02 reminder wording promised "a few minutes" | wording now "Android may deliver this reminder later than the selected time. Open Today for the current status." in six languages; help text says best effort with no guaranteed time | `reminderPolicy.test.ts` checks best-effort / no-guarantee wording and that no delay window is promised |
+| Backup validator hardening | batch `productId`, `parentBatchId`, `sourceBatchIds` must reference existing same-workspace records; batch own date fields, `effective` / `secondary` deadline structures (real dates / months / offset instants, use-by never month-only), batch and workspace time zones (IANA) are validated on backup and restore | allowlist/validation: unknown product, missing parent, missing source, bad zone, use-by without date, month-only use-by, 30 February, malformed own date, bad workspace zone |
+
+Gates: `npm run typecheck` clean · `npm run lint` clean · `npm test` 65 suites / 619 tests passed ·
+`npx expo config --type introspect` OK · `npx expo export --platform android` Hermes bundle 6.77 MB.
+New strings (6) written in all six languages; for human review with the rest of the machine translations.
+APK not built (G10 HOLD) — waiting for the final narrow re-audit, as instructed.

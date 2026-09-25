@@ -1,4 +1,6 @@
 /** Master handoff §23 / §31 backup tests (T44, T46–T53) against the real storage layer and real encryption. */
+import { settleRecovery } from '../startupRecovery';
+import { writeBlockReason } from '../../../storage/writeGate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
@@ -95,6 +97,7 @@ const journalKeys = async () => ((await AsyncStorage.getAllKeys()) as string[]).
 const metaState = async () => { const raw = await AsyncStorage.getItem(RESTORE_META_KEY); return raw ? JSON.parse(raw).state : null; };
 
 beforeEach(async () => {
+  require('../../../storage/writeGate').clearWriteBlock();
   store.clear();
   __resetWorkspaceCache();
   __resetSettingsForTests();
@@ -359,9 +362,15 @@ describe('allowlist and record validation', () => {
   const ws = (id: string, name = 'Shop') => JSON.stringify({ id, name, mode: 'retail', currency: '', timeZone: 'Europe/London', status: 'active', isDefault: true, createdAt: 'x', updatedAt: 'x' });
   const product = (id: string, workspaceId: string) => JSON.stringify({ id, workspaceId, name: 'Tea', barcodes: [], trackingUnit: 'each', status: 'active', createdAt: 'x', updatedAt: 'x', schemaVersion: 1 });
   const base = () => ({ 'workspaces:index': '["ws_a"]', 'workspaces:active': '"ws_a"', 'workspaces:item:ws_a': ws('ws_a') });
+  const validBatch = (id: string, workspaceId: string) => ({
+    id, workspaceId, productId: 'p1', productName: 'Tea', kind: 'bought_in', status: 'active', timeZone: 'Europe/London',
+    dateKind: 'use_by', datePrecision: 'date', printedDate: '2026-10-01',
+    effective: { dateKind: 'use_by', deadline: { precision: 'date', date: '2026-10-01' }, reason: 'printed' },
+    createdAt: 'x', updatedAt: 'x', schemaVersion: 1,
+  });
 
   it('REV-05 referential rules are enforced on restore (index ↔ item, orphans, active, per-batch events)', () => {
-    const batch = (id: string, workspaceId: string) => JSON.stringify({ id, workspaceId, productId: 'p1', productName: 'Tea', status: 'active', dateKind: 'use_by', effective: { dateKind: 'use_by' } });
+    const batch = (id: string, workspaceId: string, extra: Record<string, unknown> = {}) => JSON.stringify({ ...validBatch(id, workspaceId), ...extra });
     const event = (id: string, batchId: string, workspaceId = 'ws_a') => JSON.stringify({ id, workspaceId, batchId, type: 'created', at: 'x' });
     const good = () => ({
       ...base(), 'products:index:ws_a': '["p1"]', 'products:item:p1': product('p1', 'ws_a'),
@@ -386,10 +395,20 @@ describe('allowlist and record validation', () => {
     expect(bad({ 'events:batch:b9': '["e1"]' })).toThrow(invalid); // list of a batch that does not exist
     expect(bad({ 'events:item:e1': event('e1', 'b9'), 'events:batch:b1': '["e1"]' })).toThrow(invalid); // event of another batch
     expect(bad({ 'events:batch:b1': '["e1","e2"]' })).toThrow(invalid); // list → missing event
+    // P1-REOPEN audit: same-workspace references and real deadline structures / time zones.
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { productId: 'p9' }) })).toThrow(invalid); // unknown product
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { parentBatchId: 'b9' }) })).toThrow(invalid); // missing original pack
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { sourceBatchIds: ['b9'] }) })).toThrow(invalid); // missing source batch
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { timeZone: 'Mars/Olympus' }) })).toThrow(invalid); // bad zone
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { effective: { dateKind: 'use_by', reason: 'printed' } }) })).toThrow(invalid); // use-by without a date
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { effective: { dateKind: 'use_by', deadline: { precision: 'month', month: '2026-10' }, reason: 'printed' } }) })).toThrow(invalid); // month-only use-by
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { effective: { dateKind: 'use_by', deadline: { precision: 'date', date: '2026-02-30' }, reason: 'printed' } }) })).toThrow(invalid); // not a real day
+    expect(bad({ 'batches:item:b1': batch('b1', 'ws_a', { printedDate: '31/10/2026' }) })).toThrow(invalid); // own date malformed
+    expect(bad({ 'workspaces:item:ws_a': JSON.stringify({ ...JSON.parse(ws('ws_a')), timeZone: 'Nowhere/Land' }) })).toThrow(invalid); // workspace zone
   });
 
   it('optional money and import fields: accepted when absent or well-formed, refused when malformed', () => {
-    const batch = JSON.stringify({ id: 'b1', workspaceId: 'ws_a', productId: 'p1', productName: 'Tea', status: 'active', dateKind: 'use_by', effective: { dateKind: 'use_by' } });
+    const batch = JSON.stringify(validBatch('b1', 'ws_a'));
     const ev = (extra: Record<string, unknown>) => JSON.stringify({ id: 'e1', workspaceId: 'ws_a', batchId: 'b1', type: 'wasted', at: 'x', ...extra });
     const imp = (extra: Record<string, unknown>) => JSON.stringify({ id: 'i1', workspaceId: 'ws_a', kind: 'products', fileName: 'a.csv', fingerprint: 'f', createdCount: 1, skippedCount: 0, at: 'x', ...extra });
     const file = (e: string, i: string) => craft({
@@ -526,7 +545,7 @@ describe('T51 / T53 rollback and interrupted restore', () => {
     expect(await realData()).toBe(state);
   });
 
-  it('a later restore first rolls back a pending interrupted one, then restores cleanly', async () => {
+  it('after an unsettled restore the app is blocked; Retry settles (rolls back) and only then a new restore runs cleanly', async () => {
     await makeGood();
     await putFile(goodFile);
     const multiSet = AsyncStorage.multiSet as jest.Mock;
@@ -539,6 +558,11 @@ describe('T51 / T53 rollback and interrupted restore', () => {
       return original(pairs);
     });
     try { await expectCode(restoreBackup(FILE, PASS), 'rollbackFailed'); } finally { multiSet.mockImplementation(original); }
+    // P1-REOPEN-02: unsettled → gate closed: no restore and no business write until Retry settles the journal.
+    expect(writeBlockReason()).toBe('rollbackFailed');
+    await expect(restoreBackup(FILE, PASS)).rejects.toMatchObject({ code: 'recoveryRequired' });
+    expect((await settleRecovery(async () => undefined)).status).toBe('ready');
+    expect(writeBlockReason()).toBeNull();
     await restoreBackup(FILE, PASS);
     expect(await realData()).toBe(goodState);
     expect(await AsyncStorage.getItem(RESTORE_META_KEY)).toBeNull();
@@ -622,7 +646,8 @@ describe('REV-03 durable commit point', () => {
         () => expectCode(restoreBackup(FILE, PASS), 'rollbackFailed')));
     expect(await metaState()).toBe('prepared');
     expect(await realData()).toBe(goodState);
-    expect(await recoverInterruptedRestore()).toBe('rolledBack');
+    expect(writeBlockReason()).toBe('rollbackFailed');
+    expect(await settleRecovery(async () => undefined)).toEqual({ status: 'ready', outcome: 'rolledBack' });
     expect(await realData()).toBe(before);
 
     // committed: the commit is verified, then the journal cleanup fails.
@@ -699,8 +724,76 @@ describe('REV-04 startup recovery gate', () => {
   it('a new restore is refused while an unresolved journal is pending (it is never overwritten)', async () => {
     const { half } = await interrupted();
     const metaBefore = await AsyncStorage.getItem(RESTORE_META_KEY);
-    await withStorageMock('multiSet', () => Promise.reject(new Error('disk full')), () => expectCode(restoreBackup(FILE, PASS), 'recoveryRequired'));
+    await withStorageMock('multiSet', () => Promise.reject(new Error('disk full')), () => expect(restoreBackup(FILE, PASS)).rejects.toMatchObject({ code: 'recoveryRequired' }));
+    expect(writeBlockReason()).not.toBeNull(); // P1-REOPEN-02: the app is blocked until the journal is settled
     expect(await AsyncStorage.getItem(RESTORE_META_KEY)).toBe(metaBefore);
     expect(await realData()).toBe(half);
+  });
+});
+
+describe('P1-REOPEN-02 an unsettled restore blocks the whole app until Retry settles it', () => {
+  async function unconfirmedRestore() {
+    const before = await preparedPhone();
+    let metaWrites = 0;
+    await withStorageMock('setItem', (orig, k: string, v: string) => {
+      if (k !== RESTORE_META_KEY) return orig(k, v);
+      metaWrites += 1;
+      return metaWrites === 1 ? orig(k, v) : Promise.reject(new Error('disk full'));
+    }, () => expectCode(restoreBackup(FILE, PASS), 'restoreUnconfirmed'));
+    return before;
+  }
+
+  it('restoreUnconfirmed closes the global gate at once (App shows only the recovery screen, no Back path)', async () => {
+    await unconfirmedRestore();
+    expect(writeBlockReason()).toBe('restoreUnconfirmed');
+    // App.tsx renders RecoveryRequiredScreen from this gate BEFORE the navigator, and that screen has no Back button.
+    const app = require('fs').readFileSync(require('path').join(__dirname, '../../../App.tsx'), 'utf8');
+    expect(app.indexOf('if (recoveryBlocked)')).toBeGreaterThan(-1);
+    expect(app.indexOf('if (recoveryBlocked)')).toBeLessThan(app.indexOf('<AppNavigator />'));
+    const screen = require('fs').readFileSync(require('path').join(__dirname, '../RecoveryRequiredScreen.tsx'), 'utf8');
+    expect(screen).not.toMatch(/ScreenHeader|goBack|onBack/);
+  });
+
+  it('no business write is possible while the restore is unsettled, and nothing changes on disk', async () => {
+    await unconfirmedRestore();
+    const snap = await realData();
+    const a = getActiveWorkspace()!;
+    await expect(saveProduct(a.id, { name: 'Typed during limbo' })).rejects.toMatchObject({ code: 'recoveryRequired' });
+    await expect(createWorkspace({ name: 'X', mode: 'retail', timeZone: 'Europe/London' })).rejects.toMatchObject({ code: 'recoveryRequired' });
+    await expect(require('../../settings/settingsStore').saveGeneral({ soonDays: 5 })).rejects.toMatchObject({ code: 'recoveryRequired' });
+    expect(await realData()).toBe(snap);
+  });
+
+  it('Retry with a prepared journal → the old dataset, then the app opens again', async () => {
+    const before = await unconfirmedRestore();
+    expect(await metaState()).toBe('prepared');
+    const onReady = jest.fn(async () => undefined);
+    expect(await settleRecovery(onReady)).toEqual({ status: 'ready', outcome: 'rolledBack' });
+    expect(await realData()).toBe(before);
+    expect(onReady).toHaveBeenCalledTimes(1);
+    expect(writeBlockReason()).toBeNull();
+    await saveProduct(getActiveWorkspace()!.id, { name: 'Now allowed' });
+  });
+
+  it('Retry with a committed journal → the new dataset is kept, then the app opens again', async () => {
+    await unconfirmedRestore();
+    const raw = await AsyncStorage.getItem(RESTORE_META_KEY);
+    await AsyncStorage.setItem(RESTORE_META_KEY, String(raw).replace('"prepared"', '"committed"')); // the marker did land
+    expect(await metaState()).toBe('committed');
+    expect(await settleRecovery(async () => undefined)).toEqual({ status: 'ready', outcome: 'completed' });
+    expect(await realData()).toBe(goodState);
+    expect(writeBlockReason()).toBeNull();
+  });
+
+  it('Retry that still cannot settle keeps the app blocked and the journal in place', async () => {
+    await unconfirmedRestore();
+    const metaBefore = await AsyncStorage.getItem(RESTORE_META_KEY);
+    await withStorageMock('multiSet', () => Promise.reject(new Error('disk full')), async () => {
+      const onReady = jest.fn(async () => undefined);
+      expect((await settleRecovery(onReady)).status).toBe('recoveryRequired');
+      expect(onReady).not.toHaveBeenCalled();
+    });
+    expect(writeBlockReason()).not.toBeNull();
+    expect(await AsyncStorage.getItem(RESTORE_META_KEY)).toBe(metaBefore);
   });
 });

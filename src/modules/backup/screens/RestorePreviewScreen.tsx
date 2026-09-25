@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ScreenHeader } from '../../../components/ScreenHeader';
+import { writeBlockReason } from '../../../storage/writeGate';
 import { AppKeyboardScrollView } from '../../../components/AppKeyboardScrollView';
 import { AppButton } from '../../../components/AppButton';
 import { AppAlert } from '../../../components/AppAlert';
@@ -105,6 +106,9 @@ export const RestorePreviewScreen: React.FC = () => {
       setResult(r);
       setPhase('done');
     } catch (e) {
+      // P1-REOPEN-02: an unsettled restore closes the global gate; App.tsx replaces every screen with the blocking
+      // recovery screen. This screen never offers Back / "failed" for that case — it stays in the restoring state.
+      if (writeBlockReason()) return;
       setFailure(backupErrorText(t, e));
       setPhase('failed');
     } finally {

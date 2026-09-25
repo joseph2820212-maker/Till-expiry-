@@ -43,6 +43,7 @@
  * categories (`backupBlocked`). Nothing is ever silently dropped from a backup.
  * Device keys (reminder ids/state, snoozes, txn journal, scope, demo meta, language) are never touched.
  */
+import { assertWritable, blockWrites } from '../../storage/writeGate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
@@ -433,47 +434,72 @@ export interface RestoreResult {
 }
 
 /** Replace all real business data with a parsed, validated backup. Atomic: wholly old or wholly new. */
+/**
+ * P1-REOPEN-02: a restore that ends unconfirmed, with a failed rollback, or with an unresolved earlier journal leaves
+ * the phone unsettled. The whole app is then blocked (write gate + recovery screen) until Retry settles the journal.
+ */
+function blockIfUnsettled(e: unknown): void {
+  if (!(e instanceof BackupError)) return;
+  if (e.code === 'restoreUnconfirmed') blockWrites('restoreUnconfirmed');
+  else if (e.code === 'rollbackFailed') blockWrites('rollbackFailed');
+  else if (e.code === 'recoveryRequired') blockWrites(recoveryBlockReasonOf(e));
+}
+
+/** Same mapping as startupRecovery.recoveryBlockReason (kept here to avoid an import cycle). */
+export function recoveryBlockReasonOf(e: BackupError): 'rollbackFailed' | 'journalUnreadable' | 'storageUnavailable' {
+  const detail = e.detail ?? '';
+  if (detail.startsWith('journalUnreadable')) return 'journalUnreadable';
+  if (detail.startsWith('rollbackFailed')) return 'rollbackFailed';
+  return 'storageUnavailable';
+}
+
 export async function restoreParsed(parsed: ParsedBackup): Promise<RestoreResult> {
   if (getScope() === 'demo') throw new BackupError('demoActive');
   const incoming = Object.entries(parsed.data) as [string, string][];
   if (!incoming.length) throw new BackupError('emptyBackup');
   if (incoming.some(([k]) => !isBackupKey(k))) throw new BackupError('keyNotAllowed');
 
-  await withStorageKeyLock([RESTORE_LOCK, TXN_LOCK], async () => {
-    // A pending unresolved journal must never be overwritten by a new one (it is the only way back).
-    try { await recoverInner(); } catch (e) {
-      throw e instanceof BackupError ? e : new BackupError('recoveryRequired', msg(e));
-    }
-    let snapshot: [string, string][];
-    let meta: JournalMeta;
-    try {
-      const keys = await realBackupKeys();
-      const pairs = keys.length ? ((await AsyncStorage.multiGet(keys)) as [string, string | null][]) : [];
-      snapshot = pairs.filter((p): p is [string, string] => p[1] !== null);
-      meta = await writeJournal(snapshot);
-    } catch (e) {
+  try {
+    await withStorageKeyLock([RESTORE_LOCK, TXN_LOCK], async () => {
+      assertWritable(); // an earlier unsettled restore must be settled first
+      // A pending unresolved journal must never be overwritten by a new one (it is the only way back).
+      try { await recoverInner(); } catch (e) {
+        throw e instanceof BackupError ? e : new BackupError('recoveryRequired', msg(e));
+      }
+      let snapshot: [string, string][];
+      let meta: JournalMeta;
+      try {
+        const keys = await realBackupKeys();
+        const pairs = keys.length ? ((await AsyncStorage.multiGet(keys)) as [string, string | null][]) : [];
+        snapshot = pairs.filter((p): p is [string, string] => p[1] !== null);
+        meta = await writeJournal(snapshot);
+      } catch (e) {
+        await clearJournal().catch(() => undefined);
+        throw new BackupError('snapshotFailed', msg(e));
+      }
+      try {
+        await applyExactly(incoming);
+      } catch (writeErr) {
+        await rollBackNow(meta, snapshot, writeErr);
+      }
+      // Commit point: only a written AND read-back marker counts. Otherwise the restore is not reported as done.
+      try {
+        await setMetaState(meta, 'committed');
+      } catch (commitErr) {
+        let backToPrepared = false;
+        try { await setMetaState(meta, 'prepared'); backToPrepared = true; } catch { /* marker state unknown */ }
+        // Unknown marker: rolling back could leave a mix under a `committed` marker, so the data stays wholly new and
+        // the next launch settles it to exactly one whole state (committed → new, prepared → old).
+        if (!backToPrepared) throw new BackupError('restoreUnconfirmed', msg(commitErr));
+        await rollBackNow(meta, snapshot, commitErr);
+      }
+      // Verified commit: a cleanup failure here leaves a `committed` journal, which the next launch only deletes.
       await clearJournal().catch(() => undefined);
-      throw new BackupError('snapshotFailed', msg(e));
-    }
-    try {
-      await applyExactly(incoming);
-    } catch (writeErr) {
-      await rollBackNow(meta, snapshot, writeErr);
-    }
-    // Commit point: only a written AND read-back marker counts. Otherwise the restore is not reported as done.
-    try {
-      await setMetaState(meta, 'committed');
-    } catch (commitErr) {
-      let backToPrepared = false;
-      try { await setMetaState(meta, 'prepared'); backToPrepared = true; } catch { /* marker state unknown */ }
-      // Unknown marker: rolling back could leave a mix under a `committed` marker, so the data stays wholly new and
-      // the next launch settles it to exactly one whole state (committed → new, prepared → old).
-      if (!backToPrepared) throw new BackupError('restoreUnconfirmed', msg(commitErr));
-      await rollBackNow(meta, snapshot, commitErr);
-    }
-    // Verified commit: a cleanup failure here leaves a `committed` journal, which the next launch only deletes.
-    await clearJournal().catch(() => undefined);
-  });
+    });
+  } catch (e) {
+    blockIfUnsettled(e);
+    throw e;
+  }
 
   // Reminders are device-only: every notification scheduled for the old data is cancelled, then planned again from
   // the restored batches. Settings and the active workspace are reloaded first so the reconcile reads the restored

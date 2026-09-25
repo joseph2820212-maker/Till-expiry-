@@ -134,7 +134,9 @@
     "rule_sourceRequired": "Geben Sie an, woher diese Regel stammt (Etikett, Lieferant, Ihr Verfahren).",
     "rule_durationRequired": "Geben Sie die Dauer ein.",
     "rule_badDuration": "Geben Sie eine Dauer zwischen 1 Minute und 3 Jahren ein.",
-    "currencyInUse": "Produkte haben noch Kosten oder Preise in der alten Währung."
+    "currencyInUse": "Produkte haben noch Kosten oder Preise in der alten Währung.",
+    "parentMissing": "Die Originalpackung dieses geöffneten Artikels kann nicht gelesen werden. Es wurde nichts geändert.",
+    "recoveryRequired": "Eine Wiederherstellung muss abgeschlossen werden, bevor etwas gespeichert werden kann."
   },
   "nav": {
     "more": "Mehr",
@@ -523,7 +525,7 @@
     "sameDayHint": "Wird am Tag des Datums zur Uhrzeit der Übersicht gesendet.",
     "exactSection": "Erinnerung vor Fristuhrzeit",
     "exactToggle": "Vor der Fristuhrzeit geöffneter oder zubereiteter Artikel erinnern",
-    "exactHint": "Für geöffnete und zubereitete Artikel mit Fristuhrzeit. Android kann Erinnerungen einige Minuten verspätet zustellen; der Bildschirm „Heute“ zeigt immer den aktuellen Stand.",
+    "exactHint": "Für geöffnete und zubereitete Artikel mit Fristuhrzeit. Android kann diese Erinnerung später als zur gewählten Uhrzeit zustellen. Öffnen Sie „Heute“ für den aktuellen Stand.",
     "leadLabel": "Wie lange vorher",
     "minutesBefore": "Minuten vorher: {{count}}",
     "notShelfLife": "Erinnerungszeiten bestimmen nur, wann das Telefon Sie erinnert. Sie sind keine Haltbarkeitsregeln und ändern niemals ein Datum."
@@ -899,7 +901,8 @@
     "emptyBody": "Aktionen zu diesem Artikel erscheinen hier.",
     "change": "{{from}} → {{to}}",
     "reason": "Grund: {{reason}}",
-    "qty": "Menge: {{count}}"
+    "qty": "Menge: {{count}}",
+    "fromParent": "Aktualisiert, weil das Datum auf der Originalpackung korrigiert wurde"
   },
   "product": {
     "title": "Produkt",
@@ -1620,7 +1623,7 @@
       },
       "reminders": {
         "title": "Erinnerungen",
-        "l1": "Mehr → Erinnerungen: eine tägliche Übersicht zur gewählten Uhrzeit, eine Warnung einige Tage vorher, eine Warnung am Tag selbst und eine Warnung vor der Fristuhrzeit geöffneter oder zubereiteter Artikel. Erinnerungen werden nur nach bestem Bemühen zugestellt: Android kann sie einige Minuten verspätet anzeigen.",
+        "l1": "Mehr → Erinnerungen: eine tägliche Übersicht zur gewählten Uhrzeit, eine Warnung einige Tage vorher, eine Warnung am Tag selbst und eine Warnung vor der Fristuhrzeit geöffneter oder zubereiteter Artikel. Erinnerungen werden nach bestem Bemühen ohne garantierte Uhrzeit zugestellt: Android kann sie später als zur gewählten Uhrzeit anzeigen. Öffnen Sie „Heute“ für den aktuellen Stand.",
         "l2": "Erinnerungen werden auf diesem Telefon erstellt. Das Telefon fragt einmal nach der Berechtigung, Benachrichtigungen anzuzeigen.",
         "l3": "Erinnerungszeiten bestimmen nur, wann Sie erinnert werden. Sie sind keine Haltbarkeitsregeln und ändern niemals ein Datum.",
         "l4": "Energiesparmodus oder „Nicht stören“ können Benachrichtigungen verzögern oder ausblenden. „Heute“ zeigt immer den aktuellen Stand, öffnen Sie daher für Ihre Datumsprüfung die App.",
@@ -1807,6 +1810,7 @@
     "bodyUnreadable": "Eine Wiederherstellung aus einer Sicherung wurde unterbrochen, und ihr Wiederherstellungsprotokoll auf diesem Telefon konnte nicht gelesen werden. Daher kann TillExpiry nicht erkennen, ob Ihre Daten vollständig sind. Das Protokoll wird aufbewahrt, nicht gelöscht.",
     "dataHidden": "Ihre Betriebsdaten werden erst angezeigt, wenn die Wiederherstellung abgeschlossen ist, damit Sie nie mit einer halb ersetzten Kopie arbeiten.",
     "retry": "Erneut versuchen",
-    "hint": "Wenn das weiterhin passiert, sorgen Sie für freien Speicherplatz auf dem Telefon, starten Sie es neu und tippen Sie noch einmal auf „Erneut versuchen“. Deinstallieren Sie die App nicht: Dabei würden die Daten gelöscht, die sie wiederherzustellen versucht."
+    "hint": "Wenn das weiterhin passiert, sorgen Sie für freien Speicherplatz auf dem Telefon, starten Sie es neu und tippen Sie noch einmal auf „Erneut versuchen“. Deinstallieren Sie die App nicht: Dabei würden die Daten gelöscht, die sie wiederherzustellen versucht.",
+    "bodyUnconfirmed": "Eine Wiederherstellung aus einer Sicherung konnte nicht bestätigen, dass sie abgeschlossen ist. Bis das geklärt ist, kann die App keine Betriebsdaten anzeigen oder ändern, weil alles, was jetzt eingegeben wird, ersetzt werden könnte."
   }
 }

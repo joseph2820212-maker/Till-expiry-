@@ -260,3 +260,112 @@ describe('EXP-REV-01 correcting an opened child keeps the original pack constrai
     expect((await listBatchEvents(w.id, child.id)).filter(e => e.type === 'deadline_corrected')).toHaveLength(1);
   });
 });
+
+describe('P1-REOPEN-01 correcting the original pack re-derives its opened children in the same transaction', () => {
+  async function packWithChild(parentKind: 'use_by' | 'best_before' = 'use_by', parentDate = '2026-09-30') {
+    const w = await ws();
+    const parent = await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', newProduct: { name: 'Cream' }, dateKind: parentKind, deadline: { precision: 'date', date: parentDate }, quantity: 4 });
+    const { child } = await openBatch({ workspaceId: w.id, parentBatchId: parent.id, quantity: 1, openedAt: '2026-09-24T10:00:00+01:00', direct: { kind: 'internal_cutoff', deadline: { precision: 'date', date: '2026-09-28' } } });
+    return { w, parent, child };
+  }
+
+  it('parent use-by 30 → 26 Sep: the child becomes 26 Sep at once, with its own history event', async () => {
+    const { w, parent, child } = await packWithChild();
+    expect(child.effective).toMatchObject({ dateKind: 'internal_cutoff', deadline: { date: '2026-09-28' } });
+    await correctDeadline(w.id, parent.id, 'use_by', { precision: 'date', date: '2026-09-26' }, 'Misread pack');
+    const after = await getBatch(w.id, child.id);
+    expect(after?.effective).toMatchObject({ dateKind: 'use_by', deadline: { date: '2026-09-26' }, reason: 'original_hard' });
+    expect(after?.printedDate).toBe('2026-09-28'); // the child's own cutoff is preserved
+    const ev = (await listBatchEvents(w.id, child.id)).find(e => e.type === 'deadline_corrected');
+    expect(ev).toMatchObject({ reason: 'Misread pack' });
+    expect((ev?.after as any).fromParent).toBe(parent.id);
+  });
+
+  it('parent use-by 26 → 30 Sep: the child returns to its own 28 Sep cutoff', async () => {
+    const { w, parent, child } = await packWithChild('use_by', '2026-09-26');
+    expect(child.effective).toMatchObject({ dateKind: 'use_by', deadline: { date: '2026-09-26' } });
+    await correctDeadline(w.id, parent.id, 'use_by', { precision: 'date', date: '2026-09-30' }, 'Misread pack');
+    expect((await getBatch(w.id, child.id))?.effective).toMatchObject({ dateKind: 'internal_cutoff', deadline: { date: '2026-09-28' }, reason: 'direct' });
+  });
+
+  it('a corrected parent best-before updates the child secondary quality date', async () => {
+    const { w, parent, child } = await packWithChild('best_before', '2026-10-15');
+    expect(child.secondary).toMatchObject({ dateKind: 'best_before', deadline: { date: '2026-10-15' } });
+    await correctDeadline(w.id, parent.id, 'best_before', { precision: 'month', month: '2026-11' }, 'Month only on pack');
+    const after = await getBatch(w.id, child.id);
+    expect(after?.effective).toMatchObject({ dateKind: 'internal_cutoff', deadline: { date: '2026-09-28' } });
+    expect(after?.secondary).toMatchObject({ dateKind: 'best_before', deadline: { precision: 'month', month: '2026-11' }, reason: 'original_quality' });
+  });
+
+  it('a rule-based child keeps its rule deadline and still takes an earlier corrected pack date', async () => {
+    const w = await ws();
+    const r = await saveRule(w.id, { name: 'Opened', appliesTo: 'after_opening', class: 'hard_cutoff', durationMinutes: 5 * 1440, sourceText: 'Label' });
+    const parent = await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', newProduct: { name: 'Sauce' }, dateKind: 'use_by', deadline: { precision: 'date', date: '2026-10-30' }, quantity: 2 });
+    const { child } = await openBatch({ workspaceId: w.id, parentBatchId: parent.id, quantity: 1, openedAt: '2026-09-24T10:00:00+01:00', ruleId: r.id });
+    expect(child.effective.reason).toBe('rule');
+    await correctDeadline(w.id, parent.id, 'use_by', { precision: 'date', date: '2026-09-25' }, 'Wrong date');
+    const after = await getBatch(w.id, child.id);
+    expect(after?.effective).toMatchObject({ dateKind: 'use_by', deadline: { date: '2026-09-25' } });
+    expect(after?.appliedRule?.ruleId).toBe(r.id);
+  });
+
+  it('an injected write failure rolls back the parent and every child', async () => {
+    const { w, parent, child } = await packWithChild();
+    const { child: child2 } = await openBatch({ workspaceId: w.id, parentBatchId: parent.id, quantity: 1, openedAt: '2026-09-24T11:00:00+01:00', direct: { kind: 'internal_cutoff', deadline: { precision: 'date', date: '2026-09-29' } } });
+    const real = store.multiSet.getMockImplementation();
+    store.multiSet.mockImplementationOnce(async () => { throw new Error('disk full'); });
+    await expect(correctDeadline(w.id, parent.id, 'use_by', { precision: 'date', date: '2026-09-26' }, 'Misread')).rejects.toThrow();
+    store.multiSet.mockImplementation(real);
+    expect((await getBatch(w.id, parent.id))?.printedDate).toBe('2026-09-30');
+    expect((await getBatch(w.id, child.id))?.effective).toMatchObject({ deadline: { date: '2026-09-28' } });
+    expect((await getBatch(w.id, child2.id))?.effective).toMatchObject({ deadline: { date: '2026-09-29' } });
+    expect((await listBatchEvents(w.id, child.id)).some(e => e.type === 'deadline_corrected')).toBe(false);
+  });
+
+  it('Today, report and reminder inputs see the corrected child deadline', async () => {
+    const { w, parent, child } = await packWithChild();
+    await correctDeadline(w.id, parent.id, 'use_by', { precision: 'date', date: '2026-09-26' }, 'Misread pack');
+    const { loadWorkspaceView } = require('../../today/workspaceView');
+    const { buildExpiryRows } = require('../../reports/reportRows');
+    const view = await loadWorkspaceView((await listWorkspaces())[0], Date.parse('2026-09-24T12:00:00Z'));
+    expect(view.ranked.find((r: any) => r.batch.id === child.id).batch.effective.deadline).toEqual({ precision: 'date', date: '2026-09-26' });
+    const rows = await buildExpiryRows(w.id, {}, Date.parse('2026-09-24T12:00:00Z'));
+    expect(rows.rows.find((r: any) => r.batchId === child.id).deadline).toEqual({ precision: 'date', date: '2026-09-26' });
+    // Reminders are planned from listBatches (reminderService); the stored child is what they read.
+    expect((await listBatches(w.id)).find(b => b.id === child.id)?.effective.deadline).toEqual({ precision: 'date', date: '2026-09-26' });
+  });
+
+  it('fails closed when an opened child names a parent that is missing', async () => {
+    const { w, parent, child } = await packWithChild();
+    await AsyncStorage.removeItem(K.item('batches', parent.id));
+    await expect(correctDeadline(w.id, child.id, 'internal_cutoff', { precision: 'date', date: '2026-09-27' }, 'x')).rejects.toMatchObject({ code: 'parentMissing' });
+    expect((await getBatch(w.id, child.id))?.effective).toMatchObject({ deadline: { date: '2026-09-28' } });
+  });
+});
+
+describe('P2-01 a manual correction removes the stale applied rule (kept in history)', () => {
+  async function ruled(kind: 'opened' | 'prepared') {
+    const w = await ws();
+    const r = await saveRule(w.id, { name: kind, appliesTo: kind === 'opened' ? 'after_opening' : 'after_preparation', class: 'hard_cutoff', durationMinutes: 480, sourceText: 'Our plan' });
+    const b = kind === 'opened'
+      ? (await openBatch({ workspaceId: w.id, productId: (await saveProduct(w.id, { name: 'Soup' })).id, openedAt: '2026-09-24T10:00:00+01:00', ruleId: r.id })).child
+      : await prepareBatch({ workspaceId: w.id, newProduct: { name: 'Sandwich' }, preparedAt: '2026-09-24T10:00:00+01:00', ruleId: r.id });
+    expect(b.appliedRule?.ruleId).toBe(r.id);
+    return { w, b, r };
+  }
+  for (const kind of ['opened', 'prepared'] as const) {
+    it(`${kind}: rule → manual direct correction clears appliedRule; history keeps the old rule`, async () => {
+      const { w, b, r } = await ruled(kind);
+      const next = await correctDeadline(w.id, b.id, 'internal_cutoff', { precision: 'datetime', at: '2026-09-24T20:00:00+01:00' }, 'Chef decided');
+      expect(next.appliedRule).toBeUndefined();
+      const ev = (await listBatchEvents(w.id, b.id)).find(e => e.type === 'deadline_corrected');
+      expect((ev?.before as any).appliedRule.ruleId).toBe(r.id);
+    });
+    it(`${kind}: rule → no-date correction clears appliedRule`, async () => {
+      const { w, b } = await ruled(kind);
+      const next = await correctDeadline(w.id, b.id, 'none', undefined, 'Unknown');
+      expect(next.appliedRule).toBeUndefined();
+      expect(next.effective.dateKind).toBe('none');
+    });
+  }
+});

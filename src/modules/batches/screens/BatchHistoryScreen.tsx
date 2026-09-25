@@ -52,6 +52,7 @@ export const BatchHistoryScreen: React.FC = () => {
             <View style={s.item} testID={`event-${e.type}`}>
               <Text style={s.type}>{t(`event.${e.type}`)}{e.quantity !== undefined && e.type !== 'quantity_corrected' ? ` · ${t('history.qty', { count: e.quantity })}` : ''}</Text>
               <Text style={s.when}>{localDateShort(localDateOf(ms, tz))}, {localTimeOf(ms, tz)}</Text>
+              {(e.after as { fromParent?: string } | undefined)?.fromParent ? <Text style={s.detail}>{t('history.fromParent')}</Text> : null}
               {change ? <Text style={s.detail}>{change}</Text> : null}
               {reason ? <Text style={s.detail}>{t('history.reason', { reason })}</Text> : null}
               {e.note ? <Text style={s.detail}>{e.note}</Text> : null}

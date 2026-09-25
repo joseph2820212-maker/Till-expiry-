@@ -17,7 +17,8 @@ import { installGlobalErrorLogger } from './utils/errorLog';
 import { AppNavigator } from './navigation/AppNavigator';
 import { colors } from './theme/colors';
 import { initializeLanguage } from './i18n';
-import { runStartupRecovery, type RecoveryBlockReason } from './modules/backup/startupRecovery';
+import { runStartupRecovery, settleRecovery } from './modules/backup/startupRecovery';
+import { blockWrites, useWriteBlockReason } from './storage/writeGate';
 import { RecoveryRequiredScreen } from './modules/backup/RecoveryRequiredScreen';
 import { bootstrapData } from './app/bootstrap';
 
@@ -55,7 +56,9 @@ const fs = StyleSheet.create({
 function FontBootstrap({ onRetry }: { onRetry: () => void }) {
   const [fontsLoaded, fontError] = useFonts(fontMap);
   const [bootstrapped, setBootstrapped] = useState(false);
-  const [recoveryBlocked, setRecoveryBlocked] = useState<RecoveryBlockReason | null>(null);
+  /** Global gate (P1-REOPEN-02): set at start-up or by an unsettled restore while the app is in use. */
+  const recoveryBlocked = useWriteBlockReason();
+  const [settling, setSettling] = useState(false);
 
   useEffect(() => {
     if (!fontsLoaded || fontError) return;
@@ -66,7 +69,7 @@ function FontBootstrap({ onRetry }: { onRetry: () => void }) {
       // dataset is never loaded or shown. Retry remounts this component and runs the recovery again.
       const recovery = await runStartupRecovery();
       if (recovery.status === 'recoveryRequired') {
-        if (!cancelled) setRecoveryBlocked(recovery.reason);
+        blockWrites(recovery.reason);
         return;
       }
       await bootstrapData();
@@ -79,7 +82,15 @@ function FontBootstrap({ onRetry }: { onRetry: () => void }) {
     return <FontFailureScreen onRetry={onRetry} />;
   }
 
-  if (recoveryBlocked) return <RecoveryRequiredScreen reason={recoveryBlocked} onRetry={onRetry} />;
+  if (recoveryBlocked) {
+    // Retry settles the journal; only a ready result reloads the data and opens the app again.
+    const retry = () => {
+      if (settling) return;
+      setSettling(true);
+      void settleRecovery(async () => { await bootstrapData(); setBootstrapped(true); }).finally(() => setSettling(false));
+    };
+    return <RecoveryRequiredScreen reason={recoveryBlocked} onRetry={retry} busy={settling} />;
+  }
 
   if (!fontsLoaded || !bootstrapped) return null;
 

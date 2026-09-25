@@ -12,7 +12,7 @@
 import type {
   AppliedRuleSnapshot, Batch, BatchEvent, BatchEventType, DateKind, DeadlineInfo, DeadlineValue, ExpiryRule, IsoDateTime, MoneyValue, Product, Workspace,
 } from '../../domain/expiry/expiryTypes';
-import { boughtInDeadline, deadlineFields, openedDeadline, preparedDeadline } from '../../domain/expiry/deadlineEngine';
+import { boughtInDeadline, deadlineFields, openedDeadline, ownDeadline, preparedDeadline } from '../../domain/expiry/deadlineEngine';
 import { isOffsetIso } from '../../domain/expiry/datePrecision';
 import { validateDeadline } from '../../domain/expiry/expiryValidation';
 import { snapshotRule } from '../../domain/expiry/ruleEngine';
@@ -344,9 +344,15 @@ export async function moveBatch(workspaceId: string, batchId: string, locationId
   });
 }
 
+/**
+ * The parent (original pack) of an opened child. Fails closed (P1-REOPEN-01): a child that names a parent which
+ * cannot be read is never silently treated as parentless, because that would drop the pack's hard date.
+ */
 async function parentOf(tx: Txn, b: Batch): Promise<Batch | undefined> {
   if (b.kind !== 'opened' || !b.parentBatchId) return undefined;
-  return (await tx.get<Batch>(K.item('batches', b.parentBatchId))) ?? undefined;
+  const parent = await tx.get<Batch>(K.item('batches', b.parentBatchId));
+  if (!parent || parent.workspaceId !== b.workspaceId) throw new DomainError('parentMissing');
+  return parent;
 }
 
 const asCorrected = (i: DeadlineInfo | undefined): DeadlineInfo | undefined => (i && i.reason === 'direct' ? { ...i, reason: 'corrected' } : i);
@@ -355,18 +361,53 @@ const asCorrected = (i: DeadlineInfo | undefined): DeadlineInfo | undefined => (
  * The stored own date and the effective / secondary dates after a correction. For an opened child the correction
  * replaces only the child's OWN date; the result goes through the same `openedDeadline` invariant used at creation, so
  * an earlier hard date of the original pack still controls and its best-before stays visible as a quality date
- * (EXP-REV-01). Correcting the pack's own printed date is a correction of the parent batch.
+ * (EXP-REV-01). Correcting the pack's own printed date is a correction of the parent batch. A manual correction
+ * supersedes any applied rule, so the rule snapshot is removed from the batch (kept in history) (P2-01).
  */
-function correctedDeadlines(b: Batch, kind: DateKind, deadline: DeadlineValue | undefined, parent: Batch | undefined): Pick<Batch, 'dateKind' | 'datePrecision' | 'printedDate' | 'printedMonth' | 'exactDeadlineAt' | 'effective' | 'secondary'> {
+function correctedDeadlines(b: Batch, kind: DateKind, deadline: DeadlineValue | undefined, parent: Batch | undefined): Pick<Batch, 'dateKind' | 'datePrecision' | 'printedDate' | 'printedMonth' | 'exactDeadlineAt' | 'effective' | 'secondary' | 'appliedRule'> {
   const none = kind === 'none' || !deadline;
   if (b.kind === 'opened' && parent) {
     const derived = openedDeadline({ parent, openedAt: b.openedAt as string, direct: none ? undefined : { kind, deadline: deadline as DeadlineValue }, tz: b.timeZone });
-    return { ...deadlineFields(none ? 'none' : kind, none ? undefined : deadline), effective: asCorrected(derived.effective) as DeadlineInfo, secondary: asCorrected(derived.secondary) };
+    return { ...deadlineFields(none ? 'none' : kind, none ? undefined : deadline), effective: asCorrected(derived.effective) as DeadlineInfo, secondary: asCorrected(derived.secondary), appliedRule: undefined };
   }
-  return { ...deadlineFields(kind, deadline), effective: none ? { dateKind: 'none', reason: 'none' } : { dateKind: kind, deadline, reason: 'corrected' }, secondary: undefined };
+  return { ...deadlineFields(kind, deadline), effective: none ? { dateKind: 'none', reason: 'none' } : { dateKind: kind, deadline, reason: 'corrected' }, secondary: undefined, appliedRule: undefined };
 }
 
-/** An explicit deadline correction with a recorded reason (T25). The old value stays in history. */
+/**
+ * An opened child's derived dates recomputed against its (corrected) parent, keeping the child's own date or rule
+ * exactly as it is (P1-REOPEN-01). Returns null when nothing changes.
+ */
+function rederiveChild(child: Batch, parent: Batch): Pick<Batch, 'effective' | 'secondary'> | null {
+  const own = ownDeadline(child);
+  const wasCorrected = child.effective.reason === 'corrected' || child.secondary?.reason === 'corrected';
+  const derived = child.appliedRule
+    ? openedDeadline({ parent, openedAt: child.openedAt as string, rule: child.appliedRule, tz: child.timeZone })
+    : openedDeadline({ parent, openedAt: child.openedAt as string, direct: own && child.dateKind !== 'none' ? { kind: child.dateKind, deadline: own } : undefined, tz: child.timeZone });
+  const mark = (i: DeadlineInfo | undefined) => (wasCorrected ? asCorrected(i) : i);
+  const effective = mark(derived.effective) as DeadlineInfo;
+  const secondary = mark(derived.secondary);
+  const same = JSON.stringify(effective) === JSON.stringify(child.effective) && JSON.stringify(secondary ?? null) === JSON.stringify(child.secondary ?? null);
+  return same ? null : { effective, secondary };
+}
+
+/** Direct opened children of a batch (they carry `parentBatchId`), read strictly inside the transaction. */
+async function openedChildrenOf(tx: Txn, parent: Batch): Promise<Batch[]> {
+  const ids = await tx.getIndex(K.index('batches', parent.workspaceId));
+  const out: Batch[] = [];
+  for (const id of ids) {
+    if (id === parent.id) continue;
+    const c = await tx.get<Batch>(K.item('batches', id));
+    if (!c) throw new DomainError('batchNotFound');
+    if (c.kind === 'opened' && c.parentBatchId === parent.id && c.status !== 'archived') out.push(c);
+  }
+  return out;
+}
+
+/**
+ * An explicit deadline correction with a recorded reason (T25). The old value stays in history. Correcting an original
+ * pack also re-derives every opened child of it in the SAME transaction, so a child can never keep a later date than
+ * the corrected pack allows; each changed child gets its own history event (P1-REOPEN-01).
+ */
 export async function correctDeadline(workspaceId: string, batchId: string, kind: DateKind, deadline: DeadlineValue | undefined, reason: string, requestId?: string): Promise<Batch> {
   const err = validateDeadline(kind, deadline);
   if (err) throw new DomainError(`deadline_${err}`);
@@ -377,9 +418,17 @@ export async function correctDeadline(workspaceId: string, batchId: string, kind
     if (prior) return mustGet<Batch>(tx, 'batches', prior.batchId, workspaceId);
     const b = await mustGet<Batch>(tx, 'batches', batchId, workspaceId, 'batchNotFound');
     if (b.status === 'archived') throw new DomainError('batchNotActive');
-    const next: Batch = clean({ ...b, printedDate: undefined, printedMonth: undefined, exactDeadlineAt: undefined, ...correctedDeadlines(b, kind, deadline, await parentOf(tx, b)), updatedAt: nowIso() } as Batch);
+    const now = nowIso();
+    const next: Batch = clean({ ...b, printedDate: undefined, printedMonth: undefined, exactDeadlineAt: undefined, ...correctedDeadlines(b, kind, deadline, await parentOf(tx, b)), updatedAt: now } as Batch);
     tx.set(K.item('batches', b.id), next);
-    await appendEvent(tx, { id: requestId, workspaceId, batchId, type: 'deadline_corrected', reason: why, before: { effective: b.effective, secondary: b.secondary ?? null }, after: { effective: next.effective, secondary: next.secondary ?? null } });
+    await appendEvent(tx, { id: requestId, workspaceId, batchId, type: 'deadline_corrected', reason: why, before: { effective: b.effective, secondary: b.secondary ?? null, appliedRule: b.appliedRule ?? null }, after: { effective: next.effective, secondary: next.secondary ?? null } });
+    for (const child of await openedChildrenOf(tx, next)) {
+      const changed = rederiveChild(child, next);
+      if (!changed) continue;
+      const updated: Batch = clean({ ...child, ...changed, updatedAt: now } as Batch);
+      tx.set(K.item('batches', child.id), updated);
+      await appendEvent(tx, { workspaceId, batchId: child.id, type: 'deadline_corrected', reason: why, before: { effective: child.effective, secondary: child.secondary ?? null }, after: { effective: updated.effective, secondary: updated.secondary ?? null, fromParent: next.id } });
+    }
     return next;
   });
 }
@@ -412,7 +461,7 @@ export async function applyRule(workspaceId: string, batchId: string, ruleId: st
     if (b.status !== 'active') throw new DomainError('batchNotActive');
     if (b.kind !== 'opened' && b.kind !== 'prepared') throw new DomainError('ruleWrongKind');
     const rule = await ruleSnapshotTx(tx, workspaceId, ruleId, b.kind === 'opened' ? 'after_opening' : 'after_preparation');
-    const parent = b.parentBatchId ? await tx.get<Batch>(K.item('batches', b.parentBatchId)) ?? undefined : undefined;
+    const parent = await parentOf(tx, b);
     const derived = b.kind === 'opened'
       ? openedDeadline({ parent, openedAt: b.openedAt as string, rule, tz: b.timeZone })
       : preparedDeadline({ preparedAt: b.preparedAt as string, rule, tz: b.timeZone });

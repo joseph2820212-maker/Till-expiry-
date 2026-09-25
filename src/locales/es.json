@@ -134,7 +134,9 @@
     "rule_sourceRequired": "Indica de dónde viene esta regla (etiqueta, proveedor, tu procedimiento).",
     "rule_durationRequired": "Indica cuánto tiempo.",
     "rule_badDuration": "Introduce una duración entre 1 minuto y 3 años.",
-    "currencyInUse": "Hay productos que aún tienen costes o precios en la moneda anterior."
+    "currencyInUse": "Hay productos que aún tienen costes o precios en la moneda anterior.",
+    "parentMissing": "No se puede leer el envase original de este artículo abierto. No se ha cambiado nada.",
+    "recoveryRequired": "Hay que resolver una restauración antes de poder guardar nada."
   },
   "nav": {
     "more": "Más",
@@ -523,7 +525,7 @@
     "sameDayHint": "Se envía a la hora del resumen el día de la fecha.",
     "exactSection": "Recordatorio de hora límite",
     "exactToggle": "Recordar antes de la hora límite de un artículo abierto o elaborado",
-    "exactHint": "Para artículos abiertos y elaborados con hora límite. Android puede entregar los recordatorios con unos minutos de retraso; la pantalla Hoy siempre muestra el estado actual.",
+    "exactHint": "Para artículos abiertos y elaborados con hora límite. Android puede entregar este recordatorio más tarde de la hora elegida. Abre Hoy para ver el estado actual.",
     "leadLabel": "Con cuánta antelación",
     "minutesBefore": "Minutos antes: {{count}}",
     "notShelfLife": "Las horas de recordatorio solo deciden cuándo te avisa el teléfono. No son reglas de vida útil y nunca cambian una fecha."
@@ -899,7 +901,8 @@
     "emptyBody": "Aquí aparecerán las acciones sobre este artículo.",
     "change": "{{from}} → {{to}}",
     "reason": "Motivo: {{reason}}",
-    "qty": "Cantidad: {{count}}"
+    "qty": "Cantidad: {{count}}",
+    "fromParent": "Actualizado porque se corrigió la fecha del envase original"
   },
   "product": {
     "title": "Producto",
@@ -1620,7 +1623,7 @@
       },
       "reminders": {
         "title": "Recordatorios",
-        "l1": "Más → Recordatorios: un resumen diario a la hora que elijas, un aviso con varios días de antelación, un aviso el mismo día y un aviso antes de la hora límite de un artículo abierto o elaborado. Los recordatorios se envían en la medida de lo posible, sin garantía: Android puede entregarlos con unos minutos de retraso.",
+        "l1": "Más → Recordatorios: un resumen diario a la hora que elijas, un aviso unos días antes, un aviso el mismo día y un aviso antes de la hora límite de un artículo abierto o elaborado. Los recordatorios se envían en la medida de lo posible, sin hora garantizada: Android puede entregarlos más tarde de la hora elegida. Abre Hoy para ver el estado actual.",
         "l2": "Los recordatorios se crean en este teléfono. El teléfono pide una vez permiso para mostrar notificaciones.",
         "l3": "Las horas de los recordatorios solo deciden cuándo se te avisa. No son reglas de vida útil y nunca cambian una fecha.",
         "l4": "El ahorro de batería o el modo No molestar pueden retrasar u ocultar las notificaciones. Hoy siempre muestra el estado actual, así que abre la app para revisar tus fechas.",
@@ -1807,6 +1810,7 @@
     "bodyUnreadable": "Se interrumpió una restauración desde una copia de seguridad y no se pudo leer su registro de recuperación en este teléfono, así que TillExpiry no puede saber si tus datos están completos. El registro se conserva, no se elimina.",
     "dataHidden": "Los datos de tus negocios no se muestran hasta que termine la recuperación, para que nunca trabajes sobre una copia reemplazada a medias.",
     "retry": "Reintentar",
-    "hint": "Si sigue ocurriendo, asegúrate de que el teléfono tenga espacio de almacenamiento libre, reinícialo y vuelve a tocar Reintentar. No desinstales la app: eso eliminaría los datos que intenta recuperar."
+    "hint": "Si sigue ocurriendo, asegúrate de que el teléfono tenga espacio de almacenamiento libre, reinícialo y vuelve a tocar Reintentar. No desinstales la app: eso eliminaría los datos que intenta recuperar.",
+    "bodyUnconfirmed": "Una restauración desde una copia de seguridad no pudo confirmar que terminó. Hasta que se resuelva, la app no puede mostrar ni cambiar los datos del negocio, porque lo que se introduzca ahora podría ser reemplazado."
   }
 }

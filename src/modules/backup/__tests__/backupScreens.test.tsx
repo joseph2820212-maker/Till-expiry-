@@ -68,6 +68,7 @@ const PARSED = {
 };
 
 beforeEach(() => {
+  require('../../../storage/writeGate').clearWriteBlock();
   jest.clearAllMocks();
   clearRestoreSession();
   __setScopeForTests('real');
@@ -179,5 +180,23 @@ describe('E36 RestorePreview', () => {
     await press(() => button(r, 'backup.preview.replaceAction').props.onPress());
     await press(() => mockAlert.alert.mock.calls[0][2].find((b: any) => b.style === 'destructive').onPress());
     expect(texts(r)).toContain('backup.err.restoreRolledBack');
+  });
+
+  it('P1-REOPEN-02 an unconfirmed restore offers no Back / failed screen: the screen stays locked (the app gate takes over)', async () => {
+    start();
+    mockApi.parseBackup.mockReturnValueOnce(PARSED);
+    mockApi.restoreParsed.mockImplementationOnce(async () => {
+      require('../../../storage/writeGate').blockWrites('restoreUnconfirmed');
+      throw new BackupError('restoreUnconfirmed');
+    });
+    const r = await render(<RestorePreviewScreen />);
+    await press(() => button(r, 'backup.preview.enterPassword').props.onPress());
+    await press(() => r.root.findByType('BackupPassphraseModal').props.onConfirm('pw'));
+    await press(() => r.root.findByType('CheckboxRow').props.onToggle());
+    await press(() => button(r, 'backup.preview.replaceAction').props.onPress());
+    await press(() => mockAlert.alert.mock.calls[0][2].find((b: any) => b.style === 'destructive').onPress());
+    expect(texts(r)).not.toContain('backup.err.restoreUnconfirmed');
+    expect(r.root.findByType('ScreenHeader').props.onBack).toBeUndefined(); // no header escape
+    expect(require('../../../storage/writeGate').writeBlockReason()).toBe('restoreUnconfirmed');
   });
 });

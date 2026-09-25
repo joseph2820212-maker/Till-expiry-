@@ -11,6 +11,7 @@
  * - Display reads (listRecords) are lenient: an unreadable record is skipped and counted, never rewritten.
  */
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { assertWritable } from './writeGate';
 import { withStorageKeyLock, StorageCorruptionError } from '../utils/storageSafety';
 import { DEVICE_KEYS, K, type EntityNs } from './keys';
 import { phys } from './scope';
@@ -100,6 +101,7 @@ async function rollback(j: Journal): Promise<void> {
 /** Run `fn` as one atomic unit. Throws (and changes nothing) if any read is corrupt or any write fails. */
 export function runTxn<R>(fn: (tx: Txn) => Promise<R>): Promise<R> {
   return withStorageKeyLock(TXN_LOCK, async () => {
+    assertWritable(); // P1-REOPEN-02: no business write while a restore is unsettled
     const tx = new TxnImpl();
     const result = await fn(tx);
     await applyJournaled(tx);

@@ -134,7 +134,9 @@
     "rule_sourceRequired": "Say where this rule comes from (label, supplier, your procedure).",
     "rule_durationRequired": "Enter how long.",
     "rule_badDuration": "Enter a duration between 1 minute and 3 years.",
-    "currencyInUse": "Products still have costs or prices in the old currency."
+    "currencyInUse": "Products still have costs or prices in the old currency.",
+    "parentMissing": "The original pack of this opened item cannot be read. Nothing was changed.",
+    "recoveryRequired": "A restore must be settled before anything can be saved."
   },
   "nav": {
     "more": "More",
@@ -523,7 +525,7 @@
     "sameDayHint": "Sent at the summary time on the day of the date.",
     "exactSection": "Cutoff-time reminder",
     "exactToggle": "Remind before an opened or prepared cutoff time",
-    "exactHint": "For opened and prepared items with a cutoff time. Android may deliver reminders a few minutes late; the Today screen always shows the current status.",
+    "exactHint": "For opened and prepared items with a cutoff time. Android may deliver this reminder later than the selected time. Open Today for the current status.",
     "leadLabel": "How long before",
     "minutesBefore": "Minutes before: {{count}}",
     "notShelfLife": "Reminder times only decide when the phone reminds you. They are not shelf-life rules and never change a date."
@@ -899,7 +901,8 @@
     "emptyBody": "Actions on this item will appear here.",
     "change": "{{from}} → {{to}}",
     "reason": "Reason: {{reason}}",
-    "qty": "Quantity: {{count}}"
+    "qty": "Quantity: {{count}}",
+    "fromParent": "Updated because the date on the original pack was corrected"
   },
   "product": {
     "title": "Product",
@@ -1620,7 +1623,7 @@
       },
       "reminders": {
         "title": "Reminders",
-        "l1": "More → Reminders: a daily summary at the time you choose, a warning a number of days before, a warning on the day, and a warning before an opened or prepared cutoff time. Reminders are best effort: Android may deliver them a few minutes late.",
+        "l1": "More → Reminders: a daily summary at the time you choose, a warning a number of days before, a warning on the day, and a warning before an opened or prepared cutoff time. Reminders are best effort with no guaranteed time: Android may deliver them later than the selected time. Open Today for the current status.",
         "l2": "Reminders are created on this phone. The phone asks once for permission to show notifications.",
         "l3": "Reminder times only decide when you are reminded. They are not shelf-life rules and never change a date.",
         "l4": "Battery saving or Do Not Disturb can delay or hide notifications. Today always shows the current state, so open the app for your date check.",
@@ -1807,6 +1810,7 @@
     "bodyUnreadable": "A restore from a backup was interrupted, and its recovery record on this phone could not be read, so TillExpiry cannot tell whether your data is complete. The record is kept, not deleted.",
     "dataHidden": "Your business data is not shown until the recovery is complete, so you never work on a half-replaced copy.",
     "retry": "Retry",
-    "hint": "If this keeps happening, make sure the phone has free storage space, restart it and tap Retry again. Do not uninstall the app: that would delete the data it is trying to recover."
+    "hint": "If this keeps happening, make sure the phone has free storage space, restart it and tap Retry again. Do not uninstall the app: that would delete the data it is trying to recover.",
+    "bodyUnconfirmed": "A restore from a backup could not confirm that it finished. Until this is settled, the app cannot show or change business data, because anything entered now could be replaced."
   }
 }

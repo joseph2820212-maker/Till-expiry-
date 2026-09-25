@@ -134,7 +134,9 @@
     "rule_sourceRequired": "Indiquez l'origine de cette règle (étiquette, fournisseur, votre procédure).",
     "rule_durationRequired": "Saisissez une durée.",
     "rule_badDuration": "Saisissez une durée comprise entre 1 minute et 3 ans.",
-    "currencyInUse": "Des produits ont encore des coûts ou des prix dans l'ancienne devise."
+    "currencyInUse": "Des produits ont encore des coûts ou des prix dans l'ancienne devise.",
+    "parentMissing": "L'emballage d'origine de cet article ouvert est illisible. Rien n'a été modifié.",
+    "recoveryRequired": "Une restauration doit être réglée avant de pouvoir enregistrer quoi que ce soit."
   },
   "nav": {
     "more": "Plus",
@@ -523,7 +525,7 @@
     "sameDayHint": "Envoyée à l'heure du résumé, le jour de la date.",
     "exactSection": "Rappel avant l'heure limite",
     "exactToggle": "Rappeler avant l'heure limite d'un article ouvert ou préparé",
-    "exactHint": "Pour les articles ouverts et préparés avec une heure limite. Android peut délivrer les rappels avec quelques minutes de retard ; l'écran Aujourd'hui affiche toujours l'état actuel.",
+    "exactHint": "Pour les articles ouverts et préparés avec une heure limite. Android peut délivrer ce rappel plus tard que l'heure choisie. Ouvrez Aujourd'hui pour voir l'état actuel.",
     "leadLabel": "Combien de temps avant",
     "minutesBefore": "Minutes avant : {{count}}",
     "notShelfLife": "Les heures de rappel déterminent seulement quand le téléphone vous prévient. Ce ne sont pas des règles de durée de conservation et elles ne changent jamais une date."
@@ -899,7 +901,8 @@
     "emptyBody": "Les actions sur cet article apparaîtront ici.",
     "change": "{{from}} → {{to}}",
     "reason": "Motif : {{reason}}",
-    "qty": "Quantité : {{count}}"
+    "qty": "Quantité : {{count}}",
+    "fromParent": "Mis à jour car la date de l'emballage d'origine a été corrigée"
   },
   "product": {
     "title": "Produit",
@@ -1620,7 +1623,7 @@
       },
       "reminders": {
         "title": "Rappels",
-        "l1": "Plus → Rappels : un résumé quotidien à l'heure de votre choix, une alerte un certain nombre de jours avant, une alerte le jour même et une alerte avant l'heure limite d'un article ouvert ou préparé. Les rappels sont envoyés au mieux, sans garantie : Android peut les délivrer avec quelques minutes de retard.",
+        "l1": "Plus → Rappels : un résumé quotidien à l'heure de votre choix, une alerte un certain nombre de jours avant, une alerte le jour même et une alerte avant l'heure limite d'un article ouvert ou préparé. Les rappels sont envoyés au mieux, sans heure garantie : Android peut les délivrer plus tard que l'heure choisie. Ouvrez Aujourd'hui pour voir l'état actuel.",
         "l2": "Les rappels sont créés sur ce téléphone. Le téléphone demande une seule fois l'autorisation d'afficher des notifications.",
         "l3": "Les heures de rappel déterminent seulement quand vous êtes prévenu. Ce ne sont pas des règles de durée de conservation et elles ne modifient jamais une date.",
         "l4": "L'économiseur de batterie ou le mode Ne pas déranger peuvent retarder ou masquer les notifications. Aujourd'hui affiche toujours la situation actuelle : ouvrez donc l'application pour votre contrôle des dates.",
@@ -1807,6 +1810,7 @@
     "bodyUnreadable": "Une restauration à partir d'une sauvegarde a été interrompue, et son journal de récupération sur ce téléphone est illisible : TillExpiry ne peut donc pas savoir si vos données sont complètes. Le journal est conservé, pas supprimé.",
     "dataHidden": "Les données de vos établissements ne sont pas affichées tant que la récupération n'est pas terminée, afin que vous ne travailliez jamais sur une copie à moitié remplacée.",
     "retry": "Réessayer",
-    "hint": "Si le problème se reproduit, vérifiez que le téléphone dispose d'espace de stockage libre, redémarrez-le puis appuyez à nouveau sur Réessayer. Ne désinstallez pas l'application : cela supprimerait les données qu'elle tente de récupérer."
+    "hint": "Si le problème se reproduit, vérifiez que le téléphone dispose d'espace de stockage libre, redémarrez-le puis appuyez à nouveau sur Réessayer. Ne désinstallez pas l'application : cela supprimerait les données qu'elle tente de récupérer.",
+    "bodyUnconfirmed": "Une restauration à partir d'une sauvegarde n'a pas pu confirmer qu'elle était terminée. Tant que ce n'est pas réglé, l'application ne peut ni afficher ni modifier les données de l'établissement, car tout ce qui serait saisi maintenant pourrait être remplacé."
   }
 }

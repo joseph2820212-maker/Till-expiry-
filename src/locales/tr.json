@@ -134,7 +134,9 @@
     "rule_sourceRequired": "Bu kuralın nereden geldiğini belirtin (etiket, tedarikçi, kendi prosedürünüz).",
     "rule_durationRequired": "Süreyi girin.",
     "rule_badDuration": "1 dakika ile 3 yıl arasında bir süre girin.",
-    "currencyInUse": "Bazı ürünlerde hâlâ eski para biriminde maliyet veya fiyat var."
+    "currencyInUse": "Bazı ürünlerde hâlâ eski para biriminde maliyet veya fiyat var.",
+    "parentMissing": "Bu açılmış ürünün orijinal ambalajı okunamıyor. Hiçbir şey değiştirilmedi.",
+    "recoveryRequired": "Herhangi bir şey kaydedilmeden önce geri yüklemenin tamamlanması gerekiyor."
   },
   "nav": {
     "more": "Diğer",
@@ -523,7 +525,7 @@
     "sameDayHint": "Tarihin olduğu gün özet saatinde gönderilir.",
     "exactSection": "Son saat hatırlatıcısı",
     "exactToggle": "Açılmış veya hazırlanmış ürünün son saatinden önce hatırlat",
-    "exactHint": "Son saati olan açılmış ve hazırlanmış ürünler için. Android hatırlatıcıları birkaç dakika geç iletebilir; Bugün ekranı her zaman güncel durumu gösterir.",
+    "exactHint": "Son saati olan açılmış ve hazırlanmış ürünler için. Android bu hatırlatıcıyı seçilen saatten daha geç iletebilir. Güncel durum için Bugün ekranını açın.",
     "leadLabel": "Ne kadar önce",
     "minutesBefore": "Kaç dakika önce: {{count}}",
     "notShelfLife": "Hatırlatıcı saatleri yalnızca telefonun size ne zaman hatırlatacağını belirler. Raf ömrü kuralı değildir ve hiçbir tarihi değiştirmez."
@@ -899,7 +901,8 @@
     "emptyBody": "Bu üründeki işlemler burada görünür.",
     "change": "{{from}} → {{to}}",
     "reason": "Neden: {{reason}}",
-    "qty": "Miktar: {{count}}"
+    "qty": "Miktar: {{count}}",
+    "fromParent": "Orijinal ambalajdaki tarih düzeltildiği için güncellendi"
   },
   "product": {
     "title": "Ürün",
@@ -1620,7 +1623,7 @@
       },
       "reminders": {
         "title": "Hatırlatıcılar",
-        "l1": "Diğer → Hatırlatıcılar: seçtiğiniz saatte günlük özet, belirli sayıda gün önceden uyarı, gününde uyarı ve açılmış veya hazırlanmış ürünlerde son saatten önce uyarı. Hatırlatıcılar garanti edilmez, mümkün olduğunca iletilir: Android bunları birkaç dakika geç iletebilir.",
+        "l1": "Diğer → Hatırlatıcılar: seçtiğiniz saatte günlük özet, birkaç gün önceden uyarı, gününde uyarı ve açılmış ya da hazırlanmış ürünlerin son saatinden önce uyarı. Hatırlatıcılar garantili bir saat olmadan, mümkün olduğunca iletilir: Android bunları seçilen saatten daha geç iletebilir. Güncel durum için Bugün ekranını açın.",
         "l2": "Hatırlatıcılar bu telefonda oluşturulur. Telefon, bildirim göstermek için bir kez izin ister.",
         "l3": "Hatırlatıcı saatleri yalnızca size ne zaman hatırlatılacağını belirler. Raf ömrü kuralı değildir ve hiçbir tarihi değiştirmez.",
         "l4": "Pil tasarrufu veya Rahatsız Etmeyin, bildirimleri geciktirebilir veya gizleyebilir. Bugün ekranı her zaman güncel durumu gösterir; bu nedenle tarih kontrolü için uygulamayı açın.",
@@ -1807,6 +1810,7 @@
     "bodyUnreadable": "Bir yedekten geri yükleme yarıda kesildi ve bu telefondaki kurtarma kaydı okunamadı; bu yüzden TillExpiry verilerinizin eksiksiz olup olmadığını anlayamıyor. Kayıt silinmez, saklanır.",
     "dataHidden": "Yarısı değiştirilmiş bir kopya üzerinde asla çalışmamanız için işletme verileriniz kurtarma tamamlanana kadar gösterilmez.",
     "retry": "Tekrar dene",
-    "hint": "Bu durum tekrarlanırsa telefonda boş depolama alanı olduğundan emin olun, telefonu yeniden başlatın ve yeniden Tekrar dene'ye dokunun. Uygulamayı kaldırmayın: bu, kurtarmaya çalıştığı verileri siler."
+    "hint": "Bu durum tekrarlanırsa telefonda boş depolama alanı olduğundan emin olun, telefonu yeniden başlatın ve yeniden Tekrar dene'ye dokunun. Uygulamayı kaldırmayın: bu, kurtarmaya çalıştığı verileri siler.",
+    "bodyUnconfirmed": "Bir yedekten geri yükleme tamamlandığını doğrulayamadı. Bu durum çözülene kadar uygulama işletme verilerini gösteremez veya değiştiremez; çünkü şimdi girilen her şeyin yerine başka veri gelebilir."
   }
 }

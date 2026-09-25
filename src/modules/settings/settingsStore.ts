@@ -2,6 +2,7 @@
  * General and reminder settings (§22). Stored per data scope (real / demo), cached in memory so every screen reads the
  * same values synchronously. Notification lead times are reminder settings, never shelf-life rules.
  */
+import { assertWritable } from '../../storage/writeGate';
 import { useSyncExternalStore } from 'react';
 import { K } from '../../storage/keys';
 import { readRecord, runTxn } from '../../storage/entityStore';
@@ -68,6 +69,7 @@ export const getGeneral = () => general;
 export const getReminderSettings = () => reminders;
 
 export async function saveGeneral(patch: Partial<GeneralSettings>): Promise<GeneralSettings> {
+  assertWritable();
   const next = sanitizeGeneral({ ...general, ...patch });
   await runTxn(async tx => { tx.set(K.settingsGeneral, next); });
   general = next; emit(); notifyDataChanged();
@@ -75,6 +77,7 @@ export async function saveGeneral(patch: Partial<GeneralSettings>): Promise<Gene
 }
 
 export async function saveReminderSettings(patch: Partial<ReminderSettings>): Promise<ReminderSettings> {
+  assertWritable();
   const next = sanitizeReminders({ ...reminders, ...patch, dailySummary: { ...reminders.dailySummary, ...(patch.dailySummary ?? {}) }, exactTime: { ...reminders.exactTime, ...(patch.exactTime ?? {}) } });
   await runTxn(async tx => { tx.set(K.settingsReminders, next); });
   reminders = next; emit(); notifyDataChanged();

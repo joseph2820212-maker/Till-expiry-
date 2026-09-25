@@ -9,9 +9,9 @@ Single live state file (master handoff §38). Updated at every gate.
 | Branch | `claude/till-expiry-app-e7267q` (the session's mandated branch; the handoff names `claude/build-till-expiry-v1`, which this session is not permitted to push to — recorded as a deviation) |
 | Primary reference | TillCalc `e7ea8caadd1b2f2e663b3c8059b4102d5515adcc` (verified present; on `origin/main` and `claude/audit-repair-release1`) |
 | Secondary reference | Till Note `6fa6e941ac7e94334519c435f8bae3bf9d160826` on `codex/till-note-visual-correction` (verified present, 15 Sep 2026 "Apply red-marked UI-only repairs") |
-| Current gate | G9 — HOLD (independent review findings EXP-REV-01…10 fixed; awaiting re-audit) · G10 — HOLD (no APK: this environment cannot build it) |
+| Current gate | G9 — HOLD (re-audit findings P1-REOPEN-01/02, P2-01/02 fixed; awaiting the final narrow re-audit) · G10 — HOLD (no APK until that re-audit; this environment cannot build it) |
 | Blockers | G10 native build: `dl.google.com` (Android SDK / NDK) and `api.expo.dev` (EAS) are denied by this environment's network policy; see the G10 section of `MASTER_BUILD_REPORT.md` |
-| Last verified | typecheck clean · lint clean · 65 suites / 602 tests · config introspection OK · Android JS bundle exported |
+| Last verified | typecheck clean · lint clean · 65 suites / 619 tests · config introspection OK · Android JS bundle exported |
 
 ## Decisions taken under §42 ("resolve routine implementation details yourself")
 
@@ -28,3 +28,6 @@ Single live state file (master handoff §38). Updated at every gate.
 | D9 | Reminders are best effort (EXP-REV-07 Option B): no exact-alarm permission is requested; Android 12+ may deliver a few minutes late; the Today screen is authoritative | The app cannot detect exact-alarm access without a native module; no user-facing promise of exact delivery |
 | D10 | Currency change with recorded amounts needs an explicit decision that clears them to unknown (EXP-REV-06) | Amounts are never converted or relabelled |
 | D11 | Normal backup fails closed on any unreadable or inconsistent record; no salvage export in this release (EXP-REV-05) | A backup must never silently omit records |
+| D12 | Correcting an original pack re-derives its opened children in the same transaction; a child whose parent cannot be read fails closed (P1-REOPEN-01) | The pack's hard date must always constrain every opened part |
+| D13 | Any unsettled restore closes a global write gate; the app shows only the recovery screen until Retry settles the journal (P1-REOPEN-02) | Nothing entered during an unsettled restore can later vanish |
+| D14 | A manual deadline correction removes the applied rule from the batch (kept in history) (P2-01) | The shown rule must explain the current date |
