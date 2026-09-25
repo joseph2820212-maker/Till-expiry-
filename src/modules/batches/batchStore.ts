@@ -390,7 +390,7 @@ function rederiveChild(child: Batch, parent: Batch): Pick<Batch, 'effective' | '
   return same ? null : { effective, secondary };
 }
 
-/** Direct opened children of a batch (they carry `parentBatchId`), read strictly inside the transaction. */
+/** ALL direct opened children of a batch (any status; they carry `parentBatchId`), read strictly inside the transaction. */
 async function openedChildrenOf(tx: Txn, parent: Batch): Promise<Batch[]> {
   const ids = await tx.getIndex(K.index('batches', parent.workspaceId));
   const out: Batch[] = [];
@@ -398,7 +398,8 @@ async function openedChildrenOf(tx: Txn, parent: Batch): Promise<Batch[]> {
     if (id === parent.id) continue;
     const c = await tx.get<Batch>(K.item('batches', id));
     if (!c) throw new DomainError('batchNotFound');
-    if (c.kind === 'opened' && c.parentBatchId === parent.id && c.status !== 'archived') out.push(c);
+    // FINAL-01: archived children too — an archived child may be restored later and must never carry a stale date.
+    if (c.kind === 'opened' && c.parentBatchId === parent.id) out.push(c);
   }
   return out;
 }

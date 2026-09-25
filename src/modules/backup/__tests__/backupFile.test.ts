@@ -797,3 +797,45 @@ describe('P1-REOPEN-02 an unsettled restore blocks the whole app until Retry set
     expect(await AsyncStorage.getItem(RESTORE_META_KEY)).toBe(metaBefore);
   });
 });
+
+describe('FINAL-02 the write gate stays closed until the reload after recovery has succeeded', () => {
+  async function unconfirmed() {
+    await preparedPhone();
+    let metaWrites = 0;
+    await withStorageMock('setItem', (orig, k: string, v: string) => {
+      if (k !== RESTORE_META_KEY) return orig(k, v);
+      metaWrites += 1;
+      return metaWrites === 1 ? orig(k, v) : Promise.reject(new Error('disk full'));
+    }, () => expectCode(restoreBackup(FILE, PASS), 'restoreUnconfirmed'));
+  }
+
+  it('writes stay blocked DURING the reload and become available only after it succeeds', async () => {
+    await unconfirmed();
+    const seen: string[] = [];
+    const result = await settleRecovery(async () => {
+      expect(writeBlockReason()).not.toBeNull(); // still closed while caches reload
+      await expect(saveProduct(getActiveWorkspace()!.id, { name: 'During reload' })).rejects.toMatchObject({ code: 'recoveryRequired' });
+      seen.push('reloaded');
+    });
+    expect(result).toEqual({ status: 'ready', outcome: 'rolledBack' });
+    expect(seen).toEqual(['reloaded']);
+    expect(writeBlockReason()).toBeNull();
+    await saveProduct(getActiveWorkspace()!.id, { name: 'After reload' }); // now allowed
+  });
+
+  it('a failed reload keeps the app blocked and writes refused; a later successful Retry opens it', async () => {
+    await unconfirmed();
+    const failed = await settleRecovery(async () => { throw new Error('cannot read workspaces'); });
+    expect(failed).toEqual({ status: 'recoveryRequired', reason: 'storageUnavailable' });
+    expect(writeBlockReason()).toBe('storageUnavailable');
+    await expect(saveProduct(getActiveWorkspace()!.id, { name: 'Blocked' })).rejects.toMatchObject({ code: 'recoveryRequired' });
+    const ok = await settleRecovery(async () => undefined);
+    expect(ok.status).toBe('ready');
+    expect(writeBlockReason()).toBeNull();
+  });
+
+  it('App.tsx reloads with the strict reloadAfterRecovery (which throws on failure), not the lenient start-up bootstrap', () => {
+    const app = require('fs').readFileSync(require('path').join(__dirname, '../../../App.tsx'), 'utf8');
+    expect(app).toMatch(/settleRecovery\(async \(\) => \{ await reloadAfterRecovery\(\);/);
+  });
+});

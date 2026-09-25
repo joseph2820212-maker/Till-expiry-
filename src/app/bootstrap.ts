@@ -28,3 +28,16 @@ export async function bootstrapData(): Promise<void> {
   // Reminders reconcile from the stored batches in the background: Today never waits for the notification system.
   try { void Promise.resolve(registerReminders()).catch(e => logError('bootstrap.reminders', e)); } catch (e) { logError('bootstrap.reminders', e); }
 }
+
+/**
+ * Strict reload after a settled restore (FINAL-02): the same canonical state as start-up, but any failure THROWS so the
+ * caller keeps the app blocked. Runs while the write gate is still closed; only reads (and the transaction journal's
+ * own recovery) happen here. Reminders are reconciled in the background afterwards, as at start-up.
+ */
+export async function reloadAfterRecovery(): Promise<void> {
+  await recoverInterruptedTransaction();
+  await loadScope();
+  await loadActiveWorkspace();
+  await loadSettings();
+  try { void Promise.resolve(registerReminders()).catch(e => logError('reload.reminders', e)); } catch (e) { logError('reload.reminders', e); }
+}

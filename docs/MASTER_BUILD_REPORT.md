@@ -197,3 +197,19 @@ Gates: `npm run typecheck` clean · `npm run lint` clean · `npm test` 65 suites
 `npx expo config --type introspect` OK · `npx expo export --platform android` Hermes bundle 6.77 MB.
 New strings (6) written in all six languages; for human review with the rest of the machine translations.
 APK not built (G10 HOLD) — waiting for the final narrow re-audit, as instructed.
+
+## Final re-audit fixes (re-audit of `0bfe0f6`) — fixes PASS (automated) · G9 HOLD until the final source check
+
+| Field | Value |
+|---|---|
+| Re-audited SHA | `0bfe0f60bfe934d6d585da78416030845c6fc1a1` |
+| Fix commit | "Final re-audit fixes FINAL-01/02" (the SHA returned with this pass) |
+| Scope | exactly FINAL-01 and FINAL-02; no APK |
+
+| Finding | Fix | Regression tests |
+|---|---|---|
+| FINAL-01 archived opened children were skipped by a parent correction | `openedChildrenOf` returns ALL direct opened children, archived included; their dates are re-derived and history appended; status is never changed | batchStore: parent 30→26 with an archived child → child 26, still archived, restore keeps 26; parent 26→30 → archived child back to its own 28 |
+| FINAL-02 the write gate opened before the reload finished | `settleRecovery` keeps the gate CLOSED while `onReady` reloads; opens it only after the reload succeeds; a failed reload keeps the app blocked (`storageUnavailable`). App.tsx now reloads with the strict `reloadAfterRecovery` (scope, workspace, settings; throws on failure) instead of the lenient start-up bootstrap | backupFile: writes refused during the reload and allowed only afterwards; failed reload stays blocked, later Retry opens; App.tsx wiring check |
+
+Gates: `npm run typecheck` clean · `npm run lint` clean · `npm test` 65 suites / 624 tests passed ·
+`npx expo config --type introspect` OK · `npx expo export --platform android` Hermes bundle 6.77 MB. APK not built.

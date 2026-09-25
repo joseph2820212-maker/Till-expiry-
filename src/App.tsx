@@ -20,7 +20,7 @@ import { initializeLanguage } from './i18n';
 import { runStartupRecovery, settleRecovery } from './modules/backup/startupRecovery';
 import { blockWrites, useWriteBlockReason } from './storage/writeGate';
 import { RecoveryRequiredScreen } from './modules/backup/RecoveryRequiredScreen';
-import { bootstrapData } from './app/bootstrap';
+import { bootstrapData, reloadAfterRecovery } from './app/bootstrap';
 
 installGlobalErrorLogger();
 
@@ -87,7 +87,7 @@ function FontBootstrap({ onRetry }: { onRetry: () => void }) {
     const retry = () => {
       if (settling) return;
       setSettling(true);
-      void settleRecovery(async () => { await bootstrapData(); setBootstrapped(true); }).finally(() => setSettling(false));
+      void settleRecovery(async () => { await reloadAfterRecovery(); setBootstrapped(true); }).finally(() => setSettling(false));
     };
     return <RecoveryRequiredScreen reason={recoveryBlocked} onRetry={retry} busy={settling} />;
   }

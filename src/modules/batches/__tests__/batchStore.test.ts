@@ -369,3 +369,34 @@ describe('P2-01 a manual correction removes the stale applied rule (kept in hist
     });
   }
 });
+
+describe('FINAL-01 archived opened children are re-derived too (status unchanged)', () => {
+  async function archivedChild(parentDate: string) {
+    const w = await ws();
+    const parent = await createDatedBatch({ workspaceId: w.id, kind: 'bought_in', newProduct: { name: 'Cream' }, dateKind: 'use_by', deadline: { precision: 'date', date: parentDate }, quantity: 4 });
+    const { child } = await openBatch({ workspaceId: w.id, parentBatchId: parent.id, quantity: 1, openedAt: '2026-09-24T10:00:00+01:00', direct: { kind: 'internal_cutoff', deadline: { precision: 'date', date: '2026-09-28' } } });
+    await setBatchArchived(w.id, child.id, true);
+    return { w, parent, child };
+  }
+
+  it('parent 30 → 26 while the child is archived: the child becomes 26 and stays archived; restoring it keeps 26', async () => {
+    const { w, parent, child } = await archivedChild('2026-09-30');
+    await correctDeadline(w.id, parent.id, 'use_by', { precision: 'date', date: '2026-09-26' }, 'Misread pack');
+    const archived = await getBatch(w.id, child.id);
+    expect(archived?.status).toBe('archived');
+    expect(archived?.effective).toMatchObject({ dateKind: 'use_by', deadline: { date: '2026-09-26' }, reason: 'original_hard' });
+    expect((await listBatchEvents(w.id, child.id)).some(e => e.type === 'deadline_corrected' && (e.after as any)?.fromParent === parent.id)).toBe(true);
+    const restored = await setBatchArchived(w.id, child.id, false);
+    expect(restored.status).toBe('active');
+    expect(restored.effective).toMatchObject({ dateKind: 'use_by', deadline: { date: '2026-09-26' } });
+  });
+
+  it('parent 26 → 30 while the child is archived: the child returns to its own 28 cutoff and stays archived', async () => {
+    const { w, parent, child } = await archivedChild('2026-09-26');
+    expect((await getBatch(w.id, child.id))?.effective).toMatchObject({ deadline: { date: '2026-09-26' } });
+    await correctDeadline(w.id, parent.id, 'use_by', { precision: 'date', date: '2026-09-30' }, 'Misread pack');
+    const after = await getBatch(w.id, child.id);
+    expect(after?.status).toBe('archived');
+    expect(after?.effective).toMatchObject({ dateKind: 'internal_cutoff', deadline: { date: '2026-09-28' } });
+  });
+});

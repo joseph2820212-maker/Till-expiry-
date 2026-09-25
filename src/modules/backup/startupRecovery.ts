@@ -32,9 +32,10 @@ export async function runStartupRecovery(
 }
 
 /**
- * Settle an unsettled restore (P1-REOPEN-02). Runs recovery; only when it returns ready is `onReady` (reload the data)
- * awaited and the global write gate opened again. Otherwise the gate stays closed with the current reason, so normal
- * screens and business writes stay unavailable. Never throws.
+ * Settle an unsettled restore (P1-REOPEN-02, FINAL-02). Runs recovery; when it returns ready, `onReady` reloads the
+ * canonical state (workspace, settings, caches) WHILE THE WRITE GATE IS STILL CLOSED, so nothing can be written against
+ * stale caches. Only after the reload succeeds is the gate opened. If recovery or the reload fails, the gate stays
+ * closed and the app stays blocked. Never throws.
  */
 export async function settleRecovery(
   onReady: () => Promise<void>,
@@ -42,8 +43,13 @@ export async function settleRecovery(
 ): Promise<StartupRecoveryResult> {
   const r = await runStartupRecovery(recover);
   if (r.status === 'recoveryRequired') { blockWrites(r.reason); return r; }
-  // Recovery settled the journal: writes are safe again, so reload canonical data, then open the app.
+  try {
+    await onReady();
+  } catch {
+    // The journal is settled, but the app could not reload a consistent state: stay blocked; Retry reloads again.
+    blockWrites('storageUnavailable');
+    return { status: 'recoveryRequired', reason: 'storageUnavailable' };
+  }
   clearWriteBlock();
-  try { await onReady(); } catch { /* a reload failure is reported by the screens; the dataset is whole */ }
   return r;
 }
