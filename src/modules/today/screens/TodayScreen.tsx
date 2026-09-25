@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { WorkspaceHeader } from '../../../components/WorkspaceHeader';
 import { AppKeyboardScrollView } from '../../../components/AppKeyboardScrollView';
 import { EmptyState } from '../../../components/EmptyState';
-import { FilterChip } from '../../../components/FilterChip';
+import { ChipGrid, FilterChip } from '../../../components/FilterChip';
 import { AppButton } from '../../../components/AppButton';
 import { BatchCard } from '../../../components/status/BatchCard';
 import { colors } from '../../../theme/colors';
@@ -74,17 +74,17 @@ export const TodayScreen: React.FC = () => {
         <ReminderIntroCard />
 
         {v && v.locations.length > 0 ? (
-          <View style={s.chips}>
+          <ChipGrid>
             <FilterChip label={t('today.allPlaces')} active={!locationId} onPress={() => setLocationId(undefined)} />
             {v.locations.map(l => <FilterChip key={l.id} label={l.name} active={locationId === l.id} onPress={() => setLocationId(locationId === l.id ? undefined : l.id)} />)}
-          </View>
+          </ChipGrid>
         ) : null}
 
         {hasKinds.opened || hasKinds.prepared ? (
-          <View style={s.kindRow}>
+          <ChipGrid>
             {hasKinds.opened ? <FilterChip label={t('today.openedItems')} active={false} onPress={() => openQueue({ kind: 'opened', locationId })} /> : null}
             {hasKinds.prepared ? <FilterChip label={t('today.preparedItems')} active={false} onPress={() => openQueue({ kind: 'prepared', locationId })} /> : null}
-          </View>
+          </ChipGrid>
         ) : null}
 
         <View style={s.actionsRow}>
@@ -126,8 +126,6 @@ const s = StyleSheet.create({
   tile: { flexBasis: '31%', flexGrow: 1, minHeight: 84, borderRadius: 14, borderWidth: 1, borderColor: colors.border, padding: 10, gap: 2 },
   tileCount: { ...typography.screenTitle },
   tileLabel: { ...typography.bodySm, fontWeight: '600' },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, paddingVertical: 4 },
-  kindRow: { flexDirection: 'row', gap: 8, flexWrap: 'wrap' },
   actionsRow: { flexDirection: 'row', gap: 8 },
   flex: { flex: 1 },
   sectionTitle: { ...typography.cardTitle, color: colors.textDark, marginTop: spacing.sm },

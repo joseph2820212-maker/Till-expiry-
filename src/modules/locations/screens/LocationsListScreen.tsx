@@ -10,7 +10,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ScreenHeader } from '../../../components/ScreenHeader';
 import { AppButton } from '../../../components/AppButton';
 import { EmptyState } from '../../../components/EmptyState';
-import { FilterChip } from '../../../components/FilterChip';
+import { ChipGrid, FilterChip } from '../../../components/FilterChip';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
@@ -37,7 +37,7 @@ export const LocationsListScreen: React.FC = () => {
       <ScrollView contentContainerStyle={s.content}>
         <Text style={s.intro}>{t('locations.intro')}</Text>
         <AppButton label={t('locations.new')} onPress={() => nav.navigate('LocationDetail', undefined)} testID="location-new" />
-        {hiddenCount ? <View style={s.chips}><FilterChip label={t('locations.showHidden', { count: hiddenCount })} active={showHidden} onPress={() => setShowHidden(x => !x)} /></View> : null}
+        {hiddenCount ? <ChipGrid><FilterChip label={t('locations.showHidden', { count: hiddenCount })} active={showHidden} onPress={() => setShowHidden(x => !x)} /></ChipGrid> : null}
         {data && !visible.length ? <EmptyState icon="location-outline" title={t('locations.emptyTitle')} body={t('locations.emptyBody')} /> : null}
         {visible.map(l => (
           <TouchableOpacity key={l.id} style={[s.card, l.status === 'hidden' && s.cardHidden]} onPress={() => nav.navigate('LocationDetail', { id: l.id })} accessibilityRole="button" testID={`location-${l.id}`}>
@@ -57,7 +57,6 @@ const s = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.background },
   content: { padding: spacing.screenPadding, paddingBottom: spacing.scrollBottom, gap: spacing.md },
   intro: { ...typography.body, color: colors.textMuted, lineHeight: 20 },
-  chips: { flexDirection: 'row', flexWrap: 'wrap' },
   card: { backgroundColor: colors.card, borderRadius: 14, borderWidth: 1, borderColor: colors.border, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 56 },
   cardHidden: { opacity: 0.7 },
   text: { flex: 1, minWidth: 0, gap: 2 },

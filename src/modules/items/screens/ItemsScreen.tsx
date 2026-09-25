@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, I18nManager } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useNavigationState, useRoute, type RouteProp } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -8,7 +8,7 @@ import { WorkspaceHeader } from '../../../components/WorkspaceHeader';
 import { ScreenHeader } from '../../../components/ScreenHeader';
 import { AppTextInput } from '../../../components/AppTextInput';
 import { ToggleSegment } from '../../../components/ToggleSegment';
-import { FilterChip } from '../../../components/FilterChip';
+import { ChipGrid, FilterChip } from '../../../components/FilterChip';
 import { EmptyState } from '../../../components/EmptyState';
 import { AppButton } from '../../../components/AppButton';
 import { AppKeyboardBottomSheet } from '../../../components/AppKeyboardBottomSheet';
@@ -164,7 +164,7 @@ const ChipGroup: React.FC<{ title: string; items: { id: string; label: string }[
   items.length ? (
     <View style={s.group}>
       <Text style={s.groupTitle}>{title}</Text>
-      <View style={s.chips}>{items.map(i => <FilterChip key={i.id} label={i.label} active={value === i.id} onPress={() => onPick(i.id)} />)}</View>
+      <ChipGrid>{items.map(i => <FilterChip key={i.id} label={i.label} active={value === i.id} onPress={() => onPick(i.id)} />)}</ChipGrid>
     </View>
   ) : null;
 
@@ -178,7 +178,7 @@ const ProductRow: React.FC<{ p: Product; batches: number; onPress: () => void }>
         <Text style={s.pName} numberOfLines={2}>{p.name}</Text>
         <Text style={s.pMeta} numberOfLines={1}>{meta}</Text>
       </View>
-      <Ionicons name="chevron-forward" size={18} color={colors.textFaint} />
+      <Ionicons name={I18nManager.isRTL ? 'chevron-back' : 'chevron-forward'} size={18} color={colors.textFaint} />
     </TouchableOpacity>
   );
 };
@@ -198,7 +198,6 @@ const s = StyleSheet.create({
   sheetBody: { gap: spacing.md },
   group: { gap: 6 },
   groupTitle: { ...typography.sectionLabel, color: colors.textMuted },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   flex: { flex: 1 },
   pRow: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, minHeight: 60, borderRadius: 14, backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
   pName: { ...typography.cardTitle, color: colors.textDark },

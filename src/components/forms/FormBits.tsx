@@ -5,7 +5,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, I18nManager } from 'react-native';
 import { AppTextInput } from '../AppTextInput';
-import { FilterChip } from '../FilterChip';
+import { ChipGrid, FilterChip } from '../FilterChip';
 import { colors } from '../../theme/colors';
 import { typography } from '../../theme/typography';
 import { spacing } from '../../theme/spacing';
@@ -56,9 +56,9 @@ export function ChoiceChips<V extends string>({ options, value, onChange, label 
   return (
     <View style={s.field}>
       {label ? <Text style={s.label}>{label}</Text> : null}
-      <View style={s.chips}>
+      <ChipGrid>
         {options.map(o => <FilterChip key={o.value} label={o.label} active={value === o.value} onPress={() => onChange(o.value)} />)}
-      </View>
+      </ChipGrid>
     </View>
   );
 }
@@ -75,7 +75,6 @@ const s = StyleSheet.create({
   multiline: { minHeight: 72, textAlignVertical: 'top', paddingTop: 10 },
   inputError: { borderColor: colors.dangerRed },
   ltr: { writingDirection: 'ltr', textAlign: 'left' },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', rowGap: 8 },
   hint: { ...typography.bodySm, color: colors.textMuted, lineHeight: 18 },
   error: { ...typography.bodySm, color: colors.dangerRed },
 });

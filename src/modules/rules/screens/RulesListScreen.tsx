@@ -12,7 +12,7 @@ import { ScreenHeader } from '../../../components/ScreenHeader';
 import { AppKeyboardScrollView } from '../../../components/AppKeyboardScrollView';
 import { AppButton } from '../../../components/AppButton';
 import { EmptyState } from '../../../components/EmptyState';
-import { FilterChip } from '../../../components/FilterChip';
+import { ChipGrid, FilterChip } from '../../../components/FilterChip';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
@@ -48,7 +48,7 @@ export const RulesListScreen: React.FC = () => {
       <AppKeyboardScrollView contentContainerStyle={s.content}>
         <Text style={s.intro}>{t('rules.intro')}</Text>
         <AppButton label={t('rules.new')} onPress={() => nav.navigate('RuleEdit', undefined)} testID="rule-new" />
-        {hiddenCount ? <View style={s.chips}><FilterChip label={t('rules.showHidden', { count: hiddenCount })} active={showHidden} onPress={() => setShowHidden(x => !x)} /></View> : null}
+        {hiddenCount ? <ChipGrid><FilterChip label={t('rules.showHidden', { count: hiddenCount })} active={showHidden} onPress={() => setShowHidden(x => !x)} /></ChipGrid> : null}
         {data && !visible.length ? <EmptyState icon="time-outline" title={t('rules.emptyTitle')} body={t('rules.emptyBody')} /> : null}
         {GROUPS.map(g => {
           const list = visible.filter(r => r.appliesTo === g);
@@ -69,7 +69,6 @@ const s = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.background },
   content: { padding: spacing.screenPadding, paddingBottom: spacing.scrollBottom, gap: spacing.md },
   intro: { ...typography.body, color: colors.textMuted, lineHeight: 20 },
-  chips: { flexDirection: 'row', flexWrap: 'wrap' },
   group: { gap: spacing.sm },
   groupTitle: { ...typography.sectionLabel, color: colors.textMuted },
   card: { backgroundColor: colors.card, borderRadius: 14, borderWidth: 1, borderColor: colors.border, padding: 12, gap: 3 },

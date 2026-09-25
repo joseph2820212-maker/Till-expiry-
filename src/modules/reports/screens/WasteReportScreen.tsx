@@ -8,7 +8,7 @@ import { WASTE_REASONS } from '../../../domain/expiry/expiryTypes';
 import { addDays, localTimeOf, todayIn } from '../../../domain/expiry/datePrecision';
 import { ScreenHeader } from '../../../components/ScreenHeader';
 import { AppKeyboardScrollView } from '../../../components/AppKeyboardScrollView';
-import { FilterChip } from '../../../components/FilterChip';
+import { ChipGrid, FilterChip } from '../../../components/FilterChip';
 import { EmptyState } from '../../../components/EmptyState';
 import { useWorkspaceData } from '../../../hooks/useWorkspaceData';
 import { listBatches, listEvents } from '../../batches/batchStore';
@@ -68,9 +68,9 @@ export const WasteReportScreen: React.FC = () => {
       <ScreenHeader title={t('reports.wasteTitle')} onBack={() => nav.goBack()} />
       <AppKeyboardScrollView contentContainerStyle={st.content}>
         <Text style={rs.sectionTitle}>{t('reports.filter.period')}</Text>
-        <View style={rs.chips}>
+        <ChipGrid>
           {PERIODS.map(p => <FilterChip key={p} label={t(`reports.periodChip.${p}`)} active={period === p} onPress={() => setPeriod(p)} />)}
-        </View>
+        </ChipGrid>
         <Text style={rs.hint}>{t('reports.wasteNote')}</Text>
 
         {error ? <EmptyState icon="alert-circle-outline" title={t('errors.loadFailed')} body={t('reports.loadFailedBody')} /> : null}

@@ -131,7 +131,6 @@ const s = StyleSheet.create({
 
 export const reportStyles = StyleSheet.create({
   metrics: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', rowGap: 8 },
   sectionTitle: { ...typography.sectionLabel, color: colors.textMuted, marginTop: spacing.sm },
   hint: { ...typography.bodySm, color: colors.textMuted, lineHeight: 18 },
   list: { gap: spacing.sm },

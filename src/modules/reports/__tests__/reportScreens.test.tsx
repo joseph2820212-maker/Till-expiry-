@@ -14,7 +14,7 @@ jest.mock('../../../theme/responsive', () => ({ fs: (v: number) => v, rs: (v: nu
 jest.mock('../../../components/WorkspaceHeader', () => ({ WorkspaceHeader: 'WorkspaceHeader' }));
 jest.mock('../../../components/ScreenHeader', () => ({ ScreenHeader: 'ScreenHeader' }));
 jest.mock('../../../components/AppButton', () => ({ AppButton: 'AppButton' }));
-jest.mock('../../../components/FilterChip', () => ({ FilterChip: 'FilterChip' }));
+jest.mock('../../../components/FilterChip', () => ({ FilterChip: 'FilterChip', ChipGrid: 'ChipGrid' }));
 jest.mock('../../../components/DropdownField', () => ({ DropdownField: 'DropdownField' }));
 jest.mock('../../../components/EmptyState', () => ({ EmptyState: 'EmptyState' }));
 jest.mock('../../../components/AppKeyboardScrollView', () => ({ AppKeyboardScrollView: ({ children, ...p }: any) => require('react').createElement('AppKeyboardScrollView', p, children) }));

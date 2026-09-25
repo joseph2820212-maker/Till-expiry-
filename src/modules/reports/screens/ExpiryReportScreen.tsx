@@ -9,7 +9,7 @@ import type { StatusGroup } from '../../../domain/expiry/statusEngine';
 import { addDays, localTimeOf, todayIn } from '../../../domain/expiry/datePrecision';
 import { ScreenHeader } from '../../../components/ScreenHeader';
 import { AppKeyboardScrollView } from '../../../components/AppKeyboardScrollView';
-import { FilterChip } from '../../../components/FilterChip';
+import { ChipGrid, FilterChip } from '../../../components/FilterChip';
 import { DropdownField } from '../../../components/DropdownField';
 import { EmptyState } from '../../../components/EmptyState';
 import { useWorkspaceData } from '../../../hooks/useWorkspaceData';
@@ -92,38 +92,38 @@ export const ExpiryReportScreen: React.FC = () => {
       <ScreenHeader title={t('reports.expiryTitle')} onBack={() => nav.goBack()} />
       <AppKeyboardScrollView contentContainerStyle={st.content}>
         <Text style={rs.sectionTitle}>{t('reports.filter.range')}</Text>
-        <View style={rs.chips}>
+        <ChipGrid>
           {RANGES.map(r => <FilterChip key={r} label={t(`reports.range.${r}`)} active={range === r} onPress={() => setRange(r)} />)}
-        </View>
+        </ChipGrid>
         <Text style={rs.hint}>{t('reports.rangeHint')}</Text>
 
         <Text style={rs.sectionTitle}>{t('reports.filter.status')}</Text>
-        <View style={rs.chips}>
+        <ChipGrid>
           {GROUPS.map(g => <FilterChip key={g} label={t(`reports.group.${g}`)} active={groups.includes(g)} onPress={() => setGroups(x => toggle(x, g))} />)}
-        </View>
+        </ChipGrid>
 
         <Text style={rs.sectionTitle}>{t('reports.filter.kind')}</Text>
-        <View style={rs.chips}>
+        <ChipGrid>
           {KINDS.map(k => <FilterChip key={k} label={t(`batchKind.${k}`)} active={kinds.includes(k)} onPress={() => setKinds(x => toggle(x, k))} />)}
-        </View>
+        </ChipGrid>
 
         {activeLocations.length ? (
           <>
             <Text style={rs.sectionTitle}>{t('reports.filter.location')}</Text>
-            <View style={rs.chips}>
+            <ChipGrid>
               <FilterChip label={t('reports.allLocations')} active={!locationId} onPress={() => setLocationId('')} />
               {activeLocations.map(l => <FilterChip key={l.id} label={l.name} active={locationId === l.id} onPress={() => setLocationId(l.id)} />)}
-            </View>
+            </ChipGrid>
           </>
         ) : null}
 
         {activeCategories.length ? (
           <>
             <Text style={rs.sectionTitle}>{t('reports.filter.category')}</Text>
-            <View style={rs.chips}>
+            <ChipGrid>
               <FilterChip label={t('reports.allCategories')} active={!categoryId} onPress={() => setCategoryId('')} />
               {activeCategories.map(c => <FilterChip key={c.id} label={c.name} active={categoryId === c.id} onPress={() => setCategoryId(c.id)} />)}
-            </View>
+            </ChipGrid>
           </>
         ) : null}
 
