@@ -1,3 +1,5 @@
 {
-  "NSCameraUsageDescription": "TillExpiry, bir ürünü bulmanız veya tarihini yazmadan eklemeniz için ürün barkodlarını taramak üzere kamerayı kullanır."
+  "ios": {
+    "NSCameraUsageDescription": "TillExpiry, bir ürünü bulmanız veya tarihini yazmadan eklemeniz için ürün barkodlarını taramak üzere kamerayı kullanır."
+  }
 }

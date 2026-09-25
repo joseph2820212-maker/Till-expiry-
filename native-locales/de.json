@@ -1,3 +1,5 @@
 {
-  "NSCameraUsageDescription": "TillExpiry nutzt die Kamera, um Barcodes zu scannen, damit du einen Artikel findest oder sein Datum ohne Tippen hinzufügst."
+  "ios": {
+    "NSCameraUsageDescription": "TillExpiry nutzt die Kamera, um Barcodes zu scannen, damit du einen Artikel findest oder sein Datum ohne Tippen hinzufügst."
+  }
 }

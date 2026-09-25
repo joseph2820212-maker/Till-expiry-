@@ -1,3 +1,5 @@
 {
-  "NSCameraUsageDescription": "TillExpiry uses the camera to scan product barcodes so you can find an item or add its date without typing."
+  "ios": {
+    "NSCameraUsageDescription": "TillExpiry uses the camera to scan product barcodes so you can find an item or add its date without typing."
+  }
 }

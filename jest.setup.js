@@ -1,5 +1,5 @@
 // NOTE: the test timezone is pinned to UTC by the launcher scripts/jest-utc.js
-// (wired into the `test` / `test:coverage:gate` npm scripts). It MUST be set
+// (wired into the `test` npm script). It MUST be set
 // before Node/V8 first reads the zone — setting process.env.TZ here, inside a
 // setupFile, is too late because V8 caches the host zone before setupFiles run and
 // the app's date logic uses LOCAL Date getters. Run tests via `npm test`.

@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "typecheck": "tsc --noEmit",
-    "test": "TZ=UTC jest --passWithNoTests",
+    "test": "node scripts/jest-utc.js --passWithNoTests",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 0",
     "provenance": "node scripts/genProvenance.mjs"
   },
@@ -40,7 +40,7 @@
     "react-i18next": "^17.0.8",
     "react-native": "0.81.5",
     "react-native-blob-util": "^0.24.9",
-    "react-native-gesture-handler": "~2.24.0",
+    "react-native-gesture-handler": "~2.28.0",
     "react-native-keyboard-controller": "1.18.5",
     "react-native-pdf": "^7.0.4",
     "react-native-reanimated": "~4.1.1",

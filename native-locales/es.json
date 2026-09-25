@@ -1,3 +1,5 @@
 {
-  "NSCameraUsageDescription": "TillExpiry usa la cámara para escanear códigos de barras y así encontrar un producto o añadir su fecha sin escribir."
+  "ios": {
+    "NSCameraUsageDescription": "TillExpiry usa la cámara para escanear códigos de barras y así encontrar un producto o añadir su fecha sin escribir."
+  }
 }

@@ -8,7 +8,7 @@ const SCREENS_DIR = path.resolve(__dirname, '..', 'modules');
 const listScreens = (dir: string): string[] => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => {
   const p = path.join(dir, e.name);
   if (e.isDirectory()) return listScreens(p);
-  return /screens\/.*Screen\.tsx$/.test(p) ? [p] : [];
+  return /screens[\\/].*Screen\.tsx$/.test(p) ? [p] : [];
 });
 
 // Screens whose only inputs live in a bottom sheet (its own keyboard handling) or in a

@@ -65,7 +65,8 @@
       "expo-document-picker",
       "@config-plugins/react-native-blob-util",
       "@config-plugins/react-native-pdf",
-      "./plugins/pdfiumAndroidVersion"
+      "./plugins/pdfiumAndroidVersion",
+      "./plugins/androidBuildSettings"
     ],
     "locales": {
       "en": "./native-locales/en.json",

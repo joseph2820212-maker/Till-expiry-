@@ -23,7 +23,7 @@ The review build has no billing code at all (decision D2): nothing to switch on 
 
 ### Path A — local Gradle build (Android Studio machine)
 
-Prerequisites: JDK 17, Android SDK platform 36, build-tools 36.0.0, NDK 27.1.12297006, CMake 3.22.1, `ANDROID_HOME` set.
+Prerequisites: JDK 17, Android SDK platform 36, build-tools 36.0.0, NDK 27.1.12297006, CMake 3.22.1 and 3.31.6 (the app module pins 3.31.6: its ninja 1.12 handles Windows paths over 260 characters), `ANDROID_HOME` set. On Windows run `npm test` as-is (the `scripts/jest-utc.js` launcher pins TZ=UTC in any shell) and `.\gradlew.bat assembleRelease`.
 
 ```bash
 git clone https://github.com/joseph2820212-maker/Till-expiry-.git tillexpiry && cd tillexpiry
